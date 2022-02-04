@@ -5,7 +5,7 @@ const UP = Vector2(0, -1)
 const GRAVITY = 20
 const ACCELERATION = 50
 const MAX_SPEED = 250
-const MAX_JUMP_HEIGHT = -750
+const MAX_JUMP_HEIGHT = -650
 
 # General Variables
 var motion = Vector2()
