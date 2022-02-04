@@ -9,10 +9,19 @@ extents = Vector2( 28, 78.125 )
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 28, -34 )
+[node name="BodySprite" type="Sprite" parent="."]
+position = Vector2( 28, 2 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1, 18, 16, 21 )
+
+[node name="HeadSprite" type="Sprite" parent="."]
+position = Vector2( 28, -76 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 18, 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 28, -33.875 )

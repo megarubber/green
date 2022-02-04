@@ -2,27 +2,34 @@ extends KinematicBody2D
 
 # Constants
 const UP = Vector2(0, -1)
-const GRAVITY = 10
+const GRAVITY = 20
 const ACCELERATION = 50
-const MAX_SPEED = 200
+const MAX_SPEED = 250
 const MAX_JUMP_HEIGHT = -750
 
 # General Variables
 var motion = Vector2()
 
 # Nodes Referencing
-onready var player_sprite = $Sprite
+onready var body_sprite = $BodySprite
+onready var head_sprite = $HeadSprite
 
-func movement(delta) -> void: # Player's movement function
+func flip() -> void: # Flipping sprite function
+	head_sprite.set_flip_h(get_global_mouse_position().x < global_position.x)
+	
+	if motion.x > 0:
+		body_sprite.flip_h = false
+	elif motion.x < 0:
+		body_sprite.flip_h = true
+
+func movement() -> void: # Player's movement function
 	motion.y += GRAVITY
 	var friction = false
 	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
-		player_sprite.flip_h = false
 	elif Input.is_action_pressed("ui_left"):
 		motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
-		player_sprite.flip_h = true
 	else:
 		motion.x = 0
 		friction = true
@@ -38,8 +45,8 @@ func movement(delta) -> void: # Player's movement function
 		if Input.is_action_just_released("ui_up") && motion.y < 0:
 			motion.y = 0
 	
-	var moving = move_and_slide(motion, UP)
-	print(moving)
+	motion = move_and_slide(motion, UP)
 	
-func _physics_process(delta):
-	movement(delta)
+func _physics_process(_delta):
+	movement()
+	flip()
