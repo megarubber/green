@@ -27,6 +27,12 @@ position = Vector2( -128, 160 )
 [node name="GenericWall7" parent="." instance=ExtResource( 2 )]
 position = Vector2( -192, 96 )
 
+[node name="GenericWall10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 96, -32 )
+
+[node name="GenericWall11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 160, -32 )
+
 [node name="GenericWall8" parent="." instance=ExtResource( 2 )]
 position = Vector2( -256, 96 )
 
