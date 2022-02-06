@@ -13,6 +13,19 @@ var motion = Vector2()
 # Nodes Referencing
 onready var body_sprite = $BodySprite
 onready var head_sprite = $HeadSprite
+onready var animation = $AnimationPlayer
+
+func execute_animation() -> void: # Player's animation function
+	if is_on_floor():
+		if motion.x != 0:
+			animation.play("run")
+		else:
+			animation.play("idle")
+	else:
+		if motion.y < 0:
+			animation.play("jump")
+		else:
+			animation.play("fall")
 
 func flip() -> void: # Flipping sprite function
 	head_sprite.set_flip_h(get_global_mouse_position().x < global_position.x)
@@ -46,7 +59,9 @@ func movement() -> void: # Player's movement function
 			motion.y = 0
 	
 	motion = move_and_slide(motion, UP)
+	print(motion.y)
 	
 func _physics_process(_delta):
 	movement()
 	flip()
+	execute_animation()
