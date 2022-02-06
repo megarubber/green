@@ -59,7 +59,6 @@ func movement() -> void: # Player's movement function
 			motion.y = 0
 	
 	motion = move_and_slide(motion, UP)
-	print(motion.y)
 	
 func _physics_process(_delta):
 	movement()
