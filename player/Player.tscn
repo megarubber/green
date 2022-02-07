@@ -207,6 +207,7 @@ tracks/1/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 44.0 ]
@@ -234,7 +235,6 @@ scale = Vector2( 5, 5 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -1, -101.5 )
 shape = SubResource( 1 )
 
@@ -247,10 +247,10 @@ anims/run = SubResource( 5 )
 
 [node name="GunSprite" type="Sprite" parent="."]
 position = Vector2( 4, -88 )
-scale = Vector2( 2.54167, 2.54167 )
+scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 18 )
 offset = Vector2( 5, 0 )
 script = ExtResource( 19 )
 
-[node name="Position2D" type="Position2D" parent="GunSprite"]
-position = Vector2( 28.3278, -4.7213 )
+[node name="Muzzle" type="Position2D" parent="GunSprite"]
+position = Vector2( 22.4, -4.8 )
