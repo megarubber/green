@@ -10,20 +10,25 @@ var recoil = 30
 
 # Scene Referecing
 var bullet = preload("res://guns/Bullet.tscn")
+var d_bullet = preload("res://guns/DropBullet.tscn")
 
 # Nodes Referecing
 onready var muzzle = $Muzzle
+onready var drop = $Drop
 
 func _ready():
 	set_as_toplevel(true)
-
 
 func shotting() -> void: # Shotting with gun
 	global_position.x = lerp(global_position.x - recoil, get_parent().global_position.x, 0.7)
 	var bullet_instance = bullet.instance()
 	bullet_instance.rotation = rotation
 	bullet_instance.global_position = muzzle.global_position
+	var d_bullet_instance = d_bullet.instance()
+	d_bullet_instance.rotation = rotation
+	d_bullet_instance.global_position = drop.global_position
 	get_parent().add_child(bullet_instance)
+	get_parent().add_child(d_bullet_instance)
 	can_fire = false
 	yield(get_tree().create_timer(0.2), "timeout")
 	can_fire = true

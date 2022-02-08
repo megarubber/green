@@ -15,6 +15,9 @@ onready var body_sprite = $BodySprite
 onready var head_sprite = $HeadSprite
 onready var animation = $AnimationPlayer
 
+func _ready():
+	z_index = -2
+
 func execute_animation() -> void: # Player's animation function
 	if is_on_floor():
 		if motion.x != 0:
