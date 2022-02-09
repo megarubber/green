@@ -14,6 +14,7 @@ var motion = Vector2()
 onready var body_sprite = $BodySprite
 onready var head_sprite = $HeadSprite
 onready var animation = $AnimationPlayer
+onready var screen_shake = $Camera/Screenshake
 
 func _ready():
 	z_index = -2

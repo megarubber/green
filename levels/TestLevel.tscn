@@ -6,59 +6,63 @@
 [node name="TestLevel" type="Node2D"]
 position = Vector2( 512, 192 )
 
-[node name="GenericWall" parent="." instance=ExtResource( 2 )]
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Player" parent="Level" instance=ExtResource( 1 )]
+position = Vector2( -48, -32 )
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="GenericWall" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( -188, 204 )
 
-[node name="GenericWall2" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall2" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( -124, 204 )
 
-[node name="GenericWall3" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall3" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( -60, 204 )
 
-[node name="GenericWall4" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall4" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 4, 204 )
 
-[node name="GenericWall5" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall5" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( -252, 204 )
 
-[node name="GenericWall6" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall6" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( -316, 204 )
 
-[node name="GenericWall7" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall7" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( -380, 204 )
 
-[node name="GenericWall8" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall8" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( -444, 204 )
 
-[node name="GenericWall9" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall9" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( -508, 204 )
 
-[node name="GenericWall10" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall10" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 276, 328 )
 
-[node name="GenericWall11" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall11" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 340, 328 )
 
-[node name="GenericWall12" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall12" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 404, 328 )
 
-[node name="GenericWall13" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall13" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 468, 328 )
 
-[node name="GenericWall14" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall14" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 212, 328 )
 
-[node name="GenericWall15" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall15" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 148, 328 )
 
-[node name="GenericWall16" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall16" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 84, 328 )
 
-[node name="GenericWall17" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall17" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 20, 328 )
 
-[node name="GenericWall18" parent="." instance=ExtResource( 2 )]
+[node name="GenericWall18" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( -44, 328 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -48, -32 )

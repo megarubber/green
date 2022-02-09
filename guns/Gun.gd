@@ -29,6 +29,7 @@ func shotting() -> void: # Shotting with gun
 	d_bullet_instance.global_position = drop.global_position
 	get_parent().add_child(bullet_instance)
 	get_parent().add_child(d_bullet_instance)
+	get_parent().screen_shake.shake(0.2, 2)
 	can_fire = false
 	yield(get_tree().create_timer(0.2), "timeout")
 	can_fire = true
