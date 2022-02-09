@@ -289,4 +289,4 @@ script = ExtResource( 19 )
 position = Vector2( 22.4, -4.8 )
 
 [node name="Drop" type="Position2D" parent="GunSprite"]
-position = Vector2( -16, 9.53674e-07 )
+position = Vector2( -17.6, -1.6 )
