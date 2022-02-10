@@ -20,7 +20,7 @@ func _ready():
 	set_as_toplevel(true)
 
 func shotting() -> void: # Shotting with gun
-	global_position.x = lerp(global_position.x - recoil, get_parent().global_position.x, 0.7)
+	global_position.x = lerp(global_position.x - recoil, get_parent().global_position.x, 0.5)
 	var bullet_instance = bullet.instance()
 	bullet_instance.rotation = rotation
 	bullet_instance.global_position = muzzle.global_position
