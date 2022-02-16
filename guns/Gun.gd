@@ -11,7 +11,7 @@ var velocity = Vector2(0, 0)
 var mouse_pos = Vector2(0, 0)
 
 # Scene Referecing
-var bullet = preload("res://guns/Bullet.tscn")
+var bullet = preload("res://others/bullet/Bullet.tscn")
 
 # Nodes Referecing
 onready var muzzle = $Muzzle
