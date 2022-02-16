@@ -15,7 +15,6 @@ var bullet = preload("res://others/bullet/Bullet.tscn")
 
 # Nodes Referecing
 onready var muzzle = $Muzzle
-onready var drop = $Drop
 
 func _ready() -> void:
 	set_as_toplevel(true)
