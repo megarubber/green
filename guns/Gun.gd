@@ -7,10 +7,10 @@ const MUZZLE_POS_FLIP_FALSE = -4.8
 # Variables
 var can_fire = true
 var recoil = 30
+var mouse_pos = Vector2(0, 0)
 
 # Scene Referecing
 var bullet = preload("res://guns/Bullet.tscn")
-var d_bullet = preload("res://guns/DropBullet.tscn")
 
 # Nodes Referecing
 onready var muzzle = $Muzzle
@@ -20,15 +20,11 @@ func _ready():
 	set_as_toplevel(true)
 
 func shotting() -> void: # Shotting with gun
-	global_position.x = lerp(global_position.x - recoil, get_parent().global_position.x, 0.5)
+	#global_position.x = lerp(global_position.x + recoil, get_parent().global_position.x, 0.5)
 	var bullet_instance = bullet.instance()
 	bullet_instance.rotation = rotation
 	bullet_instance.global_position = muzzle.global_position
-	var d_bullet_instance = d_bullet.instance()
-	d_bullet_instance.rotation = rotation
-	d_bullet_instance.global_position = drop.global_position
 	get_parent().add_child(bullet_instance)
-	get_parent().add_child(d_bullet_instance)
 	get_parent().screen_shake.shake(0.2, 2)
 	can_fire = false
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -38,7 +34,7 @@ func _physics_process(_delta):
 	global_position.x = lerp(global_position.x, get_parent().global_position.x, 0.4)
 	global_position.y = lerp(global_position.y, get_parent().global_position.y - 90, 0.4)
 	
-	var mouse_pos = get_global_mouse_position()
+	mouse_pos = get_global_mouse_position()
 	look_at(mouse_pos)
 	
 	# Flipping gun
