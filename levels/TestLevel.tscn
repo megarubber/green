@@ -10,4 +10,31 @@ position = Vector2( 512, 192 )
 position = Vector2( -48, -32 )
 
 [node name="GenericWall" parent="." instance=ExtResource( 2 )]
-position = Vector2( -46, 30 )
+position = Vector2( -32, 32 )
+
+[node name="GenericWall2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 32, 32 )
+
+[node name="GenericWall3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -96, 32 )
+
+[node name="GenericWall4" parent="." instance=ExtResource( 2 )]
+position = Vector2( -160, 32 )
+
+[node name="GenericWall5" parent="." instance=ExtResource( 2 )]
+position = Vector2( -224, 32 )
+
+[node name="GenericWall6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 96, 32 )
+
+[node name="GenericWall7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 160, 32 )
+
+[node name="GenericWall8" parent="." instance=ExtResource( 2 )]
+position = Vector2( -288, 32 )
+
+[node name="GenericWall9" parent="." instance=ExtResource( 2 )]
+position = Vector2( -352, 32 )
+
+[node name="GenericWall10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 224, 32 )
