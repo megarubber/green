@@ -287,7 +287,7 @@ offset = Vector2( 5, 0 )
 script = ExtResource( 19 )
 
 [node name="Muzzle" type="Position2D" parent="GunSprite"]
-position = Vector2( 23.6, -4.8 )
+position = Vector2( 18.8, -4.8 )
 
 [node name="Drop" type="Position2D" parent="GunSprite"]
 position = Vector2( -8.8, -2.8 )

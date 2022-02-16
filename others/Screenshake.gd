@@ -5,7 +5,7 @@ onready var camera = get_parent()
 var time = 0
 
 # Screenshake function when gun shoots the bullet
-func shake(duration := 0.8, magnitude := 0.8):
+func shake(duration := 0.8, magnitude := 0.8) -> void:
 	while time < duration:
 		time += get_process_delta_time()
 		time = min(time, duration)

@@ -17,7 +17,7 @@ var bullet = preload("res://others/bullet/Bullet.tscn")
 onready var muzzle = $Muzzle
 onready var drop = $Drop
 
-func _ready():
+func _ready() -> void:
 	set_as_toplevel(true)
 
 func shotting() -> void: # Shotting with gun
@@ -36,7 +36,7 @@ func shotting() -> void: # Shotting with gun
 	yield(get_tree().create_timer(0.2), "timeout")
 	can_fire = true
 
-func _physics_process(_delta):
+func _physics_process(_delta: float):
 	position += velocity
 	velocity = velocity *0.7
 	global_position.x = lerp(global_position.x, get_parent().global_position.x, 0.4)

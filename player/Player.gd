@@ -16,7 +16,7 @@ onready var head_sprite = $HeadSprite
 onready var animation = $AnimationPlayer
 onready var screen_shake = $Camera/Screenshake
 
-func _ready():
+func _ready() -> void:
 	z_index = -2
 
 func execute_animation() -> void: # Player's animation function
@@ -64,7 +64,7 @@ func movement() -> void: # Player's movement function
 	
 	motion = move_and_slide(motion, UP)
 	
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	movement()
 	flip()
 	execute_animation()
