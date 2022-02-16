@@ -24,3 +24,4 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Bullet_body_entered(_body):
 	queue_free()
+	print("entrou")
