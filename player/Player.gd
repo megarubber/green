@@ -6,18 +6,15 @@ const GRAVITY = 20
 const ACCELERATION = 50
 const MAX_SPEED = 250
 const MAX_JUMP_HEIGHT = -650
-const CHAIN_PULL = 105
 
 # General Variables
 var motion = Vector2()
-var chain_velocity = Vector2(0,0)
 
 # Nodes Referencing
 onready var body_sprite = $BodySprite
 onready var head_sprite = $HeadSprite
 onready var animation = $AnimationPlayer
 onready var screen_shake = $Camera/Screenshake
-onready var ray = $GunSprite/RayCast2D
 
 func _ready() -> void:
 	z_index = -2

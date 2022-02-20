@@ -289,11 +289,6 @@ script = ExtResource( 19 )
 [node name="Muzzle" type="Position2D" parent="GunSprite"]
 position = Vector2( 18.8, -4.8 )
 
-[node name="RayCast2D" type="RayCast2D" parent="GunSprite"]
-position = Vector2( -2, -4.8 )
-scale = Vector2( 0.4, 0.4 )
-cast_to = Vector2( 500, 0 )
-
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 1.5, 1.5 )
