@@ -5,7 +5,7 @@ const UP = Vector2(0, -1)
 const GRAVITY = 20
 const ACCELERATION = 50
 const MAX_SPEED = 250
-const MAX_JUMP_HEIGHT = -650
+const MAX_JUMP_HEIGHT = -850
 
 # General Variables
 var motion = Vector2()
@@ -64,7 +64,7 @@ func movement() -> void: # Player's movement function
 	
 	motion = move_and_slide(motion, UP)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void: # Physics update
 	movement()
 	flip()
 	execute_animation()

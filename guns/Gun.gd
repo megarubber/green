@@ -35,7 +35,7 @@ func shotting() -> void: # Shotting with gun
 	yield(get_tree().create_timer(0.2), "timeout")
 	can_fire = true
 
-func _physics_process(_delta: float):
+func _physics_process(_delta: float) -> void:
 	position += velocity
 	velocity = velocity *0.7
 	global_position.x = lerp(global_position.x, get_parent().global_position.x, 0.4)

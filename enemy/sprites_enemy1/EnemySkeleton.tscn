@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://enemy/sprites_enemy1/run1.png" type="Texture" id=1]
+[ext_resource path="res://enemy/sprites_enemy1/run2.png" type="Texture" id=2]
+[ext_resource path="res://enemy/sprites_enemy1/run3.png" type="Texture" id=3]
+[ext_resource path="res://enemy/sprites_enemy1/run5.png" type="Texture" id=4]
+[ext_resource path="res://enemy/sprites_enemy1/run4.png" type="Texture" id=5]
+[ext_resource path="res://enemy/sprites_enemy1/run6.png" type="Texture" id=6]
+[ext_resource path="res://enemy/sprites_enemy1/run8.png" type="Texture" id=7]
+[ext_resource path="res://enemy/sprites_enemy1/run7.png" type="Texture" id=8]
+[ext_resource path="res://enemy/sprites_enemy1/BasicEnemy.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 35.5, 99.5 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "run"
+length = 0.7
+loop = true
+step = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.099, 0.1, 0.199, 0.2, 0.299, 0.3, 0.399, 0.4, 0.499, 0.5, 0.599, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.099, 0.1, 0.199, 0.2, 0.299, 0.3, 0.399, 0.4, 0.499, 0.5, 0.599, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( -5, 0 ), Vector2( -8, 0 ), Vector2( -8, 0 ), Vector2( -6, 0 ), Vector2( -6, 0 ), Vector2( -6, 0 ), Vector2( -6, 0 ), Vector2( -2, 0 ), Vector2( -2, 0 ), Vector2( -5, 0 ), Vector2( -5, 0 ), Vector2( -5, 0 ) ]
+}
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 6.5, -0.5 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/run = SubResource( 3 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 41, 92 )
+enabled = true
+cast_to = Vector2( 0, 11 )
+collision_mask = 2
