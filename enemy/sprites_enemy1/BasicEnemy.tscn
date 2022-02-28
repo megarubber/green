@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://enemy/sprites_enemy1/state2.png" type="Texture" id=1]
 [ext_resource path="res://enemy/sprites_enemy1/state1.png" type="Texture" id=2]
@@ -15,7 +15,7 @@ animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 20.0
 } ]
 
 [sub_resource type="SpriteFrames" id=5]
@@ -27,18 +27,9 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 49.5, 111.25 )
+extents = Vector2( 46, 109 )
 
-[sub_resource type="Animation" id=2]
-length = 0.001
-
-[sub_resource type="Animation" id=3]
-resource_name = "run"
-length = 0.7
-loop = true
-step = 0.001
-
-[node name="Enemy" type="KinematicBody2D"]
+[node name="BasicEnemy" type="KinematicBody2D"]
 collision_layer = 8
 collision_mask = 7
 script = ExtResource( 9 )
@@ -47,7 +38,7 @@ script = ExtResource( 9 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
@@ -55,11 +46,10 @@ flip_h = true
 position = Vector2( -1, -5 )
 scale = Vector2( 0.613333, 0.613334 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.5, 3.75 )
+position = Vector2( -1, 6 )
 shape = SubResource( 4 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -67,7 +57,3 @@ position = Vector2( 47, 110 )
 enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 2 )
-anims/run = SubResource( 3 )

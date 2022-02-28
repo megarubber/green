@@ -10,13 +10,8 @@ var motion = Vector2()
 var direction = 1
 
 # Node Referencing
-onready var animation = $AnimationPlayer
 onready var sprite = $AnimatedSprite
 onready var raycast = $RayCast2D
-
-# When enemy created on level, it will start the run animation
-func _ready() -> void:
-	animation.play("run")
 
 func _physics_process(_delta) -> void:
 	# Basic Movement
