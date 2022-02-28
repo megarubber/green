@@ -15,6 +15,7 @@ onready var player_pos = get_parent().get_node("Player")
 var founded = false
 var motion = Vector2()
 
+# Flipping function
 func flip() -> void:
 	if motion.x > 0:
 		wheel.flip_h = false
@@ -40,7 +41,6 @@ func _physics_process(_delta) -> void:
 		# Basic Movement
 		move_and_slide(motion * SPEED)
 		flip()
-
 
 func _on_Area2D_body_entered(_body) -> void:
 	founded = true

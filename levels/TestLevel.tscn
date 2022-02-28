@@ -347,7 +347,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 position = Vector2( 512, 192 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 345, -136 )
+position = Vector2( -163, -173 )
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -5
@@ -361,4 +361,4 @@ tile_data = PoolIntArray( 65528, 0, 0, 65529, 2, 0, 65530, 2, 0, 65531, 2, 0, 65
 position = Vector2( 992, -79 )
 
 [node name="FollowerEnemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( -292, -313 )
+position = Vector2( 411, -219 )

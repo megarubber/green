@@ -1,8 +1,8 @@
 extends Sprite
 
 # Constants
-const MUZZLE_POS_FLIP_TRUE = 4.625
-const MUZZLE_POS_FLIP_FALSE = -4.8
+const MUZZLE_POS_FLIP_TRUE = 4.7
+const MUZZLE_POS_FLIP_FALSE = -8
 const RECOIL = 20
 
 # Variables
@@ -34,24 +34,30 @@ func shotting() -> void: # Shotting with gun
 	yield(get_tree().create_timer(0.5), "timeout")
 	can_fire = true
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:	
 	position += velocity
 	velocity = velocity * 0.7
 	
 	global_position.x = lerp(global_position.x, get_parent().global_position.x, 0.4)
 	global_position.y = lerp(global_position.y, get_parent().global_position.y + 40, 0.4)
 	
-	look_at(player_pos.global_position)
-	
 	# Flipping gun
 	if player_pos.global_position.x < global_position.x:
 		flip_v = true
 		muzzle.position.y = MUZZLE_POS_FLIP_TRUE
-		rotation_degrees += 20
+		change_gun_rotation(10, 3.2)
 	else:
 		flip_v = false
 		muzzle.position.y = MUZZLE_POS_FLIP_FALSE
-		rotation_degrees -= 20
-	
+		change_gun_rotation(-10, 0)
+		
 	if get_parent().founded && can_fire:
 		shotting()
+
+# Change gun rotation function if player is found
+func change_gun_rotation(radius_founded: int, rotation_not_found: float) -> void:
+	if get_parent().founded:
+		look_at(player_pos.global_position)
+		rotation_degrees += radius_founded
+	else:
+		rotation = lerp_angle(rotation, rotation_not_found, 0.3)
