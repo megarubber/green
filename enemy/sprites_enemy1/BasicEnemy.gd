@@ -11,7 +11,7 @@ var direction = 1
 
 # Node Referencing
 onready var animation = $AnimationPlayer
-onready var sprite = $Sprite
+onready var sprite = $AnimatedSprite
 onready var raycast = $RayCast2D
 
 # When enemy created on level, it will start the run animation

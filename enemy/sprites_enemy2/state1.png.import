@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/run6.png-cbf8c3bf926462e9b34de28f25b9f2a2.stex"
+path="res://.import/state1.png-769cd4069e6580d5a59658d0d38fcb13.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy/sprites_enemy1/run6.png"
-dest_files=[ "res://.import/run6.png-cbf8c3bf926462e9b34de28f25b9f2a2.stex" ]
+source_file="res://enemy/sprites_enemy2/state1.png"
+dest_files=[ "res://.import/state1.png-769cd4069e6580d5a59658d0d38fcb13.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

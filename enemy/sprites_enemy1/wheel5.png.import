@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/run8.png-e2061bd735dce2e4e4e64a4b093ef6d8.stex"
+path="res://.import/wheel5.png-fa4591a8803047d1e75626b784ae4fb9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy/sprites_enemy1/run8.png"
-dest_files=[ "res://.import/run8.png-e2061bd735dce2e4e4e64a4b093ef6d8.stex" ]
+source_file="res://enemy/sprites_enemy1/wheel5.png"
+dest_files=[ "res://.import/wheel5.png-fa4591a8803047d1e75626b784ae4fb9.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
