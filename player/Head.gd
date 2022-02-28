@@ -10,7 +10,7 @@ const MAX_EYE_UP = -3
 # Variables
 var max_dist = 2
 
-func _process(delta):
+func _process(_delta) -> void:
 	animation.play("blinking")
 	
 	# Eyes following mouse

@@ -5,7 +5,7 @@ const UP = Vector2(0, -1)
 const GRAVITY = 20
 const ACCELERATION = 50
 const MAX_SPEED = 250
-const MAX_JUMP_HEIGHT = -650
+const MAX_JUMP_HEIGHT = -850
 
 # General Variables
 var motion = Vector2()
@@ -14,6 +14,10 @@ var motion = Vector2()
 onready var body_sprite = $BodySprite
 onready var head_sprite = $HeadSprite
 onready var animation = $AnimationPlayer
+onready var screen_shake = $Camera/Screenshake
+
+func _ready() -> void:
+	z_index = -2
 
 func execute_animation() -> void: # Player's animation function
 	if is_on_floor():
@@ -59,8 +63,8 @@ func movement() -> void: # Player's movement function
 			motion.y = 0
 	
 	motion = move_and_slide(motion, UP)
-	
-func _physics_process(_delta):
+
+func _physics_process(_delta: float) -> void: # Physics update
 	movement()
 	flip()
 	execute_animation()
