@@ -42,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 	global_position.y = lerp(global_position.y, get_parent().global_position.y + 40, 0.4)
 	
 	# Flipping gun
-	if player_pos.global_position.x < global_position.x:
+	if player_pos.global_position.x < global_position.x && get_parent().founded:
 		flip_v = true
 		muzzle.position.y = MUZZLE_POS_FLIP_TRUE
 		change_gun_rotation(10, 3.2)

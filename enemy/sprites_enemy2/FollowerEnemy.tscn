@@ -32,7 +32,7 @@ animations = [ {
 extents = Vector2( 46, 111.25 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 363.5, 377.75 )
+extents = Vector2( 601, 377.75 )
 
 [node name="FollowerEnemy" type="KinematicBody2D"]
 collision_layer = 8
@@ -43,13 +43,13 @@ script = ExtResource( 9 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
+frame = 3
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1, -5 )
 scale = Vector2( 0.613333, 0.613334 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -66,7 +66,7 @@ collision_mask = 2
 collision_layer = 8
 
 [node name="AreaShape" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -13.5, -263.25 )
+position = Vector2( -1, -263.25 )
 shape = SubResource( 7 )
 
 [node name="GunSprite" type="Sprite" parent="."]
