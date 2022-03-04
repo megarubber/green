@@ -3,13 +3,16 @@ extends KinematicBody2D
 # Constants
 const GRAVITY = 20
 const FLOOR = Vector2(0, -1)
+const SPEED_FOUNDED = 200
+const SPEED_NORMAL = 100
+const GUN_MIRROR_SIZE = 2.5
 
 # Node Referencing
 onready var wheel = $Wheel
 onready var raycast = $RayCast2D
 onready var gun = $GunSprite
 onready var anim = $AnimationPlayer
-onready var eyes = $Eyes
+onready var eyes = $Head/Eyes
 
 # Get Player Node
 onready var player_pos = get_parent().get_node("Player")
@@ -38,20 +41,20 @@ func flip_and_animation() -> void:
 	if !founded:
 		eyes.play("default")
 		if raycast.position.x < 0:
-			gun.scale.x = -2.5
+			gun.scale.x = -GUN_MIRROR_SIZE
 			gun.flip_v = true
 		else:
-			gun.scale.x = 2.5
+			gun.scale.x = GUN_MIRROR_SIZE
 			gun.flip_v = false
 	else:
 		eyes.play("angry")
-		gun.scale.x = 2.5
+		gun.scale.x = GUN_MIRROR_SIZE
 		gun.flip_v = false
 
 func _physics_process(_delta) -> void:
 	# Follow player's position
 	if founded:
-		speed = 200
+		speed = SPEED_FOUNDED
 		if raycast.is_colliding():
 			motion = (player_pos.position - position).normalized()
 		else:
@@ -65,7 +68,7 @@ func _physics_process(_delta) -> void:
 		motion.y += GRAVITY
 		motion = move_and_slide(motion * speed)
 	else:
-		speed = 100
+		speed = SPEED_NORMAL
 		# Basic Movement and Gravity
 		motion.x = speed * direction
 		motion.y += GRAVITY
