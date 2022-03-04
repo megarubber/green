@@ -8,6 +8,8 @@ const FLOOR = Vector2(0, -1)
 onready var wheel = $Wheel
 onready var raycast = $RayCast2D
 onready var gun = $GunSprite
+onready var anim = $AnimationPlayer
+onready var eyes = $Eyes
 
 # Get Player Node
 onready var player_pos = get_parent().get_node("Player")
@@ -17,6 +19,10 @@ var founded = false
 var motion = Vector2()
 var direction = 1
 var speed = 0
+
+func _ready():
+	# When created enemy, it's going to play default animation
+	anim.play("default")
 
 # Flipping and Animation function
 func flip_and_animation() -> void:
@@ -30,6 +36,7 @@ func flip_and_animation() -> void:
 		wheel.playing = false
 	
 	if !founded:
+		eyes.play("default")
 		if raycast.position.x < 0:
 			gun.scale.x = -2.5
 			gun.flip_v = true
@@ -37,6 +44,7 @@ func flip_and_animation() -> void:
 			gun.scale.x = 2.5
 			gun.flip_v = false
 	else:
+		eyes.play("angry")
 		gun.scale.x = 2.5
 		gun.flip_v = false
 
