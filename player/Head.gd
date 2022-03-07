@@ -1,7 +1,7 @@
 extends Sprite
 
 # Nodes Referencing
-onready var child = get_children()[0]
+onready var eyes = get_children()[0]
 onready var animation = $AnimationEyes
 
 # Constants
@@ -19,4 +19,5 @@ func _process(_delta) -> void:
 	var dist = mouse_pos.length()
 	if mouse_pos.y < MAX_EYE_UP:
 		dir.y = 0
-	child.position = dir * min(dist, max_dist)
+	eyes.position = dir * min(dist, max_dist)
+	#print(dist)

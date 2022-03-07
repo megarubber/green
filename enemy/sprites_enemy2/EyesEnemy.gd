@@ -11,9 +11,8 @@ const MAX_EYE_UP = -3
 var max_dist = 10
 
 func _process(_delta) -> void:
-	# Eyes following mouse
-	var dist = global_position.distance_to(player.global_position)
-	var dir = Vector2.direction_to(player.position)
-	#if mouse_pos.y < MAX_EYE_UP:
-	#	dir.y = 0
+	# Eyes following player
+	var eyes_pos = eyes.global_position
+	var dir = eyes_pos.direction_to(player.position)
+	var dist = eyes_pos.distance_to(player.global_position)
 	eyes.position = dir * min(dist, max_dist)
