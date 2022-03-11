@@ -14,7 +14,7 @@ onready var sprite = $AnimatedSprite
 onready var raycast = $RayCast2D
 
 func _physics_process(_delta) -> void:
-	# Basic Movement
+	# Basic Movement and Gravity
 	motion.x = SPEED * direction
 	motion.y += GRAVITY
 	motion = move_and_slide(motion, FLOOR)
