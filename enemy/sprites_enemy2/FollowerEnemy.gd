@@ -13,6 +13,8 @@ onready var raycast = $RayCast2D
 onready var gun = $GunSprite
 onready var anim = $AnimationPlayer
 onready var eyes = $Head/Eyes
+onready var lifebar = $Lifebar
+onready var collider = $Collider
 
 # Get Player Node
 onready var player_pos = get_parent().get_node("Player")
@@ -86,3 +88,6 @@ func _on_Area2D_body_entered(_body) -> void:
 
 func _on_Area2D_body_exited(_body) -> void:
 	founded = false
+
+func _on_Collider_area_entered(_area):
+	lifebar.damage(10)

@@ -12,6 +12,8 @@ var direction = 1
 # Node Referencing
 onready var sprite = $AnimatedSprite
 onready var raycast = $RayCast2D
+onready var collider = $Collider
+onready var lifebar = $Lifebar
 
 func _physics_process(_delta) -> void:
 	# Basic Movement and Gravity
@@ -24,3 +26,6 @@ func _physics_process(_delta) -> void:
 		direction = direction * -1
 		raycast.position.x *= -1
 		sprite.flip_h = !sprite.flip_h
+
+func _on_Collider_area_entered(_area):
+	lifebar.damage(10)

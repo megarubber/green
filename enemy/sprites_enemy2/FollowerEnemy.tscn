@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://enemy/sprites_enemy2/EyesEnemy.gd" type="Script" id=1]
 [ext_resource path="res://enemy/sprites_enemy2/eyes1.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://enemy/sprites_enemy2/eyes2.png" type="Texture" id=12]
 [ext_resource path="res://enemy/sprites_enemy2/body.png" type="Texture" id=13]
 [ext_resource path="res://enemy/sprites_enemy2/head.png" type="Texture" id=14]
+[ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=15]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -37,7 +38,11 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 46, 111.25 )
+extents = Vector2( 36.9076, 111.25 )
+
+[sub_resource type="CapsuleShape2D" id=11]
+radius = 89.674
+height = 195.652
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 601, 377.75 )
@@ -84,7 +89,7 @@ script = ExtResource( 9 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Head" type="Sprite" parent="."]
@@ -108,16 +113,26 @@ texture = ExtResource( 13 )
 position = Vector2( -1, 3.75 )
 shape = SubResource( 4 )
 
+[node name="Collider" type="Area2D" parent="."]
+position = Vector2( -1, 53 )
+scale = Vector2( 0.613333, 0.613334 )
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2( 0, -88.0434 )
+shape = SubResource( 11 )
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 44, 109 )
 enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 2
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DetectArea" type="Area2D" parent="."]
 collision_layer = 8
 
-[node name="AreaShape" type="CollisionShape2D" parent="Area2D"]
+[node name="AreaShape" type="CollisionShape2D" parent="DetectArea"]
 position = Vector2( -8, -260 )
 shape = SubResource( 7 )
 
@@ -135,5 +150,13 @@ position = Vector2( 21.2, -8 )
 anims/RESET = SubResource( 9 )
 anims/default = SubResource( 10 )
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[node name="Lifebar" parent="." instance=ExtResource( 15 )]
+margin_left = -80.0
+margin_top = -148.0
+margin_right = 467.0
+margin_bottom = -84.0
+rect_scale = Vector2( 0.3, 0.3 )
+
+[connection signal="area_entered" from="Collider" to="." method="_on_Collider_area_entered"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_Area2D_body_exited"]

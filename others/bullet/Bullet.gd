@@ -6,6 +6,7 @@ var touched = false
 
 # Nodes Referencing
 onready var animation = $AnimationBullet
+onready var collision = $CollisionShape2D
 
 func _ready() -> void:
 	animation.play("Default")
@@ -26,6 +27,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 func _on_Bullet_body_entered(_body) -> void:
 	if !touched:
+		collision.disabled = true
 		touched = true
 		animation.play("Explosion")
 		yield(get_tree().create_timer(0.7), "timeout")
