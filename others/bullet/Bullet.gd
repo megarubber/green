@@ -30,3 +30,4 @@ func _on_Bullet_body_entered(_body) -> void:
 		animation.play("Explosion")
 		yield(get_tree().create_timer(0.7), "timeout")
 		queue_free()
+		return
