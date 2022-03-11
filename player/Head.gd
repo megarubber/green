@@ -20,4 +20,3 @@ func _process(_delta) -> void:
 	if mouse_pos.y < MAX_EYE_UP:
 		dir.y = 0
 	eyes.position = dir * min(dist, max_dist)
-	#print(dist)

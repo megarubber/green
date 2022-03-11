@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://others/bullet/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://others/bullet/bullet-3.png" type="Texture" id=2]
 [ext_resource path="res://others/bullet/bullet-1.png" type="Texture" id=3]
-[ext_resource path="res://others/bullet/bullet-2.png" type="Texture" id=4]
 [ext_resource path="res://others/explosion/ex_1.png" type="Texture" id=5]
 [ext_resource path="res://others/explosion/ex_2.png" type="Texture" id=6]
 [ext_resource path="res://others/explosion/ex_7.png" type="Texture" id=7]
@@ -28,7 +28,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.02 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ), ExtResource( 4 ) ]
+"values": [ ExtResource( 3 ), ExtResource( 2 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:scale")
