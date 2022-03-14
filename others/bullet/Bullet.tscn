@@ -98,7 +98,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" groups=["bullets"]]
 collision_layer = 4
 collision_mask = 22
 script = ExtResource( 1 )

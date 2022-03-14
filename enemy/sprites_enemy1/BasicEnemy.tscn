@@ -30,20 +30,22 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 46, 109 )
 
-[sub_resource type="CapsuleShape2D" id=7]
-radius = 89.674
-height = 195.652
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 75, 177.717 )
 
 [node name="BasicEnemy" type="KinematicBody2D"]
 collision_layer = 8
 collision_mask = 7
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
 [node name="Wheel" type="AnimatedSprite" parent="."]
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 5
+frame = 1
 playing = true
 flip_h = true
 
@@ -51,7 +53,6 @@ flip_h = true
 position = Vector2( -1, -5 )
 scale = Vector2( 0.613333, 0.613334 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -71,7 +72,7 @@ collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
-position = Vector2( 0, -88.0434 )
+position = Vector2( 1.90735e-06, -76.6304 )
 shape = SubResource( 7 )
 
 [node name="Lifebar" parent="." instance=ExtResource( 10 )]

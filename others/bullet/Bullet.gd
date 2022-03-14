@@ -3,6 +3,7 @@ extends Area2D
 # Variables
 export var speed = 1500
 var touched = false
+var in_area = false
 
 # Nodes Referencing
 onready var animation = $AnimationBullet
@@ -15,8 +16,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Movement of bullet
 	if !touched:
-		position += (Vector2.RIGHT * speed).rotated(rotation) * delta
-
+		position += (Vector2.RIGHT * speed).rotated(rotation) * delta	
+	
 func _physics_process(_delta) -> void:
 	if !touched:
 		yield(get_tree().create_timer(0.01), "timeout")
@@ -27,8 +28,8 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 func _on_Bullet_body_entered(_body) -> void:
 	if !touched:
-		collision.disabled = true
 		touched = true
+		collision.set_deferred("disabled", true)
 		animation.play("Explosion")
 		yield(get_tree().create_timer(0.7), "timeout")
 		queue_free()
