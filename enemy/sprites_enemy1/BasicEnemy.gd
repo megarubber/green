@@ -14,6 +14,7 @@ onready var sprite = $AnimatedSprite
 onready var raycast = $RayCast2D
 onready var collider = $Collider
 onready var lifebar = $Lifebar
+onready var anim = $AnimationPlayer
 
 func _physics_process(_delta) -> void:
 	# Basic Movement and Gravity
@@ -28,4 +29,5 @@ func _physics_process(_delta) -> void:
 		sprite.flip_h = !sprite.flip_h
 
 func _on_Collider_area_entered(_area):
+	anim.play("flash")
 	lifebar.damage(10)
