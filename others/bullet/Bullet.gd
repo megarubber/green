@@ -39,10 +39,14 @@ func _physics_process(_delta) -> void:
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
 
-func _on_Bullet_body_entered(_body) -> void:
+func _on_Bullet_body_entered(body) -> void:
 	if !touched:
 		touched = true
-		collision.set_deferred("disabled", true)
-		animation.play("Explosion")
-		timer.start()
-		return
+	
+		if body.is_in_group("tilemap"):
+			collision.set_deferred("disabled", true)
+			animation.play("Explosion")
+			timer.start()
+		
+		if body.is_in_group("enemy") || body.is_in_group("player"):
+			queue_free()

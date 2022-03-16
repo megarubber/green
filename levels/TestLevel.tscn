@@ -349,7 +349,7 @@ position = Vector2( 512, 192 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -163, -173 )
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["tilemap"]]
 z_index = -5
 tile_set = SubResource( 5 )
 collision_layer = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://player/sprites/idle.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://player/sprites/crouch_idle1.png" type="Texture" id=21]
 [ext_resource path="res://player/sprites/crouch_idle2.png" type="Texture" id=22]
 [ext_resource path="res://others/Screenshake.gd" type="Script" id=23]
+[ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -239,7 +240,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 20 ) ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 collision_mask = 10
 script = ExtResource( 2 )
 __meta__ = {
@@ -296,3 +297,9 @@ smoothing_enabled = true
 
 [node name="Screenshake" type="Node" parent="Camera"]
 script = ExtResource( 23 )
+
+[node name="Lifebar" parent="Camera" groups=["player"] instance=ExtResource( 24 )]
+margin_left = -743.0
+margin_top = -429.0
+margin_right = -196.0
+margin_bottom = -365.0

@@ -142,7 +142,7 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0, 0.0 ]
 }
 
-[node name="BasicEnemy" type="KinematicBody2D"]
+[node name="BasicEnemy" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 7
 script = ExtResource( 9 )
@@ -155,7 +155,7 @@ material = SubResource( 12 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 5
+frame = 1
 playing = true
 flip_h = true
 
@@ -164,6 +164,7 @@ material = SubResource( 10 )
 position = Vector2( -1, -5 )
 scale = Vector2( 0.613333, 0.613334 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="Explosion" type="Node2D" parent="."]
@@ -197,7 +198,6 @@ position = Vector2( 210.953, 443.88 )
 frames = SubResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -1, 6 )
 shape = SubResource( 4 )
 
@@ -208,7 +208,6 @@ cast_to = Vector2( 0, 11 )
 collision_mask = 2
 
 [node name="DamageArea" type="Area2D" parent="."]
-visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
