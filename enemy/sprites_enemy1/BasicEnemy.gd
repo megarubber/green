@@ -19,8 +19,8 @@ onready var anim = $AnimationPlayer
 onready var wheel = $Wheel
 onready var explosions = $Explosion
 
-# When starts, it will play hide explosions
 func _ready() -> void:
+	# When starts, it will play hide explosions
 	explosions.visible = false
 
 func _physics_process(_delta) -> void:
@@ -53,19 +53,19 @@ func death():
 		explosion.playing = true
 	
 	# Sprite & lifebar invisibles
-	lifebar.visible = false
+	#lifebar.visible = false
 	sprite.visible = false
 	wheel.visible = false
 	
 	# Wait a time before delete enemy
-	var t = Timer.new()
-	t.set_wait_time(0.3)
-	t.set_one_shot(true)
-	self.add_child(t)
-	t.start()
-	yield(t, "timeout")
+	var t_d = Timer.new()
+	t_d.set_wait_time(0.3)
+	t_d.set_one_shot(true)
+	self.add_child(t_d)
+	t_d.start()
+	yield(t_d, "timeout")
 	queue_free()
-	
+
 # When bullet entered on damage area
 func _on_DamageArea_area_entered(_area):
 	anim.play("flash")

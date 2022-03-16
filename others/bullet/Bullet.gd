@@ -4,14 +4,27 @@ extends Area2D
 export var speed = 1500
 var touched = false
 var in_area = false
+var timer = null
+var delay = 0.7
 
 # Nodes Referencing
 onready var animation = $AnimationBullet
 onready var collision = $CollisionShape2D
 
 func _ready() -> void:
+	# Creating Timer
+	timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.set_wait_time(delay)
+	timer.connect("timeout", self, "on_timeout_complete") 
+	add_child(timer)
+	
 	animation.play("Default")
 	set_as_toplevel(true)
+
+# When timer ends
+func on_timeout_complete() -> void:
+	queue_free()
 
 func _process(delta: float) -> void:
 	# Movement of bullet
@@ -31,6 +44,5 @@ func _on_Bullet_body_entered(_body) -> void:
 		touched = true
 		collision.set_deferred("disabled", true)
 		animation.play("Explosion")
-		yield(get_tree().create_timer(0.7), "timeout")
-		queue_free()
+		timer.start()
 		return

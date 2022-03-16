@@ -8,6 +8,8 @@ const RECOIL = 20
 # Variables
 var can_fire = true
 var velocity = Vector2(0, 0)
+var timer = null
+var delay = 0.5
 
 # Scene Referecing
 var bullet = preload("res://others/bullet/EnemyBullet.tscn")
@@ -17,7 +19,18 @@ onready var muzzle = $Muzzle
 onready var player_pos = get_tree().current_scene.get_node("Player")
 
 func _ready() -> void:
+	# Creating Timer
+	timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.set_wait_time(delay)
+	timer.connect("timeout", self, "on_timeout_complete") 
+	add_child(timer)
+	
 	set_as_toplevel(true)
+
+# When timer ends
+func on_timeout_complete() -> void:
+	can_fire = true
 
 func shotting() -> void: # Shotting with gun
 	var bullet_instance = bullet.instance()
@@ -31,8 +44,7 @@ func shotting() -> void: # Shotting with gun
 	
 	get_parent().add_child(bullet_instance)
 	can_fire = false
-	yield(get_tree().create_timer(0.5), "timeout")
-	can_fire = true
+	timer.start()
 
 func _physics_process(_delta: float) -> void:	
 	position += velocity

@@ -12,9 +12,14 @@ onready var wheel = $Wheel
 onready var raycast = $RayCast2D
 onready var gun = $GunSprite
 onready var anim = $AnimationPlayer
+onready var head = $Head
 onready var eyes = $Head/Eyes
 onready var lifebar = $Lifebar
-onready var collider = $Collider
+onready var collider = $CollisionShape2D
+onready var damage_area = $DamageArea
+onready var explosions = $Explosion
+onready var body = $Body
+onready var detect_area = $DetectArea
 
 # Get Player Node
 onready var player_pos = get_parent().get_node("Player")
@@ -24,10 +29,21 @@ var founded = false
 var motion = Vector2()
 var direction = 1
 var speed = 0
+var timer = null
+var delay = 0.3
 
 func _ready():
-	# When created enemy, it's going to play default animation
+	# When created enemy, it will play default animation
 	anim.play("default")
+	# Explosions hide
+	explosions.visible = false
+	
+	# Creating Timer
+	timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.set_wait_time(delay)
+	timer.connect("timeout", self, "on_timeout_complete") 
+	add_child(timer)
 
 # Flipping and Animation function
 func flip_and_animation() -> void:
@@ -55,7 +71,8 @@ func flip_and_animation() -> void:
 
 func _physics_process(_delta) -> void:
 	# Follow player's position
-	if founded:
+	# If enemy founded player
+	if founded && !lifebar.getDeath():
 		speed = SPEED_FOUNDED
 		if raycast.is_colliding():
 			motion = (player_pos.position - position).normalized()
@@ -69,7 +86,8 @@ func _physics_process(_delta) -> void:
 		# Basic Movement and Gravity
 		motion.y += GRAVITY
 		motion = move_and_slide(motion * speed)
-	else:
+	# Else: enemy runs like the basic enemy
+	elif !founded && !lifebar.getDeath():
 		speed = SPEED_NORMAL
 		# Basic Movement and Gravity
 		motion.x = speed * direction
@@ -80,7 +98,9 @@ func _physics_process(_delta) -> void:
 		if is_on_wall() || !raycast.is_colliding():
 			raycast.position.x *= -1
 			direction *= -1
-
+	else:
+		death()
+	# Call flip and animation function
 	flip_and_animation()
 
 func _on_Area2D_body_entered(_body) -> void:
@@ -89,5 +109,44 @@ func _on_Area2D_body_entered(_body) -> void:
 func _on_Area2D_body_exited(_body) -> void:
 	founded = false
 
-func _on_Collider_area_entered(_area):
+# Function that runs when the enemy dies
+func death():
+	# Disable collision (bullet & tileset)
+	damage_area.monitorable = false
+	damage_area.monitoring = false
+	collider.disabled = true
+	detect_area.monitorable = false
+	detect_area.monitoring = false
+	
+	# Explosions visible
+	explosions.visible = true
+	for explosion in explosions.get_children():
+		# Each explosion will start play
+		explosion.playing = true
+	
+	# Sprite & lifebar invisibles
+	#lifebar.visible = false
+	gun.visible = false
+	head.visible = false
+	wheel.visible = false
+	body.visible = false
+	
+	# Wait a time before delete enemy
+	var t_d = Timer.new()
+	t_d.set_wait_time(0.3)
+	t_d.set_one_shot(true)
+	self.add_child(t_d)
+	t_d.start()
+	yield(t_d, "timeout")
+	queue_free()
+
+# When bullet entered on damage area
+func _on_DamageArea_area_entered(_area):
+	anim.play("flash")
+	# take damage
 	lifebar.damage(10)
+	timer.start()
+
+# When timer ends
+func on_timeout_complete() -> void:
+	anim.play("default")
