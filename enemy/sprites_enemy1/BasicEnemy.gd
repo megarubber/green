@@ -40,7 +40,7 @@ func _physics_process(_delta) -> void:
 		death()
 
 # Function that runs when the enemy dies
-func death():
+func death() -> void:
 	# Disable collision (bullet & tileset)
 	damage_area.monitorable = false
 	damage_area.monitoring = false
@@ -67,7 +67,7 @@ func death():
 	queue_free()
 
 # When bullet entered on damage area
-func _on_DamageArea_area_entered(_area):
+func _on_DamageArea_area_entered(_area) -> void:
 	anim.play("flash")
 	# take damage
 	lifebar.damage(10)

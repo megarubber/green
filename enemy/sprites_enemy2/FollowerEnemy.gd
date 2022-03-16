@@ -32,7 +32,7 @@ var speed = 0
 var timer = null
 var delay = 0.3
 
-func _ready():
+func _ready() -> void:
 	# When created enemy, it will play default animation
 	anim.play("default")
 	# Explosions hide
@@ -141,7 +141,7 @@ func death():
 	queue_free()
 
 # When bullet entered on damage area
-func _on_DamageArea_area_entered(_area):
+func _on_DamageArea_area_entered(_area) -> void:
 	anim.play("flash")
 	# take damage
 	lifebar.damage(10)
