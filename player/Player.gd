@@ -9,6 +9,8 @@ const MAX_JUMP_HEIGHT = -850
 
 # General Variables
 var motion = Vector2()
+export var knockback = 7000
+export var knockup = 1000
 
 # Nodes Referencing
 onready var body_sprite = $BodySprite
@@ -68,3 +70,8 @@ func _physics_process(_delta: float) -> void: # Physics update
 	movement()
 	flip()
 	execute_animation()
+
+func _on_DamageArea_area_entered(_area):
+	print("hit")
+	motion.x -= lerp(motion.x, knockback, 0.5)
+	motion.y = lerp(0, knockup, 0.6)
