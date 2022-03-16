@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://enemy/sprites_enemy1/state2.png" type="Texture" id=1]
 [ext_resource path="res://enemy/sprites_enemy1/state1.png" type="Texture" id=2]
@@ -10,6 +10,14 @@
 [ext_resource path="res://enemy/sprites_enemy1/wheel1.png" type="Texture" id=8]
 [ext_resource path="res://enemy/sprites_enemy1/BasicEnemy.gd" type="Script" id=9]
 [ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://others/explosion/ex_7.png" type="Texture" id=11]
+[ext_resource path="res://others/explosion/ex_2.png" type="Texture" id=12]
+[ext_resource path="res://others/explosion/ex_4.png" type="Texture" id=13]
+[ext_resource path="res://others/explosion/ex_5.png" type="Texture" id=14]
+[ext_resource path="res://others/explosion/ex_3.png" type="Texture" id=15]
+[ext_resource path="res://others/explosion/ex_6.png" type="Texture" id=16]
+[ext_resource path="res://others/explosion/ex_8.png" type="Texture" id=17]
+[ext_resource path="res://others/explosion/ex_1.png" type="Texture" id=18]
 
 [sub_resource type="Shader" id=11]
 code = "shader_type canvas_item;
@@ -64,11 +72,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ ExtResource( 18 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 18.0
+} ]
+
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 40, 109 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 87.2283, 185.869 )
+extents = Vector2( 81.5218, 185.869 )
 
 [sub_resource type="Animation" id=13]
 length = 0.001
@@ -139,7 +155,7 @@ material = SubResource( 12 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 3
+frame = 4
 playing = true
 flip_h = true
 
@@ -148,9 +164,40 @@ material = SubResource( 10 )
 position = Vector2( -1, -5 )
 scale = Vector2( 0.613333, 0.613334 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
+[node name="Explosion" type="Node2D" parent="."]
+position = Vector2( -23, -78 )
+scale = Vector2( 0.227539, 0.227539 )
+
+[node name="1" type="AnimatedSprite" parent="Explosion"]
+modulate = Color( 0.607843, 1, 0, 1 )
+position = Vector2( -17.5794, 681.202 )
+frames = SubResource( 14 )
+
+[node name="2" type="AnimatedSprite" parent="Explosion"]
+modulate = Color( 0.607843, 1, 0, 1 )
+position = Vector2( 13.1845, 57.1331 )
+frames = SubResource( 14 )
+
+[node name="3" type="AnimatedSprite" parent="Explosion"]
+modulate = Color( 0.607843, 1, 0, 1 )
+position = Vector2( 241.717, 184.584 )
+frames = SubResource( 14 )
+
+[node name="4" type="AnimatedSprite" parent="Explosion"]
+modulate = Color( 0.607843, 1, 0, 1 )
+position = Vector2( -87.897, 351.588 )
+frames = SubResource( 14 )
+
+[node name="5" type="AnimatedSprite" parent="Explosion"]
+modulate = Color( 0.607843, 1, 0, 1 )
+position = Vector2( 210.953, 443.88 )
+frames = SubResource( 14 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -1, 6 )
 shape = SubResource( 4 )
 
@@ -160,14 +207,15 @@ enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 2
 
-[node name="Collider" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="."]
+visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
-position = Vector2( -5.70653, -84.7826 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2( -6.19888e-06, -84.7826 )
 shape = SubResource( 7 )
 
 [node name="Lifebar" parent="." instance=ExtResource( 10 )]
@@ -181,4 +229,4 @@ rect_scale = Vector2( 0.3, 0.3 )
 anims/RESET = SubResource( 13 )
 anims/flash = SubResource( 8 )
 
-[connection signal="area_entered" from="Collider" to="." method="_on_Collider_area_entered"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
