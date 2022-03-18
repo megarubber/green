@@ -121,7 +121,7 @@ shader_param/flash_modifier = 0.0
 extents = Vector2( 36.9076, 111.25 )
 
 [sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 44.0051, 185.934 )
+extents = Vector2( 47.8657, 185.934 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 305.578, 377.75 )
@@ -320,6 +320,7 @@ material = SubResource( 17 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 
 [node name="Head" type="Sprite" parent="."]
@@ -359,7 +360,7 @@ collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDamageArea"]
-position = Vector2( -48.6885, -82.0168 )
+position = Vector2( -44.8279, -82.0168 )
 shape = SubResource( 24 )
 
 [node name="RightDamageArea" type="Area2D" parent="." groups=["hitbox"]]
@@ -369,10 +370,11 @@ collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightDamageArea"]
-position = Vector2( 50.4477, -84.8477 )
+position = Vector2( 43.9353, -85.5332 )
 shape = SubResource( 24 )
 
 [node name="DetectArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 64
 
 [node name="AreaShape" type="CollisionShape2D" parent="DetectArea"]
