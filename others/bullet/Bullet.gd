@@ -3,19 +3,37 @@ extends Area2D
 # Variables
 export var speed = 1500
 var touched = false
+var in_area = false
+var timer = null
+var delay = 0.7
 
 # Nodes Referencing
 onready var animation = $AnimationBullet
+onready var collision = $CollisionShape2D
+
+# Get Player Node
+onready var player = get_tree().get_current_scene().get_node("Player")
 
 func _ready() -> void:
+	# Creating Timer
+	timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.set_wait_time(delay)
+	timer.connect("timeout", self, "on_timeout_complete") 
+	add_child(timer)
+	
 	animation.play("Default")
 	set_as_toplevel(true)
+
+# When timer ends
+func on_timeout_complete() -> void:
+	queue_free()
 
 func _process(delta: float) -> void:
 	# Movement of bullet
 	if !touched:
-		position += (Vector2.RIGHT * speed).rotated(rotation) * delta
-
+		position += (Vector2.RIGHT * speed).rotated(rotation) * delta	
+	
 func _physics_process(_delta) -> void:
 	if !touched:
 		yield(get_tree().create_timer(0.01), "timeout")
@@ -24,10 +42,26 @@ func _physics_process(_delta) -> void:
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
 
-func _on_Bullet_body_entered(_body) -> void:
+func _on_Bullet_body_entered(body) -> void:
 	if !touched:
 		touched = true
-		animation.play("Explosion")
-		yield(get_tree().create_timer(0.7), "timeout")
-		queue_free()
-		return
+	
+		if body.is_in_group("tilemap"):
+			collision.set_deferred("disabled", true)
+			animation.play("Explosion")
+			timer.start()
+		
+		if body.is_in_group("enemy") || body.is_in_group("player"):
+			queue_free()
+
+func _on_LeftDamageArea_area_entered(_area) -> void:
+	if position.x > player.global_position.x:	
+		Global.hit_side = -1
+	else:
+		Global.hit_side = 1
+
+func _on_RightDamageArea_area_entered(_area) -> void:
+	if position.x < player.global_position.x:	
+		Global.hit_side = 1
+	else:
+		Global.hit_side = -1

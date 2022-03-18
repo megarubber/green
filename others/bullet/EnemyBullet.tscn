@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://others/bullet/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://others/bullet/bullet-3.png" type="Texture" id=2]
@@ -98,14 +98,17 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[node name="EnemyBullet" type="Area2D"]
-collision_layer = 16
-collision_mask = 7
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 6.82745, 8.35592 )
+
+[node name="EnemyBullet" type="Area2D" groups=["bullets", "bullets_enemy"]]
+collision_layer = 32
+collision_mask = 19
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 2, 0 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, 0 )
@@ -121,5 +124,27 @@ anims/Default = SubResource( 2 )
 anims/Explosion = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
+[node name="LeftDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+position = Vector2( -1, 53 )
+scale = Vector2( 0.613333, 0.613334 )
+collision_layer = 16
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDamageArea"]
+position = Vector2( -9.78262, -86.4129 )
+shape = SubResource( 5 )
+
+[node name="RightDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+position = Vector2( -1, 53 )
+scale = Vector2( 0.613333, 0.613334 )
+collision_layer = 16
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDamageArea"]
+position = Vector2( 19.2595, -86.2092 )
+shape = SubResource( 5 )
+
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="area_entered" from="LeftDamageArea" to="." method="_on_LeftDamageArea_area_entered"]
+[connection signal="area_entered" from="RightDamageArea" to="." method="_on_RightDamageArea_area_entered"]
