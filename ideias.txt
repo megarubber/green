@@ -1,0 +1,18 @@
+grappling hook
+efeito dust nos pés
+power ups
+vidas
+loja
+diálogos
+npcs
+plataformas que se movem
+obstáculos (serra)
+checkpoint
+pause
+tela inicial
+game over
+wall jump
+armas diferentes
+carros
+tela de opções
+mapa estilo smw
