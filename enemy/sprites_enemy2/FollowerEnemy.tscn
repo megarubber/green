@@ -120,8 +120,8 @@ shader_param/flash_modifier = 0.0
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 36.9076, 111.25 )
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 60.3261, 180.978 )
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 44.0051, 185.934 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 601, 377.75 )
@@ -312,7 +312,7 @@ tracks/4/keys = {
 
 [node name="FollowerEnemy" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 6
 script = ExtResource( 9 )
 
 [node name="Wheel" type="AnimatedSprite" parent="."]
@@ -320,7 +320,6 @@ material = SubResource( 17 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 5
 playing = true
 
 [node name="Head" type="Sprite" parent="."]
@@ -343,18 +342,9 @@ scale = Vector2( 0.613333, 0.613334 )
 texture = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -1, 3.75 )
 shape = SubResource( 4 )
-
-[node name="DamageArea" type="Area2D" parent="."]
-position = Vector2( -1, 53 )
-scale = Vector2( 0.613333, 0.613334 )
-collision_layer = 16
-collision_mask = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2( 1.54972e-06, -79.8912 )
-shape = SubResource( 11 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 44, 109 )
@@ -362,11 +352,32 @@ enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 2
 
+[node name="LeftDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+position = Vector2( -1, 53 )
+scale = Vector2( 0.613333, 0.613334 )
+collision_layer = 16
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDamageArea"]
+position = Vector2( -48.6885, -82.0168 )
+shape = SubResource( 24 )
+
+[node name="RightDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+position = Vector2( -1, 53 )
+scale = Vector2( 0.613333, 0.613334 )
+collision_layer = 16
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDamageArea"]
+position = Vector2( 50.4477, -84.8477 )
+shape = SubResource( 24 )
+
 [node name="DetectArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 64
 
 [node name="AreaShape" type="CollisionShape2D" parent="DetectArea"]
-position = Vector2( -8, -260 )
+position = Vector2( -11.3302, -258.676 )
 shape = SubResource( 7 )
 
 [node name="GunSprite" type="Sprite" parent="."]
@@ -422,6 +433,7 @@ margin_right = 467.0
 margin_bottom = -84.0
 rect_scale = Vector2( 0.3, 0.3 )
 
-[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
-[connection signal="body_entered" from="DetectArea" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="DetectArea" to="." method="_on_Area2D_body_exited"]
+[connection signal="area_entered" from="LeftDamageArea" to="." method="_on_LeftDamageArea_area_entered"]
+[connection signal="area_entered" from="RightDamageArea" to="." method="_on_RightDamageArea_area_entered"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]

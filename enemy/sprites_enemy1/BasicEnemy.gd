@@ -46,6 +46,8 @@ func death() -> void:
 	# Disable collision (bullet & tileset)
 	l_damage_area.monitorable = false
 	r_damage_area.monitorable = false
+	l_damage_area.monitoring = false
+	r_damage_area.monitoring = false
 	collider.disabled = true
 	
 	# Explosions visible
@@ -75,10 +77,10 @@ func take_damage() -> void:
 
 func _on_LeftDamageArea_area_entered(area):
 	Global.hit_side = -1
-	if area.is_in_group("bullets"):
+	if area.is_in_group("bullets_player"):
 		take_damage()
 
 func _on_RightDamageArea_area_entered(area):
 	Global.hit_side = 1
-	if area.is_in_group("bullets"):
+	if area.is_in_group("bullets_player"):
 		take_damage()

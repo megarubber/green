@@ -6,6 +6,7 @@ const FLOOR = Vector2(0, -1)
 const SPEED_FOUNDED = 200
 const SPEED_NORMAL = 100
 const GUN_MIRROR_SIZE = 2.5
+const DAMAGE = 10
 
 # Node Referencing
 onready var wheel = $Wheel
@@ -16,7 +17,8 @@ onready var head = $Head
 onready var eyes = $Head/Eyes
 onready var lifebar = $Lifebar
 onready var collider = $CollisionShape2D
-onready var damage_area = $DamageArea
+onready var l_damage_area = $LeftDamageArea
+onready var r_damage_area = $RightDamageArea
 onready var explosions = $Explosion
 onready var body = $Body
 onready var detect_area = $DetectArea
@@ -103,17 +105,13 @@ func _physics_process(_delta) -> void:
 	# Call flip and animation function
 	flip_and_animation()
 
-func _on_Area2D_body_entered(_body) -> void:
-	founded = true
-
-func _on_Area2D_body_exited(_body) -> void:
-	founded = false
-
 # Function that runs when the enemy dies
 func death():
 	# Disable collision (bullet & tileset)
-	damage_area.monitorable = false
-	damage_area.monitoring = false
+	l_damage_area.monitorable = false
+	r_damage_area.monitorable = false
+	l_damage_area.monitoring = false
+	r_damage_area.monitoring = false
 	collider.disabled = true
 	detect_area.monitorable = false
 	detect_area.monitoring = false
@@ -140,13 +138,31 @@ func death():
 	yield(t_d, "timeout")
 	queue_free()
 
-# When bullet entered on damage area
-func _on_DamageArea_area_entered(_area) -> void:
-	anim.play("flash")
-	# take damage
-	lifebar.damage(10)
-	timer.start()
-
 # When timer ends
 func on_timeout_complete() -> void:
 	anim.play("default")
+
+# take damage
+func take_damage() -> void:
+	anim.play("flash")
+	lifebar.damage(DAMAGE)
+
+func _on_LeftDamageArea_area_entered(area) -> void:
+	Global.hit_side = -1
+	# When bullet entered at left damage area
+	if area.is_in_group("bullets_player"):
+		take_damage()
+		timer.start()
+
+func _on_RightDamageArea_area_entered(area) -> void:
+	Global.hit_side = 1
+	# When bullet entered at right damage area
+	if area.is_in_group("bullets_player"):
+		take_damage()
+		timer.start()
+
+func _on_DetectArea_body_entered(_body) -> void:
+	founded = true
+
+func _on_DetectArea_body_exited(_body) -> void:
+	founded = false

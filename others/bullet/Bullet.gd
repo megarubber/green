@@ -11,6 +11,9 @@ var delay = 0.7
 onready var animation = $AnimationBullet
 onready var collision = $CollisionShape2D
 
+# Get Player Node
+onready var player = get_tree().get_current_scene().get_node("Player")
+
 func _ready() -> void:
 	# Creating Timer
 	timer = Timer.new()
@@ -50,3 +53,15 @@ func _on_Bullet_body_entered(body) -> void:
 		
 		if body.is_in_group("enemy") || body.is_in_group("player"):
 			queue_free()
+
+func _on_LeftDamageArea_area_entered(_area) -> void:
+	if position.x > player.global_position.x:	
+		Global.hit_side = -1
+	else:
+		Global.hit_side = 1
+
+func _on_RightDamageArea_area_entered(_area) -> void:
+	if position.x < player.global_position.x:	
+		Global.hit_side = 1
+	else:
+		Global.hit_side = -1

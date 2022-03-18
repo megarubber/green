@@ -96,11 +96,11 @@ func blink() -> void:
 	player_visible(true)
 	yield(get_tree().create_timer(0.07), "timeout")
 	player_visible(false)
+	anim_eyes.play("blinking")
 	for _i in range(6):
 		yield(get_tree().create_timer(0.1), "timeout")
 		player_visible(true)
 		yield(get_tree().create_timer(0.1), "timeout")
 		player_visible(false)
-	anim_eyes.play("blinking")
 	player_visible(true)
 	hit = false
