@@ -9,12 +9,14 @@ const MAX_JUMP_HEIGHT = -850
 
 # General Variables
 var motion = Vector2()
-export var knockback = 5000
+export var knockback = 8000
 export var knockup = 100
+var hit = false
 
 # Nodes Referencing
 onready var body_sprite = $BodySprite
 onready var head_sprite = $HeadSprite
+onready var gun = $GunSprite
 onready var animation = $AnimationPlayer
 onready var screen_shake = $Camera/Screenshake
 onready var damage_area = $DamageArea
@@ -73,12 +75,29 @@ func _physics_process(_delta: float) -> void: # Physics update
 	execute_animation()
 
 func _on_DamageArea_area_entered(area)  -> void:
-	if area.is_in_group("hitbox"):
-		print("hit")
+	if area.is_in_group("hitbox") && !hit:
 		var knock_side = knockback * Global.hit_side
-		motion.x -= lerp(motion.x, knock_side, 0.5)
-		motion.y = lerp(0, -knockup, 0.6)
+		motion.x -= lerp(motion.x, -knock_side, 0.1)
+		#motion.y = lerp(0, -knockup, 0.6)
 		motion = move_and_slide(motion, UP)
+		hit = true
+		blink()
+		
+func player_visible(value : bool) -> void:
+	body_sprite.visible = value
+	head_sprite.visible = value
+	gun.visible = value
 
 func blink() -> void:
-	
+	player_visible(false)
+	yield(get_tree().create_timer(0.05), "timeout")
+	player_visible(true)
+	yield(get_tree().create_timer(0.07), "timeout")
+	player_visible(false)
+	for _i in range(6):
+		yield(get_tree().create_timer(0.1), "timeout")
+		player_visible(true)
+		yield(get_tree().create_timer(0.1), "timeout")
+		player_visible(false)
+	player_visible(true)
+	hit = false

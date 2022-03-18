@@ -16,9 +16,6 @@ var bullet = preload("res://others/bullet/Bullet.tscn")
 # Nodes Referecing
 onready var muzzle = $Muzzle
 
-func _ready() -> void:
-	set_as_toplevel(true)
-
 func shotting() -> void: # Shotting with gun
 	var bullet_instance = bullet.instance()
 	bullet_instance.rotation = rotation
@@ -32,8 +29,8 @@ func shotting() -> void: # Shotting with gun
 	get_parent().add_child(bullet_instance)
 	get_parent().screen_shake.shake(0.2, 2)
 	can_fire = false
-	yield(get_tree().create_timer(0.2), "timeout")
-	can_fire = true
+	#yield(get_tree().create_timer(0.2), "timeout")
+	#can_fire = true
 
 func _physics_process(_delta: float) -> void:
 	position += velocity
@@ -55,3 +52,6 @@ func _physics_process(_delta: float) -> void:
 	# Press the left button mouse to shoot
 	if Input.is_action_pressed("ui_fire") && can_fire:
 		shotting()
+	
+	if Input.is_action_just_released("ui_fire") && !can_fire:
+		can_fire = true

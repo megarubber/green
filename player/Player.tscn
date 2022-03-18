@@ -264,7 +264,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 44.0 ]
 }
-knockback = 8000
 
 [node name="HeadSprite" type="Sprite" parent="."]
 position = Vector2( -1, -153 )
