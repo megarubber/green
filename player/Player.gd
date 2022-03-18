@@ -9,7 +9,7 @@ const MAX_JUMP_HEIGHT = -850
 
 # General Variables
 var motion = Vector2()
-export var knockback = 8000
+export var knockback = 15000
 export var knockup = 100
 var hit = false
 
@@ -20,6 +20,7 @@ onready var gun = $GunSprite
 onready var animation = $AnimationPlayer
 onready var screen_shake = $Camera/Screenshake
 onready var damage_area = $DamageArea
+onready var anim_eyes = $HeadSprite/AnimationEyes
 
 func _ready() -> void:
 	z_index = -2
@@ -89,6 +90,7 @@ func player_visible(value : bool) -> void:
 	gun.visible = value
 
 func blink() -> void:
+	anim_eyes.play("damage")
 	player_visible(false)
 	yield(get_tree().create_timer(0.05), "timeout")
 	player_visible(true)
@@ -99,5 +101,6 @@ func blink() -> void:
 		player_visible(true)
 		yield(get_tree().create_timer(0.1), "timeout")
 		player_visible(false)
+	anim_eyes.play("blinking")
 	player_visible(true)
 	hit = false
