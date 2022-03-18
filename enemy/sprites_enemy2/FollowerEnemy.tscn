@@ -124,7 +124,7 @@ extents = Vector2( 36.9076, 111.25 )
 extents = Vector2( 44.0051, 185.934 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 601, 377.75 )
+extents = Vector2( 305.578, 377.75 )
 
 [sub_resource type="Shader" id=18]
 code = "shader_type canvas_item;
@@ -373,11 +373,10 @@ position = Vector2( 50.4477, -84.8477 )
 shape = SubResource( 24 )
 
 [node name="DetectArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 64
 
 [node name="AreaShape" type="CollisionShape2D" parent="DetectArea"]
-position = Vector2( -11.3302, -258.676 )
+position = Vector2( 16.6913, -258.676 )
 shape = SubResource( 7 )
 
 [node name="GunSprite" type="Sprite" parent="."]

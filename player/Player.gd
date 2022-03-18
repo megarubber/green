@@ -6,6 +6,7 @@ const GRAVITY = 20
 const ACCELERATION = 50
 const MAX_SPEED = 250
 const MAX_JUMP_HEIGHT = -850
+const DAMAGE = 10
 
 # General Variables
 var motion = Vector2()
@@ -21,6 +22,9 @@ onready var animation = $AnimationPlayer
 onready var screen_shake = $Camera/Screenshake
 onready var damage_area = $DamageArea
 onready var anim_eyes = $HeadSprite/AnimationEyes
+
+# Referencing lifebar from HUD
+onready var lifebar = get_tree().get_current_scene().get_node("HUD/Lifebar")
 
 func _ready() -> void:
 	z_index = -2
@@ -83,6 +87,8 @@ func _on_DamageArea_area_entered(area)  -> void:
 		motion = move_and_slide(motion, UP)
 		hit = true
 		blink()
+		if lifebar != null:
+			lifebar.damage(DAMAGE)
 		
 func player_visible(value : bool) -> void:
 	body_sprite.visible = value
