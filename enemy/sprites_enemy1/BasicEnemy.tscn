@@ -84,7 +84,7 @@ animations = [ {
 extents = Vector2( 40, 109 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 81.5218, 185.869 )
+extents = Vector2( 13.8587, 177.717 )
 
 [sub_resource type="Animation" id=13]
 length = 0.001
@@ -144,7 +144,7 @@ tracks/1/keys = {
 
 [node name="BasicEnemy" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 6
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
@@ -155,6 +155,7 @@ material = SubResource( 12 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
+frame = 3
 playing = true
 flip_h = true
 
@@ -206,14 +207,24 @@ enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 2
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="LeftDamageArea" type="Area2D" parent="." groups=["hitbox"]]
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
-collision_mask = 4
+collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2( -6.19888e-06, -84.7826 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDamageArea"]
+position = Vector2( -67.6631, -76.6306 )
+shape = SubResource( 7 )
+
+[node name="RightDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+position = Vector2( -1, 53 )
+scale = Vector2( 0.613333, 0.613334 )
+collision_layer = 16
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDamageArea"]
+position = Vector2( 60.3261, -76.6306 )
 shape = SubResource( 7 )
 
 [node name="Lifebar" parent="." instance=ExtResource( 10 )]
@@ -227,4 +238,5 @@ rect_scale = Vector2( 0.3, 0.3 )
 anims/RESET = SubResource( 13 )
 anims/flash = SubResource( 8 )
 
-[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="area_entered" from="LeftDamageArea" to="." method="_on_LeftDamageArea_area_entered"]
+[connection signal="area_entered" from="RightDamageArea" to="." method="_on_RightDamageArea_area_entered"]

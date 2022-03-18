@@ -4,6 +4,7 @@ extends KinematicBody2D
 const SPEED = 350
 const GRAVITY = 20
 const FLOOR = Vector2(0, -1)
+const DAMAGE = 10
 
 # Variables
 var motion = Vector2()
@@ -13,7 +14,8 @@ var direction = 1
 onready var sprite = $AnimatedSprite
 onready var raycast = $RayCast2D
 onready var collider = $CollisionShape2D
-onready var damage_area = $DamageArea
+onready var l_damage_area = $LeftDamageArea
+onready var r_damage_area = $RightDamageArea
 onready var lifebar = $Lifebar
 onready var anim = $AnimationPlayer
 onready var wheel = $Wheel
@@ -42,8 +44,8 @@ func _physics_process(_delta) -> void:
 # Function that runs when the enemy dies
 func death() -> void:
 	# Disable collision (bullet & tileset)
-	damage_area.monitorable = false
-	damage_area.monitoring = false
+	l_damage_area.monitorable = false
+	r_damage_area.monitorable = false
 	collider.disabled = true
 	
 	# Explosions visible
@@ -65,9 +67,18 @@ func death() -> void:
 	t_d.start()
 	yield(t_d, "timeout")
 	queue_free()
-
-# When bullet entered on damage area
-func _on_DamageArea_area_entered(_area) -> void:
+	
+# take damage
+func take_damage() -> void:
 	anim.play("flash")
-	# take damage
-	lifebar.damage(10)
+	lifebar.damage(DAMAGE)
+
+func _on_LeftDamageArea_area_entered(area):
+	Global.hit_side = -1
+	if area.is_in_group("bullets"):
+		take_damage()
+
+func _on_RightDamageArea_area_entered(area):
+	Global.hit_side = 1
+	if area.is_in_group("bullets"):
+		take_damage()

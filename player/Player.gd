@@ -9,14 +9,15 @@ const MAX_JUMP_HEIGHT = -850
 
 # General Variables
 var motion = Vector2()
-export var knockback = 7000
-export var knockup = 1000
+export var knockback = 5000
+export var knockup = 100
 
 # Nodes Referencing
 onready var body_sprite = $BodySprite
 onready var head_sprite = $HeadSprite
 onready var animation = $AnimationPlayer
 onready var screen_shake = $Camera/Screenshake
+onready var damage_area = $DamageArea
 
 func _ready() -> void:
 	z_index = -2
@@ -71,7 +72,13 @@ func _physics_process(_delta: float) -> void: # Physics update
 	flip()
 	execute_animation()
 
-func _on_DamageArea_area_entered(_area):
-	print("hit")
-	motion.x -= lerp(motion.x, knockback, 0.5)
-	motion.y = lerp(0, knockup, 0.6)
+func _on_DamageArea_area_entered(area)  -> void:
+	if area.is_in_group("hitbox"):
+		print("hit")
+		var knock_side = knockback * Global.hit_side
+		motion.x -= lerp(motion.x, knock_side, 0.5)
+		motion.y = lerp(0, -knockup, 0.6)
+		motion = move_and_slide(motion, UP)
+
+func blink() -> void:
+	

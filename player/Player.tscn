@@ -259,11 +259,12 @@ tracks/1/keys = {
 extents = Vector2( 73.3696, 159.782 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
-collision_mask = 10
+collision_mask = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 44.0 ]
 }
+knockback = 8000
 
 [node name="HeadSprite" type="Sprite" parent="."]
 position = Vector2( -1, -153 )
@@ -303,7 +304,7 @@ anims/transition_crouch = SubResource( 10 )
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
-collision_mask = 4
+collision_mask = 172
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2( -3.45707e-06, -251.087 )
