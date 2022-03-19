@@ -384,7 +384,7 @@ scale = Vector2( 2, 2 )
 [node name="PowerUps" type="Node2D" parent="."]
 
 [node name="PowerUp" parent="PowerUps" instance=ExtResource( 7 )]
-position = Vector2( 77, -137 )
+position = Vector2( 109, -153 )
 scale = Vector2( 4, 4 )
 
 [node name="PowerUp2" parent="PowerUps" instance=ExtResource( 7 )]
@@ -396,4 +396,3 @@ type = 1
 
 [node name="Mouse" parent="." instance=ExtResource( 8 )]
 scale = Vector2( 4, 4 )
-frame = 0

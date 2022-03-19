@@ -20,5 +20,6 @@ animations = [ {
 [node name="Mouse" type="AnimatedSprite"]
 frames = SubResource( 1 )
 animation = "cursor"
+frame = 1
 playing = true
 script = ExtResource( 3 )
