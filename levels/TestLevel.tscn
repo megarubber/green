@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tiles/tileset_forest.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://enemy/sprites_enemy2/FollowerEnemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://others/hud/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://collectables/coin/Coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://collectables/powerups/PowerUp.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -363,18 +364,31 @@ tile_data = PoolIntArray( 65528, 0, 0, 65529, 2, 0, 65530, 2, 0, 65531, 2, 0, 65
 position = Vector2( 654, 59 )
 
 [node name="FollowerEnemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( -171, -327 )
+position = Vector2( -942, -40 )
 
-[node name="HUD" parent="." instance=ExtResource( 5 )]
+[node name="Coins" type="Node2D" parent="."]
 
-[node name="Coin" parent="." instance=ExtResource( 6 )]
+[node name="Coin" parent="Coins" instance=ExtResource( 6 )]
 position = Vector2( -65, -136 )
 scale = Vector2( 2, 2 )
 
-[node name="Coin2" parent="." instance=ExtResource( 6 )]
+[node name="Coin2" parent="Coins" instance=ExtResource( 6 )]
 position = Vector2( 513, -115 )
 scale = Vector2( 2, 2 )
 
-[node name="Coin3" parent="." instance=ExtResource( 6 )]
+[node name="Coin3" parent="Coins" instance=ExtResource( 6 )]
 position = Vector2( 602, -115 )
 scale = Vector2( 2, 2 )
+
+[node name="PowerUps" type="Node2D" parent="."]
+
+[node name="PowerUp" parent="PowerUps" instance=ExtResource( 7 )]
+position = Vector2( 77, -137 )
+scale = Vector2( 4, 4 )
+
+[node name="PowerUp2" parent="PowerUps" instance=ExtResource( 7 )]
+position = Vector2( 286, -153 )
+scale = Vector2( 4, 4 )
+type = 1
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
