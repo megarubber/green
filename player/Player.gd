@@ -115,11 +115,11 @@ func blink() -> void:
 
 func _powerup(type):
 	match type:
-		0: # Speed PowerUp
+		0: # Speed
 			max_speed = 550
 			yield(get_tree().create_timer(5), "timeout")
 			max_speed = 250
-		1:
+		1: # Jump
 			max_jump_height = -1000
 			yield(get_tree().create_timer(5), "timeout")
 			max_jump_height = -850
