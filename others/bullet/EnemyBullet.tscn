@@ -99,7 +99,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 6.82745, 8.35592 )
+extents = Vector2( 21.1957, 8.35592 )
 
 [node name="EnemyBullet" type="Area2D" groups=["bullets", "bullets_enemy"]]
 collision_layer = 32
@@ -124,27 +124,16 @@ anims/Default = SubResource( 2 )
 anims/Explosion = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
-[node name="LeftDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+[node name="DamageArea" type="Area2D" parent="." groups=["hitbox"]]
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
 collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDamageArea"]
-position = Vector2( -9.78262, -86.4129 )
-shape = SubResource( 5 )
-
-[node name="RightDamageArea" type="Area2D" parent="." groups=["hitbox"]]
-position = Vector2( -1, 53 )
-scale = Vector2( 0.613333, 0.613334 )
-collision_layer = 16
-collision_mask = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDamageArea"]
-position = Vector2( 19.2595, -86.2092 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2( 4.8913, -86.2092 )
 shape = SubResource( 5 )
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
-[connection signal="area_entered" from="LeftDamageArea" to="." method="_on_LeftDamageArea_area_entered"]
-[connection signal="area_entered" from="RightDamageArea" to="." method="_on_RightDamageArea_area_entered"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]

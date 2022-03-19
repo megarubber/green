@@ -16,3 +16,4 @@ armas diferentes
 carros
 tela de opções
 mapa estilo smw
+3 fases

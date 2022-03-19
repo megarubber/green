@@ -368,7 +368,7 @@ position = Vector2( -171, -327 )
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [node name="Coin" parent="." instance=ExtResource( 6 )]
-position = Vector2( 423, -115 )
+position = Vector2( -65, -136 )
 scale = Vector2( 2, 2 )
 
 [node name="Coin2" parent="." instance=ExtResource( 6 )]

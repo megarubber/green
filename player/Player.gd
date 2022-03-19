@@ -24,7 +24,7 @@ onready var damage_area = $DamageArea
 onready var anim_eyes = $HeadSprite/AnimationEyes
 
 # Referencing lifebar from HUD
-onready var lifebar = get_tree().get_current_scene().get_node("HUD/Lifebar")
+onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
 
 func _ready() -> void:
 	z_index = -2
