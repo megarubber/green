@@ -4,8 +4,6 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const GRAVITY = 20
 const ACCELERATION = 50
-const MAX_SPEED = 250
-const MAX_JUMP_HEIGHT = -850
 const DAMAGE = 10
 
 # General Variables
@@ -13,6 +11,8 @@ var motion = Vector2()
 export var knockback = 15000
 export var knockup = 100
 var hit = false
+var max_speed = 250
+var max_jump_height = -850
 
 # Nodes Referencing
 onready var body_sprite = $BodySprite
@@ -24,10 +24,12 @@ onready var damage_area = $DamageArea
 onready var anim_eyes = $HeadSprite/AnimationEyes
 
 # Referencing lifebar from HUD
-onready var lifebar = get_tree().get_current_scene().get_node("HUD/Lifebar")
+onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
 
 func _ready() -> void:
 	z_index = -2
+	for powerup in get_parent().get_node("PowerUps").get_children():
+		powerup.connect("player_entered", self, "_powerup")
 
 func execute_animation() -> void: # Player's animation function
 	if is_on_floor():
@@ -54,16 +56,16 @@ func movement() -> void: # Player's movement function
 	var friction = false
 	
 	if Input.is_action_pressed("ui_right"):
-		motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
+		motion.x = min(motion.x + ACCELERATION, max_speed)
 	elif Input.is_action_pressed("ui_left"):
-		motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
+		motion.x = max(motion.x - ACCELERATION, -max_speed)
 	else:
 		motion.x = 0
 		friction = true
 	
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
-			motion.y = MAX_JUMP_HEIGHT
+			motion.y = max_jump_height
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.2)
 	else:
@@ -110,3 +112,14 @@ func blink() -> void:
 		player_visible(false)
 	player_visible(true)
 	hit = false
+
+func _powerup(type):
+	match type:
+		0: # Speed
+			max_speed = 550
+			yield(get_tree().create_timer(5), "timeout")
+			max_speed = 250
+		1: # Jump
+			max_jump_height = -1000
+			yield(get_tree().create_timer(5), "timeout")
+			max_jump_height = -850

@@ -1,12 +1,67 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://others/hud/coin-counter.png" type="Texture" id=2]
+[ext_resource path="res://others/hud/CounterCoins.gd" type="Script" id=3]
+[ext_resource path="res://others/hud/health_heart.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://others/fonts/Pixellari.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = SubResource( 1 )
 
 [node name="HUD" type="CanvasLayer"]
 
-[node name="Lifebar" parent="." instance=ExtResource( 1 )]
-margin_left = 25.0
-margin_top = 24.0
-margin_right = 355.936
-margin_bottom = 88.0
+[node name="Health" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Health"]
+margin_left = 33.0
+margin_top = 18.0
+margin_right = 405.0
+margin_bottom = 66.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Lifebar" parent="Health" instance=ExtResource( 1 )]
+margin_left = 72.0
+margin_top = 23.0
+margin_right = 610.56
+margin_bottom = 87.0
 rect_scale = Vector2( 0.6, 0.6 )
+
+[node name="Icon" type="TextureRect" parent="Health"]
+margin_left = 2.0
+margin_top = 11.0
+margin_right = 42.0
+margin_bottom = 51.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="Coins" type="Control" parent="."]
+margin_left = 813.0
+margin_top = 28.0
+margin_right = 995.0
+margin_bottom = 95.0
+
+[node name="Icon" type="TextureRect" parent="Coins"]
+margin_left = -3.0
+margin_top = -6.0
+margin_right = 112.0
+margin_bottom = 34.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+
+[node name="CounterCoins" type="Label" parent="Coins"]
+margin_left = 84.0
+margin_top = 2.0
+margin_right = 218.0
+margin_bottom = 62.0
+rect_pivot_offset = Vector2( 56, 30 )
+custom_colors/font_color = Color( 0.443137, 0.392157, 0.105882, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "0"
+script = ExtResource( 3 )

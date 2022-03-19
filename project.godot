@@ -62,7 +62,7 @@ ui_fire={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="walls"
-2d_physics/layer_3="coins"
+2d_physics/layer_3="collectables"
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="damage_area"
 2d_physics/layer_6="bullets"

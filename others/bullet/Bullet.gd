@@ -54,13 +54,7 @@ func _on_Bullet_body_entered(body) -> void:
 		if body.is_in_group("enemy") || body.is_in_group("player"):
 			queue_free()
 
-func _on_LeftDamageArea_area_entered(_area) -> void:
-	if position.x > player.global_position.x:	
-		Global.hit_side = -1
-	else:
-		Global.hit_side = 1
-
-func _on_RightDamageArea_area_entered(_area) -> void:
+func _on_DamageArea_area_entered(_area):
 	if position.x < player.global_position.x:	
 		Global.hit_side = 1
 	else:
