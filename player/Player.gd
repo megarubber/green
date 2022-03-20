@@ -5,13 +5,17 @@ const UP = Vector2(0, -1)
 const GRAVITY = 20
 const ACCELERATION = 50
 const DAMAGE = 10
+const MAX_SPEED_NORMAL = 350
+const MAX_SPEED_POWERUP = 550
+const MAX_JUMP_HEIGHT_NORMAL = -850
+const MAX_JUMP_HEIGHT_POWERUP = -1000
 
 # General Variables
 var motion = Vector2()
 export var knockback = 15000
 export var knockup = 100
 var hit = false
-var max_speed = 250
+var max_speed = MAX_SPEED_NORMAL
 var max_jump_height = -850
 
 # Nodes Referencing
@@ -116,10 +120,10 @@ func blink() -> void:
 func _powerup(type):
 	match type:
 		0: # Speed
-			max_speed = 550
+			max_speed = MAX_SPEED_POWERUP
 			yield(get_tree().create_timer(5), "timeout")
-			max_speed = 250
+			max_speed = MAX_SPEED_NORMAL
 		1: # Jump
-			max_jump_height = -1000
+			max_jump_height = MAX_JUMP_HEIGHT_POWERUP
 			yield(get_tree().create_timer(5), "timeout")
-			max_jump_height = -850
+			max_jump_height = MAX_JUMP_HEIGHT_NORMAL

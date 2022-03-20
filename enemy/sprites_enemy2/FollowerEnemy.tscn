@@ -38,6 +38,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=17]
+resource_local_to_scene = true
 shader = SubResource( 16 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
@@ -64,6 +65,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
 shader = SubResource( 14 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
@@ -82,6 +84,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=22]
+resource_local_to_scene = true
 shader = SubResource( 21 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
@@ -113,6 +116,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
 shader = SubResource( 12 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
@@ -140,6 +144,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=19]
+resource_local_to_scene = true
 shader = SubResource( 18 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
@@ -312,7 +317,7 @@ tracks/4/keys = {
 
 [node name="FollowerEnemy" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 8
-collision_mask = 6
+collision_mask = 2
 script = ExtResource( 9 )
 
 [node name="Wheel" type="AnimatedSprite" parent="."]

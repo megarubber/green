@@ -24,7 +24,7 @@ onready var body = $Body
 onready var detect_area = $DetectArea
 
 # Get Player Node
-onready var player_pos = get_parent().get_node("Player")
+onready var player_pos = get_tree().get_current_scene().get_node("Player")
 
 # Variables
 var founded = false

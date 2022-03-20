@@ -17,4 +17,12 @@ carros
 tela de opções
 mapa estilo smw
 3 fases
+boss
 parallax e background
+baús
+inventário básico
+
+// Inimigos
+Voador
+Inseto (mata de uma vez)
+Ataca

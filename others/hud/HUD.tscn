@@ -16,27 +16,28 @@ font_data = SubResource( 1 )
 [node name="HUD" type="CanvasLayer"]
 
 [node name="Health" type="Control" parent="."]
-margin_right = 40.0
+margin_left = -13.0
+margin_right = 27.0
 margin_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="Health"]
-margin_left = 33.0
+margin_left = 60.0
 margin_top = 18.0
-margin_right = 405.0
+margin_right = 432.0
 margin_bottom = 66.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Lifebar" parent="Health" instance=ExtResource( 1 )]
-margin_left = 72.0
+margin_left = 99.0
 margin_top = 23.0
-margin_right = 610.56
+margin_right = 637.56
 margin_bottom = 87.0
 rect_scale = Vector2( 0.6, 0.6 )
 
 [node name="Icon" type="TextureRect" parent="Health"]
-margin_left = 2.0
+margin_left = 32.0
 margin_top = 11.0
-margin_right = 42.0
+margin_right = 72.0
 margin_bottom = 51.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
