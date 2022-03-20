@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/state2.png-95c1f9525664e600ef327d3d8479907f.stex"
+path="res://.import/body.png-d29f02920b119be76d4e94ab9bb9876a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy/sprites_enemy3/state2.png"
-dest_files=[ "res://.import/state2.png-95c1f9525664e600ef327d3d8479907f.stex" ]
+source_file="res://enemy/sprites_enemy3/body.png"
+dest_files=[ "res://.import/body.png-d29f02920b119be76d4e94ab9bb9876a.stex" ]
 
 [params]
 

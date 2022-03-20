@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/state1.png-2595966353d4ad841d632ed0313ac624.stex"
+path="res://.import/gun3.png-55c491c59b88a9b3f5cf1a31d3962d86.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy/sprites_enemy3/state1.png"
-dest_files=[ "res://.import/state1.png-2595966353d4ad841d632ed0313ac624.stex" ]
+source_file="res://guns/gun3.png"
+dest_files=[ "res://.import/gun3.png-55c491c59b88a9b3f5cf1a31d3962d86.stex" ]
 
 [params]
 

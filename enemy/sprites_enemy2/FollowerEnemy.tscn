@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=2]
 
-[ext_resource path="res://enemy/sprites_enemy2/EyesEnemy.gd" type="Script" id=1]
+[ext_resource path="res://enemy/EyesEnemy.gd" type="Script" id=1]
 [ext_resource path="res://enemy/sprites_enemy2/eyes1.png" type="Texture" id=2]
 [ext_resource path="res://enemy/sprites_enemy1/wheel5.png" type="Texture" id=3]
 [ext_resource path="res://enemy/sprites_enemy1/wheel2.png" type="Texture" id=4]
@@ -70,7 +70,7 @@ shader = SubResource( 14 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
-[sub_resource type="Shader" id=21]
+[sub_resource type="Shader" id=25]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -85,7 +85,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=22]
 resource_local_to_scene = true
-shader = SubResource( 21 )
+shader = SubResource( 25 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
@@ -130,7 +130,7 @@ extents = Vector2( 47.8657, 185.934 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 305.578, 377.75 )
 
-[sub_resource type="Shader" id=18]
+[sub_resource type="Shader" id=26]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -145,7 +145,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=19]
 resource_local_to_scene = true
-shader = SubResource( 18 )
+shader = SubResource( 26 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
@@ -325,7 +325,6 @@ material = SubResource( 17 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="Head" type="Sprite" parent="."]
@@ -379,7 +378,6 @@ position = Vector2( 43.9353, -85.5332 )
 shape = SubResource( 24 )
 
 [node name="DetectArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 64
 
 [node name="AreaShape" type="CollisionShape2D" parent="DetectArea"]
