@@ -157,6 +157,7 @@ material = SubResource( 12 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 flip_h = true
 
@@ -165,7 +166,6 @@ material = SubResource( 10 )
 position = Vector2( -1, -5 )
 scale = Vector2( 0.613333, 0.613334 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Explosion" type="Node2D" parent="."]

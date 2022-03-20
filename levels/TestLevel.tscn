@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tiles/tileset_forest.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://collectables/powerups/PowerUp.tscn" type="PackedScene" id=7]
 [ext_resource path="res://others/mouse/Mouse.tscn" type="PackedScene" id=8]
 [ext_resource path="res://enemy/sprites_enemy3/FlyerEnemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://enemy/sprites_enemy4/SmallFlyerEnemy.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -352,7 +353,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 position = Vector2( 3131, 192 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 288, -54 )
+position = Vector2( -325, -90 )
 
 [node name="TileMap" type="TileMap" parent="." groups=["tilemap"]]
 z_index = -5
@@ -366,15 +367,18 @@ tile_data = PoolIntArray( 65528, 0, 0, 65529, 2, 0, 65530, 2, 0, 65531, 2, 0, 65
 position = Vector2( 654, 59 )
 
 [node name="FollowerEnemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 954, 126 )
+position = Vector2( 1028, 133 )
 
 [node name="FlyerEnemy" parent="." instance=ExtResource( 9 )]
-position = Vector2( -416, -197 )
+position = Vector2( 1645, -80 )
+
+[node name="SmallFlyerEnemy" parent="." instance=ExtResource( 10 )]
+position = Vector2( 134, -113 )
 
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource( 6 )]
-position = Vector2( 805, -107 )
+position = Vector2( 695, -117 )
 scale = Vector2( 2, 2 )
 
 [node name="Coin2" parent="Coins" instance=ExtResource( 6 )]
@@ -392,12 +396,12 @@ position = Vector2( 1023, 111 )
 scale = Vector2( 4, 4 )
 
 [node name="PowerUp2" parent="PowerUps" instance=ExtResource( 7 )]
-position = Vector2( 948, -27 )
+position = Vector2( 827, -40 )
 scale = Vector2( 4, 4 )
 type = 1
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [node name="Mouse" parent="." instance=ExtResource( 8 )]
+position = Vector2( -2277, 108 )
 scale = Vector2( 4, 4 )
-frame = 0
