@@ -431,7 +431,6 @@ type = 1
 
 [node name="Mouse" parent="." instance=ExtResource( 8 )]
 scale = Vector2( 4, 4 )
-frame = 0
 
 [node name="MeleeEnemy" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1734, -238 )

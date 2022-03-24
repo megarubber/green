@@ -51,7 +51,13 @@ func animation() -> void:
 			sword_anim.play("attack_left")
 			flip_sword(true)
 			can_flip = false
-			yield(get_tree().create_timer(1), "timeout")
+			var t_d = Timer.new()
+			t_d.set_wait_time(1)
+			t_d.set_one_shot(true)
+			self.add_child(t_d)
+			t_d.start()
+			yield(t_d, "timeout")
+			t_d.queue_free()
 			can_flip = true
 		elif can_flip && !distance:
 			flip_sword(false)
