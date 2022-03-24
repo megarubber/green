@@ -1,6 +1,7 @@
 extends AnimatedSprite
 
 func _ready():
+	set_as_toplevel(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _process(_delta):
