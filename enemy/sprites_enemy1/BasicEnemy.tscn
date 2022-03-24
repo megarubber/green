@@ -19,7 +19,7 @@
 [ext_resource path="res://others/explosion/ex_8.png" type="Texture" id=17]
 [ext_resource path="res://others/explosion/ex_1.png" type="Texture" id=18]
 
-[sub_resource type="Shader" id=11]
+[sub_resource type="Shader" id=15]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -34,7 +34,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=12]
 resource_local_to_scene = true
-shader = SubResource( 11 )
+shader = SubResource( 15 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
@@ -46,7 +46,7 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=16]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -62,7 +62,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=10]
 resource_local_to_scene = true
-shader = SubResource( 9 )
+shader = SubResource( 16 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
@@ -157,7 +157,7 @@ material = SubResource( 12 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 2
+frame = 5
 playing = true
 flip_h = true
 
@@ -166,6 +166,7 @@ material = SubResource( 10 )
 position = Vector2( -1, -5 )
 scale = Vector2( 0.613333, 0.613334 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="Explosion" type="Node2D" parent="."]

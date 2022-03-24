@@ -12,7 +12,7 @@ var speed = 15
 
 # Node Referencing
 onready var enemy = $Enemy
-onready var body = $Enemy/Body
+onready var body_s = $Enemy/Body
 onready var head = $Enemy/Head
 onready var collider = $Enemy/CollisionShape2D
 onready var l_damage_area = $Enemy/LeftDamageArea
@@ -91,7 +91,7 @@ func death() -> void:
 	
 	# Sprite & lifebar invisibles
 	#lifebar.visible = false
-	body.visible = false
+	body_s.visible = false
 	head.visible = false
 	fire.visible = false
 	gun.visible = false
@@ -110,20 +110,20 @@ func take_damage() -> void:
 	anim.play("flash")
 	lifebar.damage(DAMAGE)
 
-func _on_LeftDamageArea_area_entered(area):
+func _on_LeftDamageArea_area_entered(area) -> void:
 	Global.hit_side = -1
 	if area.is_in_group("bullets_player"):
 		take_damage()
 		area.queue_free()
 
-func _on_RightDamageArea_area_entered(area):
+func _on_RightDamageArea_area_entered(area) -> void:
 	Global.hit_side = 1
 	if area.is_in_group("bullets_player"):
 		take_damage()
 		area.queue_free()
 
-func _on_DetectArea_body_entered(_body):
+func _on_DetectArea_body_entered(_body) -> void:
 	founded = true
 
-func _on_DetectArea_body_exited(_body):
+func _on_DetectArea_body_exited(_body) -> void:
 	founded = false

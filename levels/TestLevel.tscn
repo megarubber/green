@@ -405,3 +405,4 @@ type = 1
 [node name="Mouse" parent="." instance=ExtResource( 8 )]
 position = Vector2( -2277, 108 )
 scale = Vector2( 4, 4 )
+frame = 0

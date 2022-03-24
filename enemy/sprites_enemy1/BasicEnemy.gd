@@ -35,7 +35,7 @@ func _physics_process(_delta) -> void:
 			
 		# Change direction
 		if is_on_wall() || !raycast.is_colliding():
-			direction = direction * -1
+			direction *= -1
 			raycast.position.x *= -1
 			sprite.flip_h = !sprite.flip_h
 	else:

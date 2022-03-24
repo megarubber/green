@@ -87,19 +87,22 @@ func _physics_process(_delta: float) -> void: # Physics update
 
 func _on_DamageArea_area_entered(area)  -> void:
 	if area.is_in_group("hitbox") && !hit:
-		var knock_side = knockback * Global.hit_side
-		motion.x -= lerp(motion.x, -knock_side, 0.1)
-		#motion.y = lerp(0, -knockup, 0.6)
-		motion = move_and_slide(motion, UP)
-		hit = true
-		blink()
-		if lifebar != null:
-			lifebar.damage(DAMAGE)
-		
+		take_damage()
+
 func player_visible(value : bool) -> void:
 	body_sprite.visible = value
 	head_sprite.visible = value
 	gun.visible = value
+
+func take_damage() -> void:
+	var knock_side = knockback * Global.hit_side
+	motion.x -= lerp(motion.x, -knock_side, 0.1)
+	#motion.y = lerp(0, -knockup, 0.6)
+	motion = move_and_slide(motion, UP)
+	hit = true
+	blink()
+	if lifebar != null:
+		lifebar.damage(DAMAGE)	
 
 func blink() -> void:
 	anim_eyes.play("damage")

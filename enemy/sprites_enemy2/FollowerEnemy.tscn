@@ -51,7 +51,7 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[sub_resource type="Shader" id=14]
+[sub_resource type="Shader" id=27]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -66,11 +66,11 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=15]
 resource_local_to_scene = true
-shader = SubResource( 14 )
+shader = SubResource( 27 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
-[sub_resource type="Shader" id=25]
+[sub_resource type="Shader" id=30]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -85,7 +85,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=22]
 resource_local_to_scene = true
-shader = SubResource( 25 )
+shader = SubResource( 30 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
@@ -102,7 +102,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Shader" id=12]
+[sub_resource type="Shader" id=29]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -117,7 +117,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=13]
 resource_local_to_scene = true
-shader = SubResource( 12 )
+shader = SubResource( 29 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
@@ -325,6 +325,7 @@ material = SubResource( 17 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 
 [node name="Head" type="Sprite" parent="."]

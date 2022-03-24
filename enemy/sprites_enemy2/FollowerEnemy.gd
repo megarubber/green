@@ -20,7 +20,7 @@ onready var collider = $CollisionShape2D
 onready var l_damage_area = $LeftDamageArea
 onready var r_damage_area = $RightDamageArea
 onready var explosions = $Explosion
-onready var body = $Body
+onready var body_s = $Body
 onready var detect_area = $DetectArea
 
 # Get Player Node
@@ -127,7 +127,7 @@ func death():
 	gun.visible = false
 	head.visible = false
 	wheel.visible = false
-	body.visible = false
+	body_s.visible = false
 	
 	# Wait a time before delete enemy
 	var t_d = Timer.new()
