@@ -86,7 +86,7 @@ animations = [ {
 extents = Vector2( 40, 109 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 37.9076, 177.717 )
+extents = Vector2( 37.9076, 175.271 )
 
 [sub_resource type="Animation" id=13]
 length = 0.001
@@ -157,13 +157,13 @@ material = SubResource( 12 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 5
+frame = 2
 playing = true
 flip_h = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 10 )
-position = Vector2( -1, -5 )
+position = Vector2( -1, -2 )
 scale = Vector2( 0.613333, 0.613334 )
 frames = SubResource( 5 )
 frame = 1
@@ -217,7 +217,7 @@ collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDamageArea"]
-position = Vector2( -37.9076, -76.6304 )
+position = Vector2( -37.9076, -73.3696 )
 shape = SubResource( 7 )
 
 [node name="RightDamageArea" type="Area2D" parent="." groups=["hitbox"]]
@@ -227,7 +227,7 @@ collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightDamageArea"]
-position = Vector2( 37.5, -74.9999 )
+position = Vector2( 37.5, -72.5544 )
 shape = SubResource( 7 )
 
 [node name="Lifebar" parent="." instance=ExtResource( 10 )]
