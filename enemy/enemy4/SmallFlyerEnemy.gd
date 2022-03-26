@@ -76,11 +76,13 @@ func _on_LeftDamageArea_area_entered(area):
 	Global.hit_side = -1
 	if area.is_in_group("bullets_player"):
 		take_damage()
+		area.queue_free()
 
 func _on_RightDamageArea_area_entered(area):
 	Global.hit_side = 1
 	if area.is_in_group("bullets_player"):
 		take_damage()
+		area.queue_free()
 
 # take damage
 func take_damage() -> void:

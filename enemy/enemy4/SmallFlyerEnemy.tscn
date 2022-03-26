@@ -26,6 +26,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
 shader = SubResource( 5 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
@@ -68,7 +69,7 @@ tracks/0/keys = {
 }
 
 [node name="SmallFlyerEnemy" type="KinematicBody2D" groups=["enemy"]]
-collision_layer = 8
+collision_layer = 128
 collision_mask = 0
 script = ExtResource( 2 )
 
@@ -98,6 +99,7 @@ scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 8 )
 
 [node name="DetectArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 64
 
 [node name="AreaShape" type="CollisionShape2D" parent="DetectArea"]
