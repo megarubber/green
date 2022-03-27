@@ -52,8 +52,12 @@ func death() -> void:
 	queue_free()
 
 func _physics_process(_delta) -> void:
-	if founded:
-		motion = position.direction_to(player.position) * speed
+	if founded && !lifebar.getDeath():
+		if player.hit:
+			speed = 0.2
+		else:
+			speed = 5
+		motion = global_position.direction_to(player.global_position) * speed
 	else:
 		motion = Vector2.ZERO
 	sprite.rotation_degrees += 1

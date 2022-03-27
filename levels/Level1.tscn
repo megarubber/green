@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tiles/tileset_forest.png" type="Texture" id=2]
@@ -11,7 +11,13 @@
 [ext_resource path="res://enemy/enemy5/MeleeEnemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://levels/background/mountain.png" type="Texture" id=10]
 [ext_resource path="res://levels/background/sky.png" type="Texture" id=11]
-[ext_resource path="res://levels/background/city.png" type="Texture" id=12]
+[ext_resource path="res://levels/background/city2.png" type="Texture" id=12]
+[ext_resource path="res://levels/tiles/bridge-3.png" type="Texture" id=13]
+[ext_resource path="res://levels/tiles/bridge-1.png" type="Texture" id=14]
+[ext_resource path="res://levels/tiles/bridge-2.png" type="Texture" id=15]
+[ext_resource path="res://levels/tiles/bridge-d-1.png" type="Texture" id=16]
+[ext_resource path="res://levels/tiles/bridge-d-2.png" type="Texture" id=17]
+[ext_resource path="res://levels/tiles/bridge-d-3.png" type="Texture" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -350,15 +356,133 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 13/z_index = 0
+14/name = "tileset_forest.png 14"
+14/texture = ExtResource( 2 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 0, 128, 64, 64 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shape_offset = Vector2( 0, 0 )
+14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+14/shape_one_way = false
+14/shape_one_way_margin = 0.0
+14/shapes = [  ]
+14/z_index = 0
+15/name = "tileset_forest.png 15"
+15/texture = ExtResource( 2 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 64, 128, 64, 64 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shape_offset = Vector2( 0, 0 )
+15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+15/shape_one_way = false
+15/shape_one_way_margin = 0.0
+15/shapes = [  ]
+15/z_index = 0
+16/name = "tileset_forest.png 16"
+16/texture = ExtResource( 2 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 128, 128, 64, 64 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shape_offset = Vector2( 0, 0 )
+16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+16/shape_one_way = false
+16/shape_one_way_margin = 0.0
+16/shapes = [  ]
+16/z_index = 0
+17/name = "tileset_forest.png 17"
+17/texture = ExtResource( 2 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 192, 128, 64, 64 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shape_offset = Vector2( 0, 0 )
+17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+17/shape_one_way = false
+17/shape_one_way_margin = 0.0
+17/shapes = [  ]
+17/z_index = 0
+18/name = "tileset_forest.png 18"
+18/texture = ExtResource( 2 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 256, 128, 64, 64 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shape_offset = Vector2( 0, 0 )
+18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+18/shape_one_way = false
+18/shape_one_way_margin = 0.0
+18/shapes = [  ]
+18/z_index = 0
+19/name = "tileset_forest.png 19"
+19/texture = ExtResource( 2 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 320, 128, 64, 64 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shape_offset = Vector2( 0, 0 )
+19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+19/shape_one_way = false
+19/shape_one_way_margin = 0.0
+19/shapes = [  ]
+19/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 37.5, 115.25 )
 
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 6.93333, 0.0666672 )
+
 [node name="Level1" type="Node2D"]
 position = Vector2( 512, 192 )
 
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/Sky"]
+position = Vector2( 21.3481, -528.961 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 11 )
+centered = false
+
+[node name="Mountain" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2( 960, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/Mountain"]
+position = Vector2( 0, -112 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="City" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2( 2073.6, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/City"]
+position = Vector2( -1.51366, 121.928 )
+scale = Vector2( 2.7, 2.7 )
+texture = ExtResource( 12 )
+centered = false
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1340, -24 )
+position = Vector2( 1424, -144 )
 
 [node name="TileMap" type="TileMap" parent="." groups=["tilemap"]]
 position = Vector2( 1, 0 )
@@ -387,20 +511,116 @@ collision_mask = 8
 position = Vector2( 3185, 338 )
 shape = SubResource( 16 )
 
+[node name="Bridge1" type="StaticBody2D" parent="Objects" groups=["bridge"]]
+collision_layer = 2
+collision_mask = 9
+
+[node name="Bridge-1" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 4694.44, 850.071 )
+texture = ExtResource( 14 )
+
+[node name="Bridge-2" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 4814, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-3" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 4879, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-4" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 4944, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-5" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5009, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-6" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5074, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-7" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5139, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-8" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5204, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-9" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5269, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-10" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5334, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-11" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5399, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-12" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5464, 850 )
+texture = ExtResource( 15 )
+
+[node name="Bridge-13" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5520, 850 )
+texture = ExtResource( 13 )
+
+[node name="Bridge-d-1" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 4715.86, 850.056 )
+texture = ExtResource( 16 )
+
+[node name="Bridge-d-2" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5040, 850.056 )
+texture = ExtResource( 16 )
+
+[node name="Bridge-d-3" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5040, 850.056 )
+texture = ExtResource( 16 )
+
+[node name="Bridge-d-4" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5040, 850.056 )
+texture = ExtResource( 16 )
+
+[node name="Bridge-d-5" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 4712, 928 )
+z_index = -6
+texture = ExtResource( 17 )
+
+[node name="Bridge-d-6" type="Sprite" parent="Objects/Bridge1"]
+position = Vector2( 5504, 928 )
+z_index = -6
+texture = ExtResource( 18 )
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Objects/Bridge1"]
+position = Vector2( 5088, 900 )
+scale = Vector2( 60, 60 )
+shape = SubResource( 17 )
+
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2( 654, 59 )
 
 [node name="BasicEnemy" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 2760.28, -127.365 )
+position = Vector2( 2706, 125 )
+
+[node name="BasicEnemy3" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 1506, -115 )
+
+[node name="BasicEnemy5" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 2010, -115 )
+
+[node name="BasicEnemy2" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 4562, 605 )
 
 [node name="BasicEnemy4" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 2807.11, 184.506 )
+position = Vector2( 3842, 597 )
 
 [node name="MeleeEnemy" parent="Enemies" instance=ExtResource( 9 )]
-position = Vector2( 3656.33, 660.216 )
+position = Vector2( 3202, 181 )
 
-[node name="SmallFlyerEnemy2" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 1698.77, -234.832 )
+[node name="SmallFlyerEnemy4" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 5322, 597 )
 
 [node name="Coins" type="Node2D" parent="."]
 
@@ -427,37 +647,6 @@ position = Vector2( 3354, -644 )
 scale = Vector2( 4, 4 )
 type = 1
 
-[node name="HUD" parent="." instance=ExtResource( 5 )]
-
 [node name="Mouse" parent="." instance=ExtResource( 8 )]
 scale = Vector2( 4, 4 )
 frame = 0
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1920, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky"]
-position = Vector2( 0, -774.466 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 11 )
-centered = false
-
-[node name="Mountain" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 960, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/Mountain"]
-position = Vector2( 0, -112 )
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 10 )
-centered = false
-
-[node name="City" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1792, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/City"]
-position = Vector2( 0, 9.54848 )
-scale = Vector2( 3.5, 3.5 )
-texture = ExtResource( 12 )
-centered = false

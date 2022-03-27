@@ -10,6 +10,7 @@ var delay = 0.7
 # Nodes Referencing
 onready var animation = $AnimationBullet
 onready var collision = $CollisionShape2D
+onready var sprite = $Sprite
 
 # Get Player Node
 onready var player = get_tree().get_current_scene().get_node("Player")
@@ -24,6 +25,7 @@ func _ready() -> void:
 	
 	animation.play("Default")
 	set_as_toplevel(true)
+	sprite.set_z_index(-3)
 
 # When timer ends
 func on_timeout_complete() -> void:
@@ -44,14 +46,14 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 func _on_Bullet_body_entered(body) -> void:
 	if !touched:
-		touched = true
-	
 		if body.is_in_group("tilemap"):
+			touched = true
 			collision.set_deferred("disabled", true)
 			animation.play("Explosion")
 			timer.start()
 		
 		if body.is_in_group("enemy") || body.is_in_group("player"):
+			touched = true
 			queue_free()
 
 func _on_DamageArea_area_entered(_area):

@@ -21,6 +21,7 @@ boss
 parallax e background
 baús
 inventário básico
+efeitos na tela (shaders)
 
 // Inimigos
 Voador
