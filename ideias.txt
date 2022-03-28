@@ -22,6 +22,7 @@ parallax e background
 baús
 inventário básico
 efeitos na tela (shaders)
+sistema de combo
 
 // Inimigos
 Voador

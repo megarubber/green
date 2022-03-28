@@ -24,8 +24,6 @@ onready var explosions = $Explosion
 func _ready() -> void:
 	# When starts, it will play hide explosions
 	explosions.visible = false
-	sprite.set_z_index(-3)
-	wheel.set_z_index(-3)
 
 func _physics_process(_delta) -> void:
 	# Tests if player is dead
