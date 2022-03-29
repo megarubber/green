@@ -323,6 +323,7 @@ position = Vector2( 18.8, -4.8 )
 current = true
 zoom = Vector2( 1.7, 1.7 )
 limit_left = 1800
+limit_bottom = 1750
 smoothing_enabled = true
 
 [node name="Screenshake" type="Node" parent="Camera"]
