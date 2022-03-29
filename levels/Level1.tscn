@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tiles/tileset_forest.png" type="Texture" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://levels/background/box.png" type="Texture" id=32]
 [ext_resource path="res://levels/background/collection.png" type="Texture" id=33]
 [ext_resource path="res://levels/tiles/ForestTiles.tres" type="TileSet" id=34]
+[ext_resource path="res://levels/plataforms/MovingPlataform.tscn" type="PackedScene" id=35]
 
 [sub_resource type="Shader" id=18]
 code = "shader_type canvas_item;
@@ -1037,7 +1038,7 @@ z_index = -5
 texture = ExtResource( 30 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1404.78, -150.42 )
+position = Vector2( 6073.09, 704.843 )
 
 [node name="Objects_Front" type="Node2D" parent="."]
 
@@ -1257,12 +1258,18 @@ position = Vector2( 4316.85, 694.269 )
 scale = Vector2( 2, 2 )
 
 [node name="Coin6" parent="Coins" instance=ExtResource( 6 )]
-position = Vector2( 6340.52, 837.738 )
+position = Vector2( 6160.92, 839.152 )
 scale = Vector2( 2, 2 )
 
 [node name="Coin7" parent="Coins" instance=ExtResource( 6 )]
 position = Vector2( 6340.52, 426.209 )
 scale = Vector2( 2, 2 )
+
+[node name="MovingPlataform" parent="Coins" instance=ExtResource( 35 )]
+position = Vector2( 6326.05, 869 )
+scale = Vector2( 4, 4 )
+horizontal = false
+distance = 120
 
 [node name="PowerUps" type="Node2D" parent="."]
 
@@ -1271,7 +1278,7 @@ position = Vector2( 2959, -39 )
 scale = Vector2( 4, 4 )
 
 [node name="PowerUp2" parent="PowerUps" instance=ExtResource( 7 )]
-position = Vector2( 6066.4, 780.886 )
+position = Vector2( 6089.03, 759.673 )
 scale = Vector2( 4, 4 )
 type = 1
 
