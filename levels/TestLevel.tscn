@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tiles/tileset_forest.png" type="Texture" id=2]
-[ext_resource path="res://enemy/enemy5/MeleeEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemy/enemy2/FollowerEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemy/enemy1/BasicEnemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://others/hud/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://collectables/coin/Coin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://collectables/powerups/PowerUp.tscn" type="PackedScene" id=7]
@@ -391,5 +392,10 @@ type = 1
 position = Vector2( -2277, 108 )
 scale = Vector2( 4, 4 )
 
-[node name="MeleeEnemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( -32, -195 )
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="FollowerEnemy" parent="Node2D" instance=ExtResource( 3 )]
+position = Vector2( 262, -281 )
+
+[node name="BasicEnemy" parent="Node2D" instance=ExtResource( 4 )]
+position = Vector2( 756, 96 )

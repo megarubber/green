@@ -77,7 +77,7 @@ func _physics_process(_delta) -> void:
 	if founded && !lifebar.getDeath():
 		speed = SPEED_FOUNDED
 		if raycast.is_colliding():
-			motion = (player_pos.position - position).normalized()
+			motion = (player_pos.global_position - global_position).normalized()
 		else:
 			motion.x = 0
 		
@@ -161,8 +161,10 @@ func _on_RightDamageArea_area_entered(area) -> void:
 		take_damage()
 		timer.start()
 
-func _on_DetectArea_body_entered(_body) -> void:
-	founded = true
+func _on_DetectArea_body_entered(body) -> void:
+	if body.is_in_group("player"):
+		founded = true
 
-func _on_DetectArea_body_exited(_body) -> void:
-	founded = false
+func _on_DetectArea_body_exited(body) -> void:
+	if body.is_in_group("player"):
+		founded = false

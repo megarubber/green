@@ -2,6 +2,7 @@ extends Node2D
 
 onready var plataform = $Plataform
 onready var tween = $Tween
+onready var anim = $Plataform/AnimationPlayer
 
 export var speed = 3.0
 export var horizontal = true
@@ -12,6 +13,7 @@ var follow = Vector2.ZERO
 const WAIT_DURATION = 1.0
 
 func _ready() -> void:
+	anim.play("default")
 	_start_tween()
 
 func _start_tween() -> void:
@@ -27,5 +29,5 @@ func _start_tween() -> void:
 	)
 	tween.start()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta) -> void:
 	plataform.position = plataform.position.linear_interpolate(follow, 0.05)

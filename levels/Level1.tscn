@@ -1199,6 +1199,12 @@ position = Vector2( 5088, 900 )
 scale = Vector2( 60, 60 )
 shape = SubResource( 17 )
 
+[node name="MovingPlataform" parent="Objects_Front" instance=ExtResource( 35 )]
+position = Vector2( 6326.05, 869 )
+scale = Vector2( 4, 4 )
+horizontal = false
+distance = 120
+
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2( 654, 59 )
 
@@ -1265,22 +1271,13 @@ scale = Vector2( 2, 2 )
 position = Vector2( 6340.52, 426.209 )
 scale = Vector2( 2, 2 )
 
-[node name="MovingPlataform" parent="Coins" instance=ExtResource( 35 )]
-position = Vector2( 6326.05, 869 )
-scale = Vector2( 4, 4 )
-horizontal = false
-distance = 120
-
 [node name="PowerUps" type="Node2D" parent="."]
 
-[node name="PowerUp" parent="PowerUps" instance=ExtResource( 7 )]
-position = Vector2( 2959, -39 )
-scale = Vector2( 4, 4 )
-
 [node name="PowerUp2" parent="PowerUps" instance=ExtResource( 7 )]
-position = Vector2( 6089.03, 759.673 )
+position = Vector2( 7177.15, 255.885 )
 scale = Vector2( 4, 4 )
 type = 1
 
 [node name="Mouse" parent="." instance=ExtResource( 8 )]
 scale = Vector2( 4, 4 )
+frame = 0
