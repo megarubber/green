@@ -42,6 +42,9 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="Plataform" type="KinematicBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+motion/sync_to_physics = true
 
 [node name="Sprite" type="Sprite" parent="Plataform"]
 texture = ExtResource( 1 )
@@ -50,6 +53,7 @@ hframes = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataform"]
 position = Vector2( -0.000420094, 0.496293 )
 shape = SubResource( 1 )
+one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Plataform"]
 anims/RESET = SubResource( 3 )

@@ -9,6 +9,7 @@ const MAX_SPEED_NORMAL = 350
 const MAX_SPEED_POWERUP = 550
 const MAX_JUMP_HEIGHT_NORMAL = -850
 const MAX_JUMP_HEIGHT_POWERUP = -1000
+const DROP_THRU_BIT = 1
 
 # General Variables
 var motion = Vector2()
@@ -58,6 +59,9 @@ func flip() -> void: # Flipping sprite function
 func movement() -> void: # Player's movement function
 	motion.y += GRAVITY
 	var friction = false
+	
+	if Input.is_action_pressed("ui_down"):
+		set_collision_mask_bit(DROP_THRU_BIT, false)
 	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION, max_speed)
@@ -130,3 +134,6 @@ func _powerup(type):
 			max_jump_height = MAX_JUMP_HEIGHT_POWERUP
 			yield(get_tree().create_timer(5), "timeout")
 			max_jump_height = MAX_JUMP_HEIGHT_NORMAL
+
+func _on_DropPlataformArea_body_exited(_body):
+	set_collision_mask_bit(DROP_THRU_BIT, true)
