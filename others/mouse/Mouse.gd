@@ -6,3 +6,8 @@ func _ready():
 
 func _process(_delta):
 	global_position = get_global_mouse_position()
+	match Global.is_playing:
+		true:
+			play("aim")
+		false:
+			play("default")

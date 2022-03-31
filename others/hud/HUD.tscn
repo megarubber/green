@@ -5,6 +5,7 @@
 [ext_resource path="res://others/hud/CounterCoins.gd" type="Script" id=3]
 [ext_resource path="res://others/hud/health_heart.png" type="Texture" id=4]
 [ext_resource path="res://others/hud/HUD.gd" type="Script" id=5]
+[ext_resource path="res://others/mouse/Mouse.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -17,7 +18,7 @@ font_data = SubResource( 1 )
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:color")
+tracks/0/path = NodePath("../../Coins:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -26,10 +27,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Health:modulate")
+tracks/1/path = NodePath("../../Health:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -41,7 +42,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Coins:modulate")
+tracks/2/path = NodePath(".:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -51,21 +52,6 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "black"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 0.666667 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -83,7 +69,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.666667 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Health:modulate")
+tracks/1/path = NodePath("../../Health:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -95,7 +81,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Coins:modulate")
+tracks/2/path = NodePath("../../Coins:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -162,16 +148,25 @@ custom_fonts/font = SubResource( 2 )
 text = "0"
 script = ExtResource( 3 )
 
-[node name="BlackScreen" type="ColorRect" parent="."]
+[node name="GameOver" type="Control" parent="."]
 visible = false
-margin_left = -13.0
-margin_right = 1042.0
-margin_bottom = 618.0
+margin_left = 813.0
+margin_top = 28.0
+margin_right = 853.0
+margin_bottom = 68.0
+
+[node name="BlackScreen" type="ColorRect" parent="GameOver"]
+margin_left = -826.0
+margin_top = -28.0
+margin_right = 229.0
+margin_bottom = 590.0
 color = Color( 0, 0, 0, 0 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BlackScreen"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver/BlackScreen"]
 anims/RESET = SubResource( 4 )
-anims/black = SubResource( 5 )
 anims/fade_in = SubResource( 3 )
 
-[connection signal="animation_finished" from="BlackScreen/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[node name="Mouse" parent="." instance=ExtResource( 6 )]
+scale = Vector2( 3, 3 )
+
+[connection signal="animation_finished" from="GameOver/BlackScreen/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

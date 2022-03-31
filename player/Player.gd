@@ -38,6 +38,7 @@ onready var collider = $CollisionShape2D
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
 
 func _ready() -> void:
+	Global.is_playing = true
 	wings.visible = false
 	z_index = -2
 	for powerup in get_parent().get_node("PowerUps").get_children():
@@ -107,6 +108,7 @@ func death() -> void:
 		emit_signal("player_death")
 		wings.visible = true
 		deactivate_all_colliders()
+		Global.is_playing = false
 	
 func deactivate_all_colliders() -> void:
 	drop.monitorable = false
