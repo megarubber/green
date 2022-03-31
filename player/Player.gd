@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+# Signal
+signal player_death()
+
 # Constants
 const UP = Vector2(0, -1)
 const GRAVITY = 20
@@ -23,33 +26,40 @@ var max_jump_height = -850
 onready var body_sprite = $BodySprite
 onready var head_sprite = $HeadSprite
 onready var gun = $GunSprite
-onready var animation = $AnimationPlayer
+onready var anim = $AnimationPlayer
 onready var screen_shake = $Camera/Screenshake
 onready var damage_area = $DamageArea
 onready var anim_eyes = $HeadSprite/AnimationEyes
+onready var wings = $Wings
+onready var drop = $DropPlataformArea
+onready var collider = $CollisionShape2D
 
 # Referencing lifebar from HUD
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
 
 func _ready() -> void:
+	wings.visible = false
 	z_index = -2
 	for powerup in get_parent().get_node("PowerUps").get_children():
 		powerup.connect("player_entered", self, "_powerup")
 
-func execute_animation() -> void: # Player's animation function
-	if is_on_floor():
+func animation() -> void: # Player's animation function
+	if is_on_floor() && !lifebar.getDeath():
 		if motion.x != 0:
-			animation.play("run")
+			anim.play("run")
 		else:
-			animation.play("idle")
-	else:
+			anim.play("idle")
+	elif !is_on_floor() && !lifebar.getDeath():
 		if motion.y < 0:
-			animation.play("jump")
+			anim.play("jump")
 		else:
-			animation.play("fall")
+			anim.play("fall")
 
 func flip() -> void: # Flipping sprite function
-	head_sprite.set_flip_h(get_global_mouse_position().x < global_position.x)
+	if !lifebar.getDeath():
+		head_sprite.set_flip_h(get_global_mouse_position().x < global_position.x)
+	else:
+		head_sprite.set_flip_h(false)
 	
 	if motion.x > 0:
 		body_sprite.flip_h = false
@@ -63,31 +73,59 @@ func movement() -> void: # Player's movement function
 	if Input.is_action_pressed("ui_down"):
 		set_collision_mask_bit(DROP_THRU_BIT, false)
 	
-	if Input.is_action_pressed("ui_right"):
-		motion.x = min(motion.x + ACCELERATION, max_speed)
-	elif Input.is_action_pressed("ui_left"):
-		motion.x = max(motion.x - ACCELERATION, -max_speed)
+	if !lifebar.getDeath():
+		if Input.is_action_pressed("ui_right"):
+			motion.x = min(motion.x + ACCELERATION, max_speed)
+		elif Input.is_action_pressed("ui_left"):
+			motion.x = max(motion.x - ACCELERATION, -max_speed)
+		else:
+			motion.x = 0
+			friction = true
+			
+		if is_on_floor():
+			if Input.is_action_just_pressed("ui_up"):
+				motion.y = max_jump_height
+			if friction == true:
+				motion.x = lerp(motion.x, 0, 0.2)
+		else:
+			if friction == true:
+				motion.x = lerp(motion.x, 0, 0.05)
+			if Input.is_action_just_released("ui_up") && motion.y < 0:
+				motion.y = 0
 	else:
-		motion.x = 0
+		death()
 		friction = true
-	
-	if is_on_floor():
-		if Input.is_action_just_pressed("ui_up"):
-			motion.y = max_jump_height
-		if friction == true:
-			motion.x = lerp(motion.x, 0, 0.2)
-	else:
-		if friction == true:
-			motion.x = lerp(motion.x, 0, 0.05)
-		if Input.is_action_just_released("ui_up") && motion.y < 0:
-			motion.y = 0
 	
 	motion = move_and_slide(motion, UP)
 
+func death() -> void:
+	motion.x = 0
+	motion.y = min(0, motion.y - 30)
+	anim_eyes.play("damage")
+	anim.play("dead")
+	if !wings.visible:
+		emit_signal("player_death")
+		wings.visible = true
+		deactivate_all_colliders()
+	
+func deactivate_all_colliders() -> void:
+	drop.monitorable = false
+	drop.monitoring = false
+	damage_area.monitorable = false
+	damage_area.monitoring = false
+	collider.disabled = true
+
 func _physics_process(_delta: float) -> void: # Physics update
 	movement()
+		
+func _process(_delta: float) -> void:
 	flip()
-	execute_animation()
+	animation()
+	debug_inputs()
+	
+func debug_inputs():
+	if Input.is_key_pressed(KEY_KP_1):
+		lifebar.damage(80)
 
 func _on_DamageArea_area_entered(area)  -> void:
 	if area.is_in_group("hitbox") && !hit:
@@ -104,9 +142,11 @@ func take_damage() -> void:
 	#motion.y = lerp(0, -knockup, 0.6)
 	motion = move_and_slide(motion, UP)
 	hit = true
-	blink()
+		
 	if lifebar != null:
-		lifebar.damage(DAMAGE)	
+		lifebar.damage(DAMAGE)
+		if !lifebar.getDeath():
+			blink()
 
 func blink() -> void:
 	anim_eyes.play("damage")

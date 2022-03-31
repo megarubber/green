@@ -22,12 +22,12 @@ func _ready() -> void:
 			sprite.play("gun")
 	sprite.scale = Vector2(1, 1)
 
-func _on_Coin_body_entered(body) -> void:
+func _on_AnimatedSprite_animation_finished() -> void:
+	if sprite.get_animation() == "collected":
+		queue_free()
+
+func _on_PowerUp_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		emit_signal("player_entered", type)
 		sprite.play("collected")
 		sprite.scale = Vector2(0.7, 0.7)
-
-func _on_AnimatedSprite_animation_finished() -> void:
-	if sprite.get_animation() == "collected":
-		queue_free()

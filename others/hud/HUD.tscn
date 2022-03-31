@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://others/hud/coin-counter.png" type="Texture" id=2]
 [ext_resource path="res://others/hud/CounterCoins.gd" type="Script" id=3]
 [ext_resource path="res://others/hud/health_heart.png" type="Texture" id=4]
+[ext_resource path="res://others/hud/HUD.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -13,7 +14,101 @@ font_path = "res://others/fonts/Pixellari.ttf"
 size = 50
 font_data = SubResource( 1 )
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Health:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Coins:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "black"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.666667 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.666667 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Health:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Coins:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource( 5 )
 
 [node name="Health" type="Control" parent="."]
 margin_left = -13.0
@@ -66,3 +161,17 @@ custom_colors/font_color = Color( 0.443137, 0.392157, 0.105882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "0"
 script = ExtResource( 3 )
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+visible = false
+margin_left = -13.0
+margin_right = 1042.0
+margin_bottom = 618.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BlackScreen"]
+anims/RESET = SubResource( 4 )
+anims/black = SubResource( 5 )
+anims/fade_in = SubResource( 3 )
+
+[connection signal="animation_finished" from="BlackScreen/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
