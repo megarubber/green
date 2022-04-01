@@ -17,8 +17,13 @@ func _ready() -> void:
 			level_number_label.set_text("STAGE 01")
 			level_name_label.set_text("Samueland City")
 	var player = get_tree().get_current_scene().get_node("Player")
+	
+	enable_pause_buttons(false)
+	
 	player.connect("player_death", self, "_player_death")
 	invisible_special_screens()
+	
+	# Name and Stage Number Initializing
 	start.visible = true
 	start_anim.play("start")
 
@@ -32,8 +37,11 @@ func pause_game(value : bool) -> void:
 		Global.is_playing = false
 		pause_screen.visible = true
 		pause_screen_anim.play("paused")
+		yield(get_tree().create_timer(0.7), "timeout")
+		enable_pause_buttons(true)
 	else:
 		pause_screen_anim.play_backwards("paused")
+		enable_pause_buttons(false)
 		yield(get_tree().create_timer(1), "timeout")
 		get_tree().paused = false
 		Global.is_playing = true
@@ -56,5 +64,10 @@ func _on_AnimationPlayerStart_animation_finished(_anim_name) -> void:
 func _on_BtnTryAgain_pressed() -> void:
 	var _result = get_tree().reload_current_scene()
 
-func _on_BtnResume_pressed():
+func _on_BtnResume_pressed() -> void:
 	pause_game(false)
+
+func enable_pause_buttons(value : bool) -> void:
+	pause_screen.get_node("Board/BtnRestart").disabled = !value
+	pause_screen.get_node("Board/BtnSettings").disabled = !value
+	pause_screen.get_node("Board/BtnResume").disabled = !value

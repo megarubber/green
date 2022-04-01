@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://others/hud/coin-counter.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://others/buttons/hover.png" type="Texture" id=8]
 [ext_resource path="res://others/buttons/pressed.png" type="Texture" id=9]
 [ext_resource path="res://others/pause/pause_screen.png" type="Texture" id=10]
+[ext_resource path="res://others/buttons/disabled.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -298,6 +299,18 @@ font_path = "res://others/fonts/8-BIT WONDER.TTF"
 size = 6
 font_data = SubResource( 20 )
 
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 44, 12 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 44, 12 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 44, 12 )
+
 [sub_resource type="Animation" id=17]
 length = 0.001
 tracks/0/type = "value"
@@ -468,7 +481,7 @@ anchor_bottom = 1.0
 margin_left = -10.0
 margin_top = 246.0
 margin_right = 1033.0
-margin_bottom = 412.0
+margin_bottom = 372.0
 color = Color( 0, 0, 0, 0.380392 )
 
 [node name="LevelNumber" type="Label" parent="StartLevel"]
@@ -530,6 +543,7 @@ margin_bottom = -6.0
 custom_fonts/font = SubResource( 21 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 13 )
+custom_styles/disabled = SubResource( 22 )
 custom_styles/normal = SubResource( 11 )
 text = "Resume"
 __meta__ = {
@@ -544,6 +558,7 @@ margin_bottom = 12.0
 custom_fonts/font = SubResource( 21 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 13 )
+custom_styles/disabled = SubResource( 23 )
 custom_styles/normal = SubResource( 11 )
 text = "Settings"
 
@@ -555,6 +570,7 @@ margin_bottom = 31.0
 custom_fonts/font = SubResource( 21 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 13 )
+custom_styles/disabled = SubResource( 24 )
 custom_styles/normal = SubResource( 11 )
 text = "Restart Level"
 

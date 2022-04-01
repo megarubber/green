@@ -1267,14 +1267,6 @@ scale = Vector2( 2, 2 )
 position = Vector2( 4316.85, 694.269 )
 scale = Vector2( 2, 2 )
 
-[node name="Coin6" parent="Coins" instance=ExtResource( 6 )]
-position = Vector2( 6160.92, 839.152 )
-scale = Vector2( 2, 2 )
-
-[node name="Coin7" parent="Coins" instance=ExtResource( 6 )]
-position = Vector2( 6340.52, 426.209 )
-scale = Vector2( 2, 2 )
-
 [node name="PowerUps" type="Node2D" parent="."]
 
 [node name="PowerUp2" parent="PowerUps" instance=ExtResource( 7 )]
