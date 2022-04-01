@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 # Node Referencing
-onready var black_screen_anim = $GameOver/BlackScreen/AnimationPlayer
+onready var black_screen_anim = $GameOver/AnimationPlayer
 onready var game_over_screen = $GameOver
 
 func _ready():

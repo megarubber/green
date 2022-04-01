@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://others/hud/coin-counter.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://others/hud/health_heart.png" type="Texture" id=4]
 [ext_resource path="res://others/hud/HUD.gd" type="Script" id=5]
 [ext_resource path="res://others/mouse/Mouse.tscn" type="PackedScene" id=6]
+[ext_resource path="res://others/buttons/normal.png" type="Texture" id=7]
+[ext_resource path="res://others/buttons/hover.png" type="Texture" id=8]
+[ext_resource path="res://others/buttons/pressed.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -14,6 +17,36 @@ font_path = "res://others/fonts/Pixellari.ttf"
 [sub_resource type="DynamicFont" id=2]
 size = 50
 font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://others/fonts/PixelOperatorMono-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 67
+font_data = SubResource( 7 )
+
+[sub_resource type="DynamicFontData" id=8]
+font_path = "res://others/fonts/8-BIT WONDER.TTF"
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = SubResource( 8 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 44, 11 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 44, 11 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 44, 12 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 44, 11 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -48,6 +81,42 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../GreenDiedLabel:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../BtnTryAgain:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../BtnReturnToMenu:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -91,6 +160,42 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../GreenDiedLabel:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../BtnTryAgain:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../BtnReturnToMenu:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="HUD" type="CanvasLayer"]
@@ -162,11 +267,43 @@ margin_right = 229.0
 margin_bottom = 590.0
 color = Color( 0, 0, 0, 0 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver/BlackScreen"]
+[node name="GreenDiedLabel" type="Label" parent="GameOver"]
+margin_left = -480.0
+margin_top = 139.0
+margin_right = -115.0
+margin_bottom = 209.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Green died!"
+
+[node name="BtnTryAgain" type="Button" parent="GameOver"]
+margin_left = -683.0
+margin_top = 392.0
+margin_right = -462.0
+margin_bottom = 455.0
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/normal = SubResource( 11 )
+text = "Try Again"
+
+[node name="BtnReturnToMenu" type="Button" parent="GameOver"]
+margin_left = -257.0
+margin_top = 392.0
+margin_right = 94.0
+margin_bottom = 455.0
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 11 )
+text = "Return to menu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
+root_node = NodePath("../BlackScreen")
 anims/RESET = SubResource( 4 )
 anims/fade_in = SubResource( 3 )
 
 [node name="Mouse" parent="." instance=ExtResource( 6 )]
 scale = Vector2( 3, 3 )
 
-[connection signal="animation_finished" from="GameOver/BlackScreen/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="GameOver/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
