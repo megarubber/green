@@ -18,6 +18,7 @@ const DROP_THRU_BIT = 1
 var motion = Vector2()
 export var knockback = 15000
 export var knockup = 100
+export var start_position_level = Vector2()
 var hit = false
 var max_speed = MAX_SPEED_NORMAL
 var max_jump_height = -850
@@ -38,6 +39,10 @@ onready var collider = $CollisionShape2D
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
 
 func _ready() -> void:
+	if Global.is_checkpoint_hitted:
+		position = Global.checkpoint_position
+	else:
+		position = start_position_level
 	Global.is_playing = true
 	wings.visible = false
 	z_index = -2
@@ -179,3 +184,7 @@ func _powerup(type):
 
 func _on_DropPlataformArea_body_exited(_body):
 	set_collision_mask_bit(DROP_THRU_BIT, true)
+
+func hit_checkpoint() -> void:
+	Global.checkpoint_position = position
+	Global.is_checkpoint_hitted = true

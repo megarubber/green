@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tiles/tileset_forest.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://others/hud/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://collectables/coin/Coin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://collectables/powerups/PowerUp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://others/checkpoint/Checkpoint.tscn" type="PackedScene" id=8]
 [ext_resource path="res://enemy/enemy5/MeleeEnemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://levels/background/mountain.png" type="Texture" id=10]
 [ext_resource path="res://levels/background/sky.png" type="Texture" id=11]
@@ -1043,8 +1044,16 @@ scale = Vector2( 4.3245, 4.3245 )
 z_index = -5
 texture = ExtResource( 36 )
 
+[node name="Interactable" type="Node2D" parent="."]
+position = Vector2( 8008.64, 926.065 )
+scale = Vector2( 4, 4 )
+
+[node name="Checkpoint" parent="Interactable" instance=ExtResource( 8 )]
+z_index = -6
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1409.19, -10.7004 )
+position = Vector2( 1529.17, -116.052 )
+start_position_level = Vector2( 8233, -10 )
 
 [node name="Objects_Front" type="Node2D" parent="."]
 

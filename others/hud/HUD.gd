@@ -12,7 +12,7 @@ func _ready() -> void:
 	var level_name_reference = get_tree().get_current_scene().get_name()
 	match level_name_reference:
 		"Level1":
-			level_number_label.set_text("Stage 01")
+			level_number_label.set_text("STAGE 01")
 			level_name_label.set_text("Samueland City")
 	var player = get_tree().get_current_scene().get_node("Player")
 	player.connect("player_death", self, "_player_death")
@@ -28,3 +28,6 @@ func _on_AnimationPlayer_animation_finished(_anim_name) -> void:
 
 func _on_AnimationPlayerStart_animation_finished(_anim_name) -> void:
 	start.queue_free()
+
+func _on_BtnTryAgain_pressed():
+	var _result = get_tree().reload_current_scene()

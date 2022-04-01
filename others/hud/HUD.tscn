@@ -23,6 +23,7 @@ font_path = "res://others/fonts/PixelOperatorMono-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=6]
 size = 67
+outline_size = 2
 font_data = SubResource( 7 )
 
 [sub_resource type="DynamicFontData" id=8]
@@ -404,6 +405,7 @@ margin_top = 247.0
 margin_right = -355.002
 margin_bottom = 317.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "STAGE XX"
 align = 1
@@ -422,5 +424,6 @@ align = 1
 anims/RESET = SubResource( 15 )
 anims/start = SubResource( 14 )
 
+[connection signal="pressed" from="GameOver/BtnTryAgain" to="." method="_on_BtnTryAgain_pressed"]
 [connection signal="animation_finished" from="GameOver/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="StartLevel/AnimationPlayerStart" to="." method="_on_AnimationPlayerStart_animation_finished"]
