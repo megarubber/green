@@ -9,5 +9,7 @@ func _process(_delta):
 	match Global.is_playing:
 		true:
 			play("aim")
+			set_z_index(-6)
 		false:
 			play("default")
+			set_z_index(0)

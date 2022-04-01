@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://others/hud/coin-counter.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://others/buttons/normal.png" type="Texture" id=7]
 [ext_resource path="res://others/buttons/hover.png" type="Texture" id=8]
 [ext_resource path="res://others/buttons/pressed.png" type="Texture" id=9]
+[ext_resource path="res://others/pause/pause_screen.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -19,6 +20,7 @@ size = 50
 font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFontData" id=7]
+antialiased = false
 font_path = "res://others/fonts/PixelOperatorMono-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=6]
@@ -27,10 +29,12 @@ outline_size = 2
 font_data = SubResource( 7 )
 
 [sub_resource type="DynamicFontData" id=8]
+antialiased = false
 font_path = "res://others/fonts/8-BIT WONDER.TTF"
 
 [sub_resource type="DynamicFont" id=9]
-size = 24
+size = 23
+outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 8 )
 
 [sub_resource type="StyleBoxTexture" id=10]
@@ -278,6 +282,76 @@ tracks/2/keys = {
 "values": [ Vector2( 1041, 330 ), Vector2( 15, 330 ), Vector2( -39, 330 ), Vector2( -1029, 330 ) ]
 }
 
+[sub_resource type="DynamicFontData" id=18]
+antialiased = false
+font_path = "res://others/fonts/8-BIT WONDER.TTF"
+
+[sub_resource type="DynamicFont" id=19]
+size = 8
+font_data = SubResource( 18 )
+
+[sub_resource type="DynamicFontData" id=20]
+antialiased = false
+font_path = "res://others/fonts/8-BIT WONDER.TTF"
+
+[sub_resource type="DynamicFont" id=21]
+size = 6
+font_data = SubResource( 20 )
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.666667 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Board:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 513, 327 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "paused"
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.666667 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Board:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -403, 327 ), Vector2( 513, 327 ) ]
+}
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 5 )
 
@@ -345,7 +419,7 @@ margin_left = -826.0
 margin_top = -28.0
 margin_right = 229.0
 margin_bottom = 590.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 0.266667 )
 
 [node name="GreenDiedLabel" type="Label" parent="GameOver"]
 margin_left = -480.0
@@ -384,10 +458,8 @@ root_node = NodePath("../BlackScreen")
 anims/RESET = SubResource( 4 )
 anims/fade_in = SubResource( 3 )
 
-[node name="Mouse" parent="." instance=ExtResource( 6 )]
-scale = Vector2( 3, 3 )
-
 [node name="StartLevel" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -396,7 +468,7 @@ anchor_bottom = 1.0
 margin_left = -10.0
 margin_top = 246.0
 margin_right = 1033.0
-margin_bottom = 372.0
+margin_bottom = 412.0
 color = Color( 0, 0, 0, 0.380392 )
 
 [node name="LevelNumber" type="Label" parent="StartLevel"]
@@ -424,6 +496,78 @@ align = 1
 anims/RESET = SubResource( 15 )
 anims/start = SubResource( 14 )
 
+[node name="Pause" type="Control" parent="."]
+pause_mode = 2
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="BlackScreen" type="ColorRect" parent="Pause"]
+margin_left = -13.0
+margin_right = 1042.0
+margin_bottom = 618.0
+color = Color( 0, 0, 0, 0.666667 )
+
+[node name="Board" type="Sprite" parent="Pause"]
+position = Vector2( 513, 327 )
+scale = Vector2( 5.29545, 5.29545 )
+texture = ExtResource( 10 )
+
+[node name="PauseLabel" type="Label" parent="Pause/Board"]
+margin_left = -57.1546
+margin_top = -36.0
+margin_right = 59.8454
+margin_bottom = -23.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "Game Paused"
+align = 1
+
+[node name="BtnResume" type="Button" parent="Pause/Board"]
+margin_left = -23.6052
+margin_top = -21.0
+margin_right = 23.3948
+margin_bottom = -6.0
+custom_fonts/font = SubResource( 21 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/normal = SubResource( 11 )
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BtnSettings" type="Button" parent="Pause/Board"]
+margin_left = -31.3476
+margin_top = -3.0
+margin_right = 28.6524
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 21 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/normal = SubResource( 11 )
+text = "Settings"
+
+[node name="BtnRestart" type="Button" parent="Pause/Board"]
+margin_left = -44.1888
+margin_top = 16.0
+margin_right = 39.8112
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 21 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/normal = SubResource( 11 )
+text = "Restart Level"
+
+[node name="AnimationPlayerPause" type="AnimationPlayer" parent="Pause"]
+anims/RESET = SubResource( 17 )
+anims/paused = SubResource( 16 )
+
+[node name="Mouse" parent="." instance=ExtResource( 6 )]
+pause_mode = 2
+scale = Vector2( 3, 3 )
+z_index = -6
+
 [connection signal="pressed" from="GameOver/BtnTryAgain" to="." method="_on_BtnTryAgain_pressed"]
 [connection signal="animation_finished" from="GameOver/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="StartLevel/AnimationPlayerStart" to="." method="_on_AnimationPlayerStart_animation_finished"]
+[connection signal="pressed" from="Pause/Board/BtnResume" to="." method="_on_BtnResume_pressed"]
