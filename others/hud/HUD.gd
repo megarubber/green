@@ -17,20 +17,20 @@ func _ready() -> void:
 			level_number_label.set_text("STAGE 01")
 			level_name_label.set_text("Samueland City")
 	var player = get_tree().get_current_scene().get_node("Player")
-	
-	enable_pause_buttons(false)
-	
 	player.connect("player_death", self, "_player_death")
+	
 	invisible_special_screens()
+	enable_pause_buttons(false)
 	
 	# Name and Stage Number Initializing
 	start.visible = true
 	start_anim.play("start")
 
 func _unhandled_input(event) -> void:
-	if event.is_action_pressed("ui_pause"):
+	if event.is_action_pressed("ui_pause") && Global.is_playing:
 		pause_game(true)
 
+# Pausing game
 func pause_game(value : bool) -> void:
 	if value:
 		get_tree().paused = true
