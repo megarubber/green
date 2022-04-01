@@ -386,7 +386,7 @@ tracks/4/keys = {
 "values": [ 0.0, 1.0, 0.0 ]
 }
 
-[node name="MeleeEnemy" type="KinematicBody2D"]
+[node name="MeleeEnemy" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource( 27 )
@@ -396,7 +396,7 @@ material = SubResource( 12 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 13 )
-frame = 1
+frame = 3
 playing = true
 flip_h = true
 
@@ -431,7 +431,7 @@ anims/attack_left = SubResource( 41 )
 anims/attack_right = SubResource( 36 )
 anims/default = SubResource( 37 )
 
-[node name="SwordArea" type="Area2D" parent="Sword" groups=["hitbox"]]
+[node name="SwordArea" type="Area2D" parent="Sword" groups=["sword_enemy"]]
 position = Vector2( 1.48652, 40.1358 )
 scale = Vector2( 0.495506, 0.495503 )
 
@@ -480,7 +480,7 @@ enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 2
 
-[node name="LeftDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+[node name="LeftDamageArea" type="Area2D" parent="." groups=["basic_enemy"]]
 visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
@@ -491,7 +491,7 @@ collision_mask = 17
 position = Vector2( -37.9076, -76.6304 )
 shape = SubResource( 18 )
 
-[node name="RightDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+[node name="RightDamageArea" type="Area2D" parent="." groups=["basic_enemy"]]
 visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )

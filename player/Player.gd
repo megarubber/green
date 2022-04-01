@@ -134,16 +134,30 @@ func debug_inputs():
 	if Input.is_key_pressed(KEY_KP_1):
 		lifebar.damage(80)
 
-func _on_DamageArea_area_entered(area)  -> void:
-	if area.is_in_group("hitbox") && !hit:
-		take_damage()
+func _on_DamageArea_area_entered(area) -> void:
+	if !hit:
+		var type = area.get_groups()
+		var strength = 0
+		match type[0]:
+			"basic_enemy":
+				strength = 10
+			"bullets_enemy":
+				strength = 5
+			"sword_enemy": # Executing in MeleeEnemy script (I don't know why)
+				strength = 8
+			"small_flyer_enemy":
+				strength = 5
+			_:
+				strength = 0
+		if strength > 0:
+			take_damage(strength)
 
 func player_visible(value : bool) -> void:
 	body_sprite.visible = value
 	head_sprite.visible = value
 	gun.visible = value
 
-func take_damage() -> void:
+func take_damage(strength : int) -> void:
 	var knock_side = knockback * Global.hit_side
 	motion.x -= lerp(motion.x, -knock_side, 0.1)
 	#motion.y = lerp(0, -knockup, 0.6)
@@ -151,7 +165,7 @@ func take_damage() -> void:
 	hit = true
 		
 	if lifebar != null:
-		lifebar.damage(DAMAGE)
+		lifebar.damage(strength)
 		if !lifebar.getDeath():
 			blink()
 

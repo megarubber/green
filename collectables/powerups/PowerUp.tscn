@@ -37,7 +37,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 7 )
 
-[node name="PowerUp" type="Area2D"]
+[node name="PowerUp" type="Area2D" groups=["collectables"]]
 collision_layer = 4
 script = ExtResource( 2 )
 

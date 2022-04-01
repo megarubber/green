@@ -105,7 +105,7 @@ collision_layer = 64
 [node name="AreaShape" type="CollisionShape2D" parent="DetectArea"]
 shape = SubResource( 2 )
 
-[node name="LeftDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+[node name="LeftDamageArea" type="Area2D" parent="." groups=["small_flyer_enemy"]]
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
@@ -115,7 +115,7 @@ collision_mask = 17
 position = Vector2( -21.1957, -86.4129 )
 shape = SubResource( 3 )
 
-[node name="RightDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+[node name="RightDamageArea" type="Area2D" parent="." groups=["small_flyer_enemy"]]
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16

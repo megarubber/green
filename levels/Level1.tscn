@@ -1052,8 +1052,8 @@ scale = Vector2( 4, 4 )
 z_index = -6
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1529.17, -116.052 )
-start_position_level = Vector2( 8233, -10 )
+position = Vector2( 6590, 208 )
+start_position_level = Vector2( 6590, 208 )
 
 [node name="Objects_Front" type="Node2D" parent="."]
 

@@ -160,4 +160,4 @@ func _on_SwordArea_body_entered(body) -> void:
 			Global.hit_side = -1
 		else:
 			Global.hit_side = 1
-		player.take_damage()
+		player.take_damage(5)

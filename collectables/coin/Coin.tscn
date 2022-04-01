@@ -30,13 +30,13 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 17.0
 
-[node name="Coin" type="Area2D"]
+[node name="Coin" type="Area2D" groups=["collectables"]]
 collision_layer = 4
 script = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

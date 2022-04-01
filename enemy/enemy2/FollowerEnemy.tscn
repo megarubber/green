@@ -331,7 +331,7 @@ material = SubResource( 17 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Head" type="Sprite" parent="."]
@@ -364,7 +364,7 @@ enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 2
 
-[node name="LeftDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+[node name="LeftDamageArea" type="Area2D" parent="." groups=["basic_enemy"]]
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
@@ -374,7 +374,7 @@ collision_mask = 17
 position = Vector2( -44.8279, -82.0168 )
 shape = SubResource( 24 )
 
-[node name="RightDamageArea" type="Area2D" parent="." groups=["hitbox"]]
+[node name="RightDamageArea" type="Area2D" parent="." groups=["basic_enemy"]]
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16

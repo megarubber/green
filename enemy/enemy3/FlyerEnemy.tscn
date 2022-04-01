@@ -257,7 +257,7 @@ position = Vector2( -1, 130 )
 rotation = -3.14159
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 6 )
-frame = 6
+frame = 5
 playing = true
 flip_h = true
 
@@ -326,7 +326,7 @@ visible = false
 position = Vector2( -1, 6 )
 shape = SubResource( 4 )
 
-[node name="LeftDamageArea" type="Area2D" parent="Enemy" groups=["hitbox"]]
+[node name="LeftDamageArea" type="Area2D" parent="Enemy" groups=["basic_enemy"]]
 visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
@@ -337,7 +337,7 @@ collision_mask = 17
 position = Vector2( -37.9076, -76.6304 )
 shape = SubResource( 7 )
 
-[node name="RightDamageArea" type="Area2D" parent="Enemy" groups=["hitbox"]]
+[node name="RightDamageArea" type="Area2D" parent="Enemy" groups=["basic_enemy"]]
 visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
