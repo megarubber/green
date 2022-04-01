@@ -23,6 +23,7 @@ baús
 inventário básico
 efeitos na tela (shaders)
 sistema de combo
+entrada nos níveis
 
 // Inimigos
 Voador
