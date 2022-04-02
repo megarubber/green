@@ -399,14 +399,14 @@ visible = false
 position = Vector2( -72, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="WingRight" type="AnimatedSprite" parent="Wings"]
 position = Vector2( 71, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
-frame = 3
+frame = 1
 playing = true
 flip_h = true
 
@@ -460,7 +460,7 @@ visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
-collision_mask = 172
+collision_mask = 428
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2( -3.45707e-06, -251.087 )

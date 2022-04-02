@@ -87,6 +87,7 @@ tracks/0/keys = {
 }
 
 [node name="Chest" type="Area2D"]
+collision_layer = 128
 script = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

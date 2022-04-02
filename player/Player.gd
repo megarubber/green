@@ -22,6 +22,7 @@ export var start_position_level = Vector2()
 var hit = false
 var max_speed = MAX_SPEED_NORMAL
 var max_jump_height = -850
+var can_fly = true
 
 # Nodes Referencing
 onready var body_sprite = $BodySprite
@@ -108,9 +109,10 @@ func movement() -> void: # Player's movement function
 
 func death() -> void:
 	motion.x = 0
-	motion.y = min(0, motion.y - 30)
-	anim_eyes.play("damage")
-	anim.play("dead")
+	if can_fly:	
+		motion.y = min(0, motion.y - 30)
+		anim_eyes.play("damage")
+		anim.play("dead")
 	if !wings.visible:
 		Global.life -= 1
 		emit_signal("player_death")
@@ -151,6 +153,9 @@ func _on_DamageArea_area_entered(area) -> void:
 				strength = 8
 			"small_flyer_enemy":
 				strength = 5
+			"fallzone":
+				strength = lifebar.lifeMax
+				can_fly = false
 			_:
 				strength = 0
 		if strength > 0:

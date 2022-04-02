@@ -77,6 +77,8 @@ ui_interact={
 2d_physics/layer_5="damage_area"
 2d_physics/layer_6="bullets"
 2d_physics/layer_7="detect_area"
+2d_physics/layer_8="interactables"
+2d_physics/layer_9="fallzones"
 
 [physics]
 
