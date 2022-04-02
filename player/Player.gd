@@ -34,6 +34,7 @@ onready var anim_eyes = $HeadSprite/AnimationEyes
 onready var wings = $Wings
 onready var drop = $DropPlataformArea
 onready var collider = $CollisionShape2D
+onready var ring = $Ring
 
 # Referencing lifebar from HUD
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
@@ -45,6 +46,7 @@ func _ready() -> void:
 		position = start_position_level
 	Global.is_playing = true
 	wings.visible = false
+	ring.visible = false
 	z_index = -2
 	for powerup in get_parent().get_node("PowerUps").get_children():
 		powerup.connect("player_entered", self, "_powerup")
@@ -112,6 +114,7 @@ func death() -> void:
 	if !wings.visible:
 		emit_signal("player_death")
 		wings.visible = true
+		ring.visible = true
 		deactivate_all_colliders()
 		Global.is_playing = false
 	

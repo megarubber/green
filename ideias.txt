@@ -7,7 +7,6 @@ diálogos
 npcs
 plataformas que se movem
 obstáculos (serra)
-checkpoint
 pause
 tela inicial
 game over
@@ -23,10 +22,5 @@ baús
 inventário básico
 efeitos na tela (shaders)
 sistema de combo
-entrada nos níveis
 transições
-
-// Inimigos
-Voador
-Inseto (mata de uma vez)
-Ataca
+passar de nível
