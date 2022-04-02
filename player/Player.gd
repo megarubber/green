@@ -112,6 +112,7 @@ func death() -> void:
 	anim_eyes.play("damage")
 	anim.play("dead")
 	if !wings.visible:
+		Global.life -= 1
 		emit_signal("player_death")
 		wings.visible = true
 		ring.visible = true

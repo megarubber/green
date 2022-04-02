@@ -399,12 +399,14 @@ visible = false
 position = Vector2( -72, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
+frame = 3
 playing = true
 
 [node name="WingRight" type="AnimatedSprite" parent="Wings"]
 position = Vector2( 71, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
+frame = 3
 playing = true
 flip_h = true
 
@@ -475,6 +477,7 @@ script = ExtResource( 19 )
 position = Vector2( 18.8, -4.8 )
 
 [node name="Ring" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0.999999, -221 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 29 )
