@@ -2,10 +2,10 @@ extends KinematicBody2D
 
 # Constants
 const DAMAGE = 50
+const SPEED = 5
 
 # General Variables
 var motion = Vector2.ZERO
-var speed = 5
 var founded = false
 
 # Node Referencing
@@ -54,29 +54,28 @@ func death() -> void:
 func _physics_process(_delta) -> void:
 	if founded && !lifebar.getDeath():
 		if player.hit:
-			speed = 0.2
+			motion = global_position.direction_to(player.global_position) * -SPEED
 		else:
-			speed = 5
-		motion = global_position.direction_to(player.global_position) * speed
+			motion = global_position.direction_to(player.global_position) * SPEED
 	else:
 		motion = Vector2.ZERO
 	sprite.rotation_degrees += 1
 	motion = move_and_collide(motion)
 
-func _process(_delta):
+func _process(_delta) -> void:
 	# Tests if player is dead
 	if lifebar.getDeath():
 		death()
 
-func _on_DetectArea_body_entered(body):
+func _on_DetectArea_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		founded = true
 
-func _on_DetectArea_body_exited(body):
+func _on_DetectArea_body_exited(body) -> void:
 	if body.is_in_group("player"):
 		founded = false
 
-func _on_LeftDamageArea_area_entered(area):
+func _on_LeftDamageArea_area_entered(area) -> void:
 	Global.hit_side = -1
 	if area.is_in_group("bullets_player"):
 		take_damage()

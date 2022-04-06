@@ -696,6 +696,14 @@ texture = ExtResource( 33 )
 region_enabled = true
 region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
 
+[node name="GrassBig12" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 6746, -625 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
+
 [node name="GrassBig4" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 3218.95, 218.776 )
 scale = Vector2( 3.36439, 3.36439 )
@@ -758,6 +766,12 @@ scale = Vector2( 4.37776, 4.37776 )
 z_index = -5
 texture = ExtResource( 26 )
 
+[node name="Rock8" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 7015, -626 )
+scale = Vector2( 4.37776, 4.37776 )
+z_index = -5
+texture = ExtResource( 26 )
+
 [node name="Rock6" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 3918.94, 591.033 )
 scale = Vector2( 4.37776, 4.37776 )
@@ -796,6 +810,14 @@ region_rect = Rect2( -13.2469, 36.0538, 99.7863, 96.0443 )
 
 [node name="Tree4" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 5101.37, 890.944 )
+scale = Vector2( 4.95098, 4.95098 )
+z_index = -5
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 371.25, 28.25, 73, 118 )
+
+[node name="Tree13" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 6399, -452 )
 scale = Vector2( 4.95098, 4.95098 )
 z_index = -5
 texture = ExtResource( 23 )
@@ -868,6 +890,14 @@ region_rect = Rect2( 62.4112, 208.4, 32.8218, 11.4163 )
 
 [node name="Dec10" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 6493.06, 1052.14 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -4
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 222.229, 291.085, 75.231, 31.3005 )
+
+[node name="Dec18" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 6915, -610 )
 scale = Vector2( 3.36439, 3.36439 )
 z_index = -4
 texture = ExtResource( 33 )
@@ -1063,8 +1093,8 @@ item_path = "res://collectables/life/Heart.tscn"
 global_size_item = Vector2( 5, 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 6317, -845 )
-start_position_level = Vector2( 6317, -845 )
+position = Vector2( 8698, 766 )
+start_position_level = Vector2( 8698, 766 )
 
 [node name="Objects_Front" type="Node2D" parent="."]
 
@@ -1076,11 +1106,12 @@ collision_mask = 8
 position = Vector2( 1908, -48 )
 shape = SubResource( 16 )
 
-[node name="Box1" type="StaticBody2D" parent="Objects_Front"]
+[node name="Box1" type="StaticBody2D" parent="Objects_Front" groups=["tilemap"]]
 position = Vector2( 4163.47, 829.062 )
 scale = Vector2( 2.78691, 2.78691 )
+z_index = -6
 collision_layer = 2
-collision_mask = 9
+collision_mask = 41
 __meta__ = {
 "_edit_group_": true
 }
@@ -1093,11 +1124,12 @@ position = Vector2( -0.50061, 0.00186157 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 20 )
 
-[node name="Box2" type="StaticBody2D" parent="Objects_Front"]
+[node name="Box2" type="StaticBody2D" parent="Objects_Front" groups=["tilemap"]]
 position = Vector2( 4305.52, 829.062 )
 scale = Vector2( 2.78691, 2.78691 )
+z_index = -6
 collision_layer = 2
-collision_mask = 9
+collision_mask = 41
 __meta__ = {
 "_edit_group_": true
 }
@@ -1110,11 +1142,12 @@ position = Vector2( -0.50061, 0.00186157 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 20 )
 
-[node name="Box3" type="StaticBody2D" parent="Objects_Front"]
+[node name="Box3" type="StaticBody2D" parent="Objects_Front" groups=["tilemap"]]
 position = Vector2( 4163.33, 695.38 )
 scale = Vector2( 2.78691, 2.78691 )
+z_index = -6
 collision_layer = 2
-collision_mask = 9
+collision_mask = 41
 __meta__ = {
 "_edit_group_": true
 }
@@ -1245,13 +1278,13 @@ position = Vector2( 4055.27, 635.164 )
 position = Vector2( 3202, 181 )
 
 [node name="SmallFlyerEnemy4" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 5335.77, 450.203 )
+position = Vector2( 7766, 614 )
 
 [node name="SmallFlyerEnemy5" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 5419.9, 591.612 )
+position = Vector2( 5129, 640 )
 
 [node name="SmallFlyerEnemy6" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 5514.75, 471.261 )
+position = Vector2( 5362, 576 )
 
 [node name="FollowerEnemy" parent="Enemies" instance=ExtResource( 19 )]
 position = Vector2( 6402.9, 126.653 )
