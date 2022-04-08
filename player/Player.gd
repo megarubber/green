@@ -23,6 +23,7 @@ var hit = false
 var max_speed = MAX_SPEED_NORMAL
 var max_jump_height = -850
 var can_fly = true
+var jump_in_trampoline = false
 
 # Nodes Referencing
 onready var body_sprite = $BodySprite
@@ -63,6 +64,7 @@ func animation() -> void: # Player's animation function
 			anim.play("jump")
 		else:
 			anim.play("fall")
+			jump_in_trampoline = false
 
 func flip() -> void: # Flipping sprite function
 	if !lifebar.getDeath():
@@ -99,7 +101,7 @@ func movement() -> void: # Player's movement function
 		else:
 			if friction == true:
 				motion.x = lerp(motion.x, 0, 0.05)
-			if Input.is_action_just_released("ui_up") && motion.y < 0:
+			if !jump_in_trampoline && Input.is_action_just_released("ui_up") && motion.y < 0:
 				motion.y = 0
 	else:
 		death()
@@ -135,6 +137,7 @@ func _process(_delta: float) -> void:
 	flip()
 	animation()
 	debug_inputs()
+	print(jump_in_trampoline)
 	
 func debug_inputs():
 	if Input.is_key_pressed(KEY_KP_1):

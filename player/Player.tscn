@@ -437,10 +437,10 @@ visible = false
 position = Vector2( -1, -101 )
 shape = SubResource( 1 )
 
-[node name="DropPlataformArea" type="Area2D" parent="."]
+[node name="DropPlataformArea" type="Area2D" parent="." groups=["drop"]]
 position = Vector2( -1, -101 )
 collision_layer = 0
-collision_mask = 2
+collision_mask = 130
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPlataformArea"]
 position = Vector2( 0, 90.5 )
@@ -460,7 +460,7 @@ visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
-collision_mask = 428
+collision_mask = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2( -3.45707e-06, -251.087 )

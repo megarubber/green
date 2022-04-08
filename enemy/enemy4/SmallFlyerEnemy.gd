@@ -2,11 +2,13 @@ extends KinematicBody2D
 
 # Constants
 const DAMAGE = 50
-const SPEED = 5
+const MAX_SPEED = 5
+const MIN_SPEED = -3
 
 # General Variables
 var motion = Vector2.ZERO
 var founded = false
+var speed = MAX_SPEED
 
 # Node Referencing
 onready var lifebar = $Lifebar
@@ -53,10 +55,12 @@ func death() -> void:
 
 func _physics_process(_delta) -> void:
 	if founded && !lifebar.getDeath():
-		if player.hit:
-			motion = global_position.direction_to(player.global_position) * -SPEED
-		else:
-			motion = global_position.direction_to(player.global_position) * SPEED
+		match player.hit:
+			true:
+				speed = MIN_SPEED
+			false:
+				speed = MAX_SPEED
+		motion = global_position.direction_to(player.global_position) * speed	
 	else:
 		motion = Vector2.ZERO
 	sprite.rotation_degrees += 1

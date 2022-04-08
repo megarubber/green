@@ -24,3 +24,4 @@ efeitos na tela (shaders)
 sistema de combo
 transições
 passar de nível
+ventiladores que fazem o personagem flutuar
