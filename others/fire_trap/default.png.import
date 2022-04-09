@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chain.png-3dac8f7f2c472b00280b45b63644d180.stex"
+path="res://.import/default.png-c96c37a8a9eb99bef08ac1b7fc6ef290.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://others/saw/chain.png"
-dest_files=[ "res://.import/chain.png-3dac8f7f2c472b00280b45b63644d180.stex" ]
+source_file="res://others/fire_trap/default.png"
+dest_files=[ "res://.import/default.png-c96c37a8a9eb99bef08ac1b7fc6ef290.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

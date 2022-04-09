@@ -158,8 +158,14 @@ func _on_DamageArea_area_entered(area) -> void:
 			"fallzone":
 				strength = lifebar.lifeMax
 				can_fly = false
+			"fire_trap":
+				strength = 15
 			"spike":
 				strength = 10
+				if lifebar.life > strength:	
+					motion.y = lerp(0, -knockup, 0.6)
+			"chainsaw":
+				strength = 20
 				if lifebar.life > strength:	
 					motion.y = lerp(0, -knockup, 0.6)
 			_:

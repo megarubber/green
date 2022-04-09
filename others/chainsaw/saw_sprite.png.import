@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/default.png-c8b8bd5b78f71589dc074748f7800674.stex"
+path="res://.import/saw_sprite.png-b77ddf826479d62c3e901cf7ab0df382.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://others/fire_bucket/default.png"
-dest_files=[ "res://.import/default.png-c8b8bd5b78f71589dc074748f7800674.stex" ]
+source_file="res://others/chainsaw/saw_sprite.png"
+dest_files=[ "res://.import/saw_sprite.png-b77ddf826479d62c3e901cf7ab0df382.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

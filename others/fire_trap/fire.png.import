@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/saw_sprite.png-5303b5a9ede9c5e693e3159c11d8df65.stex"
+path="res://.import/fire.png-5c66794c7627cad389f086269d839c1d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://others/saw/saw_sprite.png"
-dest_files=[ "res://.import/saw_sprite.png-5303b5a9ede9c5e693e3159c11d8df65.stex" ]
+source_file="res://others/fire_trap/fire.png"
+dest_files=[ "res://.import/fire.png-5c66794c7627cad389f086269d839c1d.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://others/fire_trap/default.png" type="Texture" id=1]
+[ext_resource path="res://others/fire_trap/fire.png" type="Texture" id=2]
+[ext_resource path="res://others/fire_trap/FireTrap.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 2 ) ],
+"loop": true,
+"name": "fire",
+"speed": 7.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 7, 7 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1.75, 7 )
+
+[node name="FireTrap" type="StaticBody2D" groups=["tilemap"]]
+collision_layer = 2
+collision_mask = 45
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 5 )
+
+[node name="LeftFire" type="Area2D" parent="." groups=["fire_trap"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftFire"]
+position = Vector2( -2.5, -6 )
+shape = SubResource( 6 )
+
+[node name="RightFire" type="Area2D" parent="." groups=["fire_trap"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightFire"]
+position = Vector2( 2.25, -6 )
+shape = SubResource( 6 )
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="StopTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="StopTimer" to="." method="_on_StopTimer_timeout"]

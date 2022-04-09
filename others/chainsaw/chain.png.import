@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fire.png-a0fa3f1bd18e57b82b150b74abec46d9.stex"
+path="res://.import/chain.png-04e851df461da05ffc028de0ae259ecc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://others/fire_bucket/fire.png"
-dest_files=[ "res://.import/fire.png-a0fa3f1bd18e57b82b150b74abec46d9.stex" ]
+source_file="res://others/chainsaw/chain.png"
+dest_files=[ "res://.import/chain.png-04e851df461da05ffc028de0ae259ecc.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,0 +1,97 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://others/chainsaw/saw_sprite.png" type="Texture" id=1]
+[ext_resource path="res://others/chainsaw/chain.png" type="Texture" id=2]
+[ext_resource path="res://others/chainsaw/Chainsaw.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 38, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 76, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 114, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 152, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 190, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 228, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 266, 0, 38, 38 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 18 )
+
+[sub_resource type="RectangleShape2D" id=11]
+
+[node name="Chainsaw" type="Node2D" groups=["enemy"]]
+script = ExtResource( 3 )
+
+[node name="Chain" type="TextureRect" parent="."]
+margin_top = -4.0
+margin_right = 169.0
+margin_bottom = 4.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="Saw" type="KinematicBody2D" parent="."]
+collision_layer = 8
+collision_mask = 6
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Saw"]
+frames = SubResource( 10 )
+playing = true
+
+[node name="Left" type="Area2D" parent="Saw" groups=["chainsaw"]]
+visible = false
+position = Vector2( -9, 0 )
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Saw/Left"]
+shape = SubResource( 1 )
+
+[node name="Right" type="Area2D" parent="Saw" groups=["chainsaw"]]
+visible = false
+position = Vector2( 9, 0 )
+collision_layer = 8
+collision_mask = 6
+
+[node name="Shape" type="CollisionShape2D" parent="Saw/Right"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Saw"]
+visible = false
+shape = SubResource( 11 )
+
+[node name="Tween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+
+[connection signal="area_entered" from="Saw/Left" to="." method="_on_Left_area_entered"]
+[connection signal="area_entered" from="Saw/Right" to="." method="_on_Right_area_entered"]
