@@ -61,18 +61,24 @@ func _physics_process(_delta) -> void:
 	
 	if l_damage_area.monitoring && r_damage_area.monitoring:
 		if l_damage_area.get_overlapping_areas():
-			if l_damage_area.get_overlapping_areas()[0].get_name() == "DamageArea"  && !player.hit:
-				player.take_damage(5)
-				Global.hit_side = -1
-			speed = 0
+			if l_damage_area.get_overlapping_areas()[0].get_name() == "DamageArea":
+				speed = 0
+				if !player.hit:
+					player.take_damage(5)
+					Global.hit_side = -1
+			else:
+				speed = 5
 		elif r_damage_area.get_overlapping_areas():
-			if r_damage_area.get_overlapping_areas()[0].get_name() == "DamageArea" && !player.hit:
-				player.take_damage(5)
-				Global.hit_side = 1
-			speed = 0
+			if r_damage_area.get_overlapping_areas()[0].get_name() == "DamageArea":
+				speed = 0
+				if !player.hit:
+					player.take_damage(5)
+					Global.hit_side = 1
+			else:
+				speed = 5
 		else:
 			speed = 5
-
+	
 func _process(_delta) -> void:
 	# Tests if player is dead
 	if lifebar.getDeath():

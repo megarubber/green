@@ -629,7 +629,7 @@ extents = Vector2( 25.497, 24.0059 )
 extents = Vector2( 6.93333, 0.0666672 )
 
 [sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 107.125, 40.375 )
+extents = Vector2( 260.625, 40.375 )
 
 [node name="Level1" type="Node2D"]
 position = Vector2( 512, 192 )
@@ -1670,7 +1670,7 @@ position = Vector2( 4294, 420 )
 position = Vector2( 5129, 640 )
 
 [node name="SmallFlyerEnemy6" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 5543, 181 )
+position = Vector2( 7922, -842 )
 
 [node name="FollowerEnemy" parent="Enemies" instance=ExtResource( 19 )]
 position = Vector2( 6402.9, 126.653 )
@@ -1719,7 +1719,7 @@ collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallZones/Fallzone"]
-position = Vector2( -114.41, -330.266 )
+position = Vector2( -92.5352, -330.266 )
 shape = SubResource( 21 )
 
 [connection signal="animation_finished" from="Interactable/Signpost/Key/AnimationPlayer" to="Interactable/Signpost/Key" method="_on_AnimationPlayer_animation_finished"]
