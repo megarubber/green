@@ -142,8 +142,8 @@ func debug_inputs():
 		lifebar.damage(50)
 
 func _on_DamageArea_area_entered(area) -> void:
+	var type = area.get_groups()
 	if !hit:
-		var type = area.get_groups()
 		var strength = 0
 		match type[0]:
 			"basic_enemy":
@@ -154,15 +154,15 @@ func _on_DamageArea_area_entered(area) -> void:
 				strength = 8
 			"small_flyer_enemy":
 				strength = 5
-			"fallzone":
-				strength = lifebar.lifeMax
-				can_fly = false
 			"fire_trap":
 				strength = 15
 			"spike":
 				strength = 10
 				if lifebar.life > strength:	
 					motion.y = lerp(0, -knockup, 0.6)
+			"fallzone":
+				strength = lifebar.lifeMax
+				can_fly = false
 			"chainsaw":
 				strength = 20
 				if lifebar.life > strength:	
@@ -171,6 +171,11 @@ func _on_DamageArea_area_entered(area) -> void:
 				strength = 0
 		if strength > 0:
 			take_damage(strength)
+	else:
+		match type[0]:
+			"fallzone":
+				take_damage(lifebar.lifeMax)
+				can_fly = false
 
 func player_visible(value : bool) -> void:
 	body_sprite.visible = value
