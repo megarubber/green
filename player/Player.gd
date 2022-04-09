@@ -165,8 +165,6 @@ func _on_DamageArea_area_entered(area) -> void:
 				can_fly = false
 			"chainsaw":
 				strength = 20
-				if lifebar.life > strength:	
-					motion.y = lerp(0, -knockup, 0.6)
 			_:
 				strength = 0
 		if strength > 0:

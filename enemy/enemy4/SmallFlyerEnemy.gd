@@ -80,7 +80,7 @@ func _physics_process(_delta) -> void:
 			speed = 5
 	
 func _process(_delta) -> void:
-	# Tests if player is dead
+	# Tests if enemy is dead
 	if lifebar.getDeath():
 		death()
 
