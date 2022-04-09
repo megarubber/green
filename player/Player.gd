@@ -137,7 +137,6 @@ func _process(_delta: float) -> void:
 	flip()
 	animation()
 	debug_inputs()
-	print(jump_in_trampoline)
 	
 func debug_inputs():
 	if Input.is_key_pressed(KEY_KP_1):

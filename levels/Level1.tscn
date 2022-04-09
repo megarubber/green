@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tiles/tileset_forest.png" type="Texture" id=2]
@@ -40,6 +40,9 @@
 [ext_resource path="res://levels/background/some_coins_1.png" type="Texture" id=38]
 [ext_resource path="res://levels/background/some_coins_2.png" type="Texture" id=39]
 [ext_resource path="res://others/trampoline/Trampoline.tscn" type="PackedScene" id=40]
+[ext_resource path="res://others/signpost/Signpost.tscn" type="PackedScene" id=41]
+[ext_resource path="res://levels/interactable_objects/chest/e_key_1.png" type="Texture" id=42]
+[ext_resource path="res://others/Key.gd" type="Script" id=43]
 
 [sub_resource type="Shader" id=18]
 code = "shader_type canvas_item;
@@ -485,6 +488,69 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="Animation" id=24]
+resource_name = "show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Key:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 6, 6 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Signpost/Key:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "hide"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Signpost/Key:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Signpost/Key:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.75, 0.75 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 37.5, 115.25 )
@@ -989,7 +1055,7 @@ region_rect = Rect2( 195.322, 299.322, 26.3583, 19.7687 )
 
 [node name="Pointer" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 3351.56, 144.75 )
-scale = Vector2( 4.382, 4.382 )
+scale = Vector2( 4.3, 4.3 )
 z_index = -5
 texture = ExtResource( 28 )
 
@@ -1094,6 +1160,7 @@ position = Vector2( 6243, -304 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Interactable" type="Node2D" parent="."]
@@ -1111,14 +1178,40 @@ z_index = -6
 item_path = "res://collectables/life/Heart.tscn"
 global_size_item = Vector2( 5, 5 )
 
+[node name="Key" type="Sprite" parent="Interactable/Chest"]
+position = Vector2( 59.998, -171.418 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 42 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interactable/Chest/Key"]
+root_node = NodePath("../..")
+anims/show = SubResource( 24 )
+
 [node name="Trampoline" parent="Interactable" instance=ExtResource( 40 )]
 position = Vector2( 277.09, 3.48376 )
 scale = Vector2( 1.5, 1.5 )
 z_index = -6
 
+[node name="Signpost" parent="Interactable" instance=ExtResource( 41 )]
+position = Vector2( 241.34, 8.73376 )
+z_index = -6
+text_ballon = "Use the trampoline to jump higher!"
+
+[node name="Key" type="Sprite" parent="Interactable/Signpost"]
+position = Vector2( 0.5, -3.5 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 42 )
+script = ExtResource( 43 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interactable/Signpost/Key"]
+root_node = NodePath("../../../Chest/Key")
+anims/RESET = SubResource( 27 )
+anims/hide = SubResource( 28 )
+anims/show = SubResource( 26 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 8698, 766 )
-start_position_level = Vector2( 8698, 766 )
+position = Vector2( 8179, 829 )
+start_position_level = Vector2( 8179, 829 )
 
 [node name="Objects_Front" type="Node2D" parent="."]
 
@@ -1355,3 +1448,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallZones/Fallzone"]
 position = Vector2( -114.41, -330.266 )
 shape = SubResource( 21 )
+
+[connection signal="animation_finished" from="Interactable/Signpost/Key/AnimationPlayer" to="Interactable/Signpost/Key" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="Interactable/Signpost/Key/AnimationPlayer" to="Interactable/Signpost/Key" method="_on_AnimationPlayer_animation_started"]
