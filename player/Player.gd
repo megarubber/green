@@ -17,7 +17,7 @@ const DROP_THRU_BIT = 1
 # General Variables
 var motion = Vector2()
 export var knockback = 15000
-export var knockup = 100
+export var knockup = 1700
 export var start_position_level = Vector2()
 var hit = false
 var max_speed = MAX_SPEED_NORMAL
@@ -140,7 +140,7 @@ func _process(_delta: float) -> void:
 	
 func debug_inputs():
 	if Input.is_key_pressed(KEY_KP_1):
-		lifebar.damage(80)
+		lifebar.damage(50)
 
 func _on_DamageArea_area_entered(area) -> void:
 	if !hit:
@@ -158,6 +158,10 @@ func _on_DamageArea_area_entered(area) -> void:
 			"fallzone":
 				strength = lifebar.lifeMax
 				can_fly = false
+			"spike":
+				strength = 10
+				if lifebar.life > strength:	
+					motion.y = lerp(0, -knockup, 0.6)
 			_:
 				strength = 0
 		if strength > 0:
