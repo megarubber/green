@@ -16,20 +16,9 @@ onready var sprite = $Sprite
 onready var player = get_tree().get_current_scene().get_node("Player")
 
 func _ready() -> void:
-	# Creating Timer
-	timer = Timer.new()
-	timer.set_one_shot(true)
-	timer.set_wait_time(delay)
-	timer.connect("timeout", self, "on_timeout_complete") 
-	add_child(timer)
-	
 	animation.play("Default")
 	set_as_toplevel(true)
 	sprite.set_z_index(-3)
-
-# When timer ends
-func on_timeout_complete() -> void:
-	queue_free()
 
 func _process(delta: float) -> void:
 	# Movement of bullet
@@ -38,7 +27,15 @@ func _process(delta: float) -> void:
 	
 func _physics_process(_delta) -> void:
 	if !touched:
-		yield(get_tree().create_timer(0.01), "timeout")
+		# Creating timer
+		var t_d = Timer.new()
+		t_d.set_wait_time(0.01)
+		t_d.set_one_shot(true)
+		self.add_child(t_d)
+		t_d.start()
+		yield(t_d, "timeout")
+		t_d.queue_free()
+		
 		set_physics_process(false)
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
@@ -50,7 +47,6 @@ func _on_Bullet_body_entered(body) -> void:
 			touched = true
 			collision.set_deferred("disabled", true)
 			animation.play("Explosion")
-			timer.start()
 		
 		if body.is_in_group("enemy") || body.is_in_group("player"):
 			touched = true
@@ -61,3 +57,7 @@ func _on_DamageArea_area_entered(_area):
 		Global.hit_side = 1
 	else:
 		Global.hit_side = -1
+
+func _on_AnimationBullet_animation_finished(anim_name):
+	if anim_name == "Explosion":
+		queue_free()

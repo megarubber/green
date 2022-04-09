@@ -2,13 +2,11 @@ extends KinematicBody2D
 
 # Constants
 const DAMAGE = 50
-const MAX_SPEED = 5
-const MIN_SPEED = -3
 
 # General Variables
 var motion = Vector2.ZERO
 var founded = false
-var speed = MAX_SPEED
+var speed = 5
 
 # Node Referencing
 onready var lifebar = $Lifebar
@@ -55,16 +53,25 @@ func death() -> void:
 
 func _physics_process(_delta) -> void:
 	if founded && !lifebar.getDeath():
-		match player.hit:
-			true:
-				speed = MIN_SPEED
-			false:
-				speed = MAX_SPEED
 		motion = global_position.direction_to(player.global_position) * speed	
 	else:
 		motion = Vector2.ZERO
 	sprite.rotation_degrees += 1
 	motion = move_and_collide(motion)
+	
+	if l_damage_area.monitoring && r_damage_area.monitoring:
+		if l_damage_area.get_overlapping_areas():
+			if l_damage_area.get_overlapping_areas()[0].get_name() == "DamageArea"  && !player.hit:
+				player.take_damage(5)
+				Global.hit_side = -1
+			speed = 0
+		elif r_damage_area.get_overlapping_areas():
+			if r_damage_area.get_overlapping_areas()[0].get_name() == "DamageArea" && !player.hit:
+				player.take_damage(5)
+				Global.hit_side = 1
+			speed = 0
+		else:
+			speed = 5
 
 func _process(_delta) -> void:
 	# Tests if player is dead

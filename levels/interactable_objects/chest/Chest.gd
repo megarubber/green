@@ -12,12 +12,13 @@ var chest_state = State.CLOSED
 export(String) var item_path
 export(Vector2) var global_size_item
 export(bool) var instance_multiple_itens
+export(int) var n_multiple_instances = 0
 
 # Node Referencing
 onready var sprite = $AnimatedSprite
 onready var key = $Key
 onready var key_anim = $Key/AnimationPlayer
-onready var instance = $InstancePosition
+onready var instance_p = $InstancePosition
 onready var instance_anim = $InstancePosition/AnimationPlayer
 
 func _ready() -> void:
@@ -33,10 +34,14 @@ func instance_item() -> void:
 	var _i = load(item_path).instance()
 	_i.scale = global_size_item
 	if instance_multiple_itens:
-		instance.add_child(_i)
-		_i.apply_impulse(Vector2.ZERO, Vector2(rand_range(30, -30), -80))
+		for _k in range(n_multiple_instances):
+			instance_p.add_child(_i, true)
+			_i.apply_impulse(Vector2.ZERO, Vector2(rand_range(60, -60), -150))
+			_i.name = String(_k)
+			_i = null
+			_i = load(item_path).instance()
 	else:
-		instance.add_child(_i)
+		instance_p.add_child(_i)
 		_i.visible = false
 		instance_anim.play("created")
 		_i.visible = true
