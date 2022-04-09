@@ -106,7 +106,6 @@ func movement() -> void: # Player's movement function
 	else:
 		death()
 		friction = true
-	
 	motion = move_and_slide(motion, UP)
 
 func death() -> void:
@@ -132,7 +131,7 @@ func deactivate_all_colliders() -> void:
 
 func _physics_process(_delta: float) -> void: # Physics update
 	movement()
-		
+	
 func _process(_delta: float) -> void:
 	flip()
 	animation()

@@ -11,6 +11,7 @@ enum State {
 var chest_state = State.CLOSED
 export(String) var item_path
 export(Vector2) var global_size_item
+export(bool) var instance_multiple_itens
 
 # Node Referencing
 onready var sprite = $AnimatedSprite
@@ -31,11 +32,14 @@ func open_chest() -> void:
 func instance_item() -> void:
 	var _i = load(item_path).instance()
 	_i.scale = global_size_item
-	instance.add_child(_i)
-	_i.visible = false
-	instance_anim.play("created")
-	_i.visible = true
-	
+	if instance_multiple_itens:
+		instance.add_child(_i)
+		_i.apply_impulse(Vector2.ZERO, Vector2(rand_range(30, -30), -80))
+	else:
+		instance.add_child(_i)
+		_i.visible = false
+		instance_anim.play("created")
+		_i.visible = true
 
 func _input(event) -> void:
 	if event.is_action_pressed("ui_interact") && chest_state == State.CAN_OPEN:
