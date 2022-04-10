@@ -37,6 +37,8 @@ onready var wings = $Wings
 onready var drop = $DropPlataformArea
 onready var collider = $CollisionShape2D
 onready var ring = $Ring
+onready var dust_timer = $DustTimer
+onready var foot_dust = $FootDust
 
 # Referencing lifebar from HUD
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
@@ -55,6 +57,10 @@ func _ready() -> void:
 
 func animation() -> void: # Player's animation function
 	if is_on_floor() && !lifebar.getDeath():
+		if dust_timer.is_stopped():
+			foot_dust.emitting = true
+			foot_dust.global_position = global_position
+			dust_timer.start(foot_dust.lifetime + 0.1)
 		if motion.x != 0:
 			anim.play("run")
 		else:
