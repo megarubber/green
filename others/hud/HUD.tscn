@@ -1,9 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://others/hud/coin-counter.png" type="Texture" id=2]
 [ext_resource path="res://others/hud/CounterCoins.gd" type="Script" id=3]
 [ext_resource path="res://others/hud/health_heart.png" type="Texture" id=4]
+[ext_resource path="res://others/hud/HUD.gd" type="Script" id=5]
+[ext_resource path="res://others/mouse/Mouse.tscn" type="PackedScene" id=6]
+[ext_resource path="res://others/buttons/normal.png" type="Texture" id=7]
+[ext_resource path="res://others/buttons/hover.png" type="Texture" id=8]
+[ext_resource path="res://others/buttons/pressed.png" type="Texture" id=9]
+[ext_resource path="res://others/pause/pause_screen.png" type="Texture" id=10]
+[ext_resource path="res://others/buttons/disabled.png" type="Texture" id=11]
+[ext_resource path="res://others/hud/CounterLifes.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFontData" id=25]
+antialiased = false
+font_path = "res://others/fonts/PixelOperatorMono-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=26]
+size = 35
+font_data = SubResource( 25 )
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -13,33 +29,391 @@ font_path = "res://others/fonts/Pixellari.ttf"
 size = 50
 font_data = SubResource( 1 )
 
+[sub_resource type="DynamicFontData" id=7]
+antialiased = false
+font_path = "res://others/fonts/PixelOperatorMono-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 67
+outline_size = 2
+font_data = SubResource( 7 )
+
+[sub_resource type="DynamicFontData" id=8]
+antialiased = false
+font_path = "res://others/fonts/8-BIT WONDER.TTF"
+
+[sub_resource type="DynamicFont" id=9]
+size = 23
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 8 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 44, 11 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 44, 11 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 44, 12 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 44, 11 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Coins:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Health:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../GreenDiedLabel:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../BtnTryAgain:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../BtnReturnToMenu:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.666667 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Health:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Coins:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../GreenDiedLabel:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../BtnTryAgain:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../BtnReturnToMenu:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlackRectangle:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1043, 166 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LevelNumber:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -729, 247 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelName:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1032, 330 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlackRectangle:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 2.5, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1043, 0 ), Vector2( 1043, 166 ), Vector2( 1043, 166 ), Vector2( 1043, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LevelNumber:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2, 2.4, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -729, 247 ), Vector2( 326, 247 ), Vector2( 350, 247 ), Vector2( 1063, 247 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelName:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2, 2.4, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1041, 330 ), Vector2( 15, 330 ), Vector2( -39, 330 ), Vector2( -1029, 330 ) ]
+}
+
+[sub_resource type="DynamicFontData" id=18]
+antialiased = false
+font_path = "res://others/fonts/8-BIT WONDER.TTF"
+
+[sub_resource type="DynamicFont" id=19]
+size = 8
+font_data = SubResource( 18 )
+
+[sub_resource type="DynamicFontData" id=20]
+antialiased = false
+font_path = "res://others/fonts/8-BIT WONDER.TTF"
+
+[sub_resource type="DynamicFont" id=21]
+size = 6
+font_data = SubResource( 20 )
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 44, 12 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 44, 12 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 44, 12 )
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.666667 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Board:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 513, 327 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "paused"
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.666667 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Board:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -403, 327 ), Vector2( 513, 327 ) ]
+}
+
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource( 5 )
 
 [node name="Health" type="Control" parent="."]
-margin_right = 40.0
+margin_left = -13.0
+margin_right = 27.0
 margin_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="Health"]
-margin_left = 33.0
+margin_left = 60.0
 margin_top = 18.0
-margin_right = 405.0
+margin_right = 432.0
 margin_bottom = 66.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Lifebar" parent="Health" instance=ExtResource( 1 )]
-margin_left = 72.0
+margin_left = 99.0
 margin_top = 23.0
-margin_right = 610.56
+margin_right = 637.56
 margin_bottom = 87.0
 rect_scale = Vector2( 0.6, 0.6 )
 
 [node name="Icon" type="TextureRect" parent="Health"]
-margin_left = 2.0
+margin_left = 32.0
 margin_top = 11.0
-margin_right = 42.0
+margin_right = 72.0
 margin_bottom = 51.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="CounterLifes" type="Label" parent="Health"]
+margin_left = 58.0
+margin_top = 20.0
+margin_right = 192.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 56, 30 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 26 )
+text = "0"
+script = ExtResource( 12 )
 
 [node name="Coins" type="Control" parent="."]
 margin_left = 813.0
@@ -65,3 +439,172 @@ custom_colors/font_color = Color( 0.443137, 0.392157, 0.105882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "0"
 script = ExtResource( 3 )
+
+[node name="GameOver" type="Control" parent="."]
+visible = false
+margin_left = 813.0
+margin_top = 28.0
+margin_right = 853.0
+margin_bottom = 68.0
+
+[node name="BlackScreen" type="ColorRect" parent="GameOver"]
+margin_left = -826.0
+margin_top = -28.0
+margin_right = 229.0
+margin_bottom = 590.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="GreenDiedLabel" type="Label" parent="GameOver"]
+margin_left = -480.0
+margin_top = 139.0
+margin_right = -115.0
+margin_bottom = 209.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Green died!"
+align = 1
+
+[node name="BtnTryAgain" type="Button" parent="GameOver"]
+margin_left = -683.0
+margin_top = 392.0
+margin_right = -462.0
+margin_bottom = 455.0
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/normal = SubResource( 11 )
+text = "Try Again"
+
+[node name="BtnReturnToMenu" type="Button" parent="GameOver"]
+margin_left = -257.0
+margin_top = 392.0
+margin_right = 94.0
+margin_bottom = 455.0
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 11 )
+text = "Return to menu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
+root_node = NodePath("../BlackScreen")
+anims/RESET = SubResource( 4 )
+anims/fade_in = SubResource( 3 )
+
+[node name="StartLevel" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="BlackRectangle" type="ColorRect" parent="StartLevel"]
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = 246.0
+margin_right = 1033.0
+margin_bottom = 412.0
+color = Color( 0, 0, 0, 0.380392 )
+
+[node name="LevelNumber" type="Label" parent="StartLevel"]
+margin_left = -729.0
+margin_top = 247.0
+margin_right = -355.002
+margin_bottom = 317.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "STAGE XX"
+align = 1
+
+[node name="LevelName" type="Label" parent="StartLevel"]
+margin_left = -1032.0
+margin_top = 330.0
+margin_right = -38.999
+margin_bottom = 400.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "LOREM IPSUM"
+align = 1
+
+[node name="AnimationPlayerStart" type="AnimationPlayer" parent="StartLevel"]
+anims/RESET = SubResource( 15 )
+anims/start = SubResource( 14 )
+
+[node name="Pause" type="Control" parent="."]
+pause_mode = 2
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="BlackScreen" type="ColorRect" parent="Pause"]
+margin_left = -13.0
+margin_right = 1042.0
+margin_bottom = 618.0
+color = Color( 0, 0, 0, 0.666667 )
+
+[node name="Board" type="Sprite" parent="Pause"]
+position = Vector2( 513, 327 )
+scale = Vector2( 5.29545, 5.29545 )
+texture = ExtResource( 10 )
+
+[node name="PauseLabel" type="Label" parent="Pause/Board"]
+margin_left = -57.1546
+margin_top = -36.0
+margin_right = 59.8454
+margin_bottom = -23.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "Game Paused"
+align = 1
+
+[node name="BtnResume" type="Button" parent="Pause/Board"]
+margin_left = -23.6052
+margin_top = -21.0
+margin_right = 23.3948
+margin_bottom = -6.0
+custom_fonts/font = SubResource( 21 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 11 )
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BtnSettings" type="Button" parent="Pause/Board"]
+margin_left = -31.3476
+margin_top = -3.0
+margin_right = 28.6524
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 21 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/disabled = SubResource( 23 )
+custom_styles/normal = SubResource( 11 )
+text = "Settings"
+
+[node name="BtnRestart" type="Button" parent="Pause/Board"]
+margin_left = -44.1888
+margin_top = 16.0
+margin_right = 39.8112
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 21 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/normal = SubResource( 11 )
+text = "Restart Level"
+
+[node name="AnimationPlayerPause" type="AnimationPlayer" parent="Pause"]
+anims/RESET = SubResource( 17 )
+anims/paused = SubResource( 16 )
+
+[node name="Mouse" parent="." instance=ExtResource( 6 )]
+pause_mode = 2
+scale = Vector2( 3, 3 )
+z_index = -6
+
+[connection signal="pressed" from="GameOver/BtnTryAgain" to="." method="_on_BtnTryAgain_pressed"]
+[connection signal="animation_finished" from="GameOver/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="StartLevel/AnimationPlayerStart" to="." method="_on_AnimationPlayerStart_animation_finished"]
+[connection signal="pressed" from="Pause/Board/BtnResume" to="." method="_on_BtnResume_pressed"]

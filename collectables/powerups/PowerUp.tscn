@@ -18,15 +18,15 @@ animations = [ {
 "name": "speed",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ) ],
-"loop": false,
-"name": "collected",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "gun",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "collected",
+"speed": 20.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
@@ -37,7 +37,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 7 )
 
-[node name="PowerUp" type="Area2D"]
+[node name="PowerUp" type="Area2D" groups=["collectables"]]
 collision_layer = 4
 script = ExtResource( 2 )
 
@@ -48,5 +48,5 @@ animation = "speed"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[connection signal="body_entered" from="." to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_PowerUp_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

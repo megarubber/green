@@ -1,0 +1,157 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://others/checkpoint/flag_1.png" type="Texture" id=1]
+[ext_resource path="res://others/checkpoint/flag_4.png" type="Texture" id=2]
+[ext_resource path="res://others/checkpoint/flag_5.png" type="Texture" id=3]
+[ext_resource path="res://others/checkpoint/flag_3.png" type="Texture" id=4]
+[ext_resource path="res://others/checkpoint/flag_8.png" type="Texture" id=5]
+[ext_resource path="res://others/checkpoint/flag_6.png" type="Texture" id=6]
+[ext_resource path="res://others/checkpoint/flag_7.png" type="Texture" id=7]
+[ext_resource path="res://others/checkpoint/flag_2.png" type="Texture" id=8]
+[ext_resource path="res://levels/background/generic-bar.png" type="Texture" id=9]
+[ext_resource path="res://others/checkpoint/Checkpoint.gd" type="Script" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.62103, 28.6723 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flag:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -27, -41 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.976471, 0.00392157, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "already_checked"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flag:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0.203922, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "checked"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flag:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -27, -41 ), Vector2( -27, -54 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.976471, 0.00392157, 0 ), Color( 1, 0.976471, 0.00392157, 1 ), Color( 1, 0.976471, 0.00392157, 0 ) ]
+}
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://others/fonts/PressStart2P-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 8
+font_data = SubResource( 5 )
+
+[node name="Checkpoint" type="Area2D"]
+collision_layer = 0
+script = ExtResource( 10 )
+
+[node name="Flag" type="AnimatedSprite" parent="."]
+position = Vector2( 17.5882, -17.1713 )
+scale = Vector2( 0.0346365, 0.0346365 )
+frames = SubResource( 1 )
+frame = 6
+playing = true
+
+[node name="Bar" type="Sprite" parent="."]
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 5.62063, -1.64024 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/already_checked = SubResource( 7 )
+anims/checked = SubResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -27.0
+margin_top = -41.0
+margin_right = 61.0
+margin_bottom = -33.0
+custom_colors/font_color = Color( 1, 0.976471, 0.00392157, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "CHECKPOINT!"
+
+[connection signal="body_entered" from="." to="." method="_on_Checkpoint_body_entered"]

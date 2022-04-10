@@ -15,6 +15,7 @@ var bullet = preload("res://others/bullet/Bullet.tscn")
 
 # Nodes Referecing
 onready var muzzle = $Muzzle
+onready var player = get_parent()
 
 func shotting() -> void: # Shotting with gun
 	var bullet_instance = bullet.instance()
@@ -33,25 +34,32 @@ func shotting() -> void: # Shotting with gun
 	#can_fire = true
 
 func _physics_process(_delta: float) -> void:
-	position += velocity
-	velocity = velocity * 0.7
-	global_position.x = lerp(global_position.x, get_parent().global_position.x, 0.4)
-	global_position.y = lerp(global_position.y, get_parent().global_position.y - 90, 0.4)
-	
-	mouse_pos = get_global_mouse_position()
-	look_at(mouse_pos)
-	
-	# Flipping gun
-	if get_parent().get_local_mouse_position().x < 0:
-		flip_v = true
-		muzzle.position.y = MUZZLE_POS_FLIP_TRUE
+	if !player.lifebar.getDeath():
+		position += velocity
+		velocity = velocity * 0.7
+		global_position.x = lerp(global_position.x, get_parent().global_position.x, 0.4)
+		global_position.y = lerp(global_position.y, get_parent().global_position.y - 90, 0.4)
+		
+		mouse_pos = get_global_mouse_position()
+		look_at(mouse_pos)
+		
+		# Flipping gun
+		if get_parent().get_local_mouse_position().x < 0:
+			flip_v = true
+			muzzle.position.y = MUZZLE_POS_FLIP_TRUE
+		else:
+			flip_v = false
+			muzzle.position.y = MUZZLE_POS_FLIP_FALSE
+		
+		# Press the left button mouse to shoot
+		if Input.is_action_pressed("ui_fire") && can_fire:
+			shotting()
+		
+		if Input.is_action_just_released("ui_fire") && !can_fire:
+			can_fire = true
 	else:
-		flip_v = false
-		muzzle.position.y = MUZZLE_POS_FLIP_FALSE
-	
-	# Press the left button mouse to shoot
-	if Input.is_action_pressed("ui_fire") && can_fire:
-		shotting()
-	
-	if Input.is_action_just_released("ui_fire") && !can_fire:
-		can_fire = true
+		can_fire = false
+		if flip_v:
+			rotation_degrees = -180
+		else:
+			rotation_degrees = 0

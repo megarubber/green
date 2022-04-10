@@ -26,7 +26,7 @@ func _ready() -> void:
 	timer.connect("timeout", self, "on_timeout_complete") 
 	add_child(timer)
 	
-	set_as_toplevel(true)
+	#set_as_toplevel(true)
 
 # When timer ends
 func on_timeout_complete() -> void:

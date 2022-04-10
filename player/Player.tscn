@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://player/sprites/idle.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
@@ -24,6 +24,20 @@
 [ext_resource path="res://player/sprites/crouch_idle2.png" type="Texture" id=22]
 [ext_resource path="res://others/Screenshake.gd" type="Script" id=23]
 [ext_resource path="res://player/sprites/eyes_damage.png" type="Texture" id=24]
+[ext_resource path="res://player/sprites/wing-2.png" type="Texture" id=25]
+[ext_resource path="res://player/sprites/wing-1.png" type="Texture" id=26]
+[ext_resource path="res://player/sprites/wing-3.png" type="Texture" id=27]
+[ext_resource path="res://player/sprites/wing-4.png" type="Texture" id=28]
+[ext_resource path="res://player/sprites/ring.png" type="Texture" id=29]
+[ext_resource path="res://others/effects/FootDust.tscn" type="PackedScene" id=30]
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ ExtResource( 26 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -76,6 +90,9 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.5, 98 )
 
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 35, 7.5 )
+
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
@@ -113,6 +130,117 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -1, -143 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Wings/WingLeft:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Wings/WingRight:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HeadSprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BodySprite:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("GunSprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeadSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.572549, 0.886275, 0.929412, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodySprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.572549, 0.886275, 0.929412, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GunSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.572549, 0.886275, 0.929412, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodySprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -265,6 +393,24 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 44.0 ]
 }
 
+[node name="Wings" type="Node2D" parent="."]
+visible = false
+
+[node name="WingLeft" type="AnimatedSprite" parent="Wings"]
+position = Vector2( -72, -110 )
+scale = Vector2( 0.224, 0.224 )
+frames = SubResource( 14 )
+frame = 2
+playing = true
+
+[node name="WingRight" type="AnimatedSprite" parent="Wings"]
+position = Vector2( 71, -110 )
+scale = Vector2( 0.224, 0.224 )
+frames = SubResource( 14 )
+frame = 2
+playing = true
+flip_h = true
+
 [node name="HeadSprite" type="Sprite" parent="."]
 position = Vector2( -1, -153 )
 scale = Vector2( 5, 5 )
@@ -288,11 +434,22 @@ scale = Vector2( 5, 5 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -1, -101 )
 shape = SubResource( 1 )
 
+[node name="DropPlataformArea" type="Area2D" parent="." groups=["drop"]]
+position = Vector2( -1, -101 )
+collision_layer = 0
+collision_mask = 130
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPlataformArea"]
+position = Vector2( 0, 90.5 )
+shape = SubResource( 13 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )
+anims/dead = SubResource( 15 )
 anims/fall = SubResource( 6 )
 anims/idle = SubResource( 3 )
 anims/jump = SubResource( 7 )
@@ -300,10 +457,11 @@ anims/run = SubResource( 5 )
 anims/transition_crouch = SubResource( 10 )
 
 [node name="DamageArea" type="Area2D" parent="."]
+visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
-collision_mask = 172
+collision_mask = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2( -3.45707e-06, -251.087 )
@@ -319,12 +477,28 @@ script = ExtResource( 19 )
 [node name="Muzzle" type="Position2D" parent="GunSprite"]
 position = Vector2( 18.8, -4.8 )
 
+[node name="Ring" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0.999999, -221 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 29 )
+
 [node name="Camera" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2( 1.7, 1.7 )
+limit_left = 1800
+limit_top = -870
+limit_bottom = 1750
 smoothing_enabled = true
 
 [node name="Screenshake" type="Node" parent="Camera"]
 script = ExtResource( 23 )
 
+[node name="FootDust" parent="." instance=ExtResource( 30 )]
+position = Vector2( 0, -7 )
+
+[node name="DustTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_exited" from="DropPlataformArea" to="." method="_on_DropPlataformArea_body_exited"]
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]

@@ -7,7 +7,6 @@ diálogos
 npcs
 plataformas que se movem
 obstáculos (serra)
-checkpoint
 pause
 tela inicial
 game over
@@ -17,4 +16,13 @@ carros
 tela de opções
 mapa estilo smw
 3 fases
+boss
 parallax e background
+baús
+inventário básico
+efeitos na tela (shaders)
+sistema de combo
+transições
+passar de nível
+ventiladores que fazem o personagem flutuar
+menu de opções

@@ -1,0 +1,450 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://enemy/EyesEnemy.gd" type="Script" id=1]
+[ext_resource path="res://enemy/enemy2/head.png" type="Texture" id=2]
+[ext_resource path="res://enemy/enemy2/body.png" type="Texture" id=3]
+[ext_resource path="res://enemy/enemy2/eyes1.png" type="Texture" id=4]
+[ext_resource path="res://enemy/enemy2/eyes2.png" type="Texture" id=5]
+[ext_resource path="res://enemy/enemy2/FollowerEnemy.gd" type="Script" id=6]
+[ext_resource path="res://guns/gun2.png" type="Texture" id=10]
+[ext_resource path="res://guns/EnemyGun.gd" type="Script" id=11]
+[ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=15]
+[ext_resource path="res://others/explosion/ex_7.png" type="Texture" id=16]
+[ext_resource path="res://others/explosion/ex_2.png" type="Texture" id=17]
+[ext_resource path="res://others/explosion/ex_4.png" type="Texture" id=18]
+[ext_resource path="res://others/explosion/ex_1.png" type="Texture" id=19]
+[ext_resource path="res://others/explosion/ex_5.png" type="Texture" id=20]
+[ext_resource path="res://others/explosion/ex_3.png" type="Texture" id=21]
+[ext_resource path="res://others/explosion/ex_6.png" type="Texture" id=22]
+[ext_resource path="res://others/explosion/ex_8.png" type="Texture" id=23]
+
+[sub_resource type="Shader" id=16]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 flash_color : hint_color = vec4(1.0);
+uniform float flash_modifier : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=17]
+resource_local_to_scene = true
+shader = SubResource( 16 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="StreamTexture" id=31]
+flags = 4
+load_path = "res://.import/wheel1.png-e8099776ea8ff63b1ec0011fb560e662.stex"
+
+[sub_resource type="StreamTexture" id=32]
+flags = 4
+load_path = "res://.import/wheel2.png-eb2006b4d008921a271dcba4a9837b13.stex"
+
+[sub_resource type="StreamTexture" id=33]
+flags = 4
+load_path = "res://.import/wheel3.png-4c520f5420229113474464720096684c.stex"
+
+[sub_resource type="StreamTexture" id=34]
+flags = 4
+load_path = "res://.import/wheel4.png-6f962a75833b1abf4b09ee8fa25af768.stex"
+
+[sub_resource type="StreamTexture" id=35]
+flags = 4
+load_path = "res://.import/wheel5.png-1446a6e115c8285a01cdf3570777a9a8.stex"
+
+[sub_resource type="StreamTexture" id=36]
+flags = 4
+load_path = "res://.import/wheel6.png-61e8f1777517318d89e0c006c0252dc7.stex"
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
+} ]
+
+[sub_resource type="Shader" id=27]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 flash_color : hint_color = vec4(1.0);
+uniform float flash_modifier : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = SubResource( 27 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="Shader" id=30]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 flash_color : hint_color = vec4(1.0);
+uniform float flash_modifier : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=22]
+resource_local_to_scene = true
+shader = SubResource( 30 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "angry",
+"speed": 5.0
+} ]
+
+[sub_resource type="Shader" id=29]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 flash_color : hint_color = vec4(1.0);
+uniform float flash_modifier : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
+shader = SubResource( 29 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 36.9076, 111.25 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 47.8657, 185.934 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 736.5, 377.75 )
+
+[sub_resource type="Shader" id=26]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 flash_color : hint_color = vec4(1.0);
+uniform float flash_modifier : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=19]
+resource_local_to_scene = true
+shader = SubResource( 26 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 17 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 16 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "default",
+"speed": 18.0
+} ]
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:material:shader_param/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Wheel:material:shader_param/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GunSprite:material:shader_param/flash_modifier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Head/Eyes:material:shader_param/flash_modifier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:material:shader_param/flash_modifier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "default"
+length = 0.4
+loop = true
+step = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.199, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -0.383204, -51.2653 ), Vector2( -0.383204, -51.2653 ), Vector2( -0.383204, -48.2653 ), Vector2( -0.383204, -48.2653 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "flash"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:material:shader_param/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Wheel:material:shader_param/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.12, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GunSprite:material:shader_param/flash_modifier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.12, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Head/Eyes:material:shader_param/flash_modifier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.12, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:material:shader_param/flash_modifier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.12, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+
+[node name="FollowerEnemy" type="KinematicBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource( 6 )
+
+[node name="Wheel" type="AnimatedSprite" parent="."]
+material = SubResource( 17 )
+position = Vector2( -2, 100 )
+scale = Vector2( 0.104576, 0.104576 )
+frames = SubResource( 6 )
+frame = 2
+playing = true
+
+[node name="Head" type="Sprite" parent="."]
+material = SubResource( 15 )
+position = Vector2( -0.383204, -51.2653 )
+scale = Vector2( 0.613333, 0.613334 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="Eyes" type="AnimatedSprite" parent="Head"]
+material = SubResource( 22 )
+position = Vector2( 0, 25 )
+scale = Vector2( 1.1413, 1.1413 )
+frames = SubResource( 8 )
+
+[node name="Body" type="Sprite" parent="."]
+material = SubResource( 13 )
+position = Vector2( -1, 53 )
+scale = Vector2( 0.613333, 0.613334 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -1, 3.75 )
+shape = SubResource( 4 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 44, 109 )
+enabled = true
+cast_to = Vector2( 0, 11 )
+collision_mask = 2
+
+[node name="LeftDamageArea" type="Area2D" parent="." groups=["basic_enemy"]]
+position = Vector2( -1, 53 )
+scale = Vector2( 0.613333, 0.613334 )
+collision_layer = 16
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDamageArea"]
+position = Vector2( -44.8279, -82.0168 )
+shape = SubResource( 24 )
+
+[node name="RightDamageArea" type="Area2D" parent="." groups=["basic_enemy"]]
+position = Vector2( -1, 53 )
+scale = Vector2( 0.613333, 0.613334 )
+collision_layer = 16
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDamageArea"]
+position = Vector2( 43.9353, -85.5332 )
+shape = SubResource( 24 )
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="AreaShape" type="CollisionShape2D" parent="DetectArea"]
+position = Vector2( -2.50002, -258.676 )
+shape = SubResource( 7 )
+
+[node name="GunSprite" type="Sprite" parent="."]
+material = SubResource( 19 )
+position = Vector2( 4, 31 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 10 )
+offset = Vector2( 5, 0 )
+script = ExtResource( 11 )
+
+[node name="Muzzle" type="Position2D" parent="GunSprite"]
+position = Vector2( 21.2, -8 )
+
+[node name="Explosion" type="Node2D" parent="."]
+visible = false
+position = Vector2( -23, -78 )
+scale = Vector2( 0.227539, 0.227539 )
+
+[node name="1" type="AnimatedSprite" parent="Explosion"]
+modulate = Color( 0.607843, 1, 0, 1 )
+position = Vector2( -17.5794, 681.202 )
+frames = SubResource( 23 )
+
+[node name="2" type="AnimatedSprite" parent="Explosion"]
+modulate = Color( 0.607843, 1, 0, 1 )
+position = Vector2( 13.1845, 57.1331 )
+frames = SubResource( 23 )
+
+[node name="3" type="AnimatedSprite" parent="Explosion"]
+modulate = Color( 0.607843, 1, 0, 1 )
+position = Vector2( 241.717, 184.584 )
+frames = SubResource( 23 )
+
+[node name="4" type="AnimatedSprite" parent="Explosion"]
+modulate = Color( 0.607843, 1, 0, 1 )
+position = Vector2( -87.897, 351.588 )
+frames = SubResource( 23 )
+
+[node name="5" type="AnimatedSprite" parent="Explosion"]
+modulate = Color( 0.607843, 1, 0, 1 )
+position = Vector2( 210.953, 443.88 )
+frames = SubResource( 23 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 9 )
+anims/default = SubResource( 10 )
+anims/flash = SubResource( 20 )
+
+[node name="Lifebar" parent="." instance=ExtResource( 15 )]
+margin_left = -80.0
+margin_top = -148.0
+margin_right = 467.0
+margin_bottom = -84.0
+rect_scale = Vector2( 0.3, 0.3 )
+
+[connection signal="area_entered" from="LeftDamageArea" to="." method="_on_LeftDamageArea_area_entered"]
+[connection signal="area_entered" from="RightDamageArea" to="." method="_on_RightDamageArea_area_entered"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]
