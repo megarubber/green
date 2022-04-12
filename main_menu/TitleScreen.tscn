@@ -1,0 +1,162 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://levels/background/mountain.png" type="Texture" id=1]
+[ext_resource path="res://main_menu/background.png" type="Texture" id=2]
+[ext_resource path="res://levels/background/clouds_2.png" type="Texture" id=3]
+[ext_resource path="res://levels/background/clouds_1.png" type="Texture" id=4]
+[ext_resource path="res://levels/background/trees.png" type="Texture" id=5]
+[ext_resource path="res://levels/background/city.png" type="Texture" id=6]
+[ext_resource path="res://main_menu/logo.png" type="Texture" id=7]
+
+[sub_resource type="Shader" id=18]
+code = "shader_type canvas_item;
+
+uniform vec2 direction = vec2(1.0, 0.0);
+uniform float speed = 0.02f;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV + (direction * TIME * speed));
+}"
+
+[sub_resource type="ShaderMaterial" id=19]
+shader = SubResource( 18 )
+shader_param/direction = Vector2( 1, 0 )
+shader_param/speed = 0.02
+
+[sub_resource type="Shader" id=20]
+code = "shader_type canvas_item;
+
+uniform vec2 direction = vec2(1.0, 0.0);
+uniform float speed = 0.07f;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV + (direction * TIME * speed));
+}"
+
+[sub_resource type="ShaderMaterial" id=21]
+shader = SubResource( 20 )
+shader_param/direction = Vector2( 1, 0 )
+shader_param/speed = 0.07
+
+[sub_resource type="Shader" id=22]
+code = "shader_type canvas_item;
+
+uniform vec2 direction = vec2(1.0, 0.0);
+uniform float speed = 0.08f;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV + (direction * TIME * speed));
+}"
+
+[sub_resource type="ShaderMaterial" id=23]
+shader = SubResource( 22 )
+shader_param/direction = Vector2( 1, 0 )
+shader_param/speed = 0.08
+
+[sub_resource type="Shader" id=24]
+code = "shader_type canvas_item;
+
+uniform vec2 direction = vec2(1.0, 0.0);
+uniform float speed = 0.2f;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV + (direction * TIME * speed));
+}"
+
+[sub_resource type="ShaderMaterial" id=25]
+shader = SubResource( 24 )
+shader_param/direction = Vector2( 1, 0 )
+shader_param/speed = 0.2
+
+[sub_resource type="Shader" id=26]
+code = "shader_type canvas_item;
+
+uniform vec2 direction = vec2(1.0, 0.0);
+uniform float speed = 0.3f;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV + (direction * TIME * speed));
+}"
+
+[sub_resource type="ShaderMaterial" id=27]
+shader = SubResource( 26 )
+shader_param/direction = Vector2( 1, 0 )
+shader_param/speed = 0.3
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="Sprite" parent="Background"]
+modulate = Color( 1, 1, 1, 0.831373 )
+position = Vector2( 523, -59 )
+scale = Vector2( 2.7875, 2.7875 )
+texture = ExtResource( 2 )
+
+[node name="Clouds2" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.3, 0.6 )
+motion_mirroring = Vector2( 1152, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/Clouds2"]
+modulate = Color( 1, 1, 1, 0.486275 )
+material = SubResource( 19 )
+position = Vector2( 0, -150 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Clouds1" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.3, 0.7 )
+motion_mirroring = Vector2( 1036.8, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/Clouds1"]
+material = SubResource( 21 )
+position = Vector2( 0, -237 )
+scale = Vector2( 3.6, 3.6 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="City" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 1843.2, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/City"]
+modulate = Color( 0.764706, 0.666667, 0.666667, 1 )
+material = SubResource( 23 )
+position = Vector2( 0, 64 )
+scale = Vector2( 3.6, 3.6 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Trees" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1536, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/Trees"]
+modulate = Color( 0.584314, 0.517647, 0.517647, 1 )
+material = SubResource( 25 )
+position = Vector2( 0, 85 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Mountain" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 1280, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/Mountain"]
+modulate = Color( 0.764706, 0.666667, 0.666667, 1 )
+material = SubResource( 27 )
+position = Vector2( 0, 263 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_right = 1038.0
+margin_bottom = 618.0
+color = Color( 0, 0, 0, 0.486275 )
+
+[node name="Logo" type="Sprite" parent="."]
+position = Vector2( 512, 131 )
+scale = Vector2( 0.404096, 0.404096 )
+texture = ExtResource( 7 )

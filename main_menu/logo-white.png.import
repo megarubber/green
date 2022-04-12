@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mountain.png-04e0f659266a071bb0f93a8332852a00.stex"
+path="res://.import/logo-white.png-65aae5df700801956b59bfafc0d10d12.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/background/mountain.png"
-dest_files=[ "res://.import/mountain.png-04e0f659266a071bb0f93a8332852a00.stex" ]
+source_file="res://main_menu/logo-white.png"
+dest_files=[ "res://.import/logo-white.png-65aae5df700801956b59bfafc0d10d12.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

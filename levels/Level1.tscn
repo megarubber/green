@@ -49,7 +49,7 @@
 [ext_resource path="res://levels/plataforms/FallingPlataform.tscn" type="PackedScene" id=47]
 [ext_resource path="res://enemy/enemy3/FlyerEnemy.tscn" type="PackedScene" id=48]
 
-[sub_resource type="Shader" id=18]
+[sub_resource type="Shader" id=33]
 code = "shader_type canvas_item;
 
 uniform vec2 direction = vec2(1.0, 0.0);
@@ -60,7 +60,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=19]
-shader = SubResource( 18 )
+shader = SubResource( 33 )
 shader_param/direction = Vector2( 1, 0 )
 shader_param/speed = 0.02
 
