@@ -11,7 +11,7 @@ onready var pause_screen = $Pause
 onready var pause_screen_anim = $Pause/AnimationPlayerPause
 
 func _ready() -> void:
-	var level_name_reference = Global.current_scene_name
+	var level_name_reference = get_tree().get_current_scene().get_name()
 	match level_name_reference:
 		"Level1":
 			level_number_label.set_text("STAGE 01")
