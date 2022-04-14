@@ -9,6 +9,7 @@ onready var logo = $Logo
 onready var label_anim = $LabelSpacebar/AnimationPlayer
 onready var tween = $Logo/Tween
 onready var logo_anim = $Logo/AnimationPlayer
+onready var transition = $TransitionBlock
 
 # Variables
 onready var positions_tween = [
@@ -46,4 +47,6 @@ func _on_Tween_tween_completed(_object, _key) -> void:
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
+		transition.fade_in()
+		yield(transition, "finished")
 		var _scene = get_tree().change_scene("res://main_menu/MainMenu.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://levels/background/mountain.png" type="Texture" id=1]
 [ext_resource path="res://main_menu/background.png" type="Texture" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://main_menu/logo/Sequence 0124.png" type="Texture" id=35]
 [ext_resource path="res://main_menu/logo/Sequence 0106.png" type="Texture" id=36]
 [ext_resource path="res://main_menu/TitleScreen.gd" type="Script" id=37]
+[ext_resource path="res://others/transitions/TransitionBlock.tscn" type="PackedScene" id=38]
 
 [sub_resource type="Shader" id=18]
 code = "shader_type canvas_item;
@@ -222,6 +223,8 @@ tracks/0/keys = {
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource( 37 )
+
+[node name="TransitionBlock" parent="." instance=ExtResource( 38 )]
 
 [node name="Background" type="ParallaxBackground" parent="."]
 

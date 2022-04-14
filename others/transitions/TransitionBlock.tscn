@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://others/transitions/Transition.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rectangles/Rectangle1:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1029, 347.429 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rectangles/Rectangle2:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1029, 352.571 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Rectangles/Rectangle2:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 255.429 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rectangles/Rectangle1:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1029, 0 ), Vector2( 1029, 347.429 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rectangles/Rectangle2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 608 ), Vector2( 0, 255.429 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Rectangles/Rectangle2:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1029, 0 ), Vector2( 1029, 352.571 ) ]
+}
+
+[node name="TransitionBlock" type="CanvasLayer"]
+pause_mode = 2
+layer = 10
+script = ExtResource( 1 )
+
+[node name="Rectangles" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Rectangle1" type="ColorRect" parent="Rectangles"]
+margin_right = 1029.0
+margin_bottom = 347.429
+color = Color( 0, 0, 0, 1 )
+
+[node name="Rectangle2" type="ColorRect" parent="Rectangles"]
+margin_top = 255.429
+margin_right = 1029.0
+margin_bottom = 608.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/RESET = SubResource( 3 )
+anims/fade_in = SubResource( 2 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
