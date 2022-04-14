@@ -1234,7 +1234,6 @@ position = Vector2( 6243, -304 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Interactable" type="Node2D" parent="."]
@@ -1722,7 +1721,7 @@ position = Vector2( 3202, 181 )
 position = Vector2( 10131, 609 )
 
 [node name="SmallFlyerEnemy4" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 4898, 273 )
+position = Vector2( 5045, 470 )
 
 [node name="SmallFlyerEnemy7" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 7778, -793 )
@@ -1743,10 +1742,13 @@ position = Vector2( 10182, -517 )
 position = Vector2( 10384, -452 )
 
 [node name="SmallFlyerEnemy5" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 5129, 640 )
+position = Vector2( 5200, 681 )
 
 [node name="SmallFlyerEnemy6" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 5260, 357 )
+position = Vector2( 5011, 628 )
+
+[node name="SmallFlyerEnemy13" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 5265, 528 )
 
 [node name="FollowerEnemy" parent="Enemies" instance=ExtResource( 19 )]
 position = Vector2( 6402.9, 126.653 )

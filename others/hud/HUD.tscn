@@ -441,6 +441,7 @@ text = "0"
 script = ExtResource( 3 )
 
 [node name="GameOver" type="Control" parent="."]
+visible = false
 margin_left = 813.0
 margin_top = 28.0
 margin_right = 853.0
@@ -504,7 +505,7 @@ anchor_bottom = 1.0
 margin_left = -10.0
 margin_top = 246.0
 margin_right = 1033.0
-margin_bottom = 412.0
+margin_bottom = 372.0
 color = Color( 0, 0, 0, 0.380392 )
 
 [node name="LevelNumber" type="Label" parent="StartLevel"]
