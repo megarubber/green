@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://levels/background/mountain.png" type="Texture" id=1]
 [ext_resource path="res://main_menu/background.png" type="Texture" id=2]
@@ -6,7 +6,37 @@
 [ext_resource path="res://levels/background/clouds_1.png" type="Texture" id=4]
 [ext_resource path="res://levels/background/trees.png" type="Texture" id=5]
 [ext_resource path="res://levels/background/city.png" type="Texture" id=6]
-[ext_resource path="res://main_menu/logo.png" type="Texture" id=7]
+[ext_resource path="res://main_menu/logo/Sequence 0100.png" type="Texture" id=7]
+[ext_resource path="res://main_menu/logo/Sequence 0101.png" type="Texture" id=8]
+[ext_resource path="res://main_menu/logo/Sequence 0102.png" type="Texture" id=9]
+[ext_resource path="res://main_menu/logo/Sequence 0103.png" type="Texture" id=10]
+[ext_resource path="res://main_menu/logo/Sequence 0128.png" type="Texture" id=11]
+[ext_resource path="res://main_menu/logo/Sequence 0126.png" type="Texture" id=12]
+[ext_resource path="res://main_menu/logo/Sequence 0118.png" type="Texture" id=13]
+[ext_resource path="res://main_menu/logo/Sequence 0129.png" type="Texture" id=14]
+[ext_resource path="res://main_menu/logo/Sequence 0127.png" type="Texture" id=15]
+[ext_resource path="res://main_menu/logo/Sequence 0109.png" type="Texture" id=16]
+[ext_resource path="res://main_menu/logo/Sequence 0114.png" type="Texture" id=17]
+[ext_resource path="res://main_menu/logo/Sequence 0116.png" type="Texture" id=18]
+[ext_resource path="res://main_menu/logo/Sequence 0121.png" type="Texture" id=19]
+[ext_resource path="res://main_menu/logo/Sequence 0115.png" type="Texture" id=20]
+[ext_resource path="res://main_menu/logo/Sequence 0113.png" type="Texture" id=21]
+[ext_resource path="res://main_menu/logo/Sequence 0110.png" type="Texture" id=22]
+[ext_resource path="res://main_menu/logo/Sequence 0107.png" type="Texture" id=23]
+[ext_resource path="res://main_menu/logo/Sequence 0105.png" type="Texture" id=24]
+[ext_resource path="res://main_menu/logo/Sequence 0112.png" type="Texture" id=25]
+[ext_resource path="res://main_menu/logo/Sequence 0108.png" type="Texture" id=26]
+[ext_resource path="res://main_menu/logo/Sequence 0111.png" type="Texture" id=27]
+[ext_resource path="res://main_menu/logo/Sequence 0117.png" type="Texture" id=28]
+[ext_resource path="res://main_menu/logo/Sequence 0125.png" type="Texture" id=29]
+[ext_resource path="res://main_menu/logo/Sequence 0123.png" type="Texture" id=30]
+[ext_resource path="res://main_menu/logo/Sequence 0120.png" type="Texture" id=31]
+[ext_resource path="res://main_menu/logo/Sequence 0119.png" type="Texture" id=32]
+[ext_resource path="res://main_menu/logo/Sequence 0104.png" type="Texture" id=33]
+[ext_resource path="res://main_menu/logo/Sequence 0122.png" type="Texture" id=34]
+[ext_resource path="res://main_menu/logo/Sequence 0124.png" type="Texture" id=35]
+[ext_resource path="res://main_menu/logo/Sequence 0106.png" type="Texture" id=36]
+[ext_resource path="res://main_menu/TitleScreen.gd" type="Script" id=37]
 
 [sub_resource type="Shader" id=18]
 code = "shader_type canvas_item;
@@ -83,7 +113,115 @@ shader = SubResource( 26 )
 shader_param/direction = Vector2( 1, 0 )
 shader_param/speed = 0.3
 
+[sub_resource type="SpriteFrames" id=28]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 33 ), ExtResource( 24 ), ExtResource( 36 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 28 ), ExtResource( 13 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 19 ), ExtResource( 34 ), ExtResource( 30 ), ExtResource( 35 ), ExtResource( 29 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 11 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "highlight",
+"speed": 17.0
+} ]
+
+[sub_resource type="Animation" id=34]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 512, 146 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFontData" id=29]
+antialiased = false
+font_path = "res://others/fonts/8-BIT WONDER.TTF"
+
+[sub_resource type="DynamicFont" id=30]
+size = 40
+font_data = SubResource( 29 )
+
+[sub_resource type="Animation" id=31]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0.976471, 0.152941, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Logo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "default"
+loop = true
+step = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.613, 0.614, 0.999, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.976471, 0.152941, 1 ), Color( 0, 0.976471, 0.152941, 1 ), Color( 0, 0.976471, 0.152941, 0 ), Color( 0, 0.976471, 0.152941, 0 ), Color( 0, 0.976471, 0.152941, 1 ) ]
+}
+
 [node name="TitleScreen" type="Node2D"]
+script = ExtResource( 37 )
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -151,12 +289,42 @@ position = Vector2( 0, 263 )
 texture = ExtResource( 1 )
 centered = false
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
+[node name="BlackRect" type="ColorRect" parent="Background"]
 margin_right = 1038.0
 margin_bottom = 618.0
-color = Color( 0, 0, 0, 0.486275 )
+color = Color( 0, 0, 0, 0.360784 )
 
-[node name="Logo" type="Sprite" parent="."]
-position = Vector2( 512, 131 )
+[node name="Logo" type="AnimatedSprite" parent="."]
+position = Vector2( 512, 146 )
 scale = Vector2( 0.404096, 0.404096 )
-texture = ExtResource( 7 )
+frames = SubResource( 28 )
+playing = true
+
+[node name="StartTimer" type="Timer" parent="Logo"]
+wait_time = 4.0
+autostart = true
+
+[node name="Tween" type="Tween" parent="Logo"]
+repeat = true
+playback/repeat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Logo"]
+anims/RESET = SubResource( 34 )
+anims/start = SubResource( 33 )
+
+[node name="LabelSpacebar" type="Label" parent="."]
+margin_left = 244.0
+margin_top = 424.0
+margin_right = 784.0
+margin_bottom = 478.0
+custom_colors/font_color = Color( 0, 0.976471, 0.152941, 1 )
+custom_fonts/font = SubResource( 30 )
+text = "Press Spacebar"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LabelSpacebar"]
+anims/RESET = SubResource( 31 )
+anims/default = SubResource( 32 )
+
+[connection signal="animation_finished" from="Logo" to="." method="_on_Logo_animation_finished"]
+[connection signal="timeout" from="Logo/StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="tween_completed" from="Logo/Tween" to="." method="_on_Tween_tween_completed"]

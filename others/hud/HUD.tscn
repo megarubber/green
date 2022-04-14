@@ -38,14 +38,14 @@ size = 67
 outline_size = 2
 font_data = SubResource( 7 )
 
-[sub_resource type="DynamicFontData" id=8]
+[sub_resource type="DynamicFontData" id=27]
 antialiased = false
 font_path = "res://others/fonts/8-BIT WONDER.TTF"
 
 [sub_resource type="DynamicFont" id=9]
 size = 23
 outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 8 )
+font_data = SubResource( 27 )
 
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 8 )
@@ -501,7 +501,7 @@ anchor_bottom = 1.0
 margin_left = -10.0
 margin_top = 246.0
 margin_right = 1033.0
-margin_bottom = 412.0
+margin_bottom = 372.0
 color = Color( 0, 0, 0, 0.380392 )
 
 [node name="LevelNumber" type="Label" parent="StartLevel"]
@@ -602,7 +602,6 @@ anims/paused = SubResource( 16 )
 [node name="Mouse" parent="." instance=ExtResource( 6 )]
 pause_mode = 2
 scale = Vector2( 3, 3 )
-z_index = -6
 
 [connection signal="pressed" from="GameOver/BtnTryAgain" to="." method="_on_BtnTryAgain_pressed"]
 [connection signal="animation_finished" from="GameOver/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
