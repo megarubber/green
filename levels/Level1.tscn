@@ -1473,8 +1473,8 @@ scale = Vector2( 1.5, 1.5 )
 z_index = -6
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1448, -367 )
-start_position_level = Vector2( 1448, -367 )
+position = Vector2( 1449, -272 )
+start_position_level = Vector2( 1449, -272 )
 
 [node name="Objects_Front" type="Node2D" parent="."]
 
@@ -1754,7 +1754,7 @@ position = Vector2( 5265, 528 )
 position = Vector2( 6402.9, 126.653 )
 
 [node name="FlyerEnemy" parent="Enemies" instance=ExtResource( 48 )]
-position = Vector2( 11089, 502 )
+position = Vector2( 11064, 406 )
 
 [node name="Coins" type="Node2D" parent="."]
 
