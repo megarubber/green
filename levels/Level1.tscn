@@ -646,7 +646,7 @@ script = ExtResource( 50 )
 motion_mirroring = Vector2( 1920, 0 )
 
 [node name="Sprite" type="Sprite" parent="Background/Sky"]
-position = Vector2( -177.4, -880.263 )
+position = Vector2( 0, -880.263 )
 scale = Vector2( 3, 3.992 )
 texture = ExtResource( 11 )
 centered = false
@@ -1234,6 +1234,7 @@ position = Vector2( 6243, -304 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Interactable" type="Node2D" parent="."]

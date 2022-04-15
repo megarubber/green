@@ -10,6 +10,8 @@ onready var select = $SelectSoundEffect
 onready var change = $ChangeSoundEffect
 
 func _ready() -> void:
+	if Global.g_music.get_stream() != load("res://audio/music/menu-2.ogg"):
+		Global.play_music("res://audio/music/menu-2.ogg")
 	enable_buttons(false)
 	transition.fade_out()
 	yield(transition, "finished")
