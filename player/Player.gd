@@ -13,6 +13,7 @@ const MAX_SPEED_POWERUP = 550
 const MAX_JUMP_HEIGHT_NORMAL = -850
 const MAX_JUMP_HEIGHT_POWERUP = -1000
 const DROP_THRU_BIT = 1
+const PUSH_FORCE = 30
 
 # General Variables
 var motion = Vector2()
@@ -24,6 +25,7 @@ var max_speed = MAX_SPEED_NORMAL
 var max_jump_height = -850
 var can_fly = true
 var jump_in_trampoline = false
+var is_pushing = false
 
 # Nodes Referencing
 onready var body_sprite = $BodySprite
@@ -39,6 +41,8 @@ onready var collider = $CollisionShape2D
 onready var ring = $Ring
 onready var dust_timer = $DustTimer
 onready var foot_dust = $FootDust
+onready var push_right = $PushRight
+onready var push_left = $PushLeft
 
 # Referencing lifebar from HUD
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
@@ -61,16 +65,22 @@ func animation() -> void: # Player's animation function
 			foot_dust.emitting = true
 			foot_dust.global_position = global_position
 			dust_timer.start(foot_dust.lifetime + 0.1)
-		if motion.x != 0:
+		if motion.x != 0 || is_pushing:
 			anim.play("run")
+			enable_push(true)
 		else:
 			anim.play("idle")
+			enable_push(false)
 	elif !is_on_floor() && !lifebar.getDeath():
 		if motion.y < 0:
 			anim.play("jump")
 		else:
 			anim.play("fall")
 			jump_in_trampoline = false
+
+func enable_push(value : bool) -> void:
+	push_right.set_enabled(value)
+	push_left.set_enabled(value)
 
 func flip() -> void: # Flipping sprite function
 	if !lifebar.getDeath():
@@ -135,8 +145,21 @@ func deactivate_all_colliders() -> void:
 	damage_area.monitoring = false
 	collider.disabled = true
 
-func _physics_process(_delta: float) -> void: # Physics update
+func _physics_process(delta: float) -> void: # Physics update
 	movement()
+	
+	if push_right.is_colliding():
+		var object = push_right.get_collider()
+		object.move_and_slide(Vector2(PUSH_FORCE, 0) * max_speed * delta)
+		is_pushing = true
+		print("direita")
+	elif push_left.is_colliding():
+		var object = push_left.get_collider()
+		object.move_and_slide(Vector2(-PUSH_FORCE, 0) * max_speed * delta)
+		is_pushing = true
+		print("esq")
+	else:
+		is_pushing = false
 	
 func _process(_delta: float) -> void:
 	flip()
