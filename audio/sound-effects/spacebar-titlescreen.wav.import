@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spacebar-titlescreen.wav-ea66480c8d191e9b8bd36d2a00852b5e.sample"
+
+[deps]
+
+source_file="res://audio/sound-effects/spacebar-titlescreen.wav"
+dest_files=[ "res://.import/spacebar-titlescreen.wav-ea66480c8d191e9b8bd36d2a00852b5e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

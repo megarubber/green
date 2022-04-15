@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://others/hud/coin-counter.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://others/pause/pause_screen.png" type="Texture" id=10]
 [ext_resource path="res://others/buttons/disabled.png" type="Texture" id=11]
 [ext_resource path="res://others/hud/CounterLifes.gd" type="Script" id=12]
+[ext_resource path="res://audio/sound-effects/change-focus-option.wav" type="AudioStream" id=13]
+[ext_resource path="res://audio/sound-effects/select-focus.wav" type="AudioStream" id=14]
 
 [sub_resource type="DynamicFontData" id=25]
 antialiased = false
@@ -38,14 +40,14 @@ size = 67
 outline_size = 2
 font_data = SubResource( 7 )
 
-[sub_resource type="DynamicFontData" id=8]
+[sub_resource type="DynamicFontData" id=27]
 antialiased = false
 font_path = "res://others/fonts/8-BIT WONDER.TTF"
 
 [sub_resource type="DynamicFont" id=9]
 size = 23
 outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 8 )
+font_data = SubResource( 27 )
 
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 8 )
@@ -55,6 +57,12 @@ region_rect = Rect2( 0, 0, 44, 11 )
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 44, 11 )
 
+[sub_resource type="StyleBoxEmpty" id=36]
+
+[sub_resource type="StyleBoxTexture" id=29]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 44, 12 )
+
 [sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 44, 12 )
@@ -62,6 +70,12 @@ region_rect = Rect2( 0, 0, 44, 12 )
 [sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 44, 11 )
+
+[sub_resource type="StyleBoxEmpty" id=37]
+
+[sub_resource type="StyleBoxTexture" id=31]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 44, 12 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -126,7 +140,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../BtnReturnToMenu:modulate")
+tracks/5/path = NodePath("../BtnMainMenu:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -201,7 +215,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../BtnReturnToMenu:modulate")
+tracks/5/path = NodePath("../BtnMainMenu:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -308,13 +322,21 @@ font_path = "res://others/fonts/8-BIT WONDER.TTF"
 size = 6
 font_data = SubResource( 20 )
 
+[sub_resource type="StyleBoxEmpty" id=38]
+
 [sub_resource type="StyleBoxTexture" id=22]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 44, 12 )
 
+[sub_resource type="StyleBoxEmpty" id=39]
+
 [sub_resource type="StyleBoxTexture" id=23]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 44, 12 )
+
+[sub_resource type="StyleBoxEmpty" id=40]
+
+[sub_resource type="StyleBoxEmpty" id=41]
 
 [sub_resource type="StyleBoxTexture" id=24]
 texture = ExtResource( 11 )
@@ -452,7 +474,7 @@ margin_left = -826.0
 margin_top = -28.0
 margin_right = 229.0
 margin_bottom = 590.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 0.666667 )
 
 [node name="GreenDiedLabel" type="Label" parent="GameOver"]
 margin_left = -480.0
@@ -465,26 +487,36 @@ text = "Green died!"
 align = 1
 
 [node name="BtnTryAgain" type="Button" parent="GameOver"]
-margin_left = -683.0
+margin_left = -651.0
 margin_top = 392.0
-margin_right = -462.0
+margin_right = -430.0
 margin_bottom = 455.0
+focus_neighbour_left = NodePath("../BtnMainMenu")
+focus_neighbour_right = NodePath("../BtnMainMenu")
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 9 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 36 )
+custom_styles/disabled = SubResource( 29 )
 custom_styles/normal = SubResource( 11 )
 text = "Try Again"
 
-[node name="BtnReturnToMenu" type="Button" parent="GameOver"]
-margin_left = -257.0
+[node name="BtnMainMenu" type="Button" parent="GameOver"]
+margin_left = -165.0
 margin_top = 392.0
-margin_right = 94.0
+margin_right = 72.0
 margin_bottom = 455.0
+focus_neighbour_left = NodePath("../BtnTryAgain")
+focus_neighbour_right = NodePath("../BtnTryAgain")
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 9 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 37 )
+custom_styles/disabled = SubResource( 31 )
 custom_styles/normal = SubResource( 11 )
-text = "Return to menu"
+text = "Main Menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
 root_node = NodePath("../BlackScreen")
@@ -548,49 +580,78 @@ texture = ExtResource( 10 )
 
 [node name="PauseLabel" type="Label" parent="Pause/Board"]
 margin_left = -57.1546
-margin_top = -36.0
+margin_top = -37.0129
 margin_right = 59.8454
-margin_bottom = -23.0
+margin_bottom = -24.0129
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 19 )
 text = "Game Paused"
 align = 1
 
 [node name="BtnResume" type="Button" parent="Pause/Board"]
-margin_left = -23.6052
-margin_top = -21.0
-margin_right = 23.3948
-margin_bottom = -6.0
+anchor_left = -0.0179998
+anchor_top = 0.00282894
+anchor_right = -0.0179998
+anchor_bottom = 0.00282894
+margin_left = -46.4207
+margin_top = -22.1545
+margin_right = 0.579319
+margin_bottom = -7.15454
+focus_neighbour_top = NodePath("../BtnRestartLevel")
+focus_neighbour_bottom = NodePath("../BtnSettings")
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 21 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 38 )
 custom_styles/disabled = SubResource( 22 )
 custom_styles/normal = SubResource( 11 )
 text = "Resume"
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [node name="BtnSettings" type="Button" parent="Pause/Board"]
-margin_left = -31.3476
-margin_top = -3.0
-margin_right = 28.6524
-margin_bottom = 12.0
+margin_left = 5.28756
+margin_top = -10.5751
+margin_right = 56.2876
+margin_bottom = 4.42488
+focus_neighbour_top = NodePath("../BtnResume")
+focus_neighbour_bottom = NodePath("../BtnMainMenu")
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 21 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 39 )
 custom_styles/disabled = SubResource( 23 )
 custom_styles/normal = SubResource( 11 )
 text = "Settings"
 
-[node name="BtnRestart" type="Button" parent="Pause/Board"]
-margin_left = -44.1888
-margin_top = 16.0
-margin_right = 39.8112
-margin_bottom = 31.0
+[node name="BtnMainMenu" type="Button" parent="Pause/Board"]
+margin_left = -59.1073
+margin_top = -2.07726
+margin_right = 0.892654
+margin_bottom = 12.9227
+focus_neighbour_top = NodePath("../BtnSettings")
+focus_neighbour_bottom = NodePath("../BtnRestartLevel")
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 21 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 40 )
+custom_styles/disabled = SubResource( 23 )
+custom_styles/normal = SubResource( 11 )
+text = "Main Menu"
+
+[node name="BtnRestartLevel" type="Button" parent="Pause/Board"]
+margin_left = -26.4378
+margin_top = 16.2403
+margin_right = 52.5622
+margin_bottom = 31.2403
+focus_neighbour_top = NodePath("../BtnMainMenu")
+focus_neighbour_bottom = NodePath("../BtnResume")
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 21 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 41 )
 custom_styles/disabled = SubResource( 24 )
 custom_styles/normal = SubResource( 11 )
 text = "Restart Level"
@@ -602,9 +663,28 @@ anims/paused = SubResource( 16 )
 [node name="Mouse" parent="." instance=ExtResource( 6 )]
 pause_mode = 2
 scale = Vector2( 3, 3 )
-z_index = -6
 
+[node name="ChangeSoundEffect" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 13 )
+bus = "SoundEffects"
+
+[node name="SelectSoundEffect" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 14 )
+bus = "SoundEffects"
+
+[connection signal="focus_entered" from="GameOver/BtnTryAgain" to="." method="_on_BtnTryAgain_focus_entered"]
 [connection signal="pressed" from="GameOver/BtnTryAgain" to="." method="_on_BtnTryAgain_pressed"]
+[connection signal="focus_entered" from="GameOver/BtnMainMenu" to="." method="_on_BtnMainMenu_focus_entered"]
+[connection signal="pressed" from="GameOver/BtnMainMenu" to="." method="_on_BtnMainMenu_pressed"]
 [connection signal="animation_finished" from="GameOver/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="StartLevel/AnimationPlayerStart" to="." method="_on_AnimationPlayerStart_animation_finished"]
+[connection signal="focus_entered" from="Pause/Board/BtnResume" to="." method="_on_BtnResume_focus_entered"]
 [connection signal="pressed" from="Pause/Board/BtnResume" to="." method="_on_BtnResume_pressed"]
+[connection signal="focus_entered" from="Pause/Board/BtnSettings" to="." method="_on_BtnSettings_focus_entered"]
+[connection signal="pressed" from="Pause/Board/BtnSettings" to="." method="_on_BtnSettings_pressed"]
+[connection signal="focus_entered" from="Pause/Board/BtnMainMenu" to="." method="_on_BtnMainMenu_focus_entered"]
+[connection signal="pressed" from="Pause/Board/BtnMainMenu" to="." method="_on_BtnMainMenu_pressed"]
+[connection signal="focus_entered" from="Pause/Board/BtnRestartLevel" to="." method="_on_BtnRestartLevel_focus_entered"]
+[connection signal="pressed" from="Pause/Board/BtnRestartLevel" to="." method="_on_BtnRestartLevel_pressed"]

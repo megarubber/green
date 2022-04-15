@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/select-focus.wav-c8b295caa65c526e7e27fa7896f0442a.sample"
+
+[deps]
+
+source_file="res://audio/sound-effects/select-focus.wav"
+dest_files=[ "res://.import/select-focus.wav-c8b295caa65c526e7e27fa7896f0442a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

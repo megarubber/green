@@ -400,14 +400,14 @@ visible = false
 position = Vector2( -72, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="WingRight" type="AnimatedSprite" parent="Wings"]
 position = Vector2( 71, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
-frame = 2
+frame = 1
 playing = true
 flip_h = true
 
@@ -499,6 +499,10 @@ position = Vector2( 0, -7 )
 
 [node name="DustTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="JumpSoundEffect" type="AudioStreamPlayer" parent="."]
+
+[node name="LandingSoundEffect" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_exited" from="DropPlataformArea" to="." method="_on_DropPlataformArea_body_exited"]
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
