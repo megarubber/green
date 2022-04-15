@@ -6,6 +6,8 @@ onready var settings = $BtnSettings
 onready var credits = $BtnCredits
 onready var exit = $BtnExit
 onready var transition = $TransitionBlock
+onready var select = $SelectSoundEffect
+onready var change = $ChangeSoundEffect
 
 func _ready() -> void:
 	enable_buttons(false)
@@ -24,6 +26,7 @@ func _on_BtnExit_pressed() -> void:
 	get_tree().quit()
 
 func change_scene(path : String) -> void:
+	select.play()
 	enable_buttons(false)
 	transition.fade_in()
 	yield(transition, "finished")
@@ -34,3 +37,15 @@ func _on_BtnStartGame_pressed() -> void:
 
 func _on_BtnSettings_pressed() -> void:
 	change_scene("res://main_menu/Settings.tscn")
+
+func _on_BtnStartGame_focus_entered() -> void:
+	change.play()
+
+func _on_BtnSettings_focus_entered() -> void:
+	change.play()
+
+func _on_BtnCredits_focus_entered() -> void:
+	change.play()
+
+func _on_BtnExit_focus_entered() -> void:
+	change.play()

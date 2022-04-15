@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://main_menu/main_menu.png" type="Texture" id=1]
 [ext_resource path="res://others/buttons/hover.png" type="Texture" id=2]
@@ -7,7 +7,9 @@
 [ext_resource path="res://others/mouse/Mouse.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main_menu/MainMenu.gd" type="Script" id=6]
 [ext_resource path="res://others/transitions/TransitionBlock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://audio/sound-effects/change-focus-option.wav" type="AudioStream" id=8]
 [ext_resource path="res://others/buttons/disabled.png" type="Texture" id=9]
+[ext_resource path="res://audio/sound-effects/select-focus.wav" type="AudioStream" id=10]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -162,6 +164,18 @@ text = "Exit"
 [node name="Mouse" parent="." instance=ExtResource( 5 )]
 scale = Vector2( 3, 3 )
 
+[node name="ChangeSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "SoundEffects"
+
+[node name="SelectSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "SoundEffects"
+
+[connection signal="focus_entered" from="BtnStartGame" to="." method="_on_BtnStartGame_focus_entered"]
 [connection signal="pressed" from="BtnStartGame" to="." method="_on_BtnStartGame_pressed"]
+[connection signal="focus_entered" from="BtnSettings" to="." method="_on_BtnSettings_focus_entered"]
 [connection signal="pressed" from="BtnSettings" to="." method="_on_BtnSettings_pressed"]
+[connection signal="focus_entered" from="BtnCredits" to="." method="_on_BtnCredits_focus_entered"]
+[connection signal="focus_entered" from="BtnExit" to="." method="_on_BtnExit_focus_entered"]
 [connection signal="pressed" from="BtnExit" to="." method="_on_BtnExit_pressed"]

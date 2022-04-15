@@ -11,12 +11,12 @@ config_version=4
 [application]
 
 config/name="Green"
-run/main_scene="res://main_menu/TitleScreen.tscn"
+run/main_scene="res://main_menu/Intro.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://others/Global.gd"
+Global="*res://others/Global.tscn"
 
 [display]
 

@@ -38,6 +38,8 @@
 [ext_resource path="res://main_menu/logo/Sequence 0106.png" type="Texture" id=36]
 [ext_resource path="res://main_menu/TitleScreen.gd" type="Script" id=37]
 [ext_resource path="res://others/transitions/TransitionBlock.tscn" type="PackedScene" id=38]
+[ext_resource path="res://others/transitions/TransitionDissolve.tscn" type="PackedScene" id=39]
+[ext_resource path="res://audio/sound-effects/spacebar-titlescreen.wav" type="AudioStream" id=40]
 
 [sub_resource type="Shader" id=18]
 code = "shader_type canvas_item;
@@ -127,48 +129,6 @@ animations = [ {
 "speed": 17.0
 } ]
 
-[sub_resource type="Animation" id=34]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 512, 146 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="Animation" id=33]
-resource_name = "start"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
 [sub_resource type="DynamicFontData" id=29]
 antialiased = false
 font_path = "res://others/fonts/8-BIT WONDER.TTF"
@@ -223,6 +183,8 @@ tracks/0/keys = {
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource( 37 )
+
+[node name="TransitionDissolve" parent="." instance=ExtResource( 39 )]
 
 [node name="TransitionBlock" parent="." instance=ExtResource( 38 )]
 
@@ -311,10 +273,6 @@ autostart = true
 repeat = true
 playback/repeat = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Logo"]
-anims/RESET = SubResource( 34 )
-anims/start = SubResource( 33 )
-
 [node name="LabelSpacebar" type="Label" parent="."]
 margin_left = 244.0
 margin_top = 424.0
@@ -327,6 +285,10 @@ text = "Press Spacebar"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LabelSpacebar"]
 anims/RESET = SubResource( 31 )
 anims/default = SubResource( 32 )
+
+[node name="SpacebarSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 40 )
+bus = "SoundEffects"
 
 [connection signal="animation_finished" from="Logo" to="." method="_on_Logo_animation_finished"]
 [connection signal="timeout" from="Logo/StartTimer" to="." method="_on_StartTimer_timeout"]

@@ -8,8 +8,10 @@ onready var start_timer = $Logo/StartTimer
 onready var logo = $Logo
 onready var label_anim = $LabelSpacebar/AnimationPlayer
 onready var tween = $Logo/Tween
-onready var logo_anim = $Logo/AnimationPlayer
-onready var transition = $TransitionBlock
+onready var transition_block = $TransitionBlock
+onready var transition_dissolve = $TransitionDissolve
+onready var background = $Background
+onready var sound_effect = $SpacebarSoundEffect
 
 # Variables
 onready var positions_tween = [
@@ -18,8 +20,9 @@ onready var positions_tween = [
 ]
 
 func _ready() -> void:
+	Global.play_music("res://audio/music/menu-2.ogg")
+	transition_dissolve.fade_out()
 	label_anim.play("default")
-	logo_anim.play("start")
 	_start_tween()
 
 func _start_tween() -> void:
@@ -47,6 +50,7 @@ func _on_Tween_tween_completed(_object, _key) -> void:
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		transition.fade_in()
-		yield(transition, "finished")
+		sound_effect.play()
+		transition_block.fade_in()
+		yield(transition_block, "finished")
 		var _scene = get_tree().change_scene("res://main_menu/MainMenu.tscn")
