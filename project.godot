@@ -18,6 +18,10 @@ config/icon="res://icon.png"
 
 Global="*res://others/Global.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global]
 
 layers=false

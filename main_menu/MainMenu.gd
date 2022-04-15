@@ -23,7 +23,14 @@ func enable_buttons(value : bool) -> void:
 func _on_BtnExit_pressed() -> void:
 	get_tree().quit()
 
-func _on_BtnStartGame_pressed() -> void:
+func change_scene(path : String) -> void:
+	enable_buttons(false)
 	transition.fade_in()
 	yield(transition, "finished")
-	var _scene = get_tree().change_scene("res://levels/Level1.tscn")
+	var _scene = get_tree().change_scene(path)
+
+func _on_BtnStartGame_pressed() -> void:
+	change_scene("res://levels/Level1.tscn")
+
+func _on_BtnSettings_pressed() -> void:
+	change_scene("res://main_menu/Settings.tscn")
