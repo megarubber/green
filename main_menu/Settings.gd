@@ -1,15 +1,18 @@
 extends Control
 
+# Signals
+signal exited
+
 # Constants
 const CHANGE_VOLUME_VALUE = 0.1
 
 # Node Referencing
-onready var main_menu = $BtnMainMenu
-onready var volume_slider = $Volume/VolumeSlider
-onready var volume_label = $Volume/VolumeLabel
-onready var percentage = $Volume/PercentageLabel
-onready var fullscreen_label = $FullScreen/FullScreenLabel
-onready var fullscreen_checkbox = $FullScreen/FullScreenCheckBox
+onready var main_menu = $Options/BtnMainMenu
+onready var volume_slider = $Options/Volume/VolumeSlider
+onready var volume_label = $Options/Volume/VolumeLabel
+onready var percentage = $Options/Volume/PercentageLabel
+onready var fullscreen_label = $Options/FullScreen/FullScreenLabel
+onready var fullscreen_checkbox = $Options/FullScreen/FullScreenCheckBox
 onready var transition = $TransitionBlock
 onready var select = $SelectSoundEffect
 onready var change = $ChangeSoundEffect
@@ -51,7 +54,10 @@ func _on_BtnMainMenu_pressed() -> void:
 	enable_buttons(false)
 	transition.fade_in()
 	yield(transition, "finished")
-	var _scene = get_tree().change_scene("res://main_menu/MainMenu.tscn")
+	if get_name() == "SettingsGame":
+		queue_free()
+	else:		
+		var _scene = get_tree().change_scene("res://main_menu/MainMenu.tscn")
 
 func _on_FullScreenCheckBox_focus_entered() -> void:
 	change.play()
@@ -87,3 +93,6 @@ func _on_FullScreenCheckBox_pressed() -> void:
 
 func _on_BtnMainMenu_focus_entered() -> void:
 	change.play()
+
+func _on_SettingsGame_tree_exited():
+	emit_signal("exited")

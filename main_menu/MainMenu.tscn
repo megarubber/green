@@ -81,6 +81,13 @@ script = ExtResource( 6 )
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
+[node name="Background" type="ColorRect" parent="Background"]
+margin_left = -3.0
+margin_top = -7.0
+margin_right = 1035.0
+margin_bottom = 611.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="MainMenuScroll" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2( 0.3, 0.6 )
 motion_mirroring = Vector2( 1216.32, 0 )

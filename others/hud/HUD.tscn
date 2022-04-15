@@ -683,6 +683,7 @@ bus = "SoundEffects"
 [connection signal="focus_entered" from="Pause/Board/BtnResume" to="." method="_on_BtnResume_focus_entered"]
 [connection signal="pressed" from="Pause/Board/BtnResume" to="." method="_on_BtnResume_pressed"]
 [connection signal="focus_entered" from="Pause/Board/BtnSettings" to="." method="_on_BtnSettings_focus_entered"]
+[connection signal="pressed" from="Pause/Board/BtnSettings" to="." method="_on_BtnSettings_pressed"]
 [connection signal="focus_entered" from="Pause/Board/BtnMainMenu" to="." method="_on_BtnMainMenu_focus_entered"]
 [connection signal="pressed" from="Pause/Board/BtnMainMenu" to="." method="_on_BtnMainMenu_pressed"]
 [connection signal="focus_entered" from="Pause/Board/BtnRestartLevel" to="." method="_on_BtnRestartLevel_focus_entered"]

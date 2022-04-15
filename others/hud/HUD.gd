@@ -19,6 +19,9 @@ var can_pause_delay = false
 export(NodePath)var transition_path
 onready var transition = get_node(transition_path)
 
+# Get Settings Menu
+onready var settings = preload("res://main_menu/SettingsGame.tscn")
+
 func _ready() -> void:
 	var level_name_reference = get_tree().get_current_scene().get_name()
 	match level_name_reference:
@@ -130,3 +133,16 @@ func _on_BtnSettings_focus_entered() -> void:
 
 func _on_BtnRestartLevel_focus_entered() -> void:
 	change.play()
+
+func _on_BtnSettings_pressed() -> void:
+	select.play()
+	enable_pause_buttons(false)
+	transition.fade_in()
+	yield(transition, "finished")
+	var s = settings.instance()
+	add_child(s)
+	yield(s, "exited")
+	transition.fade_out()
+	yield(transition, "finished")
+	enable_pause_buttons(true)
+	pause_screen.get_node("Board/BtnResume").grab_focus()
