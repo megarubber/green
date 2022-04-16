@@ -17,8 +17,6 @@ const PUSH_FORCE = 30
 
 # General Variables
 var motion = Vector2()
-export var knockback = 15000
-export var knockup = 1700
 export var start_position_level = Vector2()
 var hit = false
 var max_speed = MAX_SPEED_NORMAL
@@ -43,6 +41,7 @@ onready var dust_timer = $DustTimer
 onready var foot_dust = $FootDust
 onready var push_right = $PushRight
 onready var push_left = $PushLeft
+onready var hands = $Hands
 
 # Referencing lifebar from HUD
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
@@ -152,12 +151,10 @@ func _physics_process(delta: float) -> void: # Physics update
 		var object = push_right.get_collider()
 		object.move_and_slide(Vector2(PUSH_FORCE, 0) * max_speed * delta)
 		is_pushing = true
-		print("direita")
 	elif push_left.is_colliding():
 		var object = push_left.get_collider()
 		object.move_and_slide(Vector2(-PUSH_FORCE, 0) * max_speed * delta)
 		is_pushing = true
-		print("esq")
 	else:
 		is_pushing = false
 	
@@ -188,7 +185,7 @@ func _on_DamageArea_area_entered(area) -> void:
 			"spike":
 				strength = 10
 				if lifebar.life > strength:	
-					motion.y = lerp(0, -knockup, 0.6)
+					knockback_vertical(1700)
 			"fallzone":
 				strength = lifebar.lifeMax
 				can_fly = false
@@ -207,13 +204,27 @@ func _on_DamageArea_area_entered(area) -> void:
 func player_visible(value : bool) -> void:
 	body_sprite.visible = value
 	head_sprite.visible = value
-	gun.visible = value
+	
+	# Hide gun or hands (type of gun = 5)
+	if gun.gun_type != 5:	
+		gun.visible = value
+		hands.visible = false
+	else:
+		gun.visible = false
+		hands.visible = value
 
-func take_damage(strength : int) -> void:
-	var knock_side = knockback * Global.hit_side
+func knockback_horizontal(side, knockback_force) -> void:
+	var knock_side = knockback_force * side
 	motion.x -= lerp(motion.x, -knock_side, 0.1)
-	#motion.y = lerp(0, -knockup, 0.6)
 	motion = move_and_slide(motion, UP)
+	
+func knockback_vertical(knockup) -> void:
+	motion.y = lerp(0, -knockup, 0.6)
+	motion = move_and_slide(motion, UP)
+	
+func take_damage(strength : int) -> void:
+	knockback_horizontal(Global.hit_side, 15000)
+	#knockback_vertical()
 	hit = true
 		
 	if lifebar != null:
@@ -237,7 +248,7 @@ func blink() -> void:
 	player_visible(true)
 	hit = false
 
-func _powerup(type):
+func _powerup(type) -> void:
 	match type:
 		0: # Speed
 			max_speed = MAX_SPEED_POWERUP
@@ -248,7 +259,7 @@ func _powerup(type):
 			yield(get_tree().create_timer(5), "timeout")
 			max_jump_height = MAX_JUMP_HEIGHT_NORMAL
 
-func _on_DropPlataformArea_body_exited(_body):
+func _on_DropPlataformArea_body_exited(_body) -> void:
 	set_collision_mask_bit(DROP_THRU_BIT, true)
 
 func hit_checkpoint() -> void:
