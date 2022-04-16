@@ -13,6 +13,7 @@ var gun_pos_flip_false = Vector2(4, -88)
 var gun_pos_flip_true = Vector2(4, -88)
 var p_knock_side = -1
 var changing = false
+var impulse_strength = 2
 
 # Bullet Referecing
 var bullet = preload("res://others/bullet/BulletBase.tscn")
@@ -34,11 +35,12 @@ func _ready() -> void:
 		gun.connect("player_entered", self, "_pickup_gun")
 
 func add_gun_at_inventory(which_gun) -> void:
-	if len(Global.inventory_guns) < 2:
-		Global.inventory_guns.append(which_gun)
-	else:
-		Global.inventory_guns[0] = Global.inventory_guns[1]
-		Global.inventory_guns[1] = which_gun
+	if !Global.inventory_guns.has(which_gun):
+		if len(Global.inventory_guns) < 2:
+			Global.inventory_guns.append(which_gun)
+		else:
+			Global.inventory_guns[0] = Global.inventory_guns[1]
+			Global.inventory_guns[1] = which_gun
 
 func change_gun() -> void:
 	if len(Global.inventory_guns) >= 2:
@@ -83,6 +85,15 @@ func _pickup_gun(type) -> void:
 			muzzle.position.x = 8
 			texture = gun_texture[3]
 			bullet = load("res://others/bullet/BulletPistol.tscn")
+		4:
+			visible = true
+			hands.visible = false
+			gun_pos_flip_false = Vector2(4, -88)
+			gun_pos_flip_true = Vector2(-22, -88)
+			gun_type = AUTO_AIMING
+			muzzle.position.x = 8
+			texture = gun_texture[4]
+			bullet = load("res://others/bullet/BulletAutoAim.tscn")			
 		_:
 			gun_type = NO_GUN
 			visible = false
@@ -90,6 +101,7 @@ func _pickup_gun(type) -> void:
 	if !changing && gun_type != NO_GUN:
 		add_gun_at_inventory(gun_type)
 	changing = false
+
 # Recoil
 func recoil(recoil_force) -> void:
 	var dir = Vector2(1, 0).rotated(global_rotation)
@@ -122,7 +134,7 @@ func shoot_spread():
 func _input(event) -> void:
 	if event.is_action_pressed("ui_change"):
 		change_gun()
-		
+
 func _physics_process(_delta: float) -> void:
 	if !player.lifebar.getDeath():
 		if gun_type != NO_GUN:
@@ -149,12 +161,6 @@ func _physics_process(_delta: float) -> void:
 			match gun_type:
 				SPREAD:
 					shoot_spread()
-					player.knockback_horizontal(p_knock_side, 15000)
-					if player.is_on_floor():
-						player.knockback_vertical(100)
-				IMPULSE:
-					player.knockback_horizontal(p_knock_side, 2000)
-					player.knockback_vertical(900)
 				_:
 					shoot()
 		

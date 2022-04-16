@@ -1,11 +1,12 @@
 extends Area2D
 
 # Variables
-export var speed = 1500
+export var speed = 800
 var touched = false
 var in_area = false
 var timer = null
 var delay = 0.7
+var target = null
 
 # Nodes Referencing
 onready var animation = $AnimationBullet
@@ -23,7 +24,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Movement of bullet
 	if !touched:
-		position += (Vector2.RIGHT * speed).rotated(rotation) * delta	
+		if target && is_instance_valid(target):
+			look_at(target.global_position)
+		elif target && !is_instance_valid(target):
+			destroy_bullet()
+		position += (Vector2.RIGHT * speed).rotated(rotation) * delta
 	
 func _physics_process(_delta) -> void:
 	if !touched:
@@ -41,14 +46,17 @@ func _physics_process(_delta) -> void:
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
 
+func destroy_bullet() -> void:
+	touched = true
+	collision.set_deferred("disabled", true)
+	animation.play("Explosion")
+
 func _on_Bullet_body_entered(body) -> void:
 	if !touched:
 		if body.is_in_group("tilemap"):
-			touched = true
-			collision.set_deferred("disabled", true)
-			animation.play("Explosion")
+			destroy_bullet()
 		
-		if body.is_in_group("enemy") || body.is_in_group("player"):
+		if body.is_in_group("enemy"):
 			touched = true
 			queue_free()
 
@@ -61,3 +69,7 @@ func _on_DamageArea_area_entered(_area) -> void:
 func _on_AnimationBullet_animation_finished(anim_name) -> void:
 	if anim_name == "Explosion":
 		queue_free()
+
+func _on_aim_area_body_entered(body) -> void:
+	if body.is_in_group("enemy"):
+		target = body

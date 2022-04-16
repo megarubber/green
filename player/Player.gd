@@ -124,6 +124,7 @@ func movement() -> void: # Player's movement function
 	motion = move_and_slide(motion, UP)
 
 func death() -> void:
+	hands.get_node("hand-right").set_z_index(0)
 	motion.x = 0
 	if can_fly:	
 		motion.y = min(0, motion.y - 30)

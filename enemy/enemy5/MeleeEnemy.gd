@@ -91,6 +91,18 @@ func _physics_process(_delta) -> void:
 	else:
 		death()
 	animation()
+	
+	if l_damage_area.monitoring && r_damage_area.monitoring:
+		if l_damage_area.get_overlapping_areas():
+			if l_damage_area.get_overlapping_areas()[0].get_name() == "DamageArea":
+				if !player.hit:
+					player.take_damage(5)
+					Global.hit_side = -1
+		elif r_damage_area.get_overlapping_areas():
+			if r_damage_area.get_overlapping_areas()[0].get_name() == "DamageArea":
+				if !player.hit:
+					player.take_damage(5)
+					Global.hit_side = 1
 
 # Change direction
 func change_direction() -> void:

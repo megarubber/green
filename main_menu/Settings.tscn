@@ -240,7 +240,7 @@ custom_styles/disabled = SubResource( 47 )
 custom_styles/normal = SubResource( 12 )
 text = "Main Menu"
 
-[node name="Mouse" parent="." instance=ExtResource( 5 )]
+[node name="Mouse" parent="Options" instance=ExtResource( 5 )]
 scale = Vector2( 3, 3 )
 
 [node name="ChangeSoundEffect" type="AudioStreamPlayer" parent="."]

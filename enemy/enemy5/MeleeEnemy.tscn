@@ -272,10 +272,10 @@ animations = [ {
 extents = Vector2( 40, 109 )
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 37.9076, 177.717 )
+extents = Vector2( 66.5883, 177.717 )
 
 [sub_resource type="RectangleShape2D" id=22]
-extents = Vector2( 146, 377.75 )
+extents = Vector2( 146, 185.603 )
 
 [sub_resource type="Animation" id=26]
 length = 0.001
@@ -396,7 +396,7 @@ material = SubResource( 12 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 13 )
-frame = 3
+frame = 2
 playing = true
 flip_h = true
 
@@ -481,7 +481,6 @@ cast_to = Vector2( 0, 11 )
 collision_mask = 2
 
 [node name="LeftDamageArea" type="Area2D" parent="." groups=["basic_enemy"]]
-visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
@@ -492,14 +491,13 @@ position = Vector2( -37.9076, -76.6304 )
 shape = SubResource( 18 )
 
 [node name="RightDamageArea" type="Area2D" parent="." groups=["basic_enemy"]]
-visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightDamageArea"]
-position = Vector2( 37.5, -74.9999 )
+position = Vector2( 49.7469, -74.9999 )
 shape = SubResource( 18 )
 
 [node name="DetectArea" type="Area2D" parent="."]
@@ -507,7 +505,7 @@ visible = false
 collision_layer = 64
 
 [node name="AreaShape" type="CollisionShape2D" parent="DetectArea"]
-position = Vector2( -2.99999, -258.676 )
+position = Vector2( -2.99999, -66.5287 )
 shape = SubResource( 22 )
 
 [node name="Lifebar" parent="." instance=ExtResource( 1 )]
