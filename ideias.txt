@@ -29,7 +29,6 @@ menu de opções
 
 -- Armas
 diferentes danos ao inimigo
-arma teleguiada e impulso
 arma voar da mão do jogador
 
 consertar o slide volume para o mouse (perguntar no fórum)

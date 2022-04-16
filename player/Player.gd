@@ -46,6 +46,9 @@ onready var hands = $Hands
 # Referencing lifebar from HUD
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
 
+# Drop Gun
+onready var drop_gun = preload("res://guns/DropGun.tscn")
+
 func _ready() -> void:
 	if Global.is_checkpoint_hitted:
 		position = Global.checkpoint_position
@@ -124,13 +127,23 @@ func movement() -> void: # Player's movement function
 	motion = move_and_slide(motion, UP)
 
 func death() -> void:
+	Global.inventory_guns.clear()
 	hands.get_node("hand-right").set_z_index(0)
+	gun.visible = false
+	hands.visible = true
 	motion.x = 0
 	if can_fly:	
 		motion.y = min(0, motion.y - 30)
 		anim_eyes.play("damage")
 		anim.play("dead")
 	if !wings.visible:
+		if gun.gun_type < 5:
+			var g = drop_gun.instance()
+			g.global_position = gun.position
+			g.apply_central_impulse(Vector2.UP * 200)
+			add_child(g)
+			g = get_node("DropGun")
+			g.sprite.texture = g.gun_textures[gun.gun_type]
 		Global.life -= 1
 		emit_signal("player_death")
 		wings.visible = true

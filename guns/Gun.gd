@@ -132,7 +132,7 @@ func shoot_spread():
 	can_fire = false
 
 func _input(event) -> void:
-	if event.is_action_pressed("ui_change"):
+	if event.is_action_pressed("ui_change") && !player.lifebar.getDeath():
 		change_gun()
 
 func _physics_process(_delta: float) -> void:
