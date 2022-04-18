@@ -195,8 +195,8 @@ value = 1.0
 
 [node name="FullScreen" type="Control" parent="Options"]
 margin_left = 1.0
-margin_right = 1035.0
-margin_bottom = 607.0
+margin_right = 65.0
+margin_bottom = 68.0
 
 [node name="FullScreenLabel" type="Label" parent="Options/FullScreen"]
 margin_left = 229.0

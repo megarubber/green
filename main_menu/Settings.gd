@@ -81,7 +81,10 @@ func _on_VolumeSlider_mouse_entered() -> void:
 	volume_slider.grab_focus()
 
 func _on_VolumeSlider_mouse_exited() -> void:
-	volume_slider.release_focus()
+	if focus_volume:
+		volume_slider.grab_focus()
+	else:		
+		volume_slider.release_focus()
 
 func _on_FullScreenCheckBox_pressed() -> void:
 	if fullscreen_checkbox.pressed:

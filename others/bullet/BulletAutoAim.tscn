@@ -98,7 +98,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[node name="BulletAutoAim" type="Area2D" groups=["bullets_player"]]
+[node name="BulletAutoAim" type="Area2D" groups=["bullet-autoaim"]]
 collision_layer = 32
 collision_mask = 26
 script = ExtResource( 1 )

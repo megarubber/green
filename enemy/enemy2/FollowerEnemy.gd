@@ -6,7 +6,6 @@ const FLOOR = Vector2(0, -1)
 const SPEED_FOUNDED = 200
 const SPEED_NORMAL = 100
 const GUN_MIRROR_SIZE = 2.5
-const DAMAGE = 10
 
 # Node Referencing
 onready var wheel = $Wheel
@@ -102,6 +101,15 @@ func _physics_process(_delta) -> void:
 			direction *= -1
 	else:
 		death()
+	
+	if l_damage_area.monitoring && r_damage_area.monitoring:
+		if l_damage_area.get_overlapping_areas():
+			if l_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
+				take_damage(1)
+		elif r_damage_area.get_overlapping_areas():
+			if r_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
+				take_damage(1)
+	
 	# Call flip and animation function
 	flip_and_animation()
 
@@ -143,23 +151,33 @@ func on_timeout_complete() -> void:
 	anim.play("default")
 
 # take damage
-func take_damage() -> void:
+func take_damage(damage : int) -> void:
 	anim.play("flash")
-	lifebar.damage(DAMAGE)
+	lifebar.damage(damage)
+
+func which_damage(area):
+	if area.is_in_group("bullet-base"):
+		take_damage(7)
+		timer.start()
+	elif area.is_in_group("bullet-spread"):
+		take_damage(5)
+		timer.start()
+	elif area.is_in_group("bullet-pistol"):
+		take_damage(2)
+		timer.start()
+	elif area.is_in_group("bullet-autoaim"):
+		take_damage(4)
+		timer.start()
 
 func _on_LeftDamageArea_area_entered(area) -> void:
 	Global.hit_side = -1
 	# When bullet entered at left damage area
-	if area.is_in_group("bullets_player"):
-		take_damage()
-		timer.start()
+	which_damage(area)
 
 func _on_RightDamageArea_area_entered(area) -> void:
 	Global.hit_side = 1
 	# When bullet entered at right damage area
-	if area.is_in_group("bullets_player"):
-		take_damage()
-		timer.start()
+	which_damage(area)
 
 func _on_DetectArea_body_entered(body) -> void:
 	if body.is_in_group("player"):

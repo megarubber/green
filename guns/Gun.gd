@@ -1,7 +1,7 @@
 extends Sprite
 
 # Enum
-enum {BASIC, SPREAD, IMPULSE, PISTOL, AUTO_AIMING, NO_GUN}
+enum {BASIC, SPREAD, FLAME, PISTOL, AUTO_AIMING, NO_GUN}
 
 # Variables
 var can_fire = true
@@ -22,11 +22,13 @@ var bullet = preload("res://others/bullet/BulletBase.tscn")
 onready var muzzle = $Muzzle
 onready var player = get_parent()
 onready var hands = get_parent().get_node("Hands")
+onready var flame = get_parent().get_node("FlameParticles")
 
 # Textures
 export(Array, StreamTexture)var gun_texture
 
 func _ready() -> void:
+	enable_flame_area(false)
 	visible = false
 	hands.visible = true
 	gun_type = NO_GUN
@@ -49,6 +51,7 @@ func change_gun() -> void:
 		_pickup_gun(Global.inventory_guns[1])
 
 func _pickup_gun(type) -> void:
+	flame.emitting = false
 	match type:
 		0: # Basic
 			visible = true
@@ -68,12 +71,12 @@ func _pickup_gun(type) -> void:
 			muzzle.position.x = 24
 			texture = gun_texture[1]
 			bullet = load("res://others/bullet/BulletSpread.tscn")
-		2: # Impulse
+		2: # Flame
 			visible = true
 			hands.visible = false
 			gun_pos_flip_false = Vector2(4, -88)
 			gun_pos_flip_true = Vector2(4, -88)
-			gun_type = IMPULSE
+			gun_type = FLAME
 			muzzle.position.x = 26
 			texture = gun_texture[2]
 		3: # Pistol
@@ -136,6 +139,8 @@ func _input(event) -> void:
 		change_gun()
 
 func _physics_process(_delta: float) -> void:
+	flame.global_position = muzzle.global_position
+	#print(flame.get_node("flame_area").get_overlapping_areas())
 	if !player.lifebar.getDeath():
 		if gun_type != NO_GUN:
 			position += velocity
@@ -145,6 +150,7 @@ func _physics_process(_delta: float) -> void:
 		
 			mouse_pos = get_global_mouse_position()
 			look_at(mouse_pos)
+			flame.look_at(mouse_pos)
 		
 		# Flipping gun
 		if get_parent().get_local_mouse_position().x < 0:
@@ -157,18 +163,30 @@ func _physics_process(_delta: float) -> void:
 			p_knock_side = -1
 		
 		# Press the left button mouse to shoot
-		if Input.is_action_pressed("ui_fire") && can_fire && gun_type != NO_GUN:
-			match gun_type:
-				SPREAD:
-					shoot_spread()
-				_:
-					shoot()
+		if Input.is_action_pressed("ui_fire"):
+			if can_fire && gun_type != NO_GUN:
+				match gun_type:
+					SPREAD:
+						shoot_spread()
+					FLAME:
+						flame.emitting = true
+						yield(get_tree().create_timer(0.1), "timeout")
+						enable_flame_area(true)
+					_:
+						shoot()
 		
-		if Input.is_action_just_released("ui_fire") && !can_fire && gun_type != PISTOL:
-			can_fire = true
+		else:
+			flame.emitting = false
+			enable_flame_area(false)
+			if !can_fire && gun_type != PISTOL:
+				can_fire = true
 	else:
 		can_fire = false
 		if flip_v:
 			rotation_degrees = -180
 		else:
 			rotation_degrees = 0
+
+func enable_flame_area(value : bool):
+	flame.get_node("flame_area").monitorable = value
+	flame.get_node("flame_area").monitoring = value

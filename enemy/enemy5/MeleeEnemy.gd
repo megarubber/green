@@ -3,7 +3,6 @@ extends KinematicBody2D
 # Constants
 const GRAVITY = 20
 const FLOOR = Vector2(0, -1)
-const DAMAGE = 10
 const MIN_SPEED = 0
 const MAX_SPEED = 200
 const SWORD_POSITION_X = 36
@@ -98,11 +97,15 @@ func _physics_process(_delta) -> void:
 				if !player.hit:
 					player.take_damage(5)
 					Global.hit_side = -1
+			elif l_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
+				take_damage(1)
 		elif r_damage_area.get_overlapping_areas():
 			if r_damage_area.get_overlapping_areas()[0].get_name() == "DamageArea":
 				if !player.hit:
 					player.take_damage(5)
 					Global.hit_side = 1
+			elif r_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
+				take_damage(1)
 
 # Change direction
 func change_direction() -> void:
@@ -141,23 +144,33 @@ func death() -> void:
 	t_d.start()
 	yield(t_d, "timeout")
 	queue_free()
-	
+
+func which_damage(area):
+	if area.is_in_group("bullet-base"):
+		take_damage(10)
+		area.queue_free()
+	elif area.is_in_group("bullet-spread"):
+		take_damage(3)
+		area.queue_free()
+	elif area.is_in_group("bullet-pistol"):
+		take_damage(2)
+		area.queue_free()
+	elif area.is_in_group("bullet-autoaim"):
+		take_damage(20)
+		area.queue_free()
+
 # take damage
-func take_damage() -> void:
+func take_damage(damage : int) -> void:
 	anim.play("flash")
-	lifebar.damage(DAMAGE)
+	lifebar.damage(damage)
 
 func _on_LeftDamageArea_area_entered(area) -> void:
 	Global.hit_side = -1
-	if area.is_in_group("bullets_player"):
-		take_damage()
-		area.queue_free()
+	which_damage(area)
 
 func _on_RightDamageArea_area_entered(area) -> void:
 	Global.hit_side = 1
-	if area.is_in_group("bullets_player"):
-		take_damage()
-		area.queue_free()
+	which_damage(area)
 
 func _on_DetectArea_body_entered(body) -> void:
 	if body.is_in_group("player"):

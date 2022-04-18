@@ -1,8 +1,5 @@
 extends KinematicBody2D
 
-# Constants
-const DAMAGE = 50
-
 # General Variables
 var motion = Vector2.ZERO
 var founded = false
@@ -66,6 +63,8 @@ func _physics_process(_delta) -> void:
 				if !player.hit:
 					player.take_damage(5)
 					Global.hit_side = -1
+			elif l_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
+				take_damage(10)
 			else:
 				speed = 5
 		elif r_damage_area.get_overlapping_areas():
@@ -74,6 +73,8 @@ func _physics_process(_delta) -> void:
 				if !player.hit:
 					player.take_damage(5)
 					Global.hit_side = 1
+			elif r_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
+				take_damage(10)
 			else:
 				speed = 5
 		else:
@@ -92,19 +93,29 @@ func _on_DetectArea_body_exited(body) -> void:
 	if body.is_in_group("player"):
 		founded = false
 
+func which_damage(area):
+	if area.is_in_group("bullet-base"):
+		take_damage(50)
+		area.queue_free()
+	elif area.is_in_group("bullet-spread"):
+		take_damage(50)
+		area.queue_free()
+	elif area.is_in_group("bullet-pistol"):
+		take_damage(25)
+		area.queue_free()
+	elif area.is_in_group("bullet-autoaim"):
+		take_damage(25)
+		area.queue_free()
+
 func _on_LeftDamageArea_area_entered(area) -> void:
 	Global.hit_side = -1
-	if area.is_in_group("bullets_player"):
-		take_damage()
-		area.queue_free()
+	which_damage(area)
 
 func _on_RightDamageArea_area_entered(area):
 	Global.hit_side = 1
-	if area.is_in_group("bullets_player"):
-		take_damage()
-		area.queue_free()
+	which_damage(area)
 
 # take damage
-func take_damage() -> void:
+func take_damage(damage : int) -> void:
 	anim.play("flash")
-	lifebar.damage(DAMAGE)
+	lifebar.damage(damage)

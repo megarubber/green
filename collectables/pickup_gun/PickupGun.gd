@@ -8,7 +8,7 @@ onready var collision_shape = $CollisionShape2D
 signal player_entered(type)
 
 # Enum
-enum {BASIC, SPREAD, IMPULSE, PISTOL, AUTO_AIMING}
+enum {BASIC, SPREAD, FLAME, PISTOL, AUTO_AIMING}
 
 # General Variables
 export(int) var type = BASIC
@@ -21,7 +21,7 @@ func _ready() -> void:
 		SPREAD:
 			sprite.play("gun2")
 			collision_shape.position = Vector2(0, -2.5)
-		IMPULSE:
+		FLAME:
 			sprite.play("gun3")
 			collision_shape.position = Vector2(-0.5, -2.5)
 		PISTOL:

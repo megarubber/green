@@ -29,6 +29,6 @@ menu de opções
 
 -- Armas
 diferentes danos ao inimigo
-arma voar da mão do jogador
+lança chamas
 
 consertar o slide volume para o mouse (perguntar no fórum)

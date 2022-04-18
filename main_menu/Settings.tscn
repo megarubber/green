@@ -119,6 +119,11 @@ region_rect = Rect2( 0, 0, 44, 12 )
 
 [node name="Settings" type="Control"]
 pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1024.0
+margin_bottom = -600.0
+focus_mode = 2
 script = ExtResource( 12 )
 
 [node name="TransitionBlock" parent="." instance=ExtResource( 7 )]
@@ -193,8 +198,8 @@ value = 1.0
 
 [node name="FullScreen" type="Control" parent="Options"]
 margin_left = 1.0
-margin_right = 1035.0
-margin_bottom = 607.0
+margin_right = 82.0
+margin_bottom = 81.0
 
 [node name="FullScreenLabel" type="Label" parent="Options/FullScreen"]
 margin_left = 229.0
