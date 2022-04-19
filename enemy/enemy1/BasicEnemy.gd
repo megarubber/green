@@ -4,7 +4,6 @@ extends KinematicBody2D
 const SPEED = 350
 const GRAVITY = 20
 const FLOOR = Vector2(0, -1)
-const DAMAGE = 10
 
 # Variables
 var motion = Vector2()
@@ -20,6 +19,7 @@ onready var lifebar = $Lifebar
 onready var anim = $AnimationPlayer
 onready var wheel = $Wheel
 onready var explosions = $Explosion
+onready var sound_effect = $ExplosionSoundEffect
 
 func _ready() -> void:
 	# When starts, it will play hide explosions
@@ -38,11 +38,19 @@ func _physics_process(_delta) -> void:
 			direction *= -1
 			raycast.position.x *= -1
 			sprite.flip_h = !sprite.flip_h
+			
+		if l_damage_area.get_overlapping_areas():
+			if l_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
+				take_damage(1)
+		elif r_damage_area.get_overlapping_areas():
+			if r_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
+				take_damage(1)
 	else:
 		death()
 
 # Function that runs when the enemy dies
 func death() -> void:
+	sound_effect.play()
 	# Disable collision (bullet & tileset)
 	l_damage_area.monitorable = false
 	r_damage_area.monitorable = false
@@ -71,16 +79,24 @@ func death() -> void:
 	queue_free()
 	
 # take damage
-func take_damage() -> void:
+func take_damage(damage : int) -> void:
 	anim.play("flash")
-	lifebar.damage(DAMAGE)
+	lifebar.damage(damage)
 
-func _on_LeftDamageArea_area_entered(area):
+func _on_LeftDamageArea_area_entered(area) -> void:
 	Global.hit_side = -1
-	if area.is_in_group("bullets_player"):
-		take_damage()
+	which_damage(area)
 
-func _on_RightDamageArea_area_entered(area):
+func _on_RightDamageArea_area_entered(area) -> void:
 	Global.hit_side = 1
-	if area.is_in_group("bullets_player"):
-		take_damage()
+	which_damage(area)
+
+func which_damage(area):
+	if area.is_in_group("bullet-base"):
+		take_damage(10)
+	elif area.is_in_group("bullet-spread"):
+		take_damage(7)
+	elif area.is_in_group("bullet-pistol"):
+		take_damage(3)
+	elif area.is_in_group("bullet-autoaim"):
+		take_damage(5)

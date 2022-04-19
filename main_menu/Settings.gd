@@ -43,10 +43,8 @@ func _process(_delta : float) -> void:
 	if focus_volume:
 		if Input.is_action_pressed("ui_left"):
 			volume_slider.value -= CHANGE_VOLUME_VALUE
-			Global.change_volume_music(linear2db(volume_slider.value))
 		elif Input.is_action_pressed("ui_right"):
 			volume_slider.value += CHANGE_VOLUME_VALUE
-			Global.change_volume_music(linear2db(volume_slider.value))
 		percentage.text = String(round(volume_slider.value * 100)) + "%"
 
 func _on_BtnMainMenu_pressed() -> void:
@@ -81,7 +79,10 @@ func _on_VolumeSlider_mouse_entered() -> void:
 	volume_slider.grab_focus()
 
 func _on_VolumeSlider_mouse_exited() -> void:
-	volume_slider.release_focus()
+	if focus_volume:
+		volume_slider.grab_focus()
+	else:		
+		volume_slider.release_focus()
 
 func _on_FullScreenCheckBox_pressed() -> void:
 	if fullscreen_checkbox.pressed:
@@ -94,5 +95,8 @@ func _on_FullScreenCheckBox_pressed() -> void:
 func _on_BtnMainMenu_focus_entered() -> void:
 	change.play()
 
-func _on_SettingsGame_tree_exited():
+func _on_SettingsGame_tree_exited() -> void:
 	emit_signal("exited")
+
+func _on_VolumeSlider_value_changed(_value) -> void:
+	Global.change_volume_music(linear2db(volume_slider.value))

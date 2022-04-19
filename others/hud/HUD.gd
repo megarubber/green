@@ -11,6 +11,7 @@ onready var pause_screen = $Pause
 onready var pause_screen_anim = $Pause/AnimationPlayerPause
 onready var select = $SelectSoundEffect
 onready var change = $ChangeSoundEffect
+onready var inventory = $InventoryGuns
 
 # Variables
 var can_pause_delay = false
@@ -21,6 +22,9 @@ onready var transition = get_node(transition_path)
 
 # Get Settings Menu
 onready var settings = preload("res://main_menu/SettingsGame.tscn")
+
+# Textures Gun
+export(Array, StreamTexture)var gun_texture
 
 func _ready() -> void:
 	var level_name_reference = get_tree().get_current_scene().get_name()
@@ -41,6 +45,13 @@ func _ready() -> void:
 	# Can Pause Delay is prevent the player to pause the game between transition
 	yield(transition, "finished")
 	can_pause_delay = true
+
+func _process(_delta) -> void:
+	if len(Global.inventory_guns) < 2:
+		inventory.visible = false
+	else:
+		inventory.visible = true
+		inventory.get_node("Gun").texture = gun_texture[Global.inventory_guns[0]]
 
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("ui_pause") && Global.is_playing && can_pause_delay:

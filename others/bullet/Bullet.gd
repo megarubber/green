@@ -11,6 +11,7 @@ var delay = 0.7
 onready var animation = $AnimationBullet
 onready var collision = $CollisionShape2D
 onready var sprite = $Sprite
+onready var explosion = $Explosion
 
 # Get Player Node
 onready var player = get_tree().get_current_scene().get_node("Player")
@@ -23,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Movement of bullet
 	if !touched:
-		position += (Vector2.RIGHT * speed).rotated(rotation) * delta	
+		position += (Vector2.RIGHT * speed).rotated(rotation) * delta
 	
 func _physics_process(_delta) -> void:
 	if !touched:
@@ -47,17 +48,18 @@ func _on_Bullet_body_entered(body) -> void:
 			touched = true
 			collision.set_deferred("disabled", true)
 			animation.play("Explosion")
+			#explosion.play()
 		
 		if body.is_in_group("enemy") || body.is_in_group("player"):
 			touched = true
 			queue_free()
 
-func _on_DamageArea_area_entered(_area):
+func _on_DamageArea_area_entered(_area) -> void:
 	if position.x < player.global_position.x:	
 		Global.hit_side = 1
 	else:
 		Global.hit_side = -1
 
-func _on_AnimationBullet_animation_finished(anim_name):
+func _on_AnimationBullet_animation_finished(anim_name) -> void:
 	if anim_name == "Explosion":
 		queue_free()

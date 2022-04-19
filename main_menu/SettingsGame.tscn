@@ -195,8 +195,8 @@ value = 1.0
 
 [node name="FullScreen" type="Control" parent="Options"]
 margin_left = 1.0
-margin_right = 1035.0
-margin_bottom = 607.0
+margin_right = 65.0
+margin_bottom = 68.0
 
 [node name="FullScreenLabel" type="Label" parent="Options/FullScreen"]
 margin_left = 229.0
@@ -227,9 +227,9 @@ custom_styles/normal = SubResource( 43 )
 align = 1
 
 [node name="BtnMainMenu" type="Button" parent="Options"]
-margin_left = 392.0
+margin_left = 384.0
 margin_top = 476.0
-margin_right = 614.0
+margin_right = 610.0
 margin_bottom = 556.0
 focus_neighbour_top = NodePath("../FullScreen/FullScreenCheckBox")
 focus_neighbour_bottom = NodePath("../Volume/VolumeSlider")
@@ -240,7 +240,7 @@ custom_styles/pressed = SubResource( 11 )
 custom_styles/focus = SubResource( 49 )
 custom_styles/disabled = SubResource( 47 )
 custom_styles/normal = SubResource( 12 )
-text = "RESUME"
+text = "Back"
 
 [node name="Mouse" parent="Options" instance=ExtResource( 5 )]
 scale = Vector2( 3, 3 )
@@ -262,6 +262,7 @@ bus = "SoundEffects"
 [connection signal="focus_exited" from="Options/Volume/VolumeSlider" to="." method="_on_VolumeSlider_focus_exited"]
 [connection signal="mouse_entered" from="Options/Volume/VolumeSlider" to="." method="_on_VolumeSlider_mouse_entered"]
 [connection signal="mouse_exited" from="Options/Volume/VolumeSlider" to="." method="_on_VolumeSlider_mouse_exited"]
+[connection signal="value_changed" from="Options/Volume/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
 [connection signal="focus_entered" from="Options/FullScreen/FullScreenCheckBox" to="." method="_on_FullScreenCheckBox_focus_entered"]
 [connection signal="focus_exited" from="Options/FullScreen/FullScreenCheckBox" to="." method="_on_FullScreenCheckBox_focus_exited"]
 [connection signal="pressed" from="Options/FullScreen/FullScreenCheckBox" to="." method="_on_FullScreenCheckBox_pressed"]

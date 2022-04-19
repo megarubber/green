@@ -9,6 +9,7 @@ var coins = 0
 var life = 3
 var checkpoint_position = Vector2.ZERO
 var is_checkpoint_hitted = false
+var inventory_guns = []
 
 # Game State
 var is_playing = false
@@ -17,6 +18,9 @@ var is_playing = false
 func play_music(music_stream) -> void:
 	g_music.stream = load(music_stream)
 	g_music.play()
+
+func stop_music() -> void:
+	g_music.stop()
 
 func change_volume_music(value) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)

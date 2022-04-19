@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://player/sprites/idle.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
@@ -30,6 +30,21 @@
 [ext_resource path="res://player/sprites/wing-4.png" type="Texture" id=28]
 [ext_resource path="res://player/sprites/ring.png" type="Texture" id=29]
 [ext_resource path="res://others/effects/FootDust.tscn" type="PackedScene" id=30]
+[ext_resource path="res://guns/gun5.png" type="Texture" id=31]
+[ext_resource path="res://guns/gun7.png" type="Texture" id=32]
+[ext_resource path="res://guns/gun6.png" type="Texture" id=33]
+[ext_resource path="res://guns/gun4.png" type="Texture" id=34]
+[ext_resource path="res://guns/hands.png" type="Texture" id=35]
+[ext_resource path="res://guns/hand.png" type="Texture" id=36]
+[ext_resource path="res://audio/sound-effects/gun-shoot.wav" type="AudioStream" id=37]
+[ext_resource path="res://audio/sound-effects/shotgun.wav" type="AudioStream" id=38]
+[ext_resource path="res://audio/sound-effects/laser.wav" type="AudioStream" id=39]
+[ext_resource path="res://audio/sound-effects/player-jump.wav" type="AudioStream" id=40]
+[ext_resource path="res://audio/sound-effects/player_hit.wav" type="AudioStream" id=41]
+[ext_resource path="res://audio/sound-effects/change-gun.wav" type="AudioStream" id=42]
+[ext_resource path="res://audio/sound-effects/add-gun.wav" type="AudioStream" id=43]
+[ext_resource path="res://audio/sound-effects/player-death.wav" type="AudioStream" id=44]
+[ext_resource path="res://audio/sound-effects/fire.ogg" type="AudioStream" id=45]
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
@@ -88,7 +103,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 35.5, 98 )
+extents = Vector2( 35.5, 96 )
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 35, 7.5 )
@@ -191,6 +206,54 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hands/hand-right:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3.6, 1.2 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hands/hand-left:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -30, 2 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hands/hand-left:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hands/hand-right:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "dead"
@@ -242,6 +305,66 @@ tracks/3/keys = {
 "update": 1,
 "values": [ ExtResource( 12 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hands/hand-left:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.799998, 2.4 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hands/hand-right:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -35.2, 2.4 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hands/hand-right:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.572549, 0.886275, 0.929412, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hands/hand-left:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.572549, 0.886275, 0.929412, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("HeadSprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, -158 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "fall"
@@ -268,6 +391,30 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hands/hand-right:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -35.2, 2.4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hands/hand-left:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.799998, 2.4 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -296,6 +443,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [ ExtResource( 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hands/hand-right:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 1.2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hands/hand-left:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -35.2, 2 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "jump"
@@ -322,6 +493,30 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ ExtResource( 13 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hands/hand-left:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.799998, 2.4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hands/hand-right:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -35.2, 2.4 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -352,6 +547,30 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hands/hand-left:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.099, 0.1, 0.199, 0.2, 0.299, 0.3, 0.399, 0.4, 0.499, 0.5, 0.599, 0.6, 0.699, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -29.6, 2.4 ), Vector2( -29.6, 2.4 ), Vector2( -17.6, 5.6 ), Vector2( -17.6, 5.6 ), Vector2( -0.400003, 4.8 ), Vector2( -0.400003, 4.8 ), Vector2( -2, 3.2 ), Vector2( -2, 3.2 ), Vector2( -2, 3.2 ), Vector2( -2, 3.2 ), Vector2( -22.4, 4 ), Vector2( -22.4, 4 ), Vector2( -33.6, 1.2 ), Vector2( -33.6, 1.2 ), Vector2( -29.6, 2.4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hands/hand-right:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.099, 0.1, 0.199, 0.2, 0.299, 0.3, 0.399, 0.4, 0.499, 0.5, 0.599, 0.6, 0.699, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, 0.799999 ), Vector2( -2, 0.799999 ), Vector2( -16, 3.2 ), Vector2( -16, 3.2 ), Vector2( -32.4, 5.2 ), Vector2( -32.4, 5.2 ), Vector2( -33.2, 0.8 ), Vector2( -33.2, 0.8 ), Vector2( -33.2, 0.8 ), Vector2( -33.2, 0.8 ), Vector2( -17.6, -1.6 ), Vector2( -17.6, -1.6 ), Vector2( -3.2, 0.8 ), Vector2( -3.2, 0.8 ), Vector2( -2, 0.799999 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -386,6 +605,54 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 73.3696, 159.782 )
 
+[sub_resource type="Gradient" id=23]
+offsets = PoolRealArray( 0, 0.155172, 0.37931, 0.758621, 0.939655, 1 )
+colors = PoolColorArray( 0.956126, 0.957031, 0.841141, 1, 0.868305, 0.898438, 0.347443, 1, 0.6875, 0.408272, 0.217529, 1, 1, 0, 0, 1, 0.258824, 0.0470588, 0.0470588, 1, 0.937255, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 23 )
+
+[sub_resource type="Curve" id=16]
+min_value = -200.0
+max_value = 500.0
+_data = [ Vector2( 0, 500 ), 0.0, -93.9581, 0, 0, Vector2( 0.223684, -142.025 ), -12184.9, -74.6802, 0, 1, Vector2( 1, -200 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=17]
+curve = SubResource( 16 )
+
+[sub_resource type="Curve" id=26]
+_data = [ Vector2( 0, 0.0460123 ), 0.0, 0.620123, 0, 0, Vector2( 0.148496, 0.5 ), 3.96319, 3.96319, 0, 0, Vector2( 1, 1 ), -0.249379, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=27]
+curve = SubResource( 26 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = true
+spread = 12.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 300.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 1.0
+linear_accel = -100.0
+linear_accel_curve = SubResource( 17 )
+radial_accel = 100.0
+scale = 6.0
+scale_random = 1.0
+scale_curve = SubResource( 27 )
+color_ramp = SubResource( 24 )
+
+[sub_resource type="Environment" id=25]
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/5 = false
+glow_intensity = 1.81
+glow_strength = 1.27
+
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 collision_mask = 2
 script = ExtResource( 2 )
@@ -395,25 +662,27 @@ __meta__ = {
 
 [node name="Wings" type="Node2D" parent="."]
 visible = false
+z_index = -4
 
 [node name="WingLeft" type="AnimatedSprite" parent="Wings"]
 position = Vector2( -72, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="WingRight" type="AnimatedSprite" parent="Wings"]
 position = Vector2( 71, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
-frame = 1
+frame = 3
 playing = true
 flip_h = true
 
 [node name="HeadSprite" type="Sprite" parent="."]
 position = Vector2( -1, -153 )
 scale = Vector2( 5, 5 )
+z_index = -4
 texture = ExtResource( 11 )
 script = ExtResource( 17 )
 
@@ -431,11 +700,11 @@ anims/damage = SubResource( 11 )
 [node name="BodySprite" type="Sprite" parent="."]
 position = Vector2( -1, -143 )
 scale = Vector2( 5, 5 )
+z_index = -3
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -1, -101 )
+position = Vector2( -1, -99 )
 shape = SubResource( 1 )
 
 [node name="DropPlataformArea" type="Area2D" parent="." groups=["drop"]]
@@ -457,7 +726,6 @@ anims/run = SubResource( 5 )
 anims/transition_crouch = SubResource( 10 )
 
 [node name="DamageArea" type="Area2D" parent="."]
-visible = false
 position = Vector2( -1, 53 )
 scale = Vector2( 0.613333, 0.613334 )
 collision_layer = 16
@@ -467,15 +735,81 @@ collision_mask = 300
 position = Vector2( -3.45707e-06, -251.087 )
 shape = SubResource( 12 )
 
+[node name="FlameParticles" type="Particles2D" parent="."]
+position = Vector2( 76, -97 )
+z_index = 1
+emitting = false
+amount = 700
+speed_scale = 4.0
+local_coords = false
+process_material = SubResource( 18 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="FlameParticles"]
+environment = SubResource( 25 )
+
+[node name="flame_area" type="Area2D" parent="FlameParticles" groups=["flame"]]
+collision_layer = 64
+collision_mask = 18
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FlameParticles/flame_area"]
+polygon = PoolVector2Array( 0, 0, 283, 62, 286, -64 )
+
 [node name="GunSprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 4, -88 )
 scale = Vector2( 2.5, 2.5 )
-texture = ExtResource( 18 )
+z_index = -1
+texture = ExtResource( 31 )
 offset = Vector2( 5, 0 )
 script = ExtResource( 19 )
+gun_texture = [ ExtResource( 18 ), ExtResource( 34 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 35 ) ]
 
 [node name="Muzzle" type="Position2D" parent="GunSprite"]
-position = Vector2( 18.8, -4.8 )
+position = Vector2( 24, -4.8 )
+
+[node name="GunShooting" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 37 )
+volume_db = 1.0
+bus = "SoundEffects"
+
+[node name="ChangeGun" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 42 )
+volume_db = 1.0
+bus = "SoundEffects"
+
+[node name="AddGun" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 43 )
+volume_db = 1.0
+bus = "SoundEffects"
+
+[node name="Shotgun" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 38 )
+volume_db = 1.0
+bus = "SoundEffects"
+
+[node name="Laser" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 39 )
+volume_db = 1.0
+bus = "SoundEffects"
+
+[node name="Fire" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 45 )
+volume_db = 24.0
+bus = "SoundEffects"
+
+[node name="Hands" type="Node2D" parent="."]
+position = Vector2( 42, -88 )
+scale = Vector2( 2.5, 2.5 )
+
+[node name="hand-right" type="Sprite" parent="Hands"]
+position = Vector2( -3.6, 1.2 )
+z_index = -4
+texture = ExtResource( 36 )
+
+[node name="hand-left" type="Sprite" parent="Hands"]
+position = Vector2( -30, 2 )
+z_index = -2
+texture = ExtResource( 36 )
 
 [node name="Ring" type="Sprite" parent="."]
 visible = false
@@ -501,8 +835,28 @@ position = Vector2( 0, -7 )
 one_shot = true
 
 [node name="JumpSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 40 )
+bus = "SoundEffects"
 
-[node name="LandingSoundEffect" type="AudioStreamPlayer" parent="."]
+[node name="HitSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 41 )
+bus = "SoundEffects"
+
+[node name="DeathSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 44 )
+bus = "SoundEffects"
+
+[node name="PushRight" type="RayCast2D" parent="."]
+position = Vector2( -1, -103 )
+enabled = true
+cast_to = Vector2( 50, 0 )
+collision_mask = 512
+
+[node name="PushLeft" type="RayCast2D" parent="."]
+position = Vector2( -1, -103 )
+enabled = true
+cast_to = Vector2( -50, 0 )
+collision_mask = 512
 
 [connection signal="body_exited" from="DropPlataformArea" to="." method="_on_DropPlataformArea_body_exited"]
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]

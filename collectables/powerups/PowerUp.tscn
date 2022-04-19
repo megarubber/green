@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://collectables/powerups/powerup-1.png" type="Texture" id=1]
 [ext_resource path="res://collectables/powerups/PowerUp.gd" type="Script" id=2]
 [ext_resource path="res://collectables/powerups/powerup-3.png" type="Texture" id=3]
 [ext_resource path="res://collectables/powerups/powerup-2.png" type="Texture" id=4]
+[ext_resource path="res://audio/sound-effects/power-up.wav" type="AudioStream" id=5]
 [ext_resource path="res://others/effects/collected-2.png" type="Texture" id=8]
 [ext_resource path="res://others/effects/collected-3.png" type="Texture" id=9]
 [ext_resource path="res://others/effects/collected-5.png" type="Texture" id=10]
@@ -23,30 +24,71 @@ animations = [ {
 "name": "gun",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ) ],
-"loop": false,
-"name": "collected",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "collected",
+"speed": 20.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 7 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 3.36358, 0.378929 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ), Vector2( 0, 2 ) ]
+}
 
 [node name="PowerUp" type="Area2D" groups=["collectables"]]
 collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 4 )
 frames = SubResource( 2 )
 animation = "speed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/RESET = SubResource( 3 )
+anims/default = SubResource( 4 )
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "SoundEffects"
 
 [connection signal="body_entered" from="." to="." method="_on_PowerUp_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

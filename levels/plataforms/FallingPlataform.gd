@@ -3,6 +3,7 @@ extends KinematicBody2D
 # Node Referencing
 onready var anim = $AnimationPlayer
 onready var collision = $CollisionShape2D
+onready var sound_effect = $SoundEffect
 
 # Variables
 var velocity = Vector2.ZERO
@@ -20,6 +21,7 @@ func _physics_process(delta : float) -> void:
 func _on_detect_player_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		anim.play("shake")
+		sound_effect.play()
 
 func _on_AnimationPlayer_animation_finished(anim_name) -> void:
 	if anim_name == "shake":

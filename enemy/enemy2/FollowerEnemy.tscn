@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://enemy/EyesEnemy.gd" type="Script" id=1]
 [ext_resource path="res://enemy/enemy2/head.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://enemy/enemy2/eyes1.png" type="Texture" id=4]
 [ext_resource path="res://enemy/enemy2/eyes2.png" type="Texture" id=5]
 [ext_resource path="res://enemy/enemy2/FollowerEnemy.gd" type="Script" id=6]
+[ext_resource path="res://audio/sound-effects/gun-shoot.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/sound-effects/explosion-2.wav" type="AudioStream" id=8]
 [ext_resource path="res://guns/gun2.png" type="Texture" id=10]
 [ext_resource path="res://guns/EnemyGun.gd" type="Script" id=11]
 [ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=15]
@@ -331,7 +333,7 @@ material = SubResource( 17 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="Head" type="Sprite" parent="."]
@@ -402,6 +404,11 @@ script = ExtResource( 11 )
 [node name="Muzzle" type="Position2D" parent="GunSprite"]
 position = Vector2( 21.2, -8 )
 
+[node name="GunShooting" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 7 )
+volume_db = 1.0
+bus = "SoundEffects"
+
 [node name="Explosion" type="Node2D" parent="."]
 visible = false
 position = Vector2( -23, -78 )
@@ -443,6 +450,10 @@ margin_top = -148.0
 margin_right = 467.0
 margin_bottom = -84.0
 rect_scale = Vector2( 0.3, 0.3 )
+
+[node name="ExplosionSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "SoundEffects"
 
 [connection signal="area_entered" from="LeftDamageArea" to="." method="_on_LeftDamageArea_area_entered"]
 [connection signal="area_entered" from="RightDamageArea" to="." method="_on_RightDamageArea_area_entered"]

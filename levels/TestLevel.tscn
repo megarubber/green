@@ -9,6 +9,7 @@
 [ext_resource path="res://collectables/powerups/PowerUp.tscn" type="PackedScene" id=7]
 [ext_resource path="res://others/mouse/Mouse.tscn" type="PackedScene" id=8]
 
+
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 

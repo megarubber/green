@@ -21,6 +21,7 @@ onready var ballon = $Ballon
 onready var ballon_anim = $Ballon/AnimationPlayer
 onready var text = $Ballon/Text
 onready var text_anim = $Ballon/Text/AnimationPlayerText
+onready var sfx = $SFX
 
 func _ready() -> void:
 	key.visible = false
@@ -88,3 +89,7 @@ func _on_AnimationPlayerText_animation_finished(anim_name) -> void:
 func _process(_delta) -> void:
 	if get_overlapping_areas().size() == 0:
 		key_anim.play("hide")
+
+func _on_AnimationPlayer_animation_started(anim_name) -> void:
+	if anim_name == "show":
+		sfx.play()

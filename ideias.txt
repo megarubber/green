@@ -26,3 +26,9 @@ transições
 passar de nível
 ventiladores que fazem o personagem flutuar
 menu de opções
+
+-- Armas
+diferentes danos ao inimigo
+lança chamas
+
+consertar o slide volume para o mouse (perguntar no fórum)

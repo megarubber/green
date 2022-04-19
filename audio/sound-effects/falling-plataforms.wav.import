@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/falling-plataforms.wav-f1e963aab82671c1c1e1fc943f552c68.sample"
+
+[deps]
+
+source_file="res://audio/sound-effects/falling-plataforms.wav"
+dest_files=[ "res://.import/falling-plataforms.wav-f1e963aab82671c1c1e1fc943f552c68.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

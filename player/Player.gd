@@ -13,17 +13,17 @@ const MAX_SPEED_POWERUP = 550
 const MAX_JUMP_HEIGHT_NORMAL = -850
 const MAX_JUMP_HEIGHT_POWERUP = -1000
 const DROP_THRU_BIT = 1
+const PUSH_FORCE = 30
 
 # General Variables
 var motion = Vector2()
-export var knockback = 15000
-export var knockup = 1700
 export var start_position_level = Vector2()
 var hit = false
 var max_speed = MAX_SPEED_NORMAL
 var max_jump_height = -850
 var can_fly = true
 var jump_in_trampoline = false
+var is_pushing = false
 
 # Nodes Referencing
 onready var body_sprite = $BodySprite
@@ -39,9 +39,18 @@ onready var collider = $CollisionShape2D
 onready var ring = $Ring
 onready var dust_timer = $DustTimer
 onready var foot_dust = $FootDust
+onready var push_right = $PushRight
+onready var push_left = $PushLeft
+onready var hands = $Hands
+onready var jump_sound_effect = $JumpSoundEffect
+onready var hit_sound_effect = $HitSoundEffect
+onready var death_sound_effect = $DeathSoundEffect
 
 # Referencing lifebar from HUD
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
+
+# Drop Gun
+onready var drop_gun = preload("res://guns/DropGun.tscn")
 
 func _ready() -> void:
 	if Global.is_checkpoint_hitted:
@@ -61,16 +70,22 @@ func animation() -> void: # Player's animation function
 			foot_dust.emitting = true
 			foot_dust.global_position = global_position
 			dust_timer.start(foot_dust.lifetime + 0.1)
-		if motion.x != 0:
+		if motion.x != 0 || is_pushing:
 			anim.play("run")
+			enable_push(true)
 		else:
 			anim.play("idle")
+			enable_push(false)
 	elif !is_on_floor() && !lifebar.getDeath():
 		if motion.y < 0:
 			anim.play("jump")
 		else:
 			anim.play("fall")
 			jump_in_trampoline = false
+
+func enable_push(value : bool) -> void:
+	push_right.set_enabled(value)
+	push_left.set_enabled(value)
 
 func flip() -> void: # Flipping sprite function
 	if !lifebar.getDeath():
@@ -102,6 +117,7 @@ func movement() -> void: # Player's movement function
 		if is_on_floor():
 			if Input.is_action_just_pressed("ui_up"):
 				motion.y = max_jump_height
+				jump_sound_effect.play()
 			if friction == true:
 				motion.x = lerp(motion.x, 0, 0.2)
 		else:
@@ -115,18 +131,37 @@ func movement() -> void: # Player's movement function
 	motion = move_and_slide(motion, UP)
 
 func death() -> void:
+	Global.inventory_guns.clear()
+	hands.get_node("hand-right").set_z_index(0)
+	gun.visible = false
+	hands.visible = true
 	motion.x = 0
 	if can_fly:	
 		motion.y = min(0, motion.y - 30)
 		anim_eyes.play("damage")
 		anim.play("dead")
 	if !wings.visible:
+		if gun.gun_type < 5:
+			dropping_gun(gun.gun_type)
+		death_sound_effect.play()
+		Global.play_music("res://audio/music/death-theme.ogg")
 		Global.life -= 1
 		emit_signal("player_death")
 		wings.visible = true
 		ring.visible = true
 		deactivate_all_colliders()
 		Global.is_playing = false
+
+func dropping_gun(which_gun : int) -> void:
+	var g = drop_gun.instance()
+	g.global_position = gun.position
+	g.apply_central_impulse(Vector2.UP * 200)
+	var random = String(round(rand_range(1, 1000000)))
+	var g_name = "DropGun" + random
+	g.set_name(g_name)
+	add_child(g)
+	g = get_node(g_name)
+	g.set_gun_texture(which_gun)
 	
 func deactivate_all_colliders() -> void:
 	drop.monitorable = false
@@ -135,8 +170,19 @@ func deactivate_all_colliders() -> void:
 	damage_area.monitoring = false
 	collider.disabled = true
 
-func _physics_process(_delta: float) -> void: # Physics update
+func _physics_process(delta: float) -> void: # Physics update
 	movement()
+	
+	if push_right.is_colliding():
+		var object = push_right.get_collider()
+		object.move_and_slide(Vector2(PUSH_FORCE, 0) * max_speed * delta)
+		is_pushing = true
+	elif push_left.is_colliding():
+		var object = push_left.get_collider()
+		object.move_and_slide(Vector2(-PUSH_FORCE, 0) * max_speed * delta)
+		is_pushing = true
+	else:
+		is_pushing = false
 	
 func _process(_delta: float) -> void:
 	flip()
@@ -156,6 +202,7 @@ func _on_DamageArea_area_entered(area) -> void:
 				strength = 10
 			"bullets_enemy":
 				strength = 5
+				area.queue_free()
 			"sword_enemy": # Executing in MeleeEnemy script (I don't know why)
 				strength = 8
 			"small_flyer_enemy":
@@ -165,7 +212,7 @@ func _on_DamageArea_area_entered(area) -> void:
 			"spike":
 				strength = 10
 				if lifebar.life > strength:	
-					motion.y = lerp(0, -knockup, 0.6)
+					knockback_vertical(1700)
 			"fallzone":
 				strength = lifebar.lifeMax
 				can_fly = false
@@ -184,15 +231,29 @@ func _on_DamageArea_area_entered(area) -> void:
 func player_visible(value : bool) -> void:
 	body_sprite.visible = value
 	head_sprite.visible = value
-	gun.visible = value
+	
+	# Hide gun or hands (type of gun = 5)
+	if gun.gun_type != 5:	
+		gun.visible = value
+		hands.visible = false
+	else:
+		gun.visible = false
+		hands.visible = value
 
-func take_damage(strength : int) -> void:
-	var knock_side = knockback * Global.hit_side
+func knockback_horizontal(side, knockback_force) -> void:
+	var knock_side = knockback_force * side
 	motion.x -= lerp(motion.x, -knock_side, 0.1)
-	#motion.y = lerp(0, -knockup, 0.6)
 	motion = move_and_slide(motion, UP)
+	
+func knockback_vertical(knockup) -> void:
+	motion.y = lerp(0, -knockup, 0.6)
+	motion = move_and_slide(motion, UP)
+	
+func take_damage(strength : int) -> void:
+	knockback_horizontal(Global.hit_side, 15000)
+	#knockback_vertical()
 	hit = true
-		
+	hit_sound_effect.play()
 	if lifebar != null:
 		lifebar.damage(strength)
 		if !lifebar.getDeath():
@@ -214,7 +275,7 @@ func blink() -> void:
 	player_visible(true)
 	hit = false
 
-func _powerup(type):
+func _powerup(type) -> void:
 	match type:
 		0: # Speed
 			max_speed = MAX_SPEED_POWERUP
@@ -225,7 +286,7 @@ func _powerup(type):
 			yield(get_tree().create_timer(5), "timeout")
 			max_jump_height = MAX_JUMP_HEIGHT_NORMAL
 
-func _on_DropPlataformArea_body_exited(_body):
+func _on_DropPlataformArea_body_exited(_body) -> void:
 	set_collision_mask_bit(DROP_THRU_BIT, true)
 
 func hit_checkpoint() -> void:
