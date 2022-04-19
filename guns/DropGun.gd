@@ -7,7 +7,12 @@ onready var sprite = $Sprite
 export(Array, StreamTexture)var gun_textures
 
 func _ready():
-	yield(get_tree().create_timer(5), "timeout")
+	var t_d = Timer.new()
+	t_d.set_wait_time(5)
+	t_d.set_one_shot(true)
+	self.add_child(t_d)
+	t_d.start()
+	yield(t_d, "timeout")
 	queue_free()
 
 func _physics_process(_delta) -> void:

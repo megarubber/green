@@ -4,8 +4,14 @@ extends Control
 onready var transition = $TransitionBlock
 
 func _ready() -> void:
+	Global.play_music("res://audio/music/credits.ogg")
 	transition.fade_out()
-	yield(get_tree().create_timer(23), "timeout")
+	var t_d = Timer.new()
+	t_d.set_wait_time(20.3)
+	t_d.set_one_shot(true)
+	self.add_child(t_d)
+	t_d.start()
+	yield(t_d, "timeout")
 	change_scene()
 
 func change_scene() -> void:
