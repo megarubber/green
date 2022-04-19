@@ -2,6 +2,7 @@ extends Area2D
 
 # Node Referencing
 onready var anim = $AnimatedSprite
+onready var sound_effect = $SoundEffect
 
 func _ready() -> void:
 	anim.play("default")
@@ -10,6 +11,7 @@ func _ready() -> void:
 func _on_Coin_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		anim.play("collected")
+		sound_effect.play()
 		anim.scale = Vector2(1.5, 1.5)
 		Global.coins += 1
 

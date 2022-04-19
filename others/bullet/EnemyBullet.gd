@@ -48,8 +48,8 @@ func _on_Bullet_body_entered(body) -> void:
 			collision.set_deferred("disabled", true)
 			animation.play("Explosion")
 		
-		if body.is_in_group("enemy") || body.is_in_group("player"):
-			touched = true
+		if body.is_in_group("player") && !body.hit:
+			body.take_damage(5)
 			queue_free()
 
 func _on_DamageArea_area_entered(_area) -> void:

@@ -42,6 +42,8 @@ onready var foot_dust = $FootDust
 onready var push_right = $PushRight
 onready var push_left = $PushLeft
 onready var hands = $Hands
+onready var jump_sound_effect = $JumpSoundEffect
+onready var hit_sound_effect = $HitSoundEffect
 
 # Referencing lifebar from HUD
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
@@ -114,6 +116,7 @@ func movement() -> void: # Player's movement function
 		if is_on_floor():
 			if Input.is_action_just_pressed("ui_up"):
 				motion.y = max_jump_height
+				jump_sound_effect.play()
 			if friction == true:
 				motion.x = lerp(motion.x, 0, 0.2)
 		else:
@@ -190,6 +193,7 @@ func _on_DamageArea_area_entered(area) -> void:
 				strength = 10
 			"bullets_enemy":
 				strength = 5
+				area.queue_free()
 			"sword_enemy": # Executing in MeleeEnemy script (I don't know why)
 				strength = 8
 			"small_flyer_enemy":
@@ -240,7 +244,7 @@ func take_damage(strength : int) -> void:
 	knockback_horizontal(Global.hit_side, 15000)
 	#knockback_vertical()
 	hit = true
-		
+	hit_sound_effect.play()
 	if lifebar != null:
 		lifebar.damage(strength)
 		if !lifebar.getDeath():

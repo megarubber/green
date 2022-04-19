@@ -24,7 +24,11 @@ onready var player = get_parent()
 onready var hands = get_parent().get_node("Hands")
 onready var flame = get_parent().get_node("FlameParticles")
 onready var flame_area = get_parent().get_node("FlameParticles/flame_area")
-onready var sound_effect = $GunShooting
+onready var sound_effect_1 = $GunShooting
+onready var sound_effect_2 = $Shotgun
+onready var sound_effect_3 = $Laser
+onready var sound_effect_4 = $ChangeGun
+onready var sound_effect_5 = $AddGun
 
 # Textures
 export(Array, StreamTexture)var gun_texture
@@ -40,6 +44,7 @@ func _ready() -> void:
 
 func add_gun_at_inventory(which_gun) -> void:
 	if !Global.inventory_guns.has(which_gun):
+		sound_effect_5.play()
 		if len(Global.inventory_guns) < 2:
 			Global.inventory_guns.append(which_gun)
 		else:
@@ -48,6 +53,7 @@ func add_gun_at_inventory(which_gun) -> void:
 
 func change_gun() -> void:
 	if len(Global.inventory_guns) >= 2:
+		sound_effect_4.play()
 		Global.inventory_guns.invert()
 		changing = true
 		_pickup_gun(Global.inventory_guns[1])
@@ -119,7 +125,10 @@ func shoot() -> void: # Shotting with gun
 	bullet_instance.rotation = rotation
 	bullet_instance.global_position = muzzle.global_position
 	recoil(20)
-	sound_effect.play()
+	if gun_type == AUTO_AIMING:
+		sound_effect_3.play()
+	else:	
+		sound_effect_1.play()
 	get_parent().add_child(bullet_instance)
 	get_parent().screen_shake.shake(0.2, 2)
 	can_fire = false
@@ -136,6 +145,7 @@ func shoot_spread():
 		recoil(5)
 		get_parent().screen_shake.shake(0.2, 3)
 		get_parent().add_child(bullet_instance)
+	sound_effect_2.play()
 	can_fire = false
 
 func _input(event) -> void:

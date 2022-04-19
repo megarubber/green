@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://player/sprites/idle.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
@@ -37,6 +37,12 @@
 [ext_resource path="res://guns/hands.png" type="Texture" id=35]
 [ext_resource path="res://guns/hand.png" type="Texture" id=36]
 [ext_resource path="res://audio/sound-effects/gun-shoot.wav" type="AudioStream" id=37]
+[ext_resource path="res://audio/sound-effects/shotgun.wav" type="AudioStream" id=38]
+[ext_resource path="res://audio/sound-effects/laser.wav" type="AudioStream" id=39]
+[ext_resource path="res://audio/sound-effects/player-jump.wav" type="AudioStream" id=40]
+[ext_resource path="res://audio/sound-effects/player_hit.wav" type="AudioStream" id=41]
+[ext_resource path="res://audio/sound-effects/change-gun.wav" type="AudioStream" id=42]
+[ext_resource path="res://audio/sound-effects/add-gun.wav" type="AudioStream" id=43]
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
@@ -648,14 +654,14 @@ z_index = -4
 position = Vector2( -72, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="WingRight" type="AnimatedSprite" parent="Wings"]
 position = Vector2( 71, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
-frame = 3
+frame = 1
 playing = true
 flip_h = true
 
@@ -735,6 +741,7 @@ collision_mask = 18
 polygon = PoolVector2Array( 0, 0, 283, 62, 286, -64 )
 
 [node name="GunSprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 4, -88 )
 scale = Vector2( 2.5, 2.5 )
 z_index = -1
@@ -748,7 +755,27 @@ position = Vector2( 24, -4.8 )
 
 [node name="GunShooting" type="AudioStreamPlayer" parent="GunSprite"]
 stream = ExtResource( 37 )
-volume_db = -15.0
+volume_db = 1.0
+bus = "SoundEffects"
+
+[node name="ChangeGun" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 42 )
+volume_db = 1.0
+bus = "SoundEffects"
+
+[node name="AddGun" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 43 )
+volume_db = 1.0
+bus = "SoundEffects"
+
+[node name="Shotgun" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 38 )
+volume_db = 1.0
+bus = "SoundEffects"
+
+[node name="Laser" type="AudioStreamPlayer" parent="GunSprite"]
+stream = ExtResource( 39 )
+volume_db = 1.0
 bus = "SoundEffects"
 
 [node name="Hands" type="Node2D" parent="."]
@@ -788,9 +815,13 @@ position = Vector2( 0, -7 )
 [node name="DustTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="LandingSoundEffect" type="AudioStreamPlayer" parent="."]
-
 [node name="JumpSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 40 )
+bus = "SoundEffects"
+
+[node name="HitSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 41 )
+bus = "SoundEffects"
 
 [node name="PushRight" type="RayCast2D" parent="."]
 position = Vector2( -1, -103 )

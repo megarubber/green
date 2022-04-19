@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://others/bullet/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://others/bullet/EnemyBullet.gd" type="Script" id=1]
 [ext_resource path="res://others/bullet/bullet-3.png" type="Texture" id=2]
 [ext_resource path="res://others/bullet/bullet-1.png" type="Texture" id=3]
 [ext_resource path="res://others/explosion/ex_1.png" type="Texture" id=5]

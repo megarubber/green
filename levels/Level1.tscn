@@ -1805,8 +1805,8 @@ scale = Vector2( 0.75, 0.75 )
 z_index = -6
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1465, -173 )
-start_position_level = Vector2( 1434, -287 )
+position = Vector2( 7018, 158 )
+start_position_level = Vector2( 7018, 158 )
 
 [node name="Objects_Front" type="Node2D" parent="."]
 
@@ -2154,7 +2154,7 @@ type = 1
 [node name="PickupGun" parent="Guns" instance=ExtResource( 52 )]
 position = Vector2( 1594, -17 )
 scale = Vector2( 2.5, 2.5 )
-type = 3
+type = 4
 
 [node name="PickupGun4" parent="Guns" instance=ExtResource( 52 )]
 position = Vector2( 1725, -17 )
