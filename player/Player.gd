@@ -159,7 +159,9 @@ func dropping_gun(which_gun : int) -> void:
 	var random = String(round(rand_range(1, 1000000)))
 	var g_name = "DropGun" + random
 	g.set_name(g_name)
-	add_child(g)
+	#add_child(g)
+	call_deferred("add_child", g)
+	yield(get_tree().create_timer(0.01), "timeout")
 	g = get_node(g_name)
 	g.set_gun_texture(which_gun)
 	
@@ -239,6 +241,10 @@ func player_visible(value : bool) -> void:
 	else:
 		gun.visible = false
 		hands.visible = value
+	
+	#if lifebar.getDeath():
+	#	wings.visible = value
+	#	ring.visible = value	
 
 func knockback_horizontal(side, knockback_force) -> void:
 	var knock_side = knockback_force * side

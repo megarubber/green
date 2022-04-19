@@ -14,7 +14,6 @@ var gun_pos_flip_true = Vector2(4, -88)
 var p_knock_side = -1
 var changing = false
 var impulse_strength = 2
-var previous_gun = 0
 
 # Bullet Referecing
 var bullet = preload("res://others/bullet/BulletBase.tscn")
@@ -50,6 +49,8 @@ func add_gun_at_inventory(which_gun) -> void:
 		if len(Global.inventory_guns) < 2:
 			Global.inventory_guns.append(which_gun)
 		else:
+			if len(Global.inventory_guns) == 2:
+				player.dropping_gun(Global.inventory_guns[0])
 			Global.inventory_guns[0] = Global.inventory_guns[1]
 			Global.inventory_guns[1] = which_gun
 
@@ -62,8 +63,7 @@ func remove_gun() -> void:
 			gun_type = NO_GUN
 			Global.inventory_guns.clear()
 		else:
-			previous_gun = Global.inventory_guns[1]
-			player.dropping_gun(previous_gun)
+			player.dropping_gun(Global.inventory_guns[1])
 			change_gun()
 			Global.inventory_guns.remove(1)
 

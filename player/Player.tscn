@@ -668,14 +668,12 @@ z_index = -4
 position = Vector2( -72, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
-frame = 3
 playing = true
 
 [node name="WingRight" type="AnimatedSprite" parent="Wings"]
 position = Vector2( 71, -110 )
 scale = Vector2( 0.224, 0.224 )
 frames = SubResource( 14 )
-frame = 3
 playing = true
 flip_h = true
 
