@@ -58,12 +58,12 @@ func remove_gun() -> void:
 		if len(Global.inventory_guns) < 2:
 			hands.visible = true
 			visible = false
-			previous_gun = Global.inventory_guns[0]
-			player.dropping_gun(NO_GUN)
+			player.dropping_gun(gun_type)
 			gun_type = NO_GUN
 			Global.inventory_guns.clear()
 		else:
 			previous_gun = Global.inventory_guns[1]
+			player.dropping_gun(previous_gun)
 			change_gun()
 			Global.inventory_guns.remove(1)
 
@@ -173,7 +173,6 @@ func _input(event) -> void:
 
 func _physics_process(_delta: float) -> void:
 	flame.global_position = muzzle.global_position
-	print(previous_gun)
 	if !player.lifebar.getDeath():
 		if gun_type != NO_GUN:
 			position += velocity

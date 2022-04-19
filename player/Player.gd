@@ -152,14 +152,17 @@ func death() -> void:
 		deactivate_all_colliders()
 		Global.is_playing = false
 
-func dropping_gun(which_gun) -> void:
+func dropping_gun(which_gun : int) -> void:
 	var g = drop_gun.instance()
 	g.global_position = gun.position
 	g.apply_central_impulse(Vector2.UP * 200)
+	var random = String(round(rand_range(1, 1000000)))
+	var g_name = "DropGun" + random
+	g.set_name(g_name)
 	add_child(g)
-	g = get_node("DropGun")
-	g.sprite.texture = g.gun_textures[which_gun]
-
+	g = get_node(g_name)
+	g.set_gun_texture(which_gun)
+	
 func deactivate_all_colliders() -> void:
 	drop.monitorable = false
 	drop.monitoring = false

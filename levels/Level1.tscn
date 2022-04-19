@@ -635,7 +635,7 @@ extents = Vector2( 37.5, 115.25 )
 extents = Vector2( 6.99167, 0.0666672 )
 
 [sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 237.219, 40.375 )
+extents = Vector2( 2507.25, 5.06238 )
 
 [node name="Level1" type="Node2D"]
 position = Vector2( 512, 192 )
@@ -1437,7 +1437,6 @@ position = Vector2( 6243, -304 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Coins2" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1445,7 +1444,6 @@ position = Vector2( 11051, 1557 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Coins3" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1453,6 +1451,7 @@ position = Vector2( 11463, 1585 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Coins4" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1460,6 +1459,7 @@ position = Vector2( 11234, 1595 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Box6" type="StaticBody2D" parent="Objects_Backward" groups=["tilemap"]]
@@ -2152,18 +2152,28 @@ type = 1
 [node name="Guns" type="Node2D" parent="."]
 
 [node name="PickupGun" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1594, -17 )
+position = Vector2( 1855, -17 )
 scale = Vector2( 2.5, 2.5 )
 type = 2
 
+[node name="PickupGun6" parent="Guns" instance=ExtResource( 52 )]
+position = Vector2( 1983, -17 )
+scale = Vector2( 2.5, 2.5 )
+type = 3
+
+[node name="PickupGun7" parent="Guns" instance=ExtResource( 52 )]
+position = Vector2( 1792, -178 )
+scale = Vector2( 2.5, 2.5 )
+type = 4
+
 [node name="PickupGun4" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1725, -17 )
+position = Vector2( 1550, -17 )
 scale = Vector2( 2.5, 2.5 )
 
 [node name="PickupGun5" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1890, -17 )
+position = Vector2( 1705, -17 )
 scale = Vector2( 2.5, 2.5 )
-type = 4
+type = 1
 
 [node name="PickupGun2" parent="Guns" instance=ExtResource( 52 )]
 position = Vector2( 6171, -874 )
@@ -2183,20 +2193,10 @@ scale = Vector2( 4, 4 )
 modulate = Color( 0.929412, 0.929412, 0.929412, 1 )
 position = Vector2( 0, 600 )
 collision_layer = 256
-collision_mask = 0
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallZones/Fallzone"]
-position = Vector2( -94.9101, -381.766 )
-shape = SubResource( 21 )
-
-[node name="Fallzone2" type="Area2D" parent="FallZones" groups=["fallzone"]]
-modulate = Color( 0.929412, 0.929412, 0.929412, 1 )
-position = Vector2( 0, 600 )
-collision_layer = 256
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallZones/Fallzone2"]
-position = Vector2( 1099.09, -376.766 )
+position = Vector2( 763.59, -417.079 )
 shape = SubResource( 21 )
 
 [connection signal="animation_finished" from="Interactable/Signpost/Key/AnimationPlayer" to="Interactable/Signpost/Key" method="_on_AnimationPlayer_animation_finished"]
