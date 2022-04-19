@@ -2160,6 +2160,11 @@ type = 2
 position = Vector2( 1725, -17 )
 scale = Vector2( 2.5, 2.5 )
 
+[node name="PickupGun5" parent="Guns" instance=ExtResource( 52 )]
+position = Vector2( 1890, -17 )
+scale = Vector2( 2.5, 2.5 )
+type = 4
+
 [node name="PickupGun2" parent="Guns" instance=ExtResource( 52 )]
 position = Vector2( 6171, -874 )
 scale = Vector2( 2.5, 2.5 )

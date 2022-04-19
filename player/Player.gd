@@ -142,12 +142,7 @@ func death() -> void:
 		anim.play("dead")
 	if !wings.visible:
 		if gun.gun_type < 5:
-			var g = drop_gun.instance()
-			g.global_position = gun.position
-			g.apply_central_impulse(Vector2.UP * 200)
-			add_child(g)
-			g = get_node("DropGun")
-			g.sprite.texture = g.gun_textures[gun.gun_type]
+			dropping_gun(gun.gun_type)
 		death_sound_effect.play()
 		Global.play_music("res://audio/music/death-theme.ogg")
 		Global.life -= 1
@@ -156,7 +151,15 @@ func death() -> void:
 		ring.visible = true
 		deactivate_all_colliders()
 		Global.is_playing = false
-	
+
+func dropping_gun(which_gun) -> void:
+	var g = drop_gun.instance()
+	g.global_position = gun.position
+	g.apply_central_impulse(Vector2.UP * 200)
+	add_child(g)
+	g = get_node("DropGun")
+	g.sprite.texture = g.gun_textures[which_gun]
+
 func deactivate_all_colliders() -> void:
 	drop.monitorable = false
 	drop.monitoring = false
