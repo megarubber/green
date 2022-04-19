@@ -1437,7 +1437,6 @@ position = Vector2( 6243, -304 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Coins2" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1445,7 +1444,6 @@ position = Vector2( 11051, 1557 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Coins3" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1453,6 +1451,7 @@ position = Vector2( 11463, 1585 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Coins4" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1460,6 +1459,7 @@ position = Vector2( 11234, 1595 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Box6" type="StaticBody2D" parent="Objects_Backward" groups=["tilemap"]]
@@ -2154,7 +2154,7 @@ type = 1
 [node name="PickupGun" parent="Guns" instance=ExtResource( 52 )]
 position = Vector2( 1594, -17 )
 scale = Vector2( 2.5, 2.5 )
-type = 2
+type = 3
 
 [node name="PickupGun4" parent="Guns" instance=ExtResource( 52 )]
 position = Vector2( 1725, -17 )

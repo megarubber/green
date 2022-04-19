@@ -23,6 +23,7 @@ onready var muzzle = $Muzzle
 onready var player = get_parent()
 onready var hands = get_parent().get_node("Hands")
 onready var flame = get_parent().get_node("FlameParticles")
+onready var flame_area = get_parent().get_node("FlameParticles/flame_area")
 
 # Textures
 export(Array, StreamTexture)var gun_texture
@@ -80,6 +81,7 @@ func _pickup_gun(type) -> void:
 			muzzle.position.x = 26
 			texture = gun_texture[2]
 		3: # Pistol
+			can_fire = true
 			visible = true
 			hands.visible = false
 			gun_pos_flip_false = Vector2(4, -88)
@@ -88,7 +90,7 @@ func _pickup_gun(type) -> void:
 			muzzle.position.x = 8
 			texture = gun_texture[3]
 			bullet = load("res://others/bullet/BulletPistol.tscn")
-		4:
+		4: # Auto-Aiming
 			visible = true
 			hands.visible = false
 			gun_pos_flip_false = Vector2(4, -88)
@@ -140,7 +142,6 @@ func _input(event) -> void:
 
 func _physics_process(_delta: float) -> void:
 	flame.global_position = muzzle.global_position
-	#print(flame.get_node("flame_area").get_overlapping_areas())
 	if !player.lifebar.getDeath():
 		if gun_type != NO_GUN:
 			position += velocity
@@ -187,6 +188,6 @@ func _physics_process(_delta: float) -> void:
 		else:
 			rotation_degrees = 0
 
-func enable_flame_area(value : bool):
-	flame.get_node("flame_area").monitorable = value
-	flame.get_node("flame_area").monitoring = value
+func enable_flame_area(value : bool) -> void:
+	flame_area.monitorable = value
+	flame_area.monitoring = value

@@ -728,7 +728,7 @@ environment = SubResource( 25 )
 
 [node name="flame_area" type="Area2D" parent="FlameParticles" groups=["flame"]]
 collision_layer = 64
-collision_mask = 16
+collision_mask = 18
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FlameParticles/flame_area"]
 polygon = PoolVector2Array( 0, 0, 283, 62, 286, -64 )
