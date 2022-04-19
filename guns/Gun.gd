@@ -24,6 +24,7 @@ onready var player = get_parent()
 onready var hands = get_parent().get_node("Hands")
 onready var flame = get_parent().get_node("FlameParticles")
 onready var flame_area = get_parent().get_node("FlameParticles/flame_area")
+onready var sound_effect = $GunShooting
 
 # Textures
 export(Array, StreamTexture)var gun_texture
@@ -118,6 +119,7 @@ func shoot() -> void: # Shotting with gun
 	bullet_instance.rotation = rotation
 	bullet_instance.global_position = muzzle.global_position
 	recoil(20)
+	sound_effect.play()
 	get_parent().add_child(bullet_instance)
 	get_parent().screen_shake.shake(0.2, 2)
 	can_fire = false
