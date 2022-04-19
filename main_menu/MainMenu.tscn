@@ -184,5 +184,6 @@ bus = "SoundEffects"
 [connection signal="focus_entered" from="BtnSettings" to="." method="_on_BtnSettings_focus_entered"]
 [connection signal="pressed" from="BtnSettings" to="." method="_on_BtnSettings_pressed"]
 [connection signal="focus_entered" from="BtnCredits" to="." method="_on_BtnCredits_focus_entered"]
+[connection signal="pressed" from="BtnCredits" to="." method="_on_BtnCredits_pressed"]
 [connection signal="focus_entered" from="BtnExit" to="." method="_on_BtnExit_focus_entered"]
 [connection signal="pressed" from="BtnExit" to="." method="_on_BtnExit_pressed"]

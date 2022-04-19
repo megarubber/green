@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main_menu/credits.ogv" type="VideoStream" id=1]
+[ext_resource path="res://main_menu/Credits.gd" type="Script" id=2]
+[ext_resource path="res://others/transitions/TransitionBlock.tscn" type="PackedScene" id=3]
+
+[node name="Credits" type="Control"]
+script = ExtResource( 2 )
+
+[node name="TransitionBlock" parent="." instance=ExtResource( 3 )]
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 1026.0
+margin_bottom = 602.0
+stream = ExtResource( 1 )
+autoplay = true

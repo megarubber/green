@@ -51,3 +51,6 @@ func _on_BtnCredits_focus_entered() -> void:
 
 func _on_BtnExit_focus_entered() -> void:
 	change.play()
+
+func _on_BtnCredits_pressed() -> void:
+	change_scene("res://main_menu/Credits.tscn")
