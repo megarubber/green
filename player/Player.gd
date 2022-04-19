@@ -44,6 +44,7 @@ onready var push_left = $PushLeft
 onready var hands = $Hands
 onready var jump_sound_effect = $JumpSoundEffect
 onready var hit_sound_effect = $HitSoundEffect
+onready var death_sound_effect = $DeathSoundEffect
 
 # Referencing lifebar from HUD
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
@@ -147,6 +148,8 @@ func death() -> void:
 			add_child(g)
 			g = get_node("DropGun")
 			g.sprite.texture = g.gun_textures[gun.gun_type]
+		death_sound_effect.play()
+		Global.play_music("res://audio/music/death-theme.ogg")
 		Global.life -= 1
 		emit_signal("player_death")
 		wings.visible = true

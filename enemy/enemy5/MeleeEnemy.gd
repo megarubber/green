@@ -30,6 +30,8 @@ onready var explosions = $Explosion
 onready var sword_anim = $Sword/AnimationPlayer
 onready var sword = $Sword
 onready var sword_area = $Sword/SwordArea
+onready var sound_effect = $ExplosionSoundEffect
+onready var s_sound_effect = $SwordSoundEffect
 
 # Get Player Node
 onready var player = get_tree().get_current_scene().get_node("Player")
@@ -116,6 +118,7 @@ func change_direction() -> void:
 
 # Function that runs when the enemy dies
 func death() -> void:
+	sound_effect.play()
 	# Disable collision (bullet & tileset)
 	l_damage_area.monitorable = false
 	r_damage_area.monitorable = false

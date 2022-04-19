@@ -11,6 +11,7 @@ var delay = 0.7
 onready var animation = $AnimationBullet
 onready var collision = $CollisionShape2D
 onready var sprite = $Sprite
+onready var explosion = $Explosion
 
 # Get Player Node
 onready var player = get_tree().get_current_scene().get_node("Player")
@@ -47,7 +48,8 @@ func _on_Bullet_body_entered(body) -> void:
 			touched = true
 			collision.set_deferred("disabled", true)
 			animation.play("Explosion")
-		
+			#explosion.play()
+			
 		if body.is_in_group("player") && !body.hit:
 			body.take_damage(5)
 			queue_free()

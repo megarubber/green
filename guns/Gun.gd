@@ -29,6 +29,7 @@ onready var sound_effect_2 = $Shotgun
 onready var sound_effect_3 = $Laser
 onready var sound_effect_4 = $ChangeGun
 onready var sound_effect_5 = $AddGun
+onready var fire_sfx = $Fire
 
 # Textures
 export(Array, StreamTexture)var gun_texture
@@ -185,11 +186,14 @@ func _physics_process(_delta: float) -> void:
 						flame.emitting = true
 						yield(get_tree().create_timer(0.1), "timeout")
 						enable_flame_area(true)
+						fire_sfx.play()
+						fire_sfx.stream_paused = false
 					_:
 						shoot()
 		
 		else:
 			flame.emitting = false
+			fire_sfx.stream_paused = true
 			enable_flame_area(false)
 			if !can_fire && gun_type != PISTOL:
 				can_fire = true

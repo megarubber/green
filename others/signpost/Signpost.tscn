@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://others/signpost/sign.png" type="Texture" id=1]
 [ext_resource path="res://others/signpost/ballon.png" type="Texture" id=2]
 [ext_resource path="res://others/signpost/Signpost.gd" type="Script" id=3]
+[ext_resource path="res://audio/sound-effects/signpost.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.5, 27.5 )
@@ -174,7 +175,12 @@ anims/backwards = SubResource( 10 )
 anims/hide = SubResource( 9 )
 anims/show = SubResource( 7 )
 
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "SoundEffects"
+
 [connection signal="body_entered" from="." to="." method="_on_Signpost_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Signpost_body_exited"]
 [connection signal="animation_finished" from="Ballon/Text/AnimationPlayerText" to="." method="_on_AnimationPlayerText_animation_finished"]
 [connection signal="animation_finished" from="Ballon/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="Ballon/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

@@ -1437,6 +1437,7 @@ position = Vector2( 6243, -304 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Coins2" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1444,6 +1445,7 @@ position = Vector2( 11051, 1557 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Coins3" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1451,7 +1453,6 @@ position = Vector2( 11463, 1585 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Coins4" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1459,7 +1460,6 @@ position = Vector2( 11234, 1595 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Box6" type="StaticBody2D" parent="Objects_Backward" groups=["tilemap"]]
@@ -1580,7 +1580,7 @@ global_size_item = Vector2( 5, 5 )
 
 [node name="Key" type="Sprite" parent="Interactable/Chest"]
 position = Vector2( 59.998, -171.418 )
-scale = Vector2( 6, 6 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 42 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Interactable/Chest/Key"]
@@ -1805,8 +1805,8 @@ scale = Vector2( 0.75, 0.75 )
 z_index = -6
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 7018, 158 )
-start_position_level = Vector2( 7018, 158 )
+position = Vector2( 1407, -179 )
+start_position_level = Vector2( 1407, -179 )
 
 [node name="Objects_Front" type="Node2D" parent="."]
 
@@ -2083,7 +2083,7 @@ position = Vector2( 5011, 628 )
 position = Vector2( 5265, 528 )
 
 [node name="FollowerEnemy" parent="Enemies" instance=ExtResource( 19 )]
-position = Vector2( 6132, 169 )
+position = Vector2( 6049, 162 )
 
 [node name="FlyerEnemy" parent="Enemies" instance=ExtResource( 48 )]
 position = Vector2( 11064, 406 )
@@ -2154,7 +2154,7 @@ type = 1
 [node name="PickupGun" parent="Guns" instance=ExtResource( 52 )]
 position = Vector2( 1594, -17 )
 scale = Vector2( 2.5, 2.5 )
-type = 4
+type = 2
 
 [node name="PickupGun4" parent="Guns" instance=ExtResource( 52 )]
 position = Vector2( 1725, -17 )

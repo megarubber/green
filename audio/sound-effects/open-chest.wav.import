@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/open-chest.wav-821abd7999234001333f8c26a293d9d7.sample"
+
+[deps]
+
+source_file="res://audio/sound-effects/open-chest.wav"
+dest_files=[ "res://.import/open-chest.wav-821abd7999234001333f8c26a293d9d7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

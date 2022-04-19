@@ -19,6 +19,7 @@ var bullet = preload("res://others/bullet/EnemyBullet.tscn")
 onready var muzzle = $Muzzle
 onready var player_pos = get_tree().current_scene.get_node("Player")
 onready var enemy = get_parent().get_parent()
+onready var sound_effect = $GunShooting
 
 func _ready() -> void:
 	# Creating Timer
@@ -43,7 +44,7 @@ func shotting() -> void: # Shotting with gun
 	var dir = Vector2(1, 0).rotated(global_rotation)
 	var kickdirection = RECOIL * (dir * -1)
 	velocity = velocity + kickdirection
-	
+	sound_effect.play()
 	enemy.add_child(bullet_instance)
 	can_fire = false
 	timer.start()

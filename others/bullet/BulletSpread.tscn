@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://others/bullet/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://others/bullet/bullet-5.png" type="Texture" id=2]
 [ext_resource path="res://others/bullet/bullet-1.png" type="Texture" id=3]
+[ext_resource path="res://audio/sound-effects/explosion-6.wav" type="AudioStream" id=4]
 [ext_resource path="res://others/explosion/ex_1.png" type="Texture" id=5]
 [ext_resource path="res://others/explosion/ex_2.png" type="Texture" id=6]
 [ext_resource path="res://others/explosion/ex_7.png" type="Texture" id=7]
@@ -120,6 +121,10 @@ scale = Vector2( 1.3, 0.5 )
 anims/Default = SubResource( 2 )
 anims/Explosion = SubResource( 3 )
 anims/RESET = SubResource( 4 )
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "SoundEffects"
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

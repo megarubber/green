@@ -20,6 +20,7 @@ onready var key = $Key
 onready var key_anim = $Key/AnimationPlayer
 onready var instance_p = $InstancePosition
 onready var instance_anim = $InstancePosition/AnimationPlayer
+onready var sfx = $OpenChest
 
 func _ready() -> void:
 	sprite.play("default")
@@ -49,6 +50,7 @@ func instance_item() -> void:
 func _input(event) -> void:
 	if event.is_action_pressed("ui_interact") && chest_state == State.CAN_OPEN:
 		open_chest()
+		sfx.play()
 
 func _on_Chest_body_entered(body) -> void:
 	if body.is_in_group("player") && chest_state == State.CLOSED:

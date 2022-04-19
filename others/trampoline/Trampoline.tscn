@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://others/trampoline/trampoline_default.png" type="Texture" id=1]
 [ext_resource path="res://others/trampoline/trampoline_jump.png" type="Texture" id=2]
 [ext_resource path="res://others/trampoline/Trampoline.gd" type="Script" id=3]
+[ext_resource path="res://audio/sound-effects/trampoline.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=13]
 length = 0.001
@@ -226,6 +227,10 @@ visible = false
 position = Vector2( -0.5, 8 )
 shape = SubResource( 12 )
 disabled = true
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "SoundEffects"
 
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
 [connection signal="animation_finished" from="Area/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

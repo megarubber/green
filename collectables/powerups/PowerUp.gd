@@ -2,6 +2,7 @@ extends Area2D
 
 # Node Referencing
 onready var sprite = $AnimatedSprite
+onready var sound_effect = $SoundEffect
 
 # Signal
 signal player_entered(type)
@@ -29,5 +30,6 @@ func _on_AnimatedSprite_animation_finished() -> void:
 func _on_PowerUp_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		emit_signal("player_entered", type)
+		sound_effect.play()
 		sprite.play("collected")
 		sprite.scale = Vector2(0.7, 0.7)

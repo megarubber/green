@@ -19,6 +19,9 @@ func play_music(music_stream) -> void:
 	g_music.stream = load(music_stream)
 	g_music.play()
 
+func stop_music() -> void:
+	g_music.stop()
+
 func change_volume_music(value) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
 

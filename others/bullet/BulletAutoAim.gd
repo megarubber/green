@@ -12,6 +12,7 @@ var target = null
 onready var animation = $AnimationBullet
 onready var collision = $CollisionShape2D
 onready var sprite = $Sprite
+onready var explosion = $Explosion
 
 # Get Player Node
 onready var player = get_tree().get_current_scene().get_node("Player")
@@ -50,6 +51,7 @@ func destroy_bullet() -> void:
 	touched = true
 	collision.set_deferred("disabled", true)
 	animation.play("Explosion")
+	#explosion.play()
 
 func _on_Bullet_body_entered(body) -> void:
 	if !touched:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://enemy/enemy3/body.png" type="Texture" id=1]
 [ext_resource path="res://enemy/enemy3/head.png" type="Texture" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://enemy/enemy3/EyesFlyerEnemy.gd" type="Script" id=22]
 [ext_resource path="res://guns/FlyerEnemyGun.gd" type="Script" id=23]
 [ext_resource path="res://guns/gun3.png" type="Texture" id=24]
+[ext_resource path="res://audio/sound-effects/gun-shoot.wav" type="AudioStream" id=25]
+[ext_resource path="res://audio/sound-effects/explosion-3.wav" type="AudioStream" id=26]
 
 [sub_resource type="Shader" id=11]
 code = "shader_type canvas_item;
@@ -247,6 +249,10 @@ extents = Vector2( 488.1, 371.535 )
 [node name="FlyerEnemy" type="Node2D" groups=["enemy"]]
 script = ExtResource( 21 )
 
+[node name="ExplosionSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+bus = "SoundEffects"
+
 [node name="Enemy" type="KinematicBody2D" parent="." groups=["enemy"]]
 collision_layer = 8
 collision_mask = 0
@@ -257,7 +263,7 @@ position = Vector2( -1, 130 )
 rotation = -3.14159
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 6 )
-frame = 5
+frame = 1
 playing = true
 flip_h = true
 
@@ -290,6 +296,11 @@ script = ExtResource( 23 )
 
 [node name="Muzzle" type="Position2D" parent="Enemy/GunSprite"]
 position = Vector2( 7.2, -5 )
+
+[node name="GunShooting" type="AudioStreamPlayer" parent="Enemy/GunSprite"]
+stream = ExtResource( 25 )
+volume_db = 1.0
+bus = "SoundEffects"
 
 [node name="Explosion" type="Node2D" parent="Enemy"]
 visible = false

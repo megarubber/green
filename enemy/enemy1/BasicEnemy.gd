@@ -19,6 +19,7 @@ onready var lifebar = $Lifebar
 onready var anim = $AnimationPlayer
 onready var wheel = $Wheel
 onready var explosions = $Explosion
+onready var sound_effect = $ExplosionSoundEffect
 
 func _ready() -> void:
 	# When starts, it will play hide explosions
@@ -49,6 +50,7 @@ func _physics_process(_delta) -> void:
 
 # Function that runs when the enemy dies
 func death() -> void:
+	sound_effect.play()
 	# Disable collision (bullet & tileset)
 	l_damage_area.monitorable = false
 	r_damage_area.monitorable = false

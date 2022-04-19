@@ -23,6 +23,7 @@ onready var gun = $Enemy/GunSprite
 onready var explosions = $Enemy/Explosion
 onready var tween = $Tween
 onready var eyes = $Enemy/Head/Eyes
+onready var sound_effect = $ExplosionSoundEffect
 
 func _ready() -> void:
 	# When starts, it will play hide explosions
@@ -82,6 +83,7 @@ func _physics_process(_delta) -> void:
 
 # Function that runs when the enemy dies
 func death() -> void:
+	sound_effect.play()
 	tween.stop_all()
 	# Disable collision (bullet & tileset)
 	l_damage_area.monitorable = false

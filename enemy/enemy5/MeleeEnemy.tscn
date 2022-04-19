@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://others/lifebar/Lifebar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://others/explosion/ex_2.png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://enemy/enemy5/sword4.png" type="Texture" id=26]
 [ext_resource path="res://enemy/enemy5/MeleeEnemy.gd" type="Script" id=27]
 [ext_resource path="res://enemy/enemy5/body.png" type="Texture" id=28]
+[ext_resource path="res://audio/sound-effects/explosion-5.wav" type="AudioStream" id=29]
 
 [sub_resource type="Shader" id=11]
 code = "shader_type canvas_item;
@@ -396,7 +397,7 @@ material = SubResource( 12 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 13 )
-frame = 2
+frame = 5
 playing = true
 flip_h = true
 
@@ -519,6 +520,14 @@ rect_scale = Vector2( 0.3, 0.3 )
 anims/RESET = SubResource( 26 )
 anims/default = SubResource( 34 )
 anims/flash = SubResource( 27 )
+
+[node name="ExplosionSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+bus = "SoundEffects"
+
+[node name="SwordSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+bus = "SoundEffects"
 
 [connection signal="body_entered" from="Sword/SwordArea" to="." method="_on_SwordArea_body_entered"]
 [connection signal="area_entered" from="LeftDamageArea" to="." method="_on_LeftDamageArea_area_entered"]

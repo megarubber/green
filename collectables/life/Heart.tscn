@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://collectables/life/heart.png" type="Texture" id=1]
 [ext_resource path="res://collectables/life/Heart.gd" type="Script" id=2]
+[ext_resource path="res://audio/sound-effects/collect-life.wav" type="AudioStream" id=3]
 [ext_resource path="res://others/effects/collected-2.png" type="Texture" id=8]
 [ext_resource path="res://others/effects/collected-3.png" type="Texture" id=9]
 [ext_resource path="res://others/effects/collected-5.png" type="Texture" id=10]
@@ -35,6 +36,10 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SoundEffects"
 
 [connection signal="body_entered" from="." to="." method="_on_Heart_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

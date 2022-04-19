@@ -13,6 +13,7 @@ onready var l_damage_area = $LeftDamageArea
 onready var r_damage_area = $RightDamageArea
 onready var collider = $CollisionShape2D
 onready var explosions = $Explosion
+onready var sound_effect = $ExplosionSoundEffect
 
 # Get Player Node
 onready var player = get_tree().get_current_scene().get_node("Player")
@@ -22,6 +23,7 @@ func _ready() -> void:
 
 # Function that runs when the enemy dies
 func death() -> void:
+	sound_effect.play()
 	# Disable collision (bullet & tileset)
 	l_damage_area.monitorable = false
 	r_damage_area.monitorable = false
