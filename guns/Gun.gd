@@ -59,7 +59,6 @@ func remove_gun() -> void:
 		if gun_type == FLAME:
 			flame.emitting = false
 			fire_sfx.stream_paused = true
-			enable_flame_area(false)
 		if len(Global.inventory_guns) < 2:
 			hands.visible = true
 			visible = false
@@ -174,6 +173,10 @@ func _input(event) -> void:
 			change_gun()
 		if event.is_action_pressed("ui_remove"):
 			remove_gun()
+
+func _process(_delta) -> void:
+	if gun_type != FLAME:
+		enable_flame_area(false)
 
 func _physics_process(_delta: float) -> void:
 	flame.global_position = muzzle.global_position

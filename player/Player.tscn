@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://player/sprites/idle.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
@@ -45,6 +45,7 @@
 [ext_resource path="res://audio/sound-effects/add-gun.wav" type="AudioStream" id=43]
 [ext_resource path="res://audio/sound-effects/player-death.wav" type="AudioStream" id=44]
 [ext_resource path="res://audio/sound-effects/fire.ogg" type="AudioStream" id=45]
+[ext_resource path="res://audio/sound-effects/drop-gun.wav" type="AudioStream" id=46]
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
@@ -844,6 +845,10 @@ bus = "SoundEffects"
 
 [node name="DeathSoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 44 )
+bus = "SoundEffects"
+
+[node name="DropGunSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 46 )
 bus = "SoundEffects"
 
 [node name="PushRight" type="RayCast2D" parent="."]

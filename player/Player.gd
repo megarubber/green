@@ -45,6 +45,7 @@ onready var hands = $Hands
 onready var jump_sound_effect = $JumpSoundEffect
 onready var hit_sound_effect = $HitSoundEffect
 onready var death_sound_effect = $DeathSoundEffect
+onready var d_gun_sfx = $DropGunSoundEffect
 
 # Referencing lifebar from HUD
 onready var lifebar = get_tree().get_current_scene().get_node("HUD/Health/Lifebar")
@@ -153,6 +154,7 @@ func death() -> void:
 		Global.is_playing = false
 
 func dropping_gun(which_gun : int) -> void:
+	d_gun_sfx.play()
 	var g = drop_gun.instance()
 	g.global_position = gun.position
 	g.apply_central_impulse(Vector2.UP * 200)
