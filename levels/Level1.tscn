@@ -728,6 +728,11 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 12 )
 centered = false
 
+[node name="Flag" type="Sprite" parent="."]
+position = Vector2( 10102, 370 )
+scale = Vector2( 3.79995, 3.79995 )
+texture = ExtResource( 53 )
+
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 transition_path = NodePath("../TransitionBlock")
 
@@ -1437,6 +1442,7 @@ position = Vector2( 6243, -304 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Coins2" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1444,6 +1450,7 @@ position = Vector2( 11051, 1557 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Coins3" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1451,7 +1458,6 @@ position = Vector2( 11463, 1585 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Coins4" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1459,7 +1465,6 @@ position = Vector2( 11234, 1595 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Box6" type="StaticBody2D" parent="Objects_Backward" groups=["tilemap"]]
@@ -1556,11 +1561,6 @@ texture = ExtResource( 32 )
 position = Vector2( -0.50061, 0.00186157 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 20 )
-
-[node name="Flag" type="Sprite" parent="Objects_Backward"]
-position = Vector2( 10614, 562 )
-scale = Vector2( 3.79995, 3.79995 )
-texture = ExtResource( 53 )
 
 [node name="Interactable" type="Node2D" parent="."]
 position = Vector2( 8008.64, 926.065 )
@@ -1805,8 +1805,8 @@ scale = Vector2( 0.75, 0.75 )
 z_index = -6
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1407, -179 )
-start_position_level = Vector2( 1407, -179 )
+position = Vector2( 10512, 639 )
+start_position_level = Vector2( 10512, 639 )
 
 [node name="Objects_Front" type="Node2D" parent="."]
 
@@ -2151,29 +2151,9 @@ type = 1
 
 [node name="Guns" type="Node2D" parent="."]
 
-[node name="PickupGun" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1855, -17 )
-scale = Vector2( 2.5, 2.5 )
-type = 2
-
-[node name="PickupGun6" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1983, -17 )
-scale = Vector2( 2.5, 2.5 )
-type = 3
-
-[node name="PickupGun7" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1792, -178 )
-scale = Vector2( 2.5, 2.5 )
-type = 4
-
 [node name="PickupGun4" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1550, -17 )
+position = Vector2( 1834, 0.999985 )
 scale = Vector2( 2.5, 2.5 )
-
-[node name="PickupGun5" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1705, -17 )
-scale = Vector2( 2.5, 2.5 )
-type = 1
 
 [node name="PickupGun2" parent="Guns" instance=ExtResource( 52 )]
 position = Vector2( 6171, -874 )
