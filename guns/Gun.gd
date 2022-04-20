@@ -56,6 +56,10 @@ func add_gun_at_inventory(which_gun) -> void:
 
 func remove_gun() -> void:
 	if len(Global.inventory_guns) > 0:
+		if gun_type == FLAME:
+			flame.emitting = false
+			fire_sfx.stream_paused = true
+			enable_flame_area(false)
 		if len(Global.inventory_guns) < 2:
 			hands.visible = true
 			visible = false

@@ -163,6 +163,7 @@ func dropping_gun(which_gun : int) -> void:
 	call_deferred("add_child", g)
 	yield(get_tree().create_timer(0.01), "timeout")
 	g = get_node(g_name)
+	g.sprite.set_flip_h(get_global_mouse_position().x < global_position.x)
 	g.set_gun_texture(which_gun)
 	
 func deactivate_all_colliders() -> void:
