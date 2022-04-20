@@ -3,6 +3,8 @@ extends CanvasLayer
 # Node Referencing
 onready var game_over_anim = $GameOver/AnimationPlayer
 onready var game_over_screen = $GameOver
+onready var game_over_r_anim = $GameOverReset/AnimationPlayerGR
+onready var game_over_r_screen = $GameOverReset
 onready var start_anim = $StartLevel/AnimationPlayerStart
 onready var start = $StartLevel
 onready var level_name_label = $StartLevel/LevelName
@@ -80,9 +82,17 @@ func invisible_special_screens() -> void:
 	pause_screen.visible = false
 
 func _player_death() -> void:
-	game_over_screen.visible = true
-	game_over_anim.play("fade_in")
-	enable_game_over_buttons(false)
+	if Global.life > 0:
+		game_over_screen.visible = true
+		game_over_anim.play("fade_in")
+		enable_game_over_buttons(false)
+	else:
+		game_over_r_screen.visible = true
+		game_over_r_anim.play("fade_in")
+		yield(get_tree().create_timer(3), "timeout")
+		transition.fade_in()
+		yield(transition, "finished")
+		var _result = get_tree().change_scene("res://others/game_over/GameOver.tscn")
 
 func return_to_menu() -> void:
 	transition.fade_in()
