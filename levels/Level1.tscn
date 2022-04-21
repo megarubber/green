@@ -1755,6 +1755,7 @@ position = Vector2( 6243, -304 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Coins2" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1762,6 +1763,7 @@ position = Vector2( 11051, 1557 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
+frame = 1
 playing = true
 
 [node name="Coins3" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1769,7 +1771,6 @@ position = Vector2( 11463, 1585 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Coins4" type="AnimatedSprite" parent="Objects_Backward"]
@@ -1777,7 +1778,6 @@ position = Vector2( 11234, 1595 )
 scale = Vector2( 0.624345, 0.624345 )
 z_index = -6
 frames = SubResource( 22 )
-frame = 1
 playing = true
 
 [node name="Box6" type="StaticBody2D" parent="Objects_Backward" groups=["tilemap"]]
@@ -2489,7 +2489,7 @@ collision_layer = 256
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallZones/Fallzone"]
-position = Vector2( 763.59, -417.079 )
+position = Vector2( 763.59, -394.766 )
 shape = SubResource( 21 )
 
 [connection signal="animation_finished" from="Interactable/Signpost/Key/AnimationPlayer" to="Interactable/Signpost/Key" method="_on_AnimationPlayer_animation_finished"]

@@ -5,7 +5,7 @@ onready var g_music = $GlobalMusic
 
 # Player
 var hit_side = 1
-var coins = 0
+var coins = 98
 var life = 3
 var checkpoint_position = Vector2.ZERO
 var is_checkpoint_hitted = false
