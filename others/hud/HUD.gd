@@ -96,6 +96,7 @@ func _player_death() -> void:
 
 func return_to_menu() -> void:
 	transition.fade_in()
+	Global.reset_all()
 	yield(transition, "finished")
 	get_tree().paused = false
 	var _result = get_tree().change_scene("res://main_menu/MainMenu.tscn")

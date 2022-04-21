@@ -4,7 +4,7 @@ extends Node
 onready var g_music = $GlobalMusic
 
 # Player
-var hit_side
+var hit_side = 1
 var coins = 0
 var life = 3
 var checkpoint_position = Vector2.ZERO
@@ -27,3 +27,11 @@ func change_volume_music(value) -> void:
 
 func get_master_volume() -> float:
 	return AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
+
+func reset_all() -> void:
+	hit_side = 1
+	coins = 0
+	life = 3
+	checkpoint_position = Vector2.ZERO
+	is_checkpoint_hitted = false
+	is_playing = false
