@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tiles/tileset_forest.png" type="Texture" id=2]
@@ -53,6 +53,7 @@
 [ext_resource path="res://others/moving_box/MovingBox.tscn" type="PackedScene" id=51]
 [ext_resource path="res://collectables/pickup_gun/PickupGun.tscn" type="PackedScene" id=52]
 [ext_resource path="res://levels/background/flag.png" type="Texture" id=53]
+[ext_resource path="res://others/finish_level/FinishLevel.tscn" type="PackedScene" id=54]
 
 [sub_resource type="Shader" id=33]
 code = "shader_type canvas_item;
@@ -2115,6 +2116,14 @@ z_index = -6
 [node name="MovingBox" parent="Interactable" instance=ExtResource( 51 )]
 position = Vector2( 1599.34, -66.7662 )
 scale = Vector2( 0.75, 0.75 )
+z_index = -6
+
+[node name="FinishLevel" type="Node2D" parent="."]
+position = Vector2( 1496, -264 )
+
+[node name="FinishLevel" parent="FinishLevel" instance=ExtResource( 54 )]
+position = Vector2( 453, 144 )
+scale = Vector2( 4, 4 )
 z_index = -6
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

@@ -24,6 +24,7 @@ var max_jump_height = -850
 var can_fly = true
 var jump_in_trampoline = false
 var is_pushing = false
+var finish = false
 
 # Nodes Referencing
 onready var body_sprite = $BodySprite
@@ -64,6 +65,8 @@ func _ready() -> void:
 	z_index = -2
 	for powerup in get_parent().get_node("PowerUps").get_children():
 		powerup.connect("player_entered", self, "_powerup")
+	var f = get_parent().get_node("FinishLevel/FinishLevel")
+	f.connect("finished_level", self, "_finish_level")
 
 func animation() -> void: # Player's animation function
 	if is_on_floor() && !lifebar.getDeath():
@@ -83,6 +86,20 @@ func animation() -> void: # Player's animation function
 		else:
 			anim.play("fall")
 			jump_in_trampoline = false
+
+func _finish_level() -> void:
+	body_sprite.flip_h = false
+	head_sprite.flip_h = false
+	gun.flip_v = false
+	Global.finished_level = true
+	Global.total_score += (Global.score * Global.life)
+	anim.play("finish_level")
+	if gun.gun_type != gun.NO_GUN:
+		gun.visible = true
+		hands.visible = false
+	else:
+		gun.visible = false
+		hands.visible = true	
 
 func enable_push(value : bool) -> void:
 	push_right.set_enabled(value)
@@ -176,7 +193,8 @@ func deactivate_all_colliders() -> void:
 	collider.disabled = true
 
 func _physics_process(delta: float) -> void: # Physics update
-	movement()
+	if !Global.finished_level:
+		movement()
 	
 	if push_right.is_colliding():
 		var object = push_right.get_collider()
@@ -190,9 +208,10 @@ func _physics_process(delta: float) -> void: # Physics update
 		is_pushing = false
 	
 func _process(_delta: float) -> void:
-	flip()
-	animation()
-	debug_inputs()
+	if !Global.finished_level:
+		flip()
+		animation()
+		debug_inputs()	
 	
 func debug_inputs():
 	if Input.is_key_pressed(KEY_KP_1):

@@ -129,13 +129,13 @@ animations = [ {
 "speed": 17.0
 } ]
 
-[sub_resource type="DynamicFontData" id=29]
+[sub_resource type="DynamicFontData" id=33]
 antialiased = false
 font_path = "res://others/fonts/8-BIT WONDER.TTF"
 
 [sub_resource type="DynamicFont" id=30]
 size = 40
-font_data = SubResource( 29 )
+font_data = SubResource( 33 )
 
 [sub_resource type="Animation" id=31]
 length = 0.001

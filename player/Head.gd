@@ -15,7 +15,7 @@ func _ready() -> void:
 	animation.play("blinking")
 
 func _process(_delta) -> void:
-	if !player.lifebar.getDeath():
+	if !player.lifebar.getDeath() && !Global.finished_level:
 		# Eyes following mouse
 		var mouse_pos = get_local_mouse_position()
 		var dir = Vector2.ZERO.direction_to(mouse_pos)

@@ -32,6 +32,7 @@ func _on_AnimatedSprite_animation_finished() -> void:
 
 func _on_PickupGun_body_entered(body) -> void:
 	if body.is_in_group("player"):
+		Global.score += 150
 		emit_signal("player_entered", type)
 		sprite.play("collected")
 		sprite.scale = Vector2(1.5, 1.5)

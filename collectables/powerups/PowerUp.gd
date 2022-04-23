@@ -33,3 +33,4 @@ func _on_PowerUp_body_entered(body) -> void:
 		sound_effect.play()
 		sprite.play("collected")
 		sprite.scale = Vector2(0.7, 0.7)
+		Global.score += 200

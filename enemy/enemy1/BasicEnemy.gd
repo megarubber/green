@@ -42,14 +42,17 @@ func _physics_process(_delta) -> void:
 		if l_damage_area.get_overlapping_areas():
 			if l_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
 				take_damage(1)
+				Global.score += 1
 		elif r_damage_area.get_overlapping_areas():
 			if r_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
 				take_damage(1)
+				Global.score += 1
 	else:
 		death()
 
 # Function that runs when the enemy dies
 func death() -> void:
+	Global.score += 10
 	sound_effect.play()
 	# Disable collision (bullet & tileset)
 	l_damage_area.monitorable = false

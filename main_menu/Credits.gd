@@ -2,6 +2,7 @@ extends Control
 
 # Node Referencing
 onready var transition = $TransitionBlock
+onready var spacebar = $SpacebarSoundEffect
 
 func _ready() -> void:
 	Global.play_music("res://audio/music/credits.ogg")
@@ -21,5 +22,5 @@ func change_scene() -> void:
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") && !transition.is_transitioning:
+		spacebar.play()
 		change_scene()
-		

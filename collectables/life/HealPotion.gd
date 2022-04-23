@@ -21,7 +21,7 @@ func _on_HealPotion_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		anim.play("collected")
 		anim.scale = Vector2(1.5, 1.5)
-		
+		Global.score += 100
 		var limit_life = lifebar.life + HEAL
 		if limit_life <= lifebar.lifeMax:
 			lifebar.heal(HEAL)

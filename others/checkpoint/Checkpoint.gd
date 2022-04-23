@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func _on_Checkpoint_body_entered(body) -> void:
 	if body.is_in_group("player") && !Global.is_checkpoint_hitted:
+		Global.score += 1500
 		body.hit_checkpoint()
 		label.visible = true
 		anim.play("checked")

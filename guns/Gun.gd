@@ -180,13 +180,14 @@ func _process(_delta) -> void:
 
 func _physics_process(_delta: float) -> void:
 	flame.global_position = muzzle.global_position
-	if !player.lifebar.getDeath():
+	if !player.lifebar.getDeath() && !Global.finished_level:
 		if gun_type != NO_GUN:
 			position += velocity
 			velocity = velocity * 0.7
 			global_position.x = lerp(global_position.x, get_parent().global_position.x, 0.4)
 			global_position.y = lerp(global_position.y, get_parent().global_position.y - 90, 0.4)
-		
+			
+			
 			mouse_pos = get_global_mouse_position()
 			look_at(mouse_pos)
 			flame.look_at(mouse_pos)
@@ -224,10 +225,11 @@ func _physics_process(_delta: float) -> void:
 				can_fire = true
 	else:
 		can_fire = false
-		if flip_v:
-			rotation_degrees = -180
-		else:
-			rotation_degrees = 0
+		if !Global.finished_level:
+			if flip_v:
+				rotation_degrees = -180
+			else:
+				rotation_degrees = 0
 
 func enable_flame_area(value : bool) -> void:
 	flame_area.monitorable = value

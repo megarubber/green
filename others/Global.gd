@@ -5,11 +5,14 @@ onready var g_music = $GlobalMusic
 
 # Player
 var hit_side = 1
-var coins = 98
+var coins = 0
 var life = 3
 var checkpoint_position = Vector2.ZERO
 var is_checkpoint_hitted = false
 var inventory_guns = []
+var score = 0
+var total_score = 0
+var finished_level = false
 
 # Game State
 var is_playing = false
@@ -35,3 +38,6 @@ func reset_all() -> void:
 	checkpoint_position = Vector2.ZERO
 	is_checkpoint_hitted = false
 	is_playing = false
+	total_score = 0
+	score = 0
+	finished_level = false

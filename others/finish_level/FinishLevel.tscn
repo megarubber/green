@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://others/finish_level/sign_finish_level.png" type="Texture" id=1]
+[ext_resource path="res://levels/background/generic-bar.png" type="Texture" id=2]
+[ext_resource path="res://others/finish_level/sign_finish_level_evil.png" type="Texture" id=3]
+[ext_resource path="res://others/finish_level/FinishLevel.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "evil",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "good",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "black"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17, 30 )
+
+[node name="FinishLevel" type="Area2D" groups=["finish_level"]]
+collision_layer = 4
+script = ExtResource( 4 )
+
+[node name="Bar" type="Sprite" parent="."]
+position = Vector2( 0, 20 )
+texture = ExtResource( 2 )
+
+[node name="Sign" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "evil"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sign"]
+anims/RESET = SubResource( 3 )
+anims/black = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 16 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_FinishLevel_body_entered"]

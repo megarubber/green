@@ -14,6 +14,7 @@ func _on_Coin_body_entered(body) -> void:
 		anim.play("collected")
 		sound_effect.play()
 		anim.scale = Vector2(1.5, 1.5)
+		Global.score += 100
 		Global.coins += 1
 		if Global.coins >= 100:
 			life_sfx.play()
