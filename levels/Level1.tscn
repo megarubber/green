@@ -2124,7 +2124,7 @@ position = Vector2( 1496, -264 )
 [node name="FinishLevel" parent="FinishLevel" instance=ExtResource( 54 )]
 position = Vector2( 453, 144 )
 scale = Vector2( 4, 4 )
-z_index = -6
+z_index = -8
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1496, -264 )

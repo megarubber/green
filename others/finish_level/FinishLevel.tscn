@@ -72,3 +72,4 @@ position = Vector2( 0, 16 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="." to="." method="_on_FinishLevel_body_entered"]
+[connection signal="animation_finished" from="Sign/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

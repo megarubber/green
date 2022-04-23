@@ -77,7 +77,7 @@ func _process(_delta) -> void:
 		inventory.get_node("Gun").texture = gun_texture[Global.inventory_guns[0]]
 
 func _unhandled_input(event) -> void:
-	if event.is_action_pressed("ui_pause") && Global.is_playing && can_pause_delay:
+	if event.is_action_pressed("ui_pause") && !next_level && Global.is_playing && can_pause_delay:
 		pause_game(true)
 	
 	if event.is_action_pressed("ui_accept") && next_level:
