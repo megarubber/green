@@ -169,6 +169,9 @@ func _on_BtnMainMenu_pressed() -> void:
 
 func _on_BtnRestartLevel_pressed() -> void:
 	select.play()
+	var actual_life = Global.life
+	Global.reset_all()
+	Global.life = actual_life
 	restart_level()
 
 func _on_BtnTryAgain_focus_entered() -> void:
