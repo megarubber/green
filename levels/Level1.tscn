@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tiles/tileset_forest.png" type="Texture" id=2]
@@ -53,6 +53,7 @@
 [ext_resource path="res://others/moving_box/MovingBox.tscn" type="PackedScene" id=51]
 [ext_resource path="res://collectables/pickup_gun/PickupGun.tscn" type="PackedScene" id=52]
 [ext_resource path="res://levels/background/flag.png" type="Texture" id=53]
+[ext_resource path="res://others/finish_level/FinishLevel.tscn" type="PackedScene" id=54]
 
 [sub_resource type="Shader" id=33]
 code = "shader_type canvas_item;
@@ -728,6 +729,16 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 12 )
 centered = false
 
+[node name="Flag" type="Sprite" parent="."]
+position = Vector2( 10102, 370 )
+scale = Vector2( 3.79995, 3.79995 )
+texture = ExtResource( 53 )
+
+[node name="Flag2" type="Sprite" parent="."]
+position = Vector2( 9634, 370 )
+scale = Vector2( 3.79995, 3.79995 )
+texture = ExtResource( 53 )
+
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 transition_path = NodePath("../TransitionBlock")
 
@@ -834,6 +845,30 @@ texture = ExtResource( 33 )
 region_enabled = true
 region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
 
+[node name="GrassBig23" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9849, 791 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
+
+[node name="GrassBig24" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10563, 791 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
+
+[node name="GrassBig20" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 8679, -434 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
+
 [node name="GrassBig16" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 9263, 1170 )
 scale = Vector2( 3.36439, 3.36439 )
@@ -844,6 +879,14 @@ region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
 
 [node name="GrassBig17" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 8916, 1170 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
+
+[node name="GrassBig28" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10796, 797 )
 scale = Vector2( 3.36439, 3.36439 )
 z_index = -5
 texture = ExtResource( 33 )
@@ -1016,6 +1059,24 @@ texture = ExtResource( 23 )
 region_enabled = true
 region_rect = Rect2( 371.25, 28.25, 73, 118 )
 
+[node name="Tree21" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9929, 651 )
+scale = Vector2( 4.95098, 4.95098 )
+z_index = -5
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 371.25, 28.25, 73, 118 )
+
+[node name="Tree22" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10831, 530 )
+scale = Vector2( 4.95098, 4.95098 )
+z_index = -5
+texture = ExtResource( 23 )
+flip_h = true
+flip_v = true
+region_enabled = true
+region_rect = Rect2( 371.25, 28.25, 73, 118 )
+
 [node name="Tree13" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 6399, -452 )
 scale = Vector2( 4.95098, 4.95098 )
@@ -1026,6 +1087,22 @@ region_rect = Rect2( 371.25, 28.25, 73, 118 )
 
 [node name="Tree7" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 4568.86, 379.364 )
+scale = Vector2( 4.95098, 4.95098 )
+z_index = -5
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 280.009, -5.45267, 84.7894, 139.492 )
+
+[node name="Tree18" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 8702, -678 )
+scale = Vector2( 4.95098, 4.95098 )
+z_index = -5
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 280.009, -5.45267, 84.7894, 139.492 )
+
+[node name="Tree19" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9702, -551 )
 scale = Vector2( 4.95098, 4.95098 )
 z_index = -5
 texture = ExtResource( 23 )
@@ -1088,6 +1165,22 @@ texture = ExtResource( 23 )
 region_enabled = true
 region_rect = Rect2( 9.45795, 162.232, 56.3176, 61.776 )
 
+[node name="Tree20" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9251, -483 )
+scale = Vector2( 3.87596, 3.87596 )
+z_index = -4
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 9.45795, 162.232, 56.3176, 61.776 )
+
+[node name="Tree23" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10785, -230 )
+scale = Vector2( 3.87596, 3.87596 )
+z_index = -4
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 9.45795, 162.232, 56.3176, 61.776 )
+
 [node name="Dec8" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 5046.31, 1061.68 )
 scale = Vector2( 3.36439, 3.36439 )
@@ -1120,6 +1213,22 @@ texture = ExtResource( 33 )
 region_enabled = true
 region_rect = Rect2( 131.077, 197.316, 28.1041, 27.1122 )
 
+[node name="Dec36" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10471, 801 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 131.077, 197.316, 28.1041, 27.1122 )
+
+[node name="Dec37" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10471, 801 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 131.077, 197.316, 28.1041, 27.1122 )
+
 [node name="Dec22" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 8985.83, 1208.55 )
 scale = Vector2( 3.36439, 3.36439 )
@@ -1129,7 +1238,7 @@ region_enabled = true
 region_rect = Rect2( 62.4112, 208.4, 32.8218, 11.4163 )
 
 [node name="Dec24" type="Sprite" parent="Objects_Backward"]
-position = Vector2( 8773, 1203 )
+position = Vector2( 8773, 1207 )
 scale = Vector2( 3.36439, 3.36439 )
 z_index = -4
 texture = ExtResource( 33 )
@@ -1154,6 +1263,36 @@ region_rect = Rect2( 222.229, 291.085, 75.231, 31.3005 )
 
 [node name="Dec20" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 9431, 1183 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -4
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 222.229, 291.085, 75.231, 31.3005 )
+
+[node name="Dec38" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10767, 800 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -4
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 222.229, 291.085, 75.231, 31.3005 )
+
+[node name="Dec35" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10337, 804 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -4
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 222.229, 291.085, 75.231, 31.3005 )
+
+[node name="Rock13" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 8852.41, -426.17 )
+scale = Vector2( 3.27533, 3.27533 )
+z_index = -5
+texture = ExtResource( 26 )
+
+[node name="Dec30" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 8966, -417 )
 scale = Vector2( 3.36439, 3.36439 )
 z_index = -4
 texture = ExtResource( 33 )
@@ -1192,6 +1331,14 @@ texture = ExtResource( 33 )
 region_enabled = true
 region_rect = Rect2( 113.591, 258.992, 57.8902, 27.6413 )
 
+[node name="Dec27" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 8675, -411 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -4
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 113.591, 258.992, 57.8902, 27.6413 )
+
 [node name="Dec15" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 7422.44, 550.299 )
 scale = Vector2( 3.36439, 3.36439 )
@@ -1202,6 +1349,22 @@ region_rect = Rect2( 113.591, 258.992, 57.8902, 27.6413 )
 
 [node name="Dec16" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 7234.23, 550.299 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -4
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 113.591, 258.992, 57.8902, 27.6413 )
+
+[node name="Dec28" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9134.57, -408.899 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -4
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 113.591, 258.992, 57.8902, 27.6413 )
+
+[node name="Dec29" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9314.33, -408.899 )
 scale = Vector2( 3.36439, 3.36439 )
 z_index = -4
 texture = ExtResource( 33 )
@@ -1234,6 +1397,38 @@ region_rect = Rect2( 195.322, 299.322, 26.3583, 19.7687 )
 
 [node name="GrassBig14" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 8535, 1196 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 195.322, 299.322, 26.3583, 19.7687 )
+
+[node name="GrassBig25" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 8535, 1196 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 195.322, 299.322, 26.3583, 19.7687 )
+
+[node name="GrassBig26" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9789, 813 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 195.322, 299.322, 26.3583, 19.7687 )
+
+[node name="GrassBig29" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10475, -145 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 195.322, 299.322, 26.3583, 19.7687 )
+
+[node name="GrassBig27" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10900, 813 )
 scale = Vector2( 3.36439, 3.36439 )
 z_index = -5
 texture = ExtResource( 33 )
@@ -1298,6 +1493,22 @@ texture = ExtResource( 33 )
 region_enabled = true
 region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
 
+[node name="GrassBig21" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9579, -296 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
+
+[node name="GrassBig22" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9454, -292 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -7
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 120.078, 287.475, 71.9522, 33.0712 )
+
 [node name="GrassBig18" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 11698, 1493 )
 scale = Vector2( 3.36439, 3.36439 )
@@ -1313,13 +1524,63 @@ z_index = -5
 texture = ExtResource( 26 )
 
 [node name="Rock11" type="Sprite" parent="Objects_Backward"]
-position = Vector2( 8793, 1183 )
+position = Vector2( 8842, 1183 )
+scale = Vector2( 3.27533, 3.27533 )
+z_index = -5
+texture = ExtResource( 27 )
+
+[node name="Rock14" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 8981, -411 )
 scale = Vector2( 3.27533, 3.27533 )
 z_index = -5
 texture = ExtResource( 27 )
 
 [node name="Grass18" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 9160, 1197 )
+scale = Vector2( 4.95098, 4.95098 )
+z_index = -4
+texture = ExtResource( 31 )
+
+[node name="Dec33" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10246.7, 810.101 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 131.077, 197.316, 28.1041, 27.1122 )
+
+[node name="Dec34" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10150.8, 823.552 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -4
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 62.4112, 208.4, 32.8218, 11.4163 )
+
+[node name="Grass22" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10325, 812.001 )
+scale = Vector2( 4.95098, 4.95098 )
+z_index = -4
+texture = ExtResource( 31 )
+
+[node name="Dec31" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9210.69, -403.899 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -5
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 131.077, 197.316, 28.1041, 27.1122 )
+
+[node name="Dec32" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9114.83, -390.448 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -4
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 62.4112, 208.4, 32.8218, 11.4163 )
+
+[node name="Grass21" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9289, -401.999 )
 scale = Vector2( 4.95098, 4.95098 )
 z_index = -4
 texture = ExtResource( 31 )
@@ -1392,6 +1653,64 @@ texture = ExtResource( 31 )
 
 [node name="Grass6" type="Sprite" parent="Objects_Backward"]
 position = Vector2( 1876.7, 248.395 )
+scale = Vector2( 4.95098, 4.95098 )
+z_index = -6
+texture = ExtResource( 29 )
+
+[node name="Dec6" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9377, -404 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -4
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 194.363, 297.718, 27.139, 22.1285 )
+
+[node name="Dec7" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9426, -262 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -6
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 127.584, 180.068, 15.2974, 8.89384 )
+
+[node name="Dec41" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10216, -200 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -6
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 127.584, 180.068, 15.2974, 8.89384 )
+
+[node name="Dec39" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9888, -136 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -6
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 160.273, 179.528, 15.2137, 8.87466 )
+
+[node name="Dec40" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9709, -265 )
+scale = Vector2( 3.36439, 3.36439 )
+z_index = -6
+texture = ExtResource( 33 )
+region_enabled = true
+region_rect = Rect2( 160.273, 179.528, 15.2137, 8.87466 )
+
+[node name="Rock15" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9576, -287 )
+scale = Vector2( 3.27533, 3.27533 )
+z_index = -5
+texture = ExtResource( 27 )
+
+[node name="Grass8" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 9475, -263 )
+scale = Vector2( 4.95098, 4.95098 )
+z_index = -6
+texture = ExtResource( 29 )
+
+[node name="Grass23" type="Sprite" parent="Objects_Backward"]
+position = Vector2( 10201, -201 )
 scale = Vector2( 4.95098, 4.95098 )
 z_index = -6
 texture = ExtResource( 29 )
@@ -1557,18 +1876,13 @@ position = Vector2( -0.50061, 0.00186157 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 20 )
 
-[node name="Flag" type="Sprite" parent="Objects_Backward"]
-position = Vector2( 10614, 562 )
-scale = Vector2( 3.79995, 3.79995 )
-texture = ExtResource( 53 )
-
 [node name="Interactable" type="Node2D" parent="."]
 position = Vector2( 8008.64, 926.065 )
 scale = Vector2( 4, 4 )
 z_index = -1
 
 [node name="Checkpoint" parent="Interactable" instance=ExtResource( 8 )]
-position = Vector2( 1524.59, -74.5162 )
+position = Vector2( 1513.34, -85.7662 )
 z_index = -6
 
 [node name="Chest" parent="Interactable" instance=ExtResource( 37 )]
@@ -1804,9 +2118,17 @@ position = Vector2( 1599.34, -66.7662 )
 scale = Vector2( 0.75, 0.75 )
 z_index = -6
 
+[node name="FinishLevel" type="Node2D" parent="."]
+position = Vector2( 1496, -264 )
+
+[node name="FinishLevel" parent="FinishLevel" instance=ExtResource( 54 )]
+position = Vector2( 13224, 826 )
+scale = Vector2( 4, 4 )
+z_index = -8
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1407, -179 )
-start_position_level = Vector2( 1407, -179 )
+position = Vector2( 1496, -264 )
+start_position_level = Vector2( 1496, -264 )
 
 [node name="Objects_Front" type="Node2D" parent="."]
 
@@ -2111,7 +2433,7 @@ position = Vector2( 8295, -659 )
 scale = Vector2( 2, 2 )
 
 [node name="Coin7" parent="Coins" instance=ExtResource( 6 )]
-position = Vector2( 7499, -53 )
+position = Vector2( 7539, -38 )
 scale = Vector2( 2, 2 )
 
 [node name="Coin8" parent="Coins" instance=ExtResource( 6 )]
@@ -2151,29 +2473,9 @@ type = 1
 
 [node name="Guns" type="Node2D" parent="."]
 
-[node name="PickupGun" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1855, -17 )
-scale = Vector2( 2.5, 2.5 )
-type = 2
-
-[node name="PickupGun6" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1983, -17 )
-scale = Vector2( 2.5, 2.5 )
-type = 3
-
-[node name="PickupGun7" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1792, -178 )
-scale = Vector2( 2.5, 2.5 )
-type = 4
-
 [node name="PickupGun4" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1550, -17 )
+position = Vector2( 1834, 0.999985 )
 scale = Vector2( 2.5, 2.5 )
-
-[node name="PickupGun5" parent="Guns" instance=ExtResource( 52 )]
-position = Vector2( 1705, -17 )
-scale = Vector2( 2.5, 2.5 )
-type = 1
 
 [node name="PickupGun2" parent="Guns" instance=ExtResource( 52 )]
 position = Vector2( 6171, -874 )
@@ -2196,7 +2498,7 @@ collision_layer = 256
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallZones/Fallzone"]
-position = Vector2( 763.59, -417.079 )
+position = Vector2( 763.59, -394.766 )
 shape = SubResource( 21 )
 
 [connection signal="animation_finished" from="Interactable/Signpost/Key/AnimationPlayer" to="Interactable/Signpost/Key" method="_on_AnimationPlayer_animation_finished"]

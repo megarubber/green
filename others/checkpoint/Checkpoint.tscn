@@ -127,16 +127,17 @@ collision_layer = 0
 script = ExtResource( 10 )
 
 [node name="Flag" type="AnimatedSprite" parent="."]
-position = Vector2( 17.5882, -17.1713 )
+position = Vector2( 16.6705, -17.1713 )
 scale = Vector2( 0.0346365, 0.0346365 )
 frames = SubResource( 1 )
-frame = 6
+frame = 7
 playing = true
 
 [node name="Bar" type="Sprite" parent="."]
 texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 5.62063, -1.64024 )
 shape = SubResource( 2 )
 

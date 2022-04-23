@@ -28,7 +28,7 @@ ventiladores que fazem o personagem flutuar
 menu de opções
 
 -- Armas
-diferentes danos ao inimigo
-lança chamas
+consertar lança chamas bugado
 
-consertar o slide volume para o mouse (perguntar no fórum)
+creditar o compositor da música de game over:
+https://youtu.be/fiuFGlntO18

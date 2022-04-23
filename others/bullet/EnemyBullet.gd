@@ -50,9 +50,10 @@ func _on_Bullet_body_entered(body) -> void:
 			animation.play("Explosion")
 			#explosion.play()
 			
-		if body.is_in_group("player") && !body.hit:
-			body.take_damage(5)
+		if body.is_in_group("player"):
 			queue_free()
+			if !body.hit:
+				body.take_damage(5)
 
 func _on_DamageArea_area_entered(_area) -> void:
 	if position.x < player.global_position.x:	

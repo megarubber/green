@@ -14,6 +14,7 @@ func _on_AnimatedSprite_animation_finished() -> void:
 
 func _on_Heart_body_entered(body) -> void:
 	if body.is_in_group("player"):
+		Global.score += 1000
 		anim.play("collected")
 		sfx.play()
 		anim.scale = Vector2(1.5, 1.5)

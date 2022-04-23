@@ -23,6 +23,7 @@ func _ready() -> void:
 
 # Function that runs when the enemy dies
 func death() -> void:
+	Global.score += 5
 	sound_effect.play()
 	# Disable collision (bullet & tileset)
 	l_damage_area.monitorable = false
@@ -67,6 +68,7 @@ func _physics_process(_delta) -> void:
 					Global.hit_side = -1
 			elif l_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
 				take_damage(10)
+				Global.score += 1
 			else:
 				speed = 5
 		elif r_damage_area.get_overlapping_areas():
@@ -77,6 +79,7 @@ func _physics_process(_delta) -> void:
 					Global.hit_side = 1
 			elif r_damage_area.get_overlapping_areas()[0].get_name() == "flame_area":
 				take_damage(10)
+				Global.score += 1
 			else:
 				speed = 5
 		else:
