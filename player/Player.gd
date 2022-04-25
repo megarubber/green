@@ -149,6 +149,7 @@ func movement() -> void: # Player's movement function
 	motion = move_and_slide(motion, UP)
 
 func death() -> void:
+	set_z_index(7)
 	Global.inventory_guns.clear()
 	hands.get_node("hand-right").set_z_index(0)
 	gun.visible = false
@@ -199,11 +200,17 @@ func _physics_process(delta: float) -> void: # Physics update
 	if push_right.is_colliding():
 		var object = push_right.get_collider()
 		object.move_and_slide(Vector2(PUSH_FORCE, 0) * max_speed * delta)
-		is_pushing = true
+		if !object.is_on_wall():
+			is_pushing = true
+		else:
+			is_pushing = false
 	elif push_left.is_colliding():
 		var object = push_left.get_collider()
 		object.move_and_slide(Vector2(-PUSH_FORCE, 0) * max_speed * delta)
-		is_pushing = true
+		if !object.is_on_wall():
+			is_pushing = true
+		else:
+			is_pushing = false
 	else:
 		is_pushing = false
 	

@@ -70,6 +70,7 @@ tracks/0/keys = {
 }
 
 [node name="SmallFlyerEnemy" type="KinematicBody2D" groups=["enemy"]]
+z_index = 7
 collision_layer = 128
 collision_mask = 0
 script = ExtResource( 2 )

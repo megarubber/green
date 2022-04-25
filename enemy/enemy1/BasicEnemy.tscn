@@ -147,7 +147,7 @@ tracks/1/keys = {
 
 [node name="BasicEnemy" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 8
-collision_mask = 6
+collision_mask = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
@@ -159,7 +159,7 @@ position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 z_index = -1
 frames = SubResource( 6 )
-frame = 1
+frame = 4
 playing = true
 flip_h = true
 
@@ -168,7 +168,6 @@ material = SubResource( 10 )
 position = Vector2( -1, -2 )
 scale = Vector2( 0.613333, 0.613334 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Explosion" type="Node2D" parent="."]
