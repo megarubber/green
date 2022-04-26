@@ -947,10 +947,10 @@ text = "LIFE: XXXXXX"
 script = ExtResource( 21 )
 
 [node name="CounterTotalScore" type="Label" parent="FinishLevel/Labels"]
-margin_left = 44.0
-margin_top = 392.0
-margin_right = 551.0
-margin_bottom = 452.0
+margin_left = 242.0
+margin_top = 382.0
+margin_right = 749.0
+margin_bottom = 442.0
 rect_pivot_offset = Vector2( 56, 30 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )

@@ -9,6 +9,7 @@ enum State {
 
 # Variables
 var chest_state = State.CLOSED
+export(bool) var flip_chest
 export(String) var item_path
 export(Vector2) var global_size_item
 export(bool) var instance_multiple_itens
@@ -23,6 +24,8 @@ onready var instance_anim = $InstancePosition/AnimationPlayer
 onready var sfx = $OpenChest
 
 func _ready() -> void:
+	sprite.flip_h = flip_chest
+	instance_p.position.x = -60 if (flip_chest) else 60
 	sprite.play("default")
 	key.visible = false
 

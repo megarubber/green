@@ -52,10 +52,17 @@ extents = Vector2( 9, 18 )
 [node name="Chainsaw" type="Node2D" groups=["enemy"]]
 script = ExtResource( 3 )
 
-[node name="Chain" type="TextureRect" parent="."]
+[node name="Chain_H" type="TextureRect" parent="."]
 margin_top = -4.0
-margin_right = 169.0
+margin_right = 170.0
 margin_bottom = 4.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="Chain_V" type="TextureRect" parent="."]
+margin_left = -4.0
+margin_top = -170.0
+margin_right = 4.0
 texture = ExtResource( 2 )
 stretch_mode = 2
 
@@ -65,7 +72,7 @@ collision_mask = 6
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Saw"]
 frames = SubResource( 10 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="Left" type="Area2D" parent="Saw" groups=["chainsaw"]]

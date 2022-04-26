@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://enemy/EyesEnemy.gd" type="Script" id=1]
 [ext_resource path="res://enemy/enemy2/head.png" type="Texture" id=2]
@@ -147,8 +147,11 @@ extents = Vector2( 36.9076, 111.25 )
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 47.8657, 185.934 )
 
-[sub_resource type="CircleShape2D" id=37]
-radius = 373.373
+[sub_resource type="RectangleShape2D" id=37]
+extents = Vector2( 328.5, 377.5 )
+
+[sub_resource type="RectangleShape2D" id=38]
+extents = Vector2( 94.5, 212 )
 
 [sub_resource type="Shader" id=26]
 code = "shader_type canvas_item;
@@ -323,7 +326,7 @@ tracks/4/keys = {
 "values": [ 0.0, 1.0, 0.0 ]
 }
 
-[node name="FollowerEnemy" type="KinematicBody2D" groups=["enemy"]]
+[node name="FollowerEnemy" type="KinematicBody2D" groups=["enemy", "follower"]]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource( 6 )
@@ -333,7 +336,7 @@ material = SubResource( 17 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 6 )
-frame = 5
+frame = 3
 playing = true
 
 [node name="Head" type="Sprite" parent="."]
@@ -390,8 +393,12 @@ shape = SubResource( 24 )
 collision_layer = 64
 
 [node name="AreaShape" type="CollisionShape2D" parent="DetectArea"]
-position = Vector2( -2.50002, -258.676 )
+position = Vector2( 2.50001, -259.5 )
 shape = SubResource( 37 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+position = Vector2( 4.5, 294 )
+shape = SubResource( 38 )
 
 [node name="GunSprite" type="Sprite" parent="."]
 material = SubResource( 19 )

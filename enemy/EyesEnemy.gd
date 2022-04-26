@@ -14,12 +14,13 @@ var offset_x : int
 var offset_y : int
 
 func _ready():
-	match get_parent().get_name():
-		"MeleeEnemy":
+	var g = get_parent().get_groups()
+	match g[1]:
+		"melee":
 			max_dist = 10
 			offset_x = 9
 			offset_y = 15
-		"FollowerEnemy":
+		"follower":
 			max_dist = 5
 			offset_x = 0
 			offset_y = 20

@@ -387,7 +387,7 @@ tracks/4/keys = {
 "values": [ 0.0, 1.0, 0.0 ]
 }
 
-[node name="MeleeEnemy" type="KinematicBody2D" groups=["enemy"]]
+[node name="MeleeEnemy" type="KinematicBody2D" groups=["enemy", "melee"]]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource( 27 )
@@ -397,7 +397,7 @@ material = SubResource( 12 )
 position = Vector2( -2, 100 )
 scale = Vector2( 0.104576, 0.104576 )
 frames = SubResource( 13 )
-frame = 5
+frame = 1
 playing = true
 flip_h = true
 

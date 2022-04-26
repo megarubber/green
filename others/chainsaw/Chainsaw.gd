@@ -1,8 +1,12 @@
 extends Node2D
 
+# Node Referencing
 onready var saw = $Saw
 onready var tween = $Tween
+onready var chain_h = $Chain_H
+onready var chain_v = $Chain_V
 
+# Variables
 export var speed = 3.0
 export var horizontal = true
 export var distance = 192
@@ -13,6 +17,12 @@ const WAIT_DURATION = 1.0
 
 func _ready() -> void:
 	_start_tween()
+	if horizontal:
+		chain_h.visible = true
+		chain_v.visible = false
+	else:
+		chain_h.visible = false
+		chain_v.visible = true		
 
 func _start_tween() -> void:
 	var move_direction = Vector2.RIGHT * distance if horizontal else Vector2.UP * distance
