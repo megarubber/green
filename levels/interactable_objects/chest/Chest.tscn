@@ -22,7 +22,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 168.084, 113.811 )
+extents = Vector2( 321, 173.061 )
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -63,8 +63,7 @@ script = ExtResource( 6 )
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 36.0053, 54.3114 )
+position = Vector2( 34, -4.9388 )
 shape = SubResource( 2 )
 
 [node name="InstancePosition" type="Position2D" parent="."]

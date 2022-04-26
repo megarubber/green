@@ -19,7 +19,7 @@ onready var player = get_tree().get_current_scene().get_node("Player")
 func _ready() -> void:
 	animation.play("Default")
 	set_as_toplevel(true)
-	sprite.set_z_index(-3)
+	#sprite.set_z_index(-3)
 
 func _process(delta: float) -> void:
 	# Movement of bullet

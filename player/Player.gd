@@ -25,7 +25,6 @@ var can_fly = true
 var jump_in_trampoline = false
 var is_pushing = false
 var finish = false
-var press_jump = false
 export(int)var limit_camera_end_level
 
 # Nodes Referencing
@@ -138,19 +137,16 @@ func movement() -> void: # Player's movement function
 			if Input.is_action_just_pressed("ui_up"):
 				motion.y = max_jump_height
 				jump_sound_effect.play()
-				press_jump = true
 			if friction == true:
 				motion.x = lerp(motion.x, 0, 0.2)
-			press_jump = false
 		else:
 			if friction == true:
 				motion.x = lerp(motion.x, 0, 0.05)
 			if !jump_in_trampoline && Input.is_action_just_released("ui_up") && motion.y < 0:
 				motion.y = 0
-				press_jump = false
 		
 		# Player can't jump more than the powerup force (=1000)
-		if motion.y < MAX_JUMP_HEIGHT_POWERUP:
+		if motion.y < MAX_JUMP_HEIGHT_POWERUP && !jump_in_trampoline:
 			motion.y = max_jump_height
 	else:
 		death()

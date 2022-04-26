@@ -916,7 +916,6 @@ polygon = PoolVector2Array( 0, 0, 283, 62, 286, -64 )
 position = Vector2( 4, -88 )
 rotation = 0.897099
 scale = Vector2( 2.5, 2.5 )
-z_index = -1
 texture = ExtResource( 31 )
 offset = Vector2( 5, 0 )
 script = ExtResource( 19 )
