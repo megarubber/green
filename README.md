@@ -3,6 +3,7 @@
 Green: The Legend of Colors is a plataform game, based on old run-and-gun games (e.g., Metal Slug, Contra, Mega Man, Gunstar Heroes, etc.).
 
 ![image](https://user-images.githubusercontent.com/73722088/165998799-3154cc9c-8830-4422-9157-1d0192db3086.png)
+<img src="green-gif.gif">
 
 The project is a "remake" from my project in 2018.<br>
 <a href="https://github.com/mrguisamuel53/original-green-project">Click here to access the old version.</a>
@@ -25,7 +26,7 @@ Go to Releases, select your OS and download the game.
 ### Others
 * <b>P - Pause<br>
 * <b>Spacebar - Confirm menu options<br>
-
+  
 ## Assets
 ### Art
 * <a href="https://opengameart.org/">OpenGameArt</a>
