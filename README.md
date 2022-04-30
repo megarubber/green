@@ -9,7 +9,7 @@ The project is a "remake" from my project in 2018.<br>
 <a href="https://github.com/mrguisamuel53/original-green-project">Click here to access the old version.</a>
 
 ## Installing and Using
-Go to Releases, select your OS and download the game.
+Go to <a href="https://github.com/mrguisamuel53/green/releases">Releases</a>, select your OS and download the game.
 
 ## Controls
 ### Player Movement
