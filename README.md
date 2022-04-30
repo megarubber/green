@@ -43,4 +43,4 @@ Go to <a href="https://github.com/mrguisamuel53/green/releases">Releases</a>, se
 * <a href="https://youtu.be/Y6l02DcpSR4">Shaun Spalding</a>
 
 ## License
-<a href="https://github.com/mrguisamuel53/green/blob/main/LICENSE">GNU GPLv3</a>
+<a href="https://github.com/mrguisamuel53/green/blob/main/LICENSE">MIT</a>
