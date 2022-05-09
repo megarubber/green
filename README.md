@@ -41,6 +41,3 @@ Go to <a href="https://github.com/mrguisamuel53/green/releases">Releases</a>, se
 * <a href="https://opengameart.org/">OpenGameArt</a>
 * <a href="https://youtu.be/fiuFGlntO18">8 bit Eskes</a>
 * <a href="https://youtu.be/Y6l02DcpSR4">Shaun Spalding</a>
-
-## License
-<a href="https://github.com/mrguisamuel53/green/blob/main/LICENSE">MIT</a>
