@@ -26,9 +26,4 @@ transições
 passar de nível
 ventiladores que fazem o personagem flutuar
 menu de opções
-
--- Armas
 consertar lança chamas bugado
-
-creditar o compositor da música de game over:
-https://youtu.be/fiuFGlntO18
