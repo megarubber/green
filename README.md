@@ -24,8 +24,8 @@ Go to <a href="https://github.com/mrguisamuel53/green/releases">Releases</a> and
 * <b>R - </b>Switch gun<br>
 
 ### Others
-* <b>P - Pause<br>
-* <b>Spacebar - Confirm menu options<br>
+* <b>P - </b>Pause<br>
+* <b>Spacebar - </b>Confirm menu options<br>
   
 ## Assets
 ### Engine
