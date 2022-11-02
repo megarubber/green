@@ -1,6 +1,6 @@
 # Green: The Legend of Colors 🎮
 
-Green: The Legend of Colors is a platform game, based on old run-and-gun games (e.g. Metal Slug, Contra, Mega Man, Gunstar Heroes, etc.).
+Green: The Legend of Colors is a platform game, based on old run-and-gun games (e.g., Metal Slug, Contra, Mega Man and Gunstar Heroes).
 
 ![image](https://user-images.githubusercontent.com/73722088/165998799-3154cc9c-8830-4422-9157-1d0192db3086.png)
 <img src="green-gif.gif">
